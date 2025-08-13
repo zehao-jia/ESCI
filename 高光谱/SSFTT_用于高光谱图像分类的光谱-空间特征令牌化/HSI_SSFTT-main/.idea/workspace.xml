@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aca83ceb-dcb6-472a-9608-86a09a405b84" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/xunlian.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/dataset/GM13.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/dataset/Indian_pines_gt.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/dataset_preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/dataset_preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/EATN-main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HSI_SSFTT-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HSI_SSFTT-main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Indian_pines_corrected.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/EATN-main/dataset/Indian_pines_corrected.mat" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="30lUvJfNpuOwvujISQuTLJ4mBIn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23339.19" />
+        <option value="bundled-python-sdk-0029f7779945-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="aca83ceb-dcb6-472a-9608-86a09a405b84" name="更改" comment="" />
+      <created>1754201881633</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754201881633</updated>
+      <workItem from="1754201882855" duration="409000" />
+      <workItem from="1754487327768" duration="471000" />
+      <workItem from="1754978736288" duration="3234000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
