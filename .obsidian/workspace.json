@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2cf204216151c29a",
+        "id": "cee5dbb99964d9a4",
         "type": "tabs",
         "children": [
           {
-            "id": "91f8e61cb42d6657",
+            "id": "e50b76fcb1701270",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Note.md",
+                "file": "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Note"
+              "title": "Dualmamba"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "035978e3cc086761",
@@ -170,29 +169,36 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "91f8e61cb42d6657",
+  "active": "e50b76fcb1701270",
   "lastOpenFiles": [
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.pdf",
     "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/DualMamba：A Lightweight Spectral-Spatial Mamba-Convolution Network for Hyperspectral Image Classification.pdf",
-    "基础知识/离散.md",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Note.md",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-29 155612.png",
+    "高光谱/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/屏幕截图 2025-07-08 144907.png",
+    "高光谱/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.synctex(busy)",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.synctex.gz",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.aux",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.log",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.tex",
+    "屏幕截图 2025-08-29 155612.png",
+    "未命名.base",
+    "基础知识/复杂度相关.md",
     "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-28 155315.png",
-    "屏幕截图 2025-08-28 155315.png",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-29 123507.png",
+    "屏幕截图 2025-08-29 123507.png",
+    "时不变参数化.md",
+    "基础知识/离散.md",
     "基础知识/关于模型架构.md",
+    "屏幕截图 2025-08-28 155315.png",
     "级联结构.md",
     "未命名 3.base",
-    "未命名 1.base",
     "经典论文/transformer/屏幕截图 2025-07-01 231831.png",
-    "未命名 2.base",
-    "未命名 4.base",
-    "未命名.base",
     "高光谱/MambaHSI/日志1结果.md",
-    "高光谱/DualMamba：A Lightweight Spectral-Spatial Mamba-Convolution Network for Hyperspectral Image Classification.pdf",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络",
-    "未命名",
     "高光谱/MambaHSI/日志2结果.md",
     "高光谱/MambaHSI/日志.md",
     "高光谱/MambaHSI/note1.md",
-    "高光谱/MambaHSI/mambahsi.pdf",
     "高光谱/MambaHSI/屏幕截图 2025-08-15 162034.png"
   ]
 }
