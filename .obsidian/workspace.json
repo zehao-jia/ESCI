@@ -4,24 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "cee5dbb99964d9a4",
+        "id": "5d84238982ba87d7",
         "type": "tabs",
         "children": [
           {
-            "id": "e50b76fcb1701270",
+            "id": "2c996f07188ec082",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
+                "file": "高光谱/HICWM/Hyperspectal Image Classification With Mamba.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dualmamba"
+              "title": "Hyperspectal Image Classification With Mamba"
             }
           }
-        ]
+        ],
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -169,36 +170,48 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e50b76fcb1701270",
+  "active": "2c996f07188ec082",
   "lastOpenFiles": [
+    "屏幕截图 2025-09-11 224441.png",
+    "高光谱/HICWM/屏幕截图 2025-09-11 174112.png",
+    "屏幕截图 2025-09-11 174112.png",
+    "高光谱/HICWM/屏幕截图 2025-09-11 172127.png",
+    "高光谱/HICWM/Hyperspectral Image Classification With Mamba.pdf",
+    "高光谱/HICWM/Hyperspectal Image Classification With Mamba.md",
+    "高光谱/HICWM",
+    "高光谱/MambaHSI+：Multidirectional State Propagation for Efficient Hyperspectral Image Classification.pdf",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
     "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.pdf",
     "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/DualMamba：A Lightweight Spectral-Spatial Mamba-Convolution Network for Hyperspectral Image Classification.pdf",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-29 155612.png",
-    "高光谱/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/屏幕截图 2025-07-08 144907.png",
-    "高光谱/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.synctex(busy)",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.synctex.gz",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.aux",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.log",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/tex.tex",
-    "屏幕截图 2025-08-29 155612.png",
-    "未命名.base",
-    "基础知识/复杂度相关.md",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-28 155315.png",
+    "基础知识/关于模型架构.md",
+    "基础知识/未命名.md",
     "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-29 123507.png",
-    "屏幕截图 2025-08-29 123507.png",
+    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-29 155612.png",
+    "高光谱/MambaHSI/屏幕截图 2025-08-15 162034.png",
+    "高光谱/MambaHSI/日志2结果.md",
+    "高光谱/MambaHSI/mambahsi.pdf",
+    "高光谱/MambaHSI/note1.md",
+    "高光谱/HSI-MFormer：Integrating Mamba and Transformer Experts for Hyperspectral Image Classification.pdf",
+    "高光谱/Wavelet Decomposition-Based Spectral&#x2013;Spatial Mamba Network for Hyperspectral Image Classification.pdf",
+    "高光谱/SpiralMamba：Spatial-Spectral Complementary Mamba With Spatial Spiral Scan for Hyperspectral Image Classification.pdf",
+    "高光谱/Hyperspectral Image Classification With Mamba.pdf",
+    "基础知识/python基础.md",
+    "高光谱/AGMS/AGMS：基于对抗样本生成的多尺度孪生网络用于高光谱目标检测.md",
+    "基础知识/mamba_code.md",
+    "经典论文/mamba/Mamba.md",
+    "屏幕截图 2025-09-07 115003.png",
+    "经典论文/mamba/屏幕截图 2025-09-07 114443.png",
+    "屏幕截图 2025-09-07 113949.png",
+    "经典论文/mamba/屏幕截图 2025-09-07 113734.png",
+    "经典论文/mamba/Mind 2025-09-07 10.22.05.mindmap.md",
+    "经典论文/mamba/未命名.md",
+    "经典论文/mamba/Mind 2025-09-07 10.21.41.mindmap.md",
+    "基础知识/复杂度相关.md",
     "时不变参数化.md",
     "基础知识/离散.md",
-    "基础知识/关于模型架构.md",
-    "屏幕截图 2025-08-28 155315.png",
     "级联结构.md",
-    "未命名 3.base",
-    "经典论文/transformer/屏幕截图 2025-07-01 231831.png",
     "高光谱/MambaHSI/日志1结果.md",
-    "高光谱/MambaHSI/日志2结果.md",
-    "高光谱/MambaHSI/日志.md",
-    "高光谱/MambaHSI/note1.md",
-    "高光谱/MambaHSI/屏幕截图 2025-08-15 162034.png"
+    "高光谱/MambaHSI/日志.md"
   ]
 }
