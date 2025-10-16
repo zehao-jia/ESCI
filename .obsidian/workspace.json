@@ -4,31 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f8f8699760c6326e",
+        "id": "a6baecf11aeee0d7",
         "type": "tabs",
-        "dimension": 63.28125,
         "children": [
           {
-            "id": "729fa2ee0bf52b2a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "高光谱/HSI-MFormer/HSI-MFormer：Integrating Mamba and Transformer Experts for Hyperspectral Image Classification_translated.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "HSI-MFormer：Integrating Mamba and Transformer Experts for Hyperspectral Image Classification_translated"
-            }
-          }
-        ]
-      },
-      {
-        "id": "854314f26ae86b88",
-        "type": "tabs",
-        "dimension": 36.71875,
-        "children": [
-          {
-            "id": "d2549711a7a13f2b",
+            "id": "80bbc380238852c6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -98,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "035978e3cc086761",
@@ -190,10 +169,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "d2549711a7a13f2b",
+  "active": "80bbc380238852c6",
   "lastOpenFiles": [
-    "高光谱/HSI-MFormer/HSI-MFormer：Integrating Mamba and Transformer Experts for Hyperspectral Image Classification_translated.pdf",
+    "高光谱/HSI-MFormer/中文HSI_Mformer.pdf",
+    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 230300.png",
+    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 230246.png",
     "高光谱/HSI-MFormer/HSI-MFormer.md",
+    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 225832.png",
+    "高光谱/MambaHSI/日志2结果.md",
+    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 224412.png",
     "高光谱/HSI-MFormer/HSI-MFormer：Integrating Mamba and Transformer Experts for Hyperspectral Image Classification.pdf",
     "基础知识/离散.md",
     "高光谱/HSI-MFormer/屏幕截图 2025-10-15 204044.png",
@@ -218,10 +202,6 @@
     "高光谱/mambahsi+/MambaHSI+.md",
     "经典论文/mamba/Mamba.md",
     "高光谱/mambahsi+/屏幕截图 2025-10-09 224640.png",
-    "高光谱/mambahsi+/屏幕截图 2025-10-10 154059.png",
-    "高光谱/mambahsi+/屏幕截图 2025-10-10 191456.png",
-    "屏幕截图 2025-10-10 191456.png",
-    "屏幕截图 2025-10-10 154059.png",
     "高光谱/关于这段时间以来.md",
     "高光谱/螺旋mamba_fusion用了/特征融合.md",
     "高光谱/HICWM_预处理用了/Hyperspectal Image Classification With Mamba.md",
@@ -235,7 +215,6 @@
     "高光谱/未命名 1.md",
     "基础知识/关于模型架构.md",
     "经典论文/GAN/Gererative_Adversarial_Nets.md",
-    "高光谱/HICWM_利用mamba进行高光谱图像fenxi/Hyperspectal Image Classification With Mamba.md",
-    "高光谱/HICWM/Hyperspectal Image Classification With Mamba.md"
+    "高光谱/HICWM_利用mamba进行高光谱图像fenxi/Hyperspectal Image Classification With Mamba.md"
   ]
 }
