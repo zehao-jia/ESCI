@@ -1,3 +1,8 @@
 {
-  "accentColor": "#800020"
+  "accentColor": "#800020",
+  "cssTheme": "",
+  "interfaceFontFamily": "",
+  "baseFontSize": 23,
+  "baseFontSizeAction": true,
+  "textFontFamily": "华文楷体"
 }

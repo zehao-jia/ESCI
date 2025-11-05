@@ -4,24 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "a6baecf11aeee0d7",
+        "id": "26482859b6aa7bbf",
         "type": "tabs",
         "children": [
           {
-            "id": "80bbc380238852c6",
+            "id": "9570105b4b992763",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "高光谱/新建文件夹/1-s2.0-S1566253525007213-main.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "1-s2.0-S1566253525007213-main"
+            }
+          },
+          {
+            "id": "48d150cd2c6cbe22",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "高光谱/HSI-MFormer/HSI-MFormer.md",
+                "file": "高光谱/新建文件夹/E-mamba.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HSI-MFormer"
+              "title": "E-mamba"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -169,52 +182,52 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "80bbc380238852c6",
+  "active": "c0a8becf56e218ad",
   "lastOpenFiles": [
-    "高光谱/HSI-MFormer/中文HSI_Mformer.pdf",
-    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 230300.png",
-    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 230246.png",
-    "高光谱/HSI-MFormer/HSI-MFormer.md",
-    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 225832.png",
-    "高光谱/MambaHSI/日志2结果.md",
-    "高光谱/HSI-MFormer/屏幕截图 2025-10-16 224412.png",
-    "高光谱/HSI-MFormer/HSI-MFormer：Integrating Mamba and Transformer Experts for Hyperspectral Image Classification.pdf",
-    "基础知识/离散.md",
-    "高光谱/HSI-MFormer/屏幕截图 2025-10-15 204044.png",
-    "未命名.base",
-    "经典论文/resnet/Deep_Residual_Learning_for_Image_Recognition.pdf",
-    "经典论文/VIT/vit.md",
-    "经典论文/VIT/vit",
-    "经典论文/transformer/transformer.md",
-    "经典论文/resnet/resnet.md",
-    "经典论文/GNN/gnn.md",
-    "经典论文/alexnet/alexnet.md",
-    "经典论文/transformer/屏幕截图 2025-07-01 231831.png",
-    "经典论文/transformer/屏幕截图 2025-07-01 222632.png",
-    "经典论文/transformer/屏幕截图 2025-07-01 222135.png",
-    "经典论文/transformer/屏幕截图 2025-07-01 220934.png",
-    "README.md",
-    "未命名 2.base",
-    "未命名 1.base",
-    "未命名 4.base",
-    "未命名 3.base",
-    "高光谱/HSI-MFormer",
-    "高光谱/mambahsi+/MambaHSI+.md",
-    "经典论文/mamba/Mamba.md",
-    "高光谱/mambahsi+/屏幕截图 2025-10-09 224640.png",
-    "高光谱/关于这段时间以来.md",
-    "高光谱/螺旋mamba_fusion用了/特征融合.md",
-    "高光谱/HICWM_预处理用了/Hyperspectal Image Classification With Mamba.md",
-    "高光谱/螺旋mamba/特征融合.md",
-    "高光谱/未命名.md",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
-    "高光谱/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
-    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/分析_get_cls_map.md",
+    "高光谱/新建文件夹/屏幕截图 2025-11-05 232251.png",
+    "高光谱/新建文件夹/E-mamba.md",
+    "基础知识/卷积这一块.md",
+    "高光谱/新建文件夹/1-s2.0-S1566253525007213-main_translated.pdf",
+    "高光谱/新建文件夹/屏幕截图 2025-11-05 230236.png",
+    "高光谱/新建文件夹/屏幕截图 2025-11-05 225552.png",
+    "高光谱/新建文件夹/1-s2.0-S1566253525007213-main.pdf",
+    "屏幕截图 2025-11-05 230236.png",
+    "高光谱/EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/note.md",
+    "高光谱/高光谱.md",
+    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/屏幕截图 2025-07-10 142714.png",
+    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/屏幕截图 2025-07-16 223904.png",
+    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/屏幕截图 2025-07-16 224221.png",
+    "高光谱/mamba相关/螺旋mamba_fusion用了/特征融合.md",
+    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/2022 SpectralSpatial_Feature_Tokenization_Transformer_for_Hyperspectral_Image_Classification.pdf",
     "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/分析_SSFTTnet.md",
-    "高光谱/HICWM_利用mamba进行高光谱图像分析/Hyperspectal Image Classification With Mamba.md",
-    "高光谱/未命名 1.md",
+    "高光谱/CLOLN/CLOLS.md",
+    "CLOLN.md",
+    "高光谱/mamba相关/螺旋mamba_fusion用了/SpiralMamba：Spatial-Spectral Complementary Mamba With Spatial Spiral Scan for Hyperspectral Image Classification.pdf",
+    "高光谱/mamba相关/螺旋mamba_fusion用了/屏幕截图 2025-09-24 194906.png",
+    "高光谱/mamba相关/螺旋mamba_fusion用了",
+    "高光谱/mamba相关/mambahsi+/屏幕截图 2025-10-10 191456.png",
+    "高光谱/mamba相关/mambahsi+/屏幕截图 2025-10-10 154059.png",
+    "高光谱/mamba相关/mambahsi+/MambaHSI+：Multidirectional State Propagation for Efficient Hyperspectral Image Classification.pdf",
+    "高光谱/mamba相关/mambahsi+/MambaHSI+.md",
+    "高光谱/mamba相关/mambahsi+",
+    "高光谱/mamba相关/MambaHSI/日志2结果.md",
+    "高光谱/mamba相关/MambaHSI/日志1结果.md",
+    "高光谱/mamba相关/MambaHSI/日志.md",
+    "高光谱/mamba相关/MambaHSI/note1.md",
+    "高光谱/mamba相关/MambaHSI/mambahsi.pdf",
+    "高光谱/mamba相关/MambaHSI",
+    "高光谱/mamba相关/HSI-MFormer/中文HSI_Mformer.pdf",
+    "高光谱/mamba相关/HSI-MFormer/HSI-MFormer.md",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
+    "高光谱/CSIL/CSIL.md",
+    "高光谱/DSFormer/DSFormer.md",
+    "基础知识/Attention这一块.md",
+    "经典论文/VIT/vit.md",
+    "经典论文/transformer/transformer.md",
     "基础知识/关于模型架构.md",
-    "经典论文/GAN/Gererative_Adversarial_Nets.md",
-    "高光谱/HICWM_利用mamba进行高光谱图像fenxi/Hyperspectal Image Classification With Mamba.md"
+    "高光谱/AGMS/AGMS：基于对抗样本生成的多尺度孪生网络用于高光谱目标检测.md",
+    "高光谱/关于这段时间以来.md",
+    "高光谱/未命名.md"
   ]
 }
