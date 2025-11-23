@@ -19,7 +19,7 @@
 
 ## overview
 
-![alt text](<屏幕截图 2025-08-15 162034.png>)
+![alt text](<Mambahsi.png>)
 
 - 主要组件:嵌入层(embedding layer),编码器骨干(encoder backbone),分割头(segmentation head)
 

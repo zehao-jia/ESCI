@@ -4,37 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "26482859b6aa7bbf",
+        "id": "61a87e4b36178dea",
         "type": "tabs",
         "children": [
           {
-            "id": "9570105b4b992763",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "高光谱/新建文件夹/1-s2.0-S1566253525007213-main.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "1-s2.0-S1566253525007213-main"
-            }
-          },
-          {
-            "id": "48d150cd2c6cbe22",
+            "id": "fa0b511630b920a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "高光谱/新建文件夹/E-mamba.md",
+                "file": "经典论文/U-net/U-net.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "E-mamba"
+              "title": "U-net"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -66,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#对c的交换",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -179,55 +166,56 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "vscode-editor:新建代码文件": false
     }
   },
-  "active": "c0a8becf56e218ad",
+  "active": "fa0b511630b920a3",
   "lastOpenFiles": [
-    "高光谱/新建文件夹/屏幕截图 2025-11-05 232251.png",
-    "高光谱/新建文件夹/E-mamba.md",
-    "基础知识/卷积这一块.md",
-    "高光谱/新建文件夹/1-s2.0-S1566253525007213-main_translated.pdf",
-    "高光谱/新建文件夹/屏幕截图 2025-11-05 230236.png",
-    "高光谱/新建文件夹/屏幕截图 2025-11-05 225552.png",
-    "高光谱/新建文件夹/1-s2.0-S1566253525007213-main.pdf",
+    "经典论文/U-net/v2-a3b0a31f30f92d816f7efbc1c20084b9_r.jpg",
+    "经典论文/U-net/U-net.md",
+    "经典论文/U-net",
+    "基础知识/数据科学导论/4_数据预处理/数据可视化.md",
+    "基础知识/数据科学导论/数学基础.md",
+    "基础知识/数据科学导论/屏幕截图 2025-11-16 101135.png",
+    "基础知识/数据科学导论/屏幕截图 2025-11-16 101110.png",
+    "高光谱/Transformer相关/DSFormer/DSFormer.md",
+    "高光谱/未读/基于Sentinel-2和3D多源域自注意力模型的湿地分类_楼桉君.pdf",
+    "高光谱/Transformer相关/FNet/FNet_傅里叶变换与Transformer结合.md",
+    "高光谱/Transformer相关/FNet/傅里叶变换与transformer结合.pdf",
+    "高光谱/Transformer相关/FNet/屏幕截图 2025-11-13 175035.png",
+    "高光谱/未读/Fast_Hyperspectral_Image_Classification_Combining_Transformers_and_SimAM-Based_CNNs.pdf",
+    "高光谱/未读/Cross-Domain_Contrastive_Learning_for_Hyperspectral_Image_Classification.pdf",
+    "高光谱/Transformer相关/FNet",
     "屏幕截图 2025-11-05 230236.png",
-    "高光谱/EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/note.md",
-    "高光谱/高光谱.md",
-    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/屏幕截图 2025-07-10 142714.png",
-    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/屏幕截图 2025-07-16 223904.png",
-    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/屏幕截图 2025-07-16 224221.png",
-    "高光谱/mamba相关/螺旋mamba_fusion用了/特征融合.md",
-    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/2022 SpectralSpatial_Feature_Tokenization_Transformer_for_Hyperspectral_Image_Classification.pdf",
-    "高光谱/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/分析_SSFTTnet.md",
-    "高光谱/CLOLN/CLOLS.md",
-    "CLOLN.md",
-    "高光谱/mamba相关/螺旋mamba_fusion用了/SpiralMamba：Spatial-Spectral Complementary Mamba With Spatial Spiral Scan for Hyperspectral Image Classification.pdf",
-    "高光谱/mamba相关/螺旋mamba_fusion用了/屏幕截图 2025-09-24 194906.png",
-    "高光谱/mamba相关/螺旋mamba_fusion用了",
-    "高光谱/mamba相关/mambahsi+/屏幕截图 2025-10-10 191456.png",
-    "高光谱/mamba相关/mambahsi+/屏幕截图 2025-10-10 154059.png",
-    "高光谱/mamba相关/mambahsi+/MambaHSI+：Multidirectional State Propagation for Efficient Hyperspectral Image Classification.pdf",
-    "高光谱/mamba相关/mambahsi+/MambaHSI+.md",
-    "高光谱/mamba相关/mambahsi+",
-    "高光谱/mamba相关/MambaHSI/日志2结果.md",
-    "高光谱/mamba相关/MambaHSI/日志1结果.md",
-    "高光谱/mamba相关/MambaHSI/日志.md",
-    "高光谱/mamba相关/MambaHSI/note1.md",
-    "高光谱/mamba相关/MambaHSI/mambahsi.pdf",
-    "高光谱/mamba相关/MambaHSI",
-    "高光谱/mamba相关/HSI-MFormer/中文HSI_Mformer.pdf",
-    "高光谱/mamba相关/HSI-MFormer/HSI-MFormer.md",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
-    "高光谱/CSIL/CSIL.md",
-    "高光谱/DSFormer/DSFormer.md",
-    "基础知识/Attention这一块.md",
-    "经典论文/VIT/vit.md",
-    "经典论文/transformer/transformer.md",
-    "基础知识/关于模型架构.md",
+    "高光谱/Transformer相关/未命名.md",
+    "高光谱/Transformer相关",
+    "屏幕截图 2025-11-06 152744.png",
+    "未命名.base",
+    "未命名 1.base",
     "高光谱/AGMS/AGMS：基于对抗样本生成的多尺度孪生网络用于高光谱目标检测.md",
-    "高光谱/关于这段时间以来.md",
-    "高光谱/未命名.md"
+    "高光谱/CLOLN/屏幕截图 2025-10-23 152814.png",
+    "code_learn/CSIL-main/CSIL-main/README.md",
+    "高光谱/MambaHSI/note1.md",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-28 155315.png",
+    "高光谱/mamba相关/E_mamba/E-mamba.md",
+    "高光谱/Hyperspectral_Image_Classification_Based_on_Subgraph-Dependent_Neural_Network.pdf",
+    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/未命名.md",
+    "高光谱/高光谱.md",
+    "高光谱/CSIL/CSIL.md",
+    "高光谱/CLOLN/CLOLS.md",
+    "高光谱/Transformer相关/DSFormer/TSFA.png",
+    "高光谱/Transformer相关/DSFormer/DSFormer.png",
+    "高光谱/mamba相关/HICWM_预处理用了/Hyperspectal Image Classification With Mamba.md",
+    "高光谱/EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/note.md",
+    "高光谱/mamba相关/mambahsi+/MambaHSI+.md",
+    "高光谱/mamba相关/HSI-MFormer/HSI-MFormer.md",
+    "高光谱/mamba相关/MambaHSI/note1.md",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
+    "高光谱/Transformer相关/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/分析_SSFTTnet.md",
+    "高光谱/mamba相关/螺旋mamba_fusion用了/特征融合.md",
+    "经典论文/resnet/resnet.md",
+    "基础知识/卷积这一块.md"
   ]
 }

@@ -2,7 +2,7 @@
 ## [[transformer|transformer]]
 
 # 网络架构
-![[屏幕截图 2025-10-15 204044.png]]
+![[HSI-Mformer.png]]
 ## 1.MTG(多尺度令牌生成模块)
 - 使用不同内核尺寸的3d卷积,这些卷积随后被传输到mamba和transformer中进行短程和远程空间光谱特征提取
 - 如图MTG由三个卷积组构成,这个生成HSI块的过程可表述为

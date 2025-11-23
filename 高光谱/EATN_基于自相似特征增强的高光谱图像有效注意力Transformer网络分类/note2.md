@@ -34,7 +34,7 @@
 ### SIT
 
 #### GISSA
-![alt text](<屏幕截图 2025-08-10 134107.png>)
+![alt text](<GISSA.png>)
 
 - 解决的问题:
 - 1. 正常用Transformer建模谱带之间的长程相关性会由于HSIs的高维性消耗计算成本和存储空间

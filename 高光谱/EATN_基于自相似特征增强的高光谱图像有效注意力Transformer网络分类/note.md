@@ -47,7 +47,7 @@
 ## B.自相似特征增强
 - 问题:自注意不能有效挖掘局部相关性,基于变换的模型难以感知像素之间的位置信息
 ### SSFE模块处理原始HSI块
-![alt text](<屏幕截图 2025-08-07 173139.png>)
+![alt text](<EATN.png>)
 - [自相似性](#self-similarity)描述符增强HSI的特征信息
 #### 1. 对原始patch进行归一化,以探索像素之间的关联
 #### 2. 两种自相似性描述块
@@ -89,7 +89,7 @@ $$
 - 正常用Transformer建模谱带之间的长程相关性会由于HSIs的高维性消耗计算成本和存储空间
 - 高光谱数据存在连续性和局部相关性,Transformer独立处理序列中每个位置的特征,不能充分利用光谱信息的局部相关性
 #### 解决-SIT模块
-![alt text](<屏幕截图 2025-08-10 134107.png>)
+![alt text](<GISSA.png>)
 通过引入GISSA模块开发一个SIT模块
 ##### GISSA数据流动
 - 1. 对于输入的特征图$F\in\mathbb{R}^{S\times S\times D}$,我们将其分为N组,每组长度相等,得到N组$F'\in\mathbb{R}^{S\times S\times\frac{D}{N}}$
