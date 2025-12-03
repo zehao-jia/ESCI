@@ -25,12 +25,14 @@
             "id": "abb7fac3b01a9994",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "经典论文/U-net/v2-a3b0a31f30f92d816f7efbc1c20084b9_r.jpg"
+                "file": "基础知识/数据科学导论/6_分析方法/5分类.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "v2-a3b0a31f30f92d816f7efbc1c20084b9_r"
+              "icon": "lucide-file",
+              "title": "5分类"
             }
           }
         ],
@@ -185,6 +187,9 @@
   },
   "active": "abb7fac3b01a9994",
   "lastOpenFiles": [
+    "基础知识/数据科学导论/6_分析方法/4回归.md",
+    "基础知识/数据科学导论/6_分析方法/5分类.md",
+    "经典论文/U-net/v2-a3b0a31f30f92d816f7efbc1c20084b9_r.jpg",
     "高光谱/mamba相关/E_mamba/e_mamba.png",
     "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 232251.png",
     "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 225552.png",
@@ -192,7 +197,6 @@
     "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main_translated.pdf",
     "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main.pdf",
     "高光谱/高光谱.md",
-    "经典论文/U-net/v2-a3b0a31f30f92d816f7efbc1c20084b9_r.jpg",
     "经典论文/U-net/U-net.md",
     "高光谱/Hyperspectral_Image_Classification_Based_on_Subgraph-Dependent_Neural_Network.pdf",
     "高光谱/Transformer相关/FNet/屏幕截图 2025-11-13 175035.png",
@@ -228,7 +232,6 @@
     "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
     "高光谱/Transformer相关/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/分析_SSFTTnet.md",
     "高光谱/mamba相关/螺旋mamba_fusion用了/特征融合.md",
-    "经典论文/resnet/resnet.md",
-    "基础知识/卷积这一块.md"
+    "经典论文/resnet/resnet.md"
   ]
 }
