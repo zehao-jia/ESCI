@@ -13,30 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "经典论文/U-net/U-net.md",
+                "file": "高光谱/其他/segnext/segnext.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "U-net"
-            }
-          },
-          {
-            "id": "abb7fac3b01a9994",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础知识/数据科学导论/6_分析方法/5分类.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "5分类"
+              "title": "segnext"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,37 +170,40 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "abb7fac3b01a9994",
+  "active": "fa0b511630b920a3",
   "lastOpenFiles": [
-    "基础知识/数据科学导论/6_分析方法/4回归.md",
+    "高光谱/其他/segnext/decoder设计.png",
+    "高光谱/其他/segnext/stage图.png",
+    "高光谱/其他/segnext/MSCAN.png",
+    "高光谱/其他/segnext/segnext.md",
+    "高光谱/关于这段时间以来.md",
+    "经典论文/U-net/U-net.md",
+    "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 225552.png",
+    "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main_translated.pdf",
+    "高光谱/Transformer相关/Attention_U_Net/Attention_U-Net_笔记.md",
+    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf",
+    "待读/1-s2.0-S1568494625013821-main.pdf",
+    "待读/1-s2.0-S1568494625013821-main.pdf.crdownload",
+    "待读",
+    "新建文件夹",
+    "基础知识/数据科学导论/4_数据预处理/数据可视化.md",
     "基础知识/数据科学导论/6_分析方法/5分类.md",
+    "基础知识/数据科学导论/6_分析方法/4回归.md",
     "经典论文/U-net/v2-a3b0a31f30f92d816f7efbc1c20084b9_r.jpg",
     "高光谱/mamba相关/E_mamba/e_mamba.png",
     "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 232251.png",
-    "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 225552.png",
     "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 230236.png",
-    "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main_translated.pdf",
     "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main.pdf",
     "高光谱/高光谱.md",
-    "经典论文/U-net/U-net.md",
     "高光谱/Hyperspectral_Image_Classification_Based_on_Subgraph-Dependent_Neural_Network.pdf",
     "高光谱/Transformer相关/FNet/屏幕截图 2025-11-13 175035.png",
     "高光谱/Transformer相关/FNet/FNet_傅里叶变换与Transformer结合.md",
     "高光谱/Transformer相关/DSFormer/DSFormer.md",
     "高光谱/Transformer相关/DSFormer/2410.03171v3.pdf",
     "高光谱/Transformer相关/DSFormer/双语2410.03171v3_dual.pdf",
-    "经典论文/U-net",
-    "基础知识/数据科学导论/4_数据预处理/数据可视化.md",
     "基础知识/数据科学导论/数学基础.md",
     "基础知识/数据科学导论/屏幕截图 2025-11-16 101135.png",
-    "基础知识/数据科学导论/屏幕截图 2025-11-16 101110.png",
-    "高光谱/未读/基于Sentinel-2和3D多源域自注意力模型的湿地分类_楼桉君.pdf",
-    "高光谱/Transformer相关/FNet/傅里叶变换与transformer结合.pdf",
-    "高光谱/未读/Fast_Hyperspectral_Image_Classification_Combining_Transformers_and_SimAM-Based_CNNs.pdf",
-    "高光谱/未读/Cross-Domain_Contrastive_Learning_for_Hyperspectral_Image_Classification.pdf",
-    "屏幕截图 2025-11-05 230236.png",
     "高光谱/Transformer相关/未命名.md",
-    "屏幕截图 2025-11-06 152744.png",
     "高光谱/AGMS/AGMS：基于对抗样本生成的多尺度孪生网络用于高光谱目标检测.md",
     "code_learn/CSIL-main/CSIL-main/README.md",
     "高光谱/MambaHSI/note1.md",
@@ -228,10 +216,6 @@
     "高光谱/mamba相关/mambahsi+/MambaHSI+.md",
     "高光谱/mamba相关/HSI-MFormer/HSI-MFormer.md",
     "高光谱/mamba相关/MambaHSI/note1.md",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba_code.md",
-    "高光谱/Transformer相关/SSFTT_用于高光谱图像分类的光谱-空间特征令牌化/分析_SSFTTnet.md",
-    "高光谱/mamba相关/螺旋mamba_fusion用了/特征融合.md",
-    "经典论文/resnet/resnet.md"
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md"
   ]
 }

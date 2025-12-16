@@ -1,0 +1,197 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{anderson2017bottom}
+Anderson, P., He, X., Buehler, C., Teney, D., Johnson, M., Gould, S., Zhang,
+  L.: Bottom-up and top-down attention for image captioning and vqa. arXiv
+  preprint arXiv:1707.07998  (2017)
+
+\bibitem{bahdanau2014neural}
+Bahdanau, D., Cho, K., Bengio, Y.: Neural machine translation by jointly
+  learning to align and translate. arXiv preprint arXiv:1409.0473  (2014)
+
+\bibitem{bai2017human}
+Bai, W., Sinclair, M., Tarroni, G., Oktay, O., Rajchl, M., Vaillant, G., Lee,
+  A.M., Aung, N., Lukaschuk, E., Sanghvi, M.M., et~al.: Human-level {CMR} image
+  analysis with deep fully convolutional networks. arXiv preprint
+  arXiv:1710.09289  (2017)
+
+\bibitem{cai2017improving}
+Cai, J., Lu, L., Xie, Y., Xing, F., Yang, L.: Improving deep pancreas
+  segmentation in {CT} and {MRI} images via recurrent neural contextual
+  learning and direct loss function. In: MICCAI (2017)
+
+\bibitem{cerrolaza2016soft}
+Cerrolaza, J.J., Summers, R.M., Linguraru, M.G.: Soft multi-organ shape models
+  via generalized {PCA}: A general framework. In: MICCAI. pp. 219--228.
+  Springer (2016)
+
+\bibitem{gibson2017towards}
+Gibson, E., Giganti, F., Hu, Y., Bonmati, E., Bandula, S., Gurusamy, K.,
+  Davidson, B.R., Pereira, S.P., Clarkson, M.J., Barratt, D.C.: Towards
+  image-guided pancreas and biliary endoscopy: Automatic multi-organ
+  segmentation on abdominal {CT} with dense dilated networks. In: MICCAI. pp.
+  728--736. Springer (2017)
+
+\bibitem{greff2016highway}
+Greff, K., Srivastava, R.K., Schmidhuber, J.: Highway and residual networks
+  learn unrolled iterative estimation. arXiv preprint arXiv:1612.07771  (2016)
+
+\bibitem{heinrich2018ternarynet}
+Heinrich, M.P., Blendowski, M., Oktay, O.: Ternary{N}et: Faster deep model
+  inference without {GPUs} for medical {3D} segmentation using sparse and
+  binary convolutions. arXiv preprint arXiv:1801.09449  (2018)
+
+\bibitem{heinrich2017briefnet}
+Heinrich, M.P., Oktay, O.: {BRIEF}net: Deep pancreas segmentation using binary
+  sparse convolutions. In: MICCAI. pp. 329--337. Springer (2017)
+
+\bibitem{hu2017squeeze}
+Hu, J., Shen, L., Sun, G.: Squeeze-and-excitation networks. arXiv:1709.01507
+  (2017)
+
+\bibitem{jetley2018learn}
+Jetley, S., Lord, N.A., Lee, N., Torr, P.: Learn to pay attention. In:
+  International Conference on Learning Representations (2018),
+  \url{https://openreview.net/forum?id=HyzbhfWRW}
+
+\bibitem{kamnitsas2018ensembles}
+Kamnitsas, K., Bai, W., Ferrante, E., McDonagh, S., Sinclair, M., Pawlowski,
+  N., Rajchl, M., Lee, M., Kainz, B., Rueckert, D., Glocker, B.: Ensembles of
+  multiple models and architectures for robust brain tumour segmentation. In:
+  Brainlesion: Glioma, Multiple Sclerosis, Stroke and Traumatic Brain Injuries.
+  pp. 450--462. Cham (2018)
+
+\bibitem{kamnitsas2017efficient}
+Kamnitsas, K., Ledig, C., Newcombe, V.F., Simpson, J.P., Kane, A.D., Menon,
+  D.K., Rueckert, D., Glocker, B.: Efficient multi-scale {3D} {CNN} with fully
+  connected {CRF} for accurate brain lesion segmentation. Medical image
+  analysis  36,  61--78 (2017)
+
+\bibitem{khened2018fully}
+Khened, M., Kollerathu, V.A., Krishnamurthi, G.: Fully convolutional
+  multi-scale residual densenets for cardiac segmentation and automated cardiac
+  diagnosis using ensemble of classifiers. arXiv preprint arXiv:1801.05173
+  (2018)
+
+\bibitem{kingma2014adam}
+Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. arXiv
+  preprint arXiv:1412.6980  (2014)
+
+\bibitem{lee2015deeply}
+Lee, C.Y., Xie, S., Gallagher, P., Zhang, Z., Tu, Z.: Deeply-supervised nets.
+  In: Artificial Intelligence and Statistics. pp. 562--570 (2015)
+
+\bibitem{liao2017evaluate}
+Liao, F., Liang, M., Li, Z., Hu, X., Song, S.: Evaluate the malignancy of
+  pulmonary nodules using the {3D} deep leaky noisy-or network. arXiv preprint
+  arXiv:1711.08324  (2017)
+
+\bibitem{long2015fully}
+Long, J., Shelhamer, E., Darrell, T.: Fully convolutional networks for semantic
+  segmentation. In: IEEE CVPR. pp. 3431--3440 (2015)
+
+\bibitem{luong2015effective}
+Luong, M.T., Pham, H., Manning, C.D.: Effective approaches to attention-based
+  neural machine translation. arXiv preprint arXiv:1508.04025  (2015)
+
+\bibitem{milletari2016v}
+Milletari, F., Navab, N., Ahmadi, S.A.: V-net: Fully convolutional neural
+  networks for volumetric medical image segmentation. In: 3D Vision. pp.
+  565--571. IEEE (2016)
+
+\bibitem{mnih2014recurrent}
+Mnih, V., Heess, N., Graves, A., et~al.: Recurrent models of visual attention.
+  In: Advances in neural information processing systems. pp. 2204--2212 (2014)
+
+\bibitem{oda20173d}
+Oda, M., Shimizu, N., Roth, H.R., Karasawa, K., Kitasaka, T., Misawa, K.,
+  Fujiwara, M., Rueckert, D., Mori, K.: {3D} {FCN} feature driven regression
+  forest-based pancreas localization and segmentation. In: DLMI, pp. 222--230.
+  Springer (2017)
+
+\bibitem{payer2017multi}
+Payer, C., {\v{S}}tern, D., Bischof, H., Urschler, M.: Multi-label whole heart
+  segmentation using {CNN}s and anatomical label configurations. In: STACOM.
+  pp. 190--198. Springer (2017)
+
+\bibitem{ronneberger2015u}
+Ronneberger, O., Fischer, P., Brox, T.: U-net: Convolutional networks for
+  biomedical image segmentation. In: MICCAI. pp. 234--241. Springer (2015)
+
+\bibitem{tciapancreas}
+Roth, H., Farag, A., Turkbey, E.B., Lu, L., Liu, J., Summers, R.M.: Data from
+  {P}ancreas-{CT}. {T}he {C}ancer {I}maging {A}rchive (2016),
+  \url{http://doi.org/10.7937/K9/TCIA.2016.tNB1kqBU}
+
+\bibitem{roth2018media}
+Roth, H.R., Lu, L., Lay, N., Harrison, A.P., Farag, A., Sohn, A., Summers,
+  R.M.: Spatial aggregation of holistically-nested convolutional neural
+  networks for automated pancreas localization and segmentation. Medical Image
+  Analysis  45,  94 -- 107 (2018)
+
+\bibitem{roth2017hierarchical}
+Roth, H.R., Oda, H., Hayashi, Y., Oda, M., Shimizu, N., Fujiwara, M., Misawa,
+  K., Mori, K.: Hierarchical {3D} fully convolutional networks for multi-organ
+  segmentation. arXiv preprint arXiv:1704.06382  (2017)
+
+\bibitem{saito2016joint}
+Saito, A., Nawano, S., Shimizu, A.: Joint optimization of segmentation and
+  shape prior from level-set-based statistical shape model, and its application
+  to the automated segmentation of abdominal organs. Medical image analysis
+  28,  46--65 (2016)
+
+\bibitem{shen2017disan}
+Shen, T., Zhou, T., Long, G., Jiang, J., Pan, S., Zhang, C.: Disan: Directional
+  self-attention network for rnn/cnn-free language understanding. arXiv
+  preprint arXiv:1709.04696  (2017)
+
+\bibitem{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N.,
+  Kaiser, {\L}., Polosukhin, I.: Attention is all you need. In: NIPS. pp.
+  6000--6010 (2017)
+
+\bibitem{velivckovic2017graph}
+Veli{\v{c}}kovi{\'c}, P., Cucurull, G., Casanova, A., Romero, A., Li{\`o}, P.,
+  Bengio, Y.: Graph attention networks. arXiv preprint arXiv:1710.10903  (2017)
+
+\bibitem{wang2017residual}
+Wang, F., Jiang, M., Qian, C., Yang, S., Li, C., Zhang, H., Wang, X., Tang, X.:
+  Residual attention network for image classification. In: IEEE CVPR. pp.
+  3156--3164 (2017)
+
+\bibitem{wang2017non}
+Wang, X., Girshick, R., Gupta, A., He, K.: Non-local neural networks. arXiv
+  preprint arXiv:1711.07971  (2017)
+
+\bibitem{wolz2013automated}
+Wolz, R., Chu, C., Misawa, K., Fujiwara, M., Mori, K., Rueckert, D.: Automated
+  abdominal multi-organ segmentation with subject-specific atlas generation.
+  IEEE TMI  32(9) (2013)
+
+\bibitem{xie2015holistically}
+Xie, S., Tu, Z.: Holistically-nested edge detection. In: Proceedings of the
+  IEEE international conference on computer vision. pp. 1395--1403 (2015)
+
+\bibitem{ypsilantis2017learning}
+Ypsilantis, P.P., Montana, G.: Learning what to look in chest {X}-rays with a
+  recurrent visual attention model. arXiv preprint arXiv:1701.06452  (2017)
+
+\bibitem{yu2017saliency}
+Yu, Q., Xie, L., Wang, Y., Zhou, Y., Fishman, E.K., Yuille, A.L.: Recurrent
+  saliency transformation network: Incorporating multi-stage visual cues for
+  small organ segmentation. arXiv preprint arXiv:1709.04518  (2017)
+
+\bibitem{zhou2017fixed}
+Zhou, Y., Xie, L., Shen, W., Wang, Y., Fishman, E.K., Yuille, A.L.: A
+  fixed-point model for pancreas segmentation in abdominal {CT} scans. In:
+  MICCAI. pp. 693--701. Springer (2017)
+
+\bibitem{zografos2015hierarchical}
+Zografos, V., Valentinitsch, A., Rempfler, M., Tombari, F., Menze, B.:
+  Hierarchical multi-organ segmentation without registration in {3D} abdominal
+  {CT} images. In: International MICCAI Workshop on Medical Computer Vision.
+  pp. 37--46. Springer (2015)
+
+\end{thebibliography}

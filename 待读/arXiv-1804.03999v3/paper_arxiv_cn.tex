@@ -1,0 +1,297 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+% \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading midl_2018
+%
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{midl_2018}
+
+%\usepackage{midl_2018}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage[final]{midl_2018}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+
+% Packages Added by oo2113
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ctex}
+\hypersetup{hidelinks}
+\usepackage{amsmath}
+\usepackage{colortbl,array} % für farbige cells
+\usepackage{multirow,bigdelim}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{lipsum}  
+\usepackage{todonotes}
+\usepackage{subcaption}
+\usepackage{float}% just for the example
+
+% Macros Added by oo2113
+\newcommand\red[1]{\color{red}#1}
+\newcommand{\Conv}{\mathop{\scalebox{1.5}{\raisebox{-0.2ex}{$\ast$}}}}%
+\newcommand{\bftab}{\fontseries{b}\selectfont}
+\newcommand{\R}[0]{\mathbb{R}} % real numbers
+\newcommand\newsubcap[1]{\phantomcaption%
+	\caption*{\figurename~\thefigure(\thesubfigure): #1}}
+
+
+
+\title{注意力 U-Net：\\ 学习在胰腺上“看哪里”}
+
+% The \author macro works with any number of authors. There are two
+% commands used to separate the names and addresses of multiple
+% authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to
+% break the lines. Using \AND forces a line break at that point. So,
+% if LaTeX puts 3 of 4 authors names on the first line, and the last
+% on the second line, try using \AND instead of \And before the third
+% author name.
+\usepackage{authblk}
+
+
+
+\author[1,5]{Ozan Oktay}
+\author[1]{Jo Schlemper}
+\author[1]{Loic Le Folgoc}
+\author[4]{Matthew Lee}
+\author[3]{Mattias Heinrich}
+\author[2]{\\Kazunari Misawa}
+\author[2]{Kensaku Mori}
+\author[1]{Steven McDonagh}
+\author[5]{Nils Y Hammerla}
+\author[1]{\\Bernhard Kainz}
+\author[1]{Ben Glocker}
+\author[1]{Daniel Rueckert}
+\affil[1]{Biomedical Image Analysis Group, Imperial College London, London, UK}
+\affil[2]{Dept. of Media Science, Nagoya University \& Aichi Cancer Center, JP}
+{
+	\makeatletter
+	\renewcommand\AB@affilsepx{, \protect\Affilfont}
+	\makeatother
+	\affil[3]{Medical Informatics, University of Luebeck, DE}
+	\affil[4]{HeartFlow, California, USA}
+}
+\affil[5]{Babylon Health, London, UK}
+\renewcommand\Authands{, and }
+
+\begin{document}
+% \nipsfinalcopy is no longer used
+
+\maketitle
+
+
+\begin{abstract}
+我们提出一种用于医学影像的全新注意力门（attention gate, AG）模型，它能自动学习关注形状与大小各异的目标结构。训练含有 AG 的模型时，网络会隐式地学会抑制输入图像中无关区域，同时凸显对特定任务有用的显著特征。这样可以消除在级联卷积神经网络（CNN）中使用显式外部组织/器官定位模块的必要性。AG 可轻量地集成到标准 CNN 架构（如 U-Net）中，在仅增加极少计算开销的同时提升模型灵敏度与预测精度。我们在两个大型腹部 CT 数据集上对 Attention U-Net 架构进行了多类别分割评估。实验表明，AG 能在保持计算效率的同时，持续提升 U-Net 在不同数据集与训练规模下的预测性能。所提架构的源码公开可用。 
+\end{abstract}
+
+\section{引言}
+自动医学影像分割已被广泛研究，因为对大量医学图像进行手工密集标注既繁琐又容易出错。人们希望获得准确可靠的解决方案，以提升临床工作流效率，并通过快速自动地提取定量测量来支持决策。
+
+随着卷积神经网络（CNN）的发展，自动医学图像分析已能达到接近放射科医师的水平，包括心脏 MRI 分割 \cite{bai2017human} 和肺部恶性结节检测 \cite{liao2017evaluate}。高表示能力、快速推理和滤波共享特性使 CNN 成为分割任务的事实标准。全卷积网络（FCN）\cite{long2015fully} 与 U-Net \cite{ronneberger2015u} 是常用架构。尽管它们表现出色，当目标器官在形状和大小上存在较大跨病例差异时，仍需依赖多阶段级联 CNN。级联框架首先提取感兴趣区域（ROI），然后在该 ROI 上进行密集预测，应用于心脏 MRI \cite{khened2018fully}、心脏 CT \cite{payer2017multi}、腹部 CT \cite{roth2018media, roth2017hierarchical} 分割，以及肺 CT 结节检测 \cite{liao2017evaluate}。然而，这会导致计算资源和参数的冗余使用，例如级联中的多个模型重复提取相似的低层特征。为解决这一普遍问题，我们提出简单而有效的注意力门（AG）方案。含有 AG 的 CNN 可像训练 FCN 一样从头训练，AG 会自动学习聚焦目标结构而无需额外监督。在推理时，AG 会即时生成软区域提议，并凸显对特定任务有用的显著特征。此外，AG 不会带来显著计算开销，也无需像多模型框架那样使用大量参数。反之，AG 可通过抑制无关区域的特征激活，提升模型的灵敏度与准确度，从而在保持高精度的同时去除外部器官定位模型的需求。类似的注意力机制已用于自然图像分类 \cite{jetley2018learn} 与描述生成 \cite{anderson2017bottom}，以执行自适应特征池化，使预测仅基于选定子区域。本文将这一设计推广为基于网格的 gating，使注意力系数可对局部区域更具针对性。此外，我们的方法可用于基于注意力的密集预测。
+
+我们在标准 U-Net 中实现 AG（即 Attention U-Net），并将其用于医学影像。我们选择具有挑战性的胰腺 CT 分割任务来验证所提方法的贡献。该任务因组织对比度低且器官形状变化大而困难。我们在两个常用基准（TCIA Pancreas $CT$-$82$ \cite{tciapancreas} 与多类别腹部 $CT$-$150$）上评估模型。结果显示，AG 能在不同数据集与训练规模下持续提升 U-Net 的预测准确度，同时保持推理效率。 
+
+\vspace{-1.0 mm}
+\subsection{相关工作}
+\textbf{胰腺 CT 分割：} 早期腹部 CT 胰腺分割采用统计形状模型 \cite{cerrolaza2016soft, saito2016joint} 或多图谱技术 \cite{oda20173d, wolz2013automated}。图谱方法通过传播手工标注隐式施加形状约束。但在 TCIA 等公开基准 \cite{tciapancreas} 中，基于图谱的方法 Dice 相似系数（DSC）介于 $69.6\%$ 与 $73.9\%$ \cite{oda20173d, wolz2013automated}。\cite{zografos2015hierarchical} 提出基于分类的框架以减轻图谱对图像配准的依赖。近期的级联多阶段 CNN 模型 \cite{roth2018media, roth2017hierarchical, zhou2017fixed} 通过初始粗级模型（如 U-Net 或回归森林）获取 ROI，再对裁剪的 ROI 精细分割。类似地，\cite{cai2017improving} 结合 2D-FCN 与循环神经网络（RNN）以利用相邻轴向切片的依赖关系。这些方法在 TCIA 基准上达到最先进性能（$81.2\%$-$82.4\%$ DSC）。若不使用级联框架，性能会下降 $2.0\%$-$4.4\%$。\cite{yu2017saliency} 提出迭代双阶段模型，递归更新局部与全局预测，并端到端训练。除标准 FCN 外，稠密连接 \cite{gibson2017towards} 与稀疏卷积 \cite{heinrich2018ternarynet, heinrich2017briefnet} 亦被用于胰腺 CT 分割，以减少非零参数并降低计算复杂度。 
+
+\textbf{注意力门：} AG 常用于自然图像分析、知识图谱和 NLP，例如图像描述 \cite{anderson2017bottom}、机器翻译 \cite{bahdanau2014neural, vaswani2017attention} 与分类 \cite{jetley2018learn, velivckovic2017graph, wang2017residual}。早期工作通过解析输出类别分数对输入图像的梯度来探索注意力图。可训练的注意力则通过设计强制施加，可分为硬注意力与软注意力。硬注意力 \cite{mnih2014recurrent}（如迭代区域提议与裁剪）通常不可微，依赖强化学习更新参数，使训练更难。\cite{ypsilantis2017learning} 在胸片异常检测中使用递归硬注意力。相反，软注意力是概率性的，可用标准反向传播，无需蒙特卡洛采样。例如加性软注意力用于序列到序列翻译 \cite{bahdanau2014neural, shen2017disan}，近期也应用于图像分类 \cite{jetley2018learn, wang2017residual}。\cite{hu2017squeeze} 提出的通道注意力在 ILSVRC 2017 图像分类挑战中表现最佳。自注意力技术 \cite{jetley2018learn,wang2017non} 被提出以移除对外部 gating 信息的依赖。例如 \cite{wang2017non} 使用非局部自注意力捕获长程依赖；\cite{jetley2018learn, wang2017residual} 使用自注意力进行类别特定池化，提升分类性能。  
+
+\vspace{-1.0 mm}
+\subsection{贡献} 本文提出一种新型自注意力 gating 模块，可用于 CNN 的标准图像分析模型以进行密集标签预测，并探索了 AG 在医学影像中的优势，特别是在图像分割领域。主要贡献如下：
+
+\begin{itemize}
+	
+	\item 我们将 \cite{jetley2018learn} 中的注意力方案进一步扩展，提出基于网格的 gating，使注意力系数对局部区域更加专一。相比基于全局特征向量的 gating，该方法性能更优。此外，我们不进行自适应池化，因此可用于密集预测。  
+	
+	\item 我们展示了软注意力在前馈 CNN 医学影像任务中的首批应用之一。所提 AG 可替代图像分类中的硬注意力 \cite{ypsilantis2017learning} 以及分割框架中的外部器官定位模型 \cite{khened2018fully, oda20173d, roth2018media, roth2017hierarchical}。 
+	
+	\item 我们提出一种对标准 U-Net 的扩展，无需复杂启发式即可提升模型对前景像素的灵敏度。在不同影像数据集上均观察到相对于 U-Net 的一致精度提升。 
+\end{itemize}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.95\textwidth]{figure4.pdf}
+	\caption{所提注意力 U-Net 分割模型的框图。输入图像在编码部分逐层滤波并以 2 的因子下采样（如 $H_4=H_1/8$）。$N_c$ 为类别数。注意力门（AG）过滤通过跳跃连接传播的特征。AG 示意见图 \ref{fig:attentionblock}。AG 利用粗尺度提取的上下文信息（gating）实现特征选择。}
+	\label{fig:modelschematic}
+\end{figure}
+
+\section{方法}
+
+\textbf{全卷积网络（FCN）：} CNN 在医学影像分析中超过传统方法 \cite{khened2018fully, liao2017evaluate}，并在速度上远快于图割或多图谱分割 \cite{wolz2013automated}。主要原因是：(I) 通过随机梯度下降（SGD）学习领域特定特征；(II) 学得的卷积核在所有像素间共享；(III) 卷积操作良好利用了医学影像的结构信息。特别地，FCN \cite{long2015fully} 及 U-Net \cite{ronneberger2015u}、DeepMedic \cite{kamnitsas2017efficient}、holistically nested 网络 \cite{lee2015deeply, xie2015holistically} 在心脏 MR \cite{bai2017human}、脑肿瘤 \cite{kamnitsas2018ensembles}、腹部 CT \cite{roth2018media, roth2017hierarchical} 等任务中表现稳健且准确。
+
+卷积层通过逐层处理局部信息，逐渐提取高维表征 $x^l$，最终在高维空间中按语义分离像素。通过这一序列过程，模型预测依赖来自大感受野的信息。因而，层 $l$ 的特征图 $x^l$ 由线性变换后接非线性激活得到，常用修正线性单元：$\sigma_1(x_{i,c}^l) = \max(0, x_{i,c}^l)$，其中 $i$、$c$ 分别为空间与通道维。特征激活可表示为 $x_c^l= \sigma_1 \left(  \sum_{c' \in F_l}  x_{c'}^{l-1} * k_{c' , c} \right)$，$*$ 为卷积，空间下标 $i$ 省略以简化符号。卷积层 $l$ 的函数 $f (x^{l} ; \Phi^{l}) = x^{(l+1)}$ 由可训练核 $\Phi^{l}$ 表征，通过最小化训练目标（如交叉熵）并使用 SGD 学得。本文在标准 U-Net 架构上构建注意力模型。U-Net 常用于分割，因其性能好且 GPU 内存效率高，主要得益于多尺度特征提取。粗尺度特征图捕获上下文信息并突出前景类别与位置；多尺度特征稍后通过跳跃连接融合，结合粗、细层的密集预测，如图 \ref{fig:modelschematic} 所示。 
+
+\textbf{图像分析中的注意力门：} 在标准 CNN 中，为捕获足够大的感受野，特征图网格逐步下采样。这样，粗尺度特征在全局尺度上建模组织的位置与关系。然而，对于形状变化大的小目标，减少假阳性仍然困难。为提升准确度，当前分割框架 \cite{khened2018fully, roth2018media, roth2017hierarchical} 依赖额外的前置定位模型，将问题拆解为定位与分割两步。我们展示将 AG 集成到标准 CNN 中即可达到相同目的，无需训练多个模型或大量额外参数。与级联中的定位模型不同，AG 可逐步抑制背景区域的特征响应，无需在网络间裁剪 ROI。
+
+注意力系数 $\alpha_i \in [0,1]$ 识别显著区域并修剪特征响应，仅保留与任务相关的激活，如图 \ref{fig:attention_activations}。AG 输出为输入特征与注意力系数的逐元素乘积：$\hat{x}_{i,c}^l = x_{i,c}^l \cdot \alpha_{i}^l$。默认设置下，对每个像素向量 $x_{i}^l \in \R^{F_l}$ 计算一个标量注意力，其中 $F_l$ 是层 $l$ 的通道数。对于多语义类别，我们提出学习多维注意力系数，受 \cite{shen2017disan} 启发，每个 AG 聚焦一部分目标结构。如图 \ref{fig:attentionblock} 所示，对每个像素 $i$ 使用 gating 向量 $g_i \in \R^{F_g}$ 决定关注区域。gating 向量包含上下文信息，用于剪裁低层特征响应，类似 \cite{wang2017residual} 在自然图像分类中使用 AG。
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figure3.pdf}
+	\caption{所提加性注意力门（AG）示意。输入特征 ($x^l$) 与在 AG 中计算的注意力系数 ($\alpha$) 相乘。通过分析激活与来自粗尺度的 gating 信号 ($\,g\,$) 选择空间区域。注意力系数的网格重采样采用三线性插值。}
+	\label{fig:attentionblock}
+\end{figure}
+我们采用加性注意力 \cite{bahdanau2014neural} 计算 gating 系数。尽管计算量较大，但实验上比乘性注意力 \cite{luong2015effective} 准确。加性注意力公式如下： 
+\begin{gather}
+q^l_{att} = \psi^T \left(\, \sigma_1\,(\,W_x^T x_i^l + W_g^T g_i + b_g\,)\,\right) + b_{\psi} \\
+\alpha_i^l = \sigma_2 (\, q^l_{att}(x_{i}^l\,,\, g_i \,;\, \Theta_{att}) \,), 
+\end{gather}
+其中 $\sigma_2(x_{i,c}) = \frac{1}{1+exp(-x_{i,c})}$ 为 sigmoid。AG 的参数集 $\Theta_{att}$ 包含线性变换 $W_x \in \R^{F_l \times F_{int}}$、$W_g \in  \R^{F_g \times F_{int}}$、$\psi \in \R^{F_{int} \times 1}$ 以及偏置 $b_{\psi} \in \R$、$b_{g} \in \R^{F_{int}}$。线性变换通过通道内 1x1x1 卷积计算。在其他语境 \cite{wang2017non} 中，这称为\emph{向量拼接注意力}，即将 $x^l$ 与 $g$ 拼接后线性映射到 $\R^{F_{int}}$ 的中间空间。在图像描述 \cite{anderson2017bottom} 与分类 \cite{jetley2018learn} 任务中，softmax 用于归一化注意力系数；但连续使用 softmax 会使输出更稀疏。因此我们选择 sigmoid，实验上可使 AG 参数收敛更好。不同于 \cite{jetley2018learn}，我们提出网格注意力：gating 信号不是全局单向量，而是包含空间信息的网格信号。更重要的是，每条跳跃连接的 gating 信号聚合来自多尺度的信息（见图 \ref{fig:modelschematic}），提高查询信号的网格分辨率并获得更好性能。最后，AG 参数可用标准反向传播训练，无需硬注意力 \cite{mnih2014recurrent} 中的采样更新。 
+
+\textbf{U-Net 中的注意力门：} 我们将 AG 融入标准 U-Net，以突出通过跳跃连接传递的显著特征，见图 \ref{fig:modelschematic}。从粗尺度提取的信息用于 gating，以在跳跃连接中剔除无关或噪声响应，此操作在拼接前执行，只合并相关激活。此外，AG 在前向与反向传播中均过滤神经元激活。来自背景区域的梯度在反向传播时被下调，使浅层参数主要依据与任务相关的空间区域更新。层 $l-1$ 卷积参数的更新可表示为：   
+\begin{eqnarray}
+\frac{\partial (\hat{x}_i^l)}{\partial \, (\Phi^{l-1})}= \frac{\partial \left(\alpha_i^l \, f(x_i^{l-1}; \Phi^{l-1})\right)}{\partial \, (\Phi^{l-1})} 
+:= \alpha_i^l \, \frac{\partial(f(x_i^{l-1}; \Phi^{l-1}))}{\partial \, (\Phi^{l-1})} + \frac{\partial (\alpha_i^l)}{\partial \, (\Phi^{l-1})} \, x_i^l
+\end{eqnarray}
+右侧第一项梯度被 $\alpha_i^l$ 缩放。对于多维 AG，$\alpha_i^l$ 在每个网格尺度为向量。在每个子 AG 中，提取并融合互补信息以定义跳跃连接输出。为减少参数与计算量，线性变换不含空间支撑（1x1x1 卷积），且输入特征图下采样到 gating 分辨率，类似非局部块 \cite{wang2017non}。相应线性变换将特征解耦并映射到低维空间用于 gating。正如 \cite{jetley2018learn} 所建议，低层特征（首个跳跃连接）不用于 gating，因为其尚未在高维空间表征输入。我们使用深度监督 \cite{lee2015deeply}，迫使各尺度的中间特征具备语义判别性，确保各尺度的注意力单元能影响广泛的前景内容，避免最终预测仅由少数跳跃连接重建。
+
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.628\linewidth}
+		\centering
+		\includegraphics[width=1.00\textwidth]{figure1_a.png}
+		\newsubcap{从左到右 (a-e, f-j)：3D 腹部 CT 的轴向与矢状面、注意力系数、跳跃连接在 gating 前后的特征激活。(k-n) 展示粗尺度跳跃连接的 gating。过滤后的特征激活 (d-e, i-j) 来自多个 AG，每个 gate 聚焦一组器官；这些激活在不同扫描中与特定结构一致对应。}
+		\label{fig:attention_activations}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.360\linewidth}
+		\centering
+		\includegraphics[width=1.00\textwidth]{figure1_b.png}
+		\newsubcap{胰腺真值分割 (a) 以蓝色高亮 (b)；U-Net 预测 (c) 与注意力 U-Net 预测 (d) 展示其中 U-Net 漏检部分用红箭头标出。}
+		\label{fig:qualitative_comparison}
+	\end{subfigure}
+\end{figure}
+
+\section{实验与结果}
+
+所提 AG 模块具备通用性，与应用类型无关；因此可轻松适配分类与回归任务。为展示其在分割中的适用性，我们将注意力 U-Net 应用于具有挑战性的腹部 CT 多标签分割，特别是胰腺边界刻画因形状多变、对比度低而困难。我们将该模型与标准 3D U-Net 在分割性能、容量、计算时间与内存需求上进行比较。 
+
+\textbf{评估数据集：} 我们使用两个不同的腹部 CT 数据集：(I) 150 例胃癌患者的 3D CT（$CT$-$150$）。胰腺、肝、脾由三名研究人员半自动标注并由临床医生核验。\cite{roth2017hierarchical} 使用同一数据集基准胰腺分割。(II) 第二个数据集\footnote{\url{https://wiki.cancerimagingarchive.net/display/Public/Pancreas-CT}} ($CT$-$82$) 含 82 例增强 3D CT，胰腺逐切片人工标注，公开可用并常用于胰腺分割基准 \cite{tciapancreas}。两数据集因图像大、显存限制，被下采样至各向同性 $2.00$ mm 分辨率。 
+
+\textbf{实现细节：} 不同于最先进分割框架 \cite{cai2017improving, roth2018media}，我们提出 3D 模型以捕获充分语义上下文。梯度以批大小 $2$-$4$ 计算；较大网络使用多次前后向的梯度平均。所有模型使用 Adam 优化器 \cite{kingma2014adam}、批归一化、深度监督 \cite{lee2015deeply} 及标准数据增强（仿射变换、轴向翻转、随机裁剪）。强度线性缩放为正态分布 $N(0,1)$。损失采用各类别 Sorensen-Dice \cite{milletari2016v}，对类别不平衡更稳健。gating 参数初始化为在所有位置透传特征。此外，我们无需像硬注意力那样多阶段训练，简化流程。我们的 PyTorch 实现已公开\footnote{\url{https://github.com/ozan-oktay/Attention-Gated-Networks}}。
+
+\textbf{注意力图分析：} 将测试图像的注意力系数随训练 epoch 可视化（见图 \ref{fig:attentions_vs_epochs}）。我们常观察到 AG 初始近乎均匀，传递所有位置特征；随后逐步更新并聚焦目标器官边界。在粗尺度上，AG 提供器官粗轮廓，并在更细尺度逐步细化。此外，在每个尺度训练多个 AG 时，每个 AG 会聚焦特定器官子集。 
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.00\textwidth]{figure2.png}
+	\caption{注意力系数 ($\alpha^{l_{s_2}}$, $\alpha^{l_{s_3}}$) 随训练 epoch ($3$, $6$, $10$, $60$, $150$) 的变化。图像来自测试集中一例 3D 腹部 CT 的矢状与轴向视图。模型逐步学会聚焦胰腺、肾、脾。}
+	\label{fig:attentions_vs_epochs}
+\end{figure}
+
+\begin{table}[t]\footnotesize
+	\parbox{\textwidth}{
+		\captionof{table}{在 $CT$-$150$ 数据集上的多类别腹部 CT 分割结果：以 Dice 分数（DSC）与网格面到面距离（S2S，胰腺）报告。比较不同训练/测试划分下的标准 U-Net 与注意力 U-Net。推理时间在输入张量 $160\times160\times96$ 上测得。统计显著结果用粗体标出。}
+		\label{tab:results_attention_1}
+		\vspace{2 mm}
+		\begin{tabular}{@{\extracolsep{1pt}}lcccc@{}} 
+			Method (Train/Test Split) & U-Net (120/30) & Att U-Net (120/30) & U-Net (30/120) & Att U-Net (30/120)\\ \midrule 
+			
+			Pancreas DSC       &   0.814$\pm$0.116   & \textbf{0.840$\pm$0.087} &  0.741$\pm$0.137 & \textbf{0.767$\pm$0.132} \\
+			Pancreas Precision &   0.848$\pm$0.110   & 0.849$\pm$0.098          &  0.789$\pm$0.176 & \textbf{0.794$\pm$0.150} \\
+			Pancreas Recall    &   0.806$\pm$0.126   & \textbf{0.841$\pm$0.092} &  0.743$\pm$0.179 & \textbf{0.762$\pm$0.145} \\
+			Pancreas S2S Dist (mm) & 2.358$\pm$1.464 & \textbf{1.920$\pm$1.284} &  3.765$\pm$3.452 & 3.507$\pm$3.814 \\ \midrule
+			Spleen DSC     &  0.962$\pm$0.013 & 0.965$\pm$0.013 & 0.935$\pm$0.095 & \textbf{0.943$\pm$0.092} \\
+			Kidney DSC     &  0.963$\pm$0.013 & 0.964$\pm$0.016 & 0.951$\pm$0.019 & 0.954$\pm$0.021 \\
+			Number of Params    &  5.88 M          & 6.40 M          & 5.88 M  & 6.40 M \\
+			Inference Time &  0.167 s         & 0.179 s         & 0.167 s & 0.179 s\\ 			\midrule
+		\end{tabular}
+	}
+\end{table}
+
+\textbf{分割实验：} 我们在腹部 CT 多类别分割上将注意力 U-Net 与标准 U-Net 进行对比。使用 $CT$-$150$ 数据集中的 $120$ 用于训练、$30$ 用于测试。胰腺的 DSC 与 S2S 见表 \ref{tab:results_attention_1}。结果表明，AG 通过提高模型定位前景像素的表达能力，显著提升召回（$p = .005$）。两模型预测的差异在图 \ref{fig:qualitative_comparison} 中给出定性对比。第二个实验使用更少训练图像（$30$），显示性能提升在不同训练规模下仍显著（$p = .01$）。对两种方法，训练样本减少时脾脏 DSC 均下降，但所提框架降幅较小；肾脏因对比度高，两模型精度相近。
+	
+表 \ref{tab:results_attention_1} 还给出了两模型的可训练参数量。向标准 U-Net 增加 8\% 的容量即可带来 2-3\% 的 DSC 提升。为公平起见，我们训练了更大容量的 U-Net，并与更小的注意力模型比较。表 \ref{tab:results_attention_3} 的结果显示，相比在各层均匀增加容量，加入 AG 的收益更大（$p=.007$）。因此，若使用 AG 以减少多模型冗余，额外容量更应分配给 AG 以实现器官定位。
+\begin{table}[t]\footnotesize
+	\parbox{\textwidth}{
+		\centering
+		\captionof{table}{在 $CT$-$150$ 数据集上，用更大容量的 U-Net 重复实验，以展示在相似或更小容量下注意力模型的效率。U-Net 的额外卷积核在各层均匀分布。}
+		\label{tab:results_attention_3}
+		\vspace{1 mm}
+		\begin{tabular}{@{\extracolsep{1pt}}lcccccc@{}} 
+			Method  & Panc. DSC & Panc. Precision & Panc. Recall & S2S Dist (mm) &\# of Pars & Run Time   \\ \midrule
+			U-Net (120/30) & 0.821$\pm$.119 & 0.849$\pm$.111 & 0.814$\pm$.125 & 2.383$\pm$1.918 & 6.44 M & 0.191 s\\
+			U-Net (120/30) & 0.825$\pm$.104 & 0.861$\pm$.082 & 0.807$\pm$.121 & 2.202$\pm$1.144 & 10.40 M &  0.222 s\\
+			\midrule
+		\end{tabular}
+		\captionof{table}{在 TCIA Pancreas-CT 数据集 \cite{tciapancreas} 上的胰腺分割结果。数据集共 82 例，划分为训练 61、测试 21。结果分别为直接迁移（BFT）、微调后（AFT）以及从头训练（SCR）。统计显著结果用粗体标出。} 
+		\label{tab:results_attention_4}
+		\vspace{1 mm}
+		\begin{tabular}{@{\extracolsep{1pt}}llcccccccc@{}} 
+			& Method  & Dice Score & Precision & Recall & S2S Dist (mm)  \\ \midrule
+			\parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\underline{BFT}}}}
+			& U-Net \cite{ronneberger2015u} & 0.690$\pm$0.132 & 0.680$\pm$0.109 & 0.733$\pm$0.190 & 6.389$\pm$3.900\\
+			& Attention U-Net & \textbf{0.712$\pm$0.110} & 0.693$\pm$0.115 & \textbf{0.751$\pm$0.149} & \textbf{5.251$\pm$2.551}\\
+			\midrule
+			\parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\underline{AFT}}}}
+			& U-Net \cite{ronneberger2015u} & 0.820$\pm$0.043 & 0.824$\pm$0.070 & 0.828$\pm$0.064 & 2.464$\pm$0.529\\
+			& Attention U-Net & \textbf{0.831$\pm$0.038} & 0.825$\pm$0.073 & \textbf{0.840$\pm$0.053} &  \textbf{2.305$\pm$0.568}\\ 
+			\midrule
+			\parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\underline{SCR}}}}
+			& U-Net \cite{ronneberger2015u} & 0.815$\pm$0.068 & 0.815$\pm$0.105 & 0.826$\pm$0.062 & 2.576$\pm$1.180 \\
+			& Attention U-Net & 0.821$\pm$0.057 & 0.815$\pm$0.093 & \textbf{0.835$\pm$0.057} & \textbf{2.333$\pm$0.856} \\
+			\midrule
+		\end{tabular}
+	}
+\end{table}
+
+\textbf{与最新方法比较：} 我们在公开 TCIA 胰腺 CT 基准上评估所提架构，与最新方法对比。首先将 $CT$-$150$ 上训练的模型直接应用于 $CT$-$82$（BFT）观察跨数据集适用性。U-Net 超过传统图谱方法 \cite{wolz2013automated}，尽管在不同数据集上训练；注意力模型在胰腺分割中更优。随后在 TCIA 子集（61 训、21 测）上微调（AFT）。输出中对应脾与肾的节点从 softmax 中移除，仅对背景与胰腺计算梯度。表 \ref{tab:results_attention_4} 与 \ref{tab:state_of_the_art_methods} 显示，相较级联多模型 CNN \cite{cai2017improving, roth2018media, zhou2017fixed}，受益于额外训练数据与更丰富语义信息（如脾标签），性能进一步提升。此外，我们在 $CT$-$82$ 中随机选取 61 例从头训练（SCR）。类似 $CT$-$150$ 的结果，AG 提升分割精度并降低表面距离（$p = .03$），因为胰腺像素召回更高（$p = .09$）。 
+
+表 \ref{tab:state_of_the_art_methods} 总结了当前基于单/多 CNN 的胰腺分割方法，均在相同 $CT$-$82$ 基准上评估，部分在 $CT$-$150$ 上报告。该比较提供了注意力模型相对文献的性能洞察。需注意，我们未使用条件随机场等后处理，实验主要聚焦 AG 带来的纯粹提升。同理，残差与稠密连接 \cite{gibson2017towards} 可与 AG 结合进一步改进。尽管输入被下采样，我们的 3D 注意力 U-Net 仍与最先进方法表现相当，更显著优于单模型分割框架（见表 \ref{tab:state_of_the_art_methods}）。最后，我们在 $CT$-$82$ 上对注意力 U-Net 做了 5 折交叉验证，胰腺 DSC 达 $81.48\pm6.23$。 
+\begin{table}\footnotesize
+	\parbox{\textwidth}{
+		\centering
+		\captionof{table}{基于单/多 CNN 的胰腺 CT 分割最新方法。列出在同一 $CT$-$82$ 基准上的分割框架（训练/测试比例如表），\cite{roth2017hierarchical} 的 FCN 也在 $CT$-$150$ 上基准，虽训练于外部数据（Ext）。}
+		\label{tab:state_of_the_art_methods}
+		\vspace{1 mm}
+		\begin{tabular}{@{\extracolsep{1pt}}lcccc@{}} 
+			Method  & Dataset & Pancreas DSC & Train/Test & \# Folds \\ \midrule
+			
+			Hierarchical 3D FCN \cite{roth2017hierarchical} & $CT$-$150$ & $82.2\pm10.2$ & Ext/$150$ & -\\
+			
+			Dense-Dilated FCN \cite{gibson2017towards} & $CT$-$82$ \& Synapse\footnote{\url{https://www.synapse.org/Synapse:syn3193805}} & $66.0\pm10.0$ & $63$/$9$ & 5-CV\\
+			
+			2D U-Net \cite{heinrich2018ternarynet} & $CT$-$82$ & $75.7\pm9.0$ & 66/16 & 5-CV\\ 
+			
+			Holistically Nested 2D FCN Stage-1\cite{roth2018media} & $CT$-$82$ & $76.8 \pm 11.1$ & 62/20& 4-CV\\
+			
+			Holistically Nested 2D FCN Stage-2\cite{roth2018media} & $CT$-$82$ & $81.2 \pm 7.3$ & 62/20& 4-CV\\
+			
+			2D FCN \cite{cai2017improving} & $CT$-$82$ & $80.3\pm9.0$ & 62/20 & 4-CV\\
+			
+			2D FCN + Recurrent Network \cite{cai2017improving} & $CT$-$82$ & $82.3 \pm 6.7$ & 62/20 & 4-CV\\
+			
+			Single Model 2D FCN \cite{zhou2017fixed} & $CT$-$82$ & $75.7 \pm 10.5$ & 62/20 & 4-CV\\
+			
+			Multi-Model 2D FCN \cite{zhou2017fixed} & $CT$-$82$ & $82.2 \pm 5.7$ & 62/20 & 4-CV\\
+			
+			\midrule
+		\end{tabular}
+	}
+\end{table}
+
+\section{讨论与结论}
+
+本文提出一种用于医学影像分割的全新注意力门模型。该方法无需外部定位模型即可实现器官定位。所提方法通用且模块化，可轻松应用于图像分类与回归，如自然图像分析与机器翻译。实验结果表明，AG 对组织/器官识别与定位大有裨益，尤其对胰腺等尺寸可变的小器官，类似行为亦预期出现在全局分类任务中。 
+
+AG 的训练可受益于迁移学习与多阶段训练。例如，可用预训练 U-Net 初始化注意力网络，并在微调阶段训练 gate。同样，机器学习中还有大量关于 gating 的研究，例如 highway networks \cite{greff2016highway} 在 gate 块周围使用残差连接以改善梯度传播并获得更柔和的注意力。尽管我们对残差连接的试验未带来显著提升，未来工作将继续探索。最后，随着 GPU 计算力与显存提升，更大容量的 3D 模型可用更大批次训练，无需下采样图像。届时可不用额外后处理即可进一步提升结果。同理，在不增加启发式的情况下，使用更高分辨率输入也可进一步提升注意力 U-Net 的性能。最后，我们感谢 Salim Arslan 与 Dan Busbridge 的有益意见。 
+
+\bibliographystyle{splncs03}
+\bibliography{paper}
+
+
+\end{document}
+
+
