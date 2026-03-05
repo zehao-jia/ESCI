@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "61a87e4b36178dea",
+        "id": "5b96b1c9d9e680a8",
         "type": "tabs",
         "children": [
           {
-            "id": "fa0b511630b920a3",
+            "id": "6e479c7401163431",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "高光谱/其他/segnext/segnext.md",
+                "file": "高光谱/Transformer相关/SPGFormer_将图论方法融合/spgformer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "segnext"
+              "title": "spgformer"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#对c的交换",
+                "query": "tag:#小波的高低频融合",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "035978e3cc086761",
@@ -160,7 +161,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:创建新数据库": false,
+      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -170,52 +171,53 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "fa0b511630b920a3",
+  "active": "6e479c7401163431",
   "lastOpenFiles": [
-    "高光谱/其他/segnext/decoder设计.png",
-    "高光谱/其他/segnext/stage图.png",
-    "高光谱/其他/segnext/MSCAN.png",
-    "高光谱/其他/segnext/segnext.md",
-    "高光谱/关于这段时间以来.md",
-    "经典论文/U-net/U-net.md",
-    "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 225552.png",
-    "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main_translated.pdf",
-    "高光谱/Transformer相关/Attention_U_Net/Attention_U-Net_笔记.md",
-    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf",
-    "待读/1-s2.0-S1568494625013821-main.pdf",
-    "待读/1-s2.0-S1568494625013821-main.pdf.crdownload",
-    "待读",
-    "新建文件夹",
-    "基础知识/数据科学导论/4_数据预处理/数据可视化.md",
-    "基础知识/数据科学导论/6_分析方法/5分类.md",
-    "基础知识/数据科学导论/6_分析方法/4回归.md",
-    "经典论文/U-net/v2-a3b0a31f30f92d816f7efbc1c20084b9_r.jpg",
-    "高光谱/mamba相关/E_mamba/e_mamba.png",
-    "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 232251.png",
-    "高光谱/mamba相关/E_mamba/屏幕截图 2025-11-05 230236.png",
-    "高光谱/mamba相关/E_mamba/1-s2.0-S1566253525007213-main.pdf",
-    "高光谱/高光谱.md",
-    "高光谱/Hyperspectral_Image_Classification_Based_on_Subgraph-Dependent_Neural_Network.pdf",
-    "高光谱/Transformer相关/FNet/屏幕截图 2025-11-13 175035.png",
-    "高光谱/Transformer相关/FNet/FNet_傅里叶变换与Transformer结合.md",
-    "高光谱/Transformer相关/DSFormer/DSFormer.md",
-    "高光谱/Transformer相关/DSFormer/2410.03171v3.pdf",
-    "高光谱/Transformer相关/DSFormer/双语2410.03171v3_dual.pdf",
-    "基础知识/数据科学导论/数学基础.md",
-    "基础知识/数据科学导论/屏幕截图 2025-11-16 101135.png",
+    "高光谱/Transformer相关/SPGFormer_将图论方法融合/overall_spgformer.png",
+    "__pycache__/ISLIC_segmentation.cpython-311.pyc",
+    "__pycache__",
+    "test_ISLIC.py",
+    "高光谱/Transformer相关/SPGFormer_将图论方法融合/spgformer.md",
+    "高光谱/mamba相关/mamba-cnn/mamba-cnn.md",
+    "ISLIC_segmentation.py",
+    "高光谱/Transformer相关/SPGFormer_将图论方法融合",
     "高光谱/Transformer相关/未命名.md",
-    "高光谱/AGMS/AGMS：基于对抗样本生成的多尺度孪生网络用于高光谱目标检测.md",
-    "code_learn/CSIL-main/CSIL-main/README.md",
-    "高光谱/MambaHSI/note1.md",
-    "高光谱/mamba相关/E_mamba/E-mamba.md",
-    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/未命名.md",
-    "高光谱/CSIL/CSIL.md",
-    "高光谱/CLOLN/CLOLS.md",
-    "高光谱/mamba相关/HICWM_预处理用了/Hyperspectal Image Classification With Mamba.md",
-    "高光谱/EATN_基于自相似特征增强的高光谱图像有效注意力Transformer网络分类/note.md",
+    "高光谱/mamba相关/mamba-cnn/mamba-cnn.pdf",
+    "高光谱/mamba相关/mamba-cnn/RCAM.png",
+    "My code file.py",
+    "高光谱/mamba相关/mamba-cnn/EAC.png",
+    "高光谱/mamba相关/mamba-cnn/IGLFF.png",
+    "基础知识/fusion/特征增强之ECA.md",
+    "屏幕截图 2026-03-03 153117.png",
+    "基础知识/激活函数/BCE.md",
+    "idea.md",
+    "待读/1-s2.0-S1568494625013821-main_笔记.md",
+    "高光谱/mamba相关/mamba-cnn",
+    "经典论文/BERT/bert.md",
+    "待读/mamba-cnn.pdf.crdownload",
+    "经典论文/BERT/bert.pdf",
+    "高光谱/Transformer相关/DiffFormer/DiffFormer.md",
+    "基础知识/fusion/多模态融合.md",
+    "高光谱/mamba相关/wavemamba/wavemamba.md",
+    "基础知识/mamba/离散.md",
+    "基础知识/CNN/卷积这一块.md",
+    "基础知识/transformer/Attention这一块.md",
+    "高光谱/mamba相关/wavemamba/屏幕截图 2026-02-25 190127.png",
     "高光谱/mamba相关/mambahsi+/MambaHSI+.md",
-    "高光谱/mamba相关/HSI-MFormer/HSI-MFormer.md",
-    "高光谱/mamba相关/MambaHSI/note1.md",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/Dualmamba.md"
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-28 155315.png",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/自适应融合.png",
+    "高光谱/mamba相关/小波mamba/小波mamba.md",
+    "高光谱/mamba相关/小波mamba/FMT.png",
+    "高光谱/mamba相关/小波mamba/2dssm.png",
+    "高光谱/mamba相关/小波mamba/architecture.png",
+    "高光谱/高光谱.md",
+    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/未命名.md",
+    "高光谱/关于这段时间以来.md",
+    "基础知识/激活函数/ReLU.md",
+    "高光谱/unet这一块/waveDH/小波CNN.md",
+    "高光谱/Transformer相关/ASSA_自适应transformer/ASSA.md",
+    "高光谱/Transformer相关/volformer/volformer.md",
+    "高光谱/unet这一块/HAF_Net/HAFNet.md",
+    "高光谱/unet这一块/BRAU_Net++/BRA_UNet++.md"
   ]
 }
