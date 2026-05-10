@@ -1,5 +1,7 @@
 [
   "obsidian-mindmap-nextgen",
   "obsidian-latex-suite",
-  "vscode-editor"
+  "vscode-editor",
+  "nutstore-sync",
+  "obsidian-list-callouts"
 ]

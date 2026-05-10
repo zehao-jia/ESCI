@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "5b96b1c9d9e680a8",
+        "id": "4ec6c877f194a8f8",
         "type": "tabs",
         "children": [
           {
-            "id": "6e479c7401163431",
+            "id": "4491aa2841d9e10f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "高光谱/Transformer相关/SPGFormer_将图论方法融合/spgformer.md",
-                "mode": "source",
-                "source": false
+                "file": "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf"
               },
-              "icon": "lucide-file",
-              "title": "spgformer"
+              "icon": "lucide-file-text",
+              "title": "Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1)"
             }
           }
         ]
@@ -53,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#小波的高低频融合",
+                "query": "tag:#Params",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,8 +76,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 213.5
   },
   "right": {
     "id": "035978e3cc086761",
@@ -95,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "高光谱/MambaHSI/note1.md",
+                "file": "1_日期/五月/5_2MKUnet/2509.18493v1.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "note1 的反向链接列表"
+              "title": "2509.18493v1 的反向链接列表"
             }
           },
           {
@@ -161,6 +158,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "nutstore-sync:Start sync": false,
+      "nutstore-sync:Stop sync": false,
       "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
@@ -171,53 +170,54 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "6e479c7401163431",
+  "active": "c0a8becf56e218ad",
   "lastOpenFiles": [
-    "高光谱/Transformer相关/SPGFormer_将图论方法融合/overall_spgformer.png",
-    "__pycache__/ISLIC_segmentation.cpython-311.pyc",
-    "__pycache__",
-    "test_ISLIC.py",
-    "高光谱/Transformer相关/SPGFormer_将图论方法融合/spgformer.md",
-    "高光谱/mamba相关/mamba-cnn/mamba-cnn.md",
-    "ISLIC_segmentation.py",
-    "高光谱/Transformer相关/SPGFormer_将图论方法融合",
-    "高光谱/Transformer相关/未命名.md",
-    "高光谱/mamba相关/mamba-cnn/mamba-cnn.pdf",
-    "高光谱/mamba相关/mamba-cnn/RCAM.png",
-    "My code file.py",
-    "高光谱/mamba相关/mamba-cnn/EAC.png",
-    "高光谱/mamba相关/mamba-cnn/IGLFF.png",
-    "基础知识/fusion/特征增强之ECA.md",
-    "屏幕截图 2026-03-03 153117.png",
-    "基础知识/激活函数/BCE.md",
-    "idea.md",
-    "待读/1-s2.0-S1568494625013821-main_笔记.md",
-    "高光谱/mamba相关/mamba-cnn",
-    "经典论文/BERT/bert.md",
-    "待读/mamba-cnn.pdf.crdownload",
-    "经典论文/BERT/bert.pdf",
-    "高光谱/Transformer相关/DiffFormer/DiffFormer.md",
-    "基础知识/fusion/多模态融合.md",
-    "高光谱/mamba相关/wavemamba/wavemamba.md",
-    "基础知识/mamba/离散.md",
-    "基础知识/CNN/卷积这一块.md",
-    "基础知识/transformer/Attention这一块.md",
-    "高光谱/mamba相关/wavemamba/屏幕截图 2026-02-25 190127.png",
-    "高光谱/mamba相关/mambahsi+/MambaHSI+.md",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/屏幕截图 2025-08-28 155315.png",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/自适应融合.png",
-    "高光谱/mamba相关/小波mamba/小波mamba.md",
-    "高光谱/mamba相关/小波mamba/FMT.png",
-    "高光谱/mamba相关/小波mamba/2dssm.png",
-    "高光谱/mamba相关/小波mamba/architecture.png",
-    "高光谱/高光谱.md",
+    "1_日期/五月/5_10_CTCFNet/CTCFNet_CNN-Transformer_Complementary_and_Fusion_Network_for_High-Resolution_Remote_Sensing_Image_Semantic_Segmentation.pdf",
+    "1_日期/五月/5_10_CTCFNet/CTCFNet_CNN-Transformer_Complementary_and_Fusion_Network_for_High-Resolution_Remote_Sensing_Image_Semantic_Segmentation.pdf.crdownload",
+    "1_日期/五月/5_10_CTCFNet",
+    "1_日期/五月/新建文件夹",
     "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/未命名.md",
-    "高光谱/关于这段时间以来.md",
-    "基础知识/激活函数/ReLU.md",
-    "高光谱/unet这一块/waveDH/小波CNN.md",
+    "1_日期/五月/5_1曲率引导的注意力/LCGA.md",
+    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf",
     "高光谱/Transformer相关/ASSA_自适应transformer/ASSA.md",
-    "高光谱/Transformer相关/volformer/volformer.md",
-    "高光谱/unet这一块/HAF_Net/HAFNet.md",
-    "高光谱/unet这一块/BRAU_Net++/BRA_UNet++.md"
+    "高光谱/Transformer相关/ASSA_自适应transformer/Zhou_Adapt_or_Perish_Adaptive_Sparse_Transformer_with_Attentive_Feature_Refinement_CVPR_2024_paper.pdf",
+    "高光谱/Transformer相关/ASSA_自适应transformer/overview.png",
+    "1_日期/五月/5_2MKUnet/MKUnet.md",
+    "1_日期/五月/5_2MKUnet/2509.18493v1.pdf",
+    "1_日期/五月/5_2MKUnet/屏幕截图 2026-05-02 143352.png",
+    "1_日期/五月/5_1曲率引导的注意力/CGA_Curvature-Guided_Attention_for_Remote_Sensing_Image_Super-Resolution.pdf",
+    "1_日期/五月/5_1曲率引导的注意力/屏幕截图 2026-05-02 161150.png",
+    "1_日期/五月/5_1曲率引导的注意力/LCGA.png",
+    "1_日期/五月/5_1曲率引导的注意力/overall.png",
+    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/DualMamba：A Lightweight Spectral-Spatial Mamba-Convolution Network for Hyperspectral Image Classification.pdf",
+    "1_日期/四月/4_26_坐标注意力适配溢油方向性/坐标注意力.md",
+    "~$论文.xlsx",
+    "1_日期/四月/4_25_空洞卷积降低噪声/HDFNet.md",
+    "1_日期/四月/4_25_空洞卷积降低噪声/屏幕截图 2026-04-25 225228.png",
+    "1_日期/四月/4_21__PDmatch/PDMatch框架.md",
+    "1_日期/四月/4_8_rwkv/2305.13048v2.pdf",
+    "1_日期/四月/4_25_空洞卷积降低噪声/屏幕截图 2026-04-25 225253.png",
+    "1_日期/四月/4_25_空洞卷积降低噪声/屏幕截图 2026-04-25 225246.png",
+    "1_日期/四月/4_14_unet中加入Mamba,skipconnection改进CM_unet/CM-UNet_快速阅读摘要报告.md",
+    "1_日期/四月/4_14_unet中加入Mamba,skipconnection改进CM_unet/cmunet.md",
+    "1_日期/四月/4_13_物理特性和moeRingmoe/idea.md",
+    "1_日期/四月/4_13_物理特性和moeRingmoe/屏幕截图 2026-04-13 224803.png",
+    "1_日期/四月/4_13_物理特性和moeRingmoe/ringmoe遥感大模型零标注泛化.md",
+    "屏幕截图 2026-04-13 224810.png",
+    "1_日期/未命名/如何改模块.md",
+    "1_日期/四月/4_10_graphunet/4_10.md",
+    "1_日期/四月/4_9_三元组损失/三元组损失.md",
+    "1_日期/四月/4_8_rwkv/rwkv.md",
+    "1_日期/四月/4_7_MOE/MOE.md",
+    "1_日期/三月/3_30_Moco/MoCo_中文总结.md",
+    "1_日期/三月/3_30_Moco/Moco_Summary.md",
+    "1_日期/3_30_Moco/Moco.md",
+    "1_日期/三月/3_29_S2Gformer/快速阅读摘要报告.md",
+    "1_日期/三月/3_26_graphormer/graphormer.md",
+    "1_日期/四月/4_1_mamba与知识蒸馏/Byte_Latent_Mamba论文总结.md",
+    "1_日期/3_21_SPGFormer_将图论方法融合/未命名.md",
+    "1_日期/四月/4_1_mamba与知识蒸馏/师生模型.md",
+    "1_日期/高光谱海面溢油检测摘要报告.md",
+    "组.canvas"
   ]
 }
