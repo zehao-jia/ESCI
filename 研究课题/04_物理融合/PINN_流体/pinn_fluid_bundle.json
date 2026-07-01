@@ -1,0 +1,3277 @@
+{
+  "status": "ok",
+  "script": "build_synthesis_bundle.py",
+  "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+  "title": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb",
+  "metadata": {
+    "title": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb",
+    "translated_title": "",
+    "authors": [
+      "Shengze Cai",
+      "Zhiping Mao",
+      "Zhicheng Wang",
+      "Minglang Yin",
+      "George Em Karniadakis"
+    ],
+    "affiliations": [],
+    "year": "2021",
+    "venue": "",
+    "doi": "10.1007/s10409-021-0xxxx-x",
+    "source_url": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+    "abstract": "Despite the significant progress over the last 50 years in simulating flow problems using numerical discretization of the Navier-Stokes equations (NSE), we still cannot incorporate seamlessly noisy data into existing algorithms, mesh-generation is complex, and we cannot tackle high-dimensional problems governed by parametrized NSE. Moreover, solving inverse flow problems is often prohibitively expensive and requires complex and expensive formulations and new computer codes. Here, we review flow physics-informed learning, integrating seamlessly data and mathematical models, and implementing them using physics-informed neural networks (PINNs). We demonstrate the effectiveness of PINNs for inverse problems related to three-dimensional wake flows, supersonic flows, and biomedical flows.",
+    "arxiv_id": "2105.09506",
+    "zotero_key": "",
+    "metadata_sources": [
+      "local_pdf",
+      "arxiv",
+      "crossref"
+    ]
+  },
+  "evidence_quality": "high",
+  "evidence": {
+    "problem": [
+      {
+        "evidence": "Yet, for real-world applications, still cannot incorporate seamlessly (multi-fidelity) data into existing algorithms, and for industrial-complexity problems the mesh generation is time consuming and still an art.",
+        "source_section": "introduction",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes.",
+        "source_section": "introduction",
+        "page_hint": ""
+      },
+      {
+        "evidence": "PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-order CFD codes [2] for solving the standard forward problems.",
+        "source_section": "introduction",
+        "page_hint": ""
+      },
+      {
+        "evidence": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning.",
+        "source_section": "introduction",
+        "page_hint": ""
+      }
+    ],
+    "task": [
+      {
+        "evidence": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+        "source_section": "task",
+        "page_hint": ""
+      }
+    ],
+    "data": [
+      {
+        "evidence": "At the end, the time-dependent data are collected for PINN training and The simulation results of the 3D flow are shown in Fig.",
+        "source_section": "data",
+        "page_hint": ""
+      }
+    ],
+    "method": [
+      {
+        "evidence": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "mechanism": [
+      {
+        "evidence": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "results": [
+      {
+        "evidence": "Moreover, some other researches on PINNs focused on the development of the neural network architecture and the training, e.g., using multi-fidelity framework [34], adaptive activation functions [35] and dynamic weights the loss function [36], hard constraints [37] and CNN-based network architectures [38], which can improve the performance of PINNs on different problems.",
+        "source_section": "experiment",
+        "page_hint": ""
+      },
+      {
+        "evidence": "The loss function in PINN can be defined as: L = Ldata +LPDE, (4) where Ldata = 1 ∥u(xi data,ti data)−ui data ∥2 + 1 ∥v(xi data,ti data)−vi data ∥2 + 1 ∥w(xi data,ti data)−wi data ∥2, (5) and LPDE = 1 ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u.",
+        "source_section": "experiment",
+        "page_hint": ""
+      },
+      {
+        "evidence": "3.3 Inference results For a quantitative assessment, we first define the relative L2- norm error as the evaluation metric, which is expressed as: εV = ∥VCFD −ˆV ∥2 ∥VCFD ∥2 ×100%, (7) where V ∈{u,v,w, p}; VCFD and ˆV account for the CFD data and the output of PINNs, respectively.",
+        "source_section": "experiment",
+        "page_hint": ""
+      },
+      {
+        "evidence": "However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%).",
+        "source_section": "experiment",
+        "page_hint": ""
+      }
+    ],
+    "ablation": [],
+    "limitations": []
+  },
+  "equation_candidates": [
+    {
+      "equation": "O(10−3)",
+      "source_section": "method",
+      "kind_hint": "complexity"
+    },
+    {
+      "equation": "L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefﬁcients for different loss terms",
+      "source_section": "experiment",
+      "kind_hint": "metric_equation"
+    },
+    {
+      "equation": "L = Ldata +LPDE, (4) where Ldata = 1 Nu Nu ∑ i ∥u(xi data,ti data)−ui data ∥2 + 1 Nv Nv ∑ i ∥v(xi data,ti data)−vi data ∥2 +",
+      "source_section": "experiment",
+      "kind_hint": "metric_equation"
+    },
+    {
+      "equation": "LPDE = 1 Nf Nf ∑ i 4 ∑ j ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u",
+      "source_section": "experiment",
+      "kind_hint": "metric_equation"
+    },
+    {
+      "equation": "Loss = ω1LossF +ω2Loss∇ρ|D +ω3Lossinflow +ω4Lossp∗ +ω5 (LossMass +LossMomentum +LossEnergy)+ω6Lossn·u, (10) whre the last term",
+      "source_section": "experiment",
+      "kind_hint": "metric_equation"
+    },
+    {
+      "equation": "L = ω1LPDE +ω2LIC +ω3LBC +ω4Ldata, (19) where LPDE is the PDEs residual loss, LIC is the initial condition loss, LBC is the",
+      "source_section": "experiment",
+      "kind_hint": "metric_equation"
+    },
+    {
+      "equation": "z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "i=1, where the number of points (denoted by N) for different loss terms can be different",
+      "source_section": "method",
+      "kind_hint": "equation"
+    }
+  ],
+  "candidate_chunks": {
+    "introduction": [
+      {
+        "text": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-...",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al.",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past.",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder.",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      },
+      {
+        "text": "also show",
+        "source_section": "introduction",
+        "page_hint": "",
+        "kind_hint": "problem"
+      }
+    ],
+    "method": [
+      {
+        "text": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle. Acknowledgements The last author (GEK) would like acknowledge support by the Alexander von Humboldt fellowship.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      }
+    ],
+    "experiment": [
+      {
+        "text": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basic PINN concept and subsequently discuss more recent advancements incompressible, compressible and biomedical flows.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "2.1 PINNs: Basic Concepts We consider a parametrized partial differential equation (PDE) system given by: f(x,t, ˆu,∂x ˆu,∂t ˆu,...,λ) = 0, x ∈Ω, t ∈[0,T] ˆu(x,t0) = g0(x) x ∈Ω, ˆu(x,t) = gΓ (t), x ∈∂Ω, t ∈[0,T], (1) where x ∈Rd is the spatial coordinate and t is the time; f denotes the residual of the PDE, containing the differential operators (i.e., [∂x ˆu,∂t ˆu,...]); λ = [λ1,λ2,...] are the PDE parameters; ˆu(x,t) is the solution of the PDE with initial condition g0(x) and boundary condition gΓ (t) (which ca...",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer is used to approximate the true solution, namely ˆu ≈zL.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "Wk and bk denote the weight matrix and bias vector of the kth layer; σ(·) is a nonlinear activation function. All the trainable model parameters, i.e., weights and biases, are denoted by θ in this paper.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "In PINNs, solving a PDE system (denoted by equ. 1) is converted into an optimization problem by iteratively updating θ with the goal to minimize the loss function L: L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefficients for different loss terms.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "The first term LPDE in equ. 3 penalizes the residual of the governing equations.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "The other terms are imposed to satisfy the model predictions for the measurements Ldata, the initial condition LIC, and the boundary condition LBC, respectively. In general, the mean square error (MSE), taking the L2-norm of the sampling points, is employed to compute the losses in equ.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      },
+      {
+        "text": "3. The sampling points are defined as a data set {xi,ti}N i=1, where the number of points (denoted by N) for different loss terms can be different.",
+        "source_section": "experiment",
+        "page_hint": "",
+        "kind_hint": "results"
+      }
+    ],
+    "data": [
+      {
+        "text": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-...",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "also show for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      }
+    ],
+    "general": [
+      {
+        "text": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-...",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "also show for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      }
+    ]
+  },
+  "section_texts": {
+    "preamble": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb https://doi.org/10.1007/s10409-021-0xxxx-x RESEARCH PAPER Physics-informed neural networks (PINNs) for fluid mechanics: A review Shengze Cai1 · Zhiping Mao2 · Zhicheng Wang3 · Minglang Yin4,5 George Em Karniadakis1,4∗ ©Acta Mechanica Sinica, The Chinese Society of Theoretical and Applied Mechanics (CSTAM) 2020 Abstract Despite the significant progress over the last 50 years simulating flow problems using numerical discretization of the Navier-Stokes equations (NSE), we still cannot incorporate seamlessly noisy data into existing algorithms, mesh-generation is complex, and we cannot tackle high-dimensional problems governed parametrized NSE. Moreover, solving inverse flow problems is often prohibitively expensive and requires complex and expensive formulations and new computer codes. Here, we review flow physics-informed learning, integrating seamlessly data and mathematical models, and implementing them using physics-informed neural networks (PINNs). We demonstrate the effectiveness of PINNs for inverse problems related to three-dimensional wake flows, supersonic flows, and biomedical flows. Keywords Physics-informed learning · PINNs · Inverse problems · Supersonic flows · Biomedical flows",
+    "introduction": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian, 116024, China 4 School of Engineering, Brown University, Providence, RI 02912, USA 5 Center for Biomedical Engineering, Brown University, Providence, RI 02912, USA spectral, and even meshless methods [1,2,3,4]. Yet, for real-world applications, still cannot incorporate seamlessly (multi-fidelity) data into existing algorithms, and for industrial-complexity problems the mesh generation is time consuming and still an art. Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next. Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh generation. Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-order CFD codes [2] for solving the standard forward problems. This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al. data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past. In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder. also show",
+    "experiment": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basic PINN concept and subsequently discuss more recent advancements incompressible, compressible and biomedical flows. 2.1 PINNs: Basic Concepts We consider a parametrized partial differential equation (PDE) system given by: f(x,t, ˆu,∂x ˆu,∂t ˆu,...,λ) = 0, x ∈Ω, t ∈[0,T] ˆu(x,t0) = g0(x) x ∈Ω, ˆu(x,t) = gΓ (t), x ∈∂Ω, t ∈[0,T], (1) where x ∈Rd is the spatial coordinate and t is the time; f denotes the residual of the PDE, containing the differential operators (i.e., [∂x ˆu,∂t ˆu,...]); λ = [λ1,λ2,...] are the PDE parameters; ˆu(x,t) is the solution of the PDE with initial condition g0(x) and boundary condition gΓ (t) (which can be Dirichlet, Neumann or mixed boundary condition); Ω and ∂Ωrepresent the spatial domain and the boundary, respectively. the context the vanilla PINNs [15], fully-connected feed-forward neural network, which is composed of multiple hidden layers, is used to approximate the solution of the PDE ˆu by taking the space and time coordinates (x,t) as inputs, as shown in the blue panel in Fig. 1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer is used to approximate the true solution, namely ˆu ≈zL. Wk and bk denote the weight matrix and bias vector of the kth layer; σ(·) is a nonlinear activation function. All the trainable model parameters, i.e., weights and biases, are denoted by θ in this paper. In PINNs, solving a PDE system (denoted by equ. 1) is converted into an optimization problem by iteratively updating θ with the goal to minimize the loss function L: L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefficients for different loss terms. The first term LPDE in equ. 3 penalizes the residual of the governing equations. The other terms are imposed to satisfy the model predictions for the measurements Ldata, the initial condition LIC, and the boundary condition LBC, respectively. In general, the mean square error (MSE), taking the L2-norm of the sampling points, is employed to compute the losses in equ. 3. The sampling points are defined as a data set {xi,ti}N i=1, where the number of points (denoted by N) for different loss terms can be different. Generally, we use the ADAM optimizer [16], an adaptive algorithm for gradient-based first-order optimization, to optimize the model parameters θ. Remark 1: We note that the definition of the loss function shown in equ. 3 is problem-dependent, hence some terms may disappear for different types of the problem. For example, when we solve a forward problem in fluid mechanics with the known parameters (λ) and the initial/boundary conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inverse problems), the data measurements should be taken into account in order to make the optimization problem solvable. We also note that the PINN framework can be employed to solve an “over-determined” system, e.g., well-posed in a classical sense with initial and boundary conditions known and additionally some measurements inside the domain or at boundaries (e.g., pressure measurements). One of the key procedures to construct the PDE loss in equ. 3 is the computation of partial derivatives, which is addressed by using automatic differentiation (AD). Relying on the combination of the derivatives for a sequence of operations by using the chain rule, AD calculates the derivatives of the outputs with respect to the network inputs directly in the computational graph. The computation of partial derivatives can be calculated with an explicit expressi",
+    "method": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27]. The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle. Acknowledgements The last author (GEK) would like acknowledge support by the Alexander von Humboldt fellowship."
+  },
+  "section_previews": [
+    {
+      "name": "preamble",
+      "preview": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb https://doi.org/10.1007/s10409-021-0xxxx-x RESEARCH PAPER Physics-informed neural networks (PINNs) for fluid mechanics: A review Shengze Cai1 · Zhiping Mao2 · Zhicheng Wang3 · Minglang Yin4,5",
+      "length": 1256
+    },
+    {
+      "name": "introduction",
+      "preview": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: georg",
+      "length": 3422
+    },
+    {
+      "name": "experiment",
+      "preview": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basi",
+      "length": 30232
+    },
+    {
+      "name": "method",
+      "preview": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a",
+      "length": 616
+    }
+  ],
+  "figure_plan": {
+    "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+    "figures": [
+      {
+        "id": "Table 1",
+        "caption": "Case study of PINNs for incompressible flows:",
+        "kind": "table_result",
+        "section": "关键结果",
+        "reason": "这是关键结果表，适合放在关键结果部分辅助定位核心数值。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "candidate_pages": [
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "table 1",
+              "case",
+              "pinns",
+              "incompressible"
+            ],
+            "snippet": "to infer the 3D ﬂow in the investigated domain using PINNs from these 2D2C observations. Table 1: Case study of PINNs for incompressible ﬂows: details of the 2D2C observations. Cross-sec",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_01.jpeg",
+                "width": 389,
+                "height": 393,
+                "size_bytes": 23850
+              },
+              {
+                "filename": "page_005_img_02.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_02.jpeg",
+                "width": 389,
+                "height": 389,
+                "size_bytes": 26543
+              },
+              {
+                "filename": "page_005_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_03.png",
+                "width": 130,
+                "height": 133,
+                "size_bytes": 968
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_3.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_3.png",
+                "width": 1338,
+                "height": 1119,
+                "size_bytes": 488056,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.387389,
+                  "visual_rect_count": 17,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 1552,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 593,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 1"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_2.png",
+                "width": 1653,
+                "height": 498,
+                "size_bytes": 112266,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.213202,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.11542,
+                  "paragraph_text_chars": 413,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 433,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible",
+              "flows"
+            ],
+            "snippet": "6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐰velocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 pressure Inflow (a) (b) Fig. 2: Case study of PINNs for incompressible ﬂows: illustration of simulating the 3D wake ﬂow over a",
+            "images": [
+              {
+                "filename": "page_004_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_01.png",
+                "width": 686,
+                "height": 545,
+                "size_bytes": 75850
+              },
+              {
+                "filename": "page_004_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_02.png",
+                "width": 679,
+                "height": 546,
+                "size_bytes": 94292
+              },
+              {
+                "filename": "page_004_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_03.png",
+                "width": 684,
+                "height": 542,
+                "size_bytes": 75618
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1403,
+                "height": 1173,
+                "size_bytes": 471598,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.425776,
+                  "visual_rect_count": 10,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 2337,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 462,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1653,
+                "height": 208,
+                "size_bytes": 59917,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.089029,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1616,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 229,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "page-proximity-and-caption-cues"
+      },
+      {
+        "id": "Fig. 1",
+        "caption": "Schematic of a physics-informed neural network (PINN). A fully-connected neural network, with time and space",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_002_fig_fig_1.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+          "width": 1653,
+          "height": 644,
+          "size_bytes": 228157,
+          "label": "Fig. 1",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "large_text_block_suspected",
+              "low_visual_body_ratio"
+            ],
+            "page_coverage_ratio": 0.275592,
+            "visual_rect_count": 0,
+            "visual_body_ratio": 0.0,
+            "paragraph_text_chars": 3260,
+            "table_body_rows": 0,
+            "caption_text_chars": 117,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 2,
+            "score": 8,
+            "matched_terms": [
+              "fig. 1",
+              "schematic",
+              "physics-informed",
+              "neural",
+              "network",
+              "pinn"
+            ],
+            "snippet": "u by taking the space and time coordinates (x,t) as inputs, as shown in the blue panel in Fig. 1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural networ",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 3,
+            "score": 8,
+            "matched_terms": [
+              "fig. 1",
+              "schematic",
+              "physics-informed",
+              "neural",
+              "network",
+              "pinn"
+            ],
+            "snippet": "Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review 3 Fig. 1: Schematic of a physics-informed neural network (PINN). A fully-connected neural network,",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_img_01.png",
+                "width": 1164,
+                "height": 554,
+                "size_bytes": 184828
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_fig_fig_1.png",
+                "width": 1118,
+                "height": 780,
+                "size_bytes": 249164,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.225796,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.654655,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 620,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_fig_fig_1.png",
+                "width": 1653,
+                "height": 421,
+                "size_bytes": 110282,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.180195,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1436,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 154,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 6,
+            "matched_terms": [
+              "fig. 1",
+              "pinn"
+            ],
+            "snippet": "dvantage of PINNs in solving ﬂuid mechanics problems is that a uniﬁed framework (shown in Fig. 1) can be used for both forward and inverse problems. Compared to the traditional CFD solve",
+            "images": [
+              {
+                "filename": "page_004_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_01.png",
+                "width": 686,
+                "height": 545,
+                "size_bytes": 75850
+              },
+              {
+                "filename": "page_004_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_02.png",
+                "width": 679,
+                "height": 546,
+                "size_bytes": 94292
+              },
+              {
+                "filename": "page_004_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_03.png",
+                "width": 684,
+                "height": 542,
+                "size_bytes": 75618
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1403,
+                "height": 1173,
+                "size_bytes": 471598,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.425776,
+                  "visual_rect_count": 10,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 2337,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 462,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1653,
+                "height": 208,
+                "size_bytes": 59917,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.089029,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1616,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 229,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 2",
+        "caption": "Case study of PINNs for incompressible flows: illustration of simulating the 3D wake flow over a circular",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_004_fig_fig_2.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+          "width": 1403,
+          "height": 1173,
+          "size_bytes": 471598,
+          "label": "Fig. 2",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "large_text_block_suspected"
+            ],
+            "page_coverage_ratio": 0.425776,
+            "visual_rect_count": 10,
+            "visual_body_ratio": 1.0,
+            "paragraph_text_chars": 2337,
+            "table_body_rows": 0,
+            "caption_text_chars": 462,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 4,
+            "score": 8,
+            "matched_terms": [
+              "fig. 2",
+              "case",
+              "pinns",
+              "incompressible",
+              "flows",
+              "illustration"
+            ],
+            "snippet": "ocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐰velocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 pressure Inflow (a) (b) Fig. 2: Case study of PINNs for incompressible ﬂows: illustration of simulating the 3D wake ﬂow",
+            "images": [
+              {
+                "filename": "page_004_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_01.png",
+                "width": 686,
+                "height": 545,
+                "size_bytes": 75850
+              },
+              {
+                "filename": "page_004_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_02.png",
+                "width": 679,
+                "height": 546,
+                "size_bytes": 94292
+              },
+              {
+                "filename": "page_004_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_03.png",
+                "width": 684,
+                "height": 542,
+                "size_bytes": 75618
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1403,
+                "height": 1173,
+                "size_bytes": 471598,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.425776,
+                  "visual_rect_count": 10,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 2337,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 462,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1653,
+                "height": 208,
+                "size_bytes": 59917,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.089029,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1616,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 229,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "fig. 2",
+              "case",
+              "pinns",
+              "incompressible"
+            ],
+            "snippet": "namely Ωs: [1.5,7.5] × [−3,3] × [4,9], which is represented by a cube with blue edges in Fig. 2(a). The contours of the three velocity components and pressure ﬁeld are shown in Fig. 2(b",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_01.jpeg",
+                "width": 389,
+                "height": 393,
+                "size_bytes": 23850
+              },
+              {
+                "filename": "page_005_img_02.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_02.jpeg",
+                "width": 389,
+                "height": 389,
+                "size_bytes": 26543
+              },
+              {
+                "filename": "page_005_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_03.png",
+                "width": 130,
+                "height": 133,
+                "size_bytes": 968
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_3.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_3.png",
+                "width": 1338,
+                "height": 1119,
+                "size_bytes": 488056,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.387389,
+                  "visual_rect_count": 17,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 1552,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 593,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 1"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_2.png",
+                "width": 1653,
+                "height": 498,
+                "size_bytes": 112266,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.213202,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.11542,
+                  "paragraph_text_chars": 413,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 433,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 3",
+        "caption": "Case study of PINNs for incompressible flows: problem setup for 3D flow reconstruction from 2D2C",
+        "kind": "data_or_task",
+        "section": "数据与任务定义",
+        "reason": "这张图更像任务设定或数据说明，放在数据与任务定义最合适。",
+        "priority": 3,
+        "anchor_text": "数据与任务定义",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_005_fig_fig_3.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_3.png",
+          "width": 1338,
+          "height": 1119,
+          "size_bytes": 488056,
+          "label": "Fig. 3",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "large_text_block_suspected"
+            ],
+            "page_coverage_ratio": 0.387389,
+            "visual_rect_count": 17,
+            "visual_body_ratio": 1.0,
+            "paragraph_text_chars": 1552,
+            "table_body_rows": 0,
+            "caption_text_chars": 593,
+            "other_caption_count": 1,
+            "other_caption_labels": [
+              "Table 1"
+            ]
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "fig. 3",
+              "case",
+              "pinns",
+              "incompressible",
+              "problem"
+            ],
+            "snippet": "6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐲 𝐳 𝐱 𝐱−plane 𝐲−plane 𝐳−plane (a) (b) (c) Fig. 3: Case study of PINNs for incompressible ﬂows: problem setup for 3D ﬂow reconstruction fro",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_01.jpeg",
+                "width": 389,
+                "height": 393,
+                "size_bytes": 23850
+              },
+              {
+                "filename": "page_005_img_02.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_02.jpeg",
+                "width": 389,
+                "height": 389,
+                "size_bytes": 26543
+              },
+              {
+                "filename": "page_005_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_03.png",
+                "width": 130,
+                "height": 133,
+                "size_bytes": 968
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_3.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_3.png",
+                "width": 1338,
+                "height": 1119,
+                "size_bytes": 488056,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.387389,
+                  "visual_rect_count": 17,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 1552,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 593,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 1"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_2.png",
+                "width": 1653,
+                "height": 498,
+                "size_bytes": 112266,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.213202,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.11542,
+                  "paragraph_text_chars": 413,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 433,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 6,
+            "score": 8,
+            "matched_terms": [
+              "fig. 3",
+              "case",
+              "pinns",
+              "incompressible",
+              "flows",
+              "problem"
+            ],
+            "snippet": "e for different ﬂow reconstruction setups. These three cases correspond to those shown in Fig. 3. The errors are computed over the entire investigated domain. information about the press",
+            "images": [
+              {
+                "filename": "page_006_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_01.png",
+                "width": 1606,
+                "height": 683,
+                "size_bytes": 102659
+              },
+              {
+                "filename": "page_006_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_02.png",
+                "width": 1531,
+                "height": 669,
+                "size_bytes": 115007
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+                "width": 1440,
+                "height": 1062,
+                "size_bytes": 232713,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.395808,
+                  "visual_rect_count": 3,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 1312,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 262,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+                "width": 1653,
+                "height": 714,
+                "size_bytes": 203480,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.305371,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 805,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 855,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible",
+              "problem"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 4",
+        "caption": "Case study of PINNs for incompressible flows: relative L2-norm errors of velocities and pressure for different",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_006_fig_fig_4.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+          "width": 1440,
+          "height": 1062,
+          "size_bytes": 232713,
+          "label": "Fig. 4",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "large_text_block_suspected"
+            ],
+            "page_coverage_ratio": 0.395808,
+            "visual_rect_count": 3,
+            "visual_body_ratio": 1.0,
+            "paragraph_text_chars": 1312,
+            "table_body_rows": 0,
+            "caption_text_chars": 262,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 6,
+            "score": 8,
+            "matched_terms": [
+              "fig. 4",
+              "case",
+              "pinns",
+              "incompressible",
+              "flows",
+              "relative"
+            ],
+            "snippet": "6 Shengze Cai1 et al. Fig. 4: Case study of PINNs for incompressible ﬂows: relative L2-norm errors of velocities and p",
+            "images": [
+              {
+                "filename": "page_006_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_01.png",
+                "width": 1606,
+                "height": 683,
+                "size_bytes": 102659
+              },
+              {
+                "filename": "page_006_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_02.png",
+                "width": 1531,
+                "height": 669,
+                "size_bytes": 115007
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+                "width": 1440,
+                "height": 1062,
+                "size_bytes": 232713,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.395808,
+                  "visual_rect_count": 3,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 1312,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 262,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+                "width": 1653,
+                "height": 714,
+                "size_bytes": 203480,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.305371,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 805,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 855,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible",
+              "flows"
+            ],
+            "snippet": "6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐰velocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 pressure Inflow (a) (b) Fig. 2: Case study of PINNs for incompressible ﬂows: illustration of simulating the 3D wake ﬂow over a",
+            "images": [
+              {
+                "filename": "page_004_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_01.png",
+                "width": 686,
+                "height": 545,
+                "size_bytes": 75850
+              },
+              {
+                "filename": "page_004_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_02.png",
+                "width": 679,
+                "height": 546,
+                "size_bytes": 94292
+              },
+              {
+                "filename": "page_004_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_03.png",
+                "width": 684,
+                "height": 542,
+                "size_bytes": 75618
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1403,
+                "height": 1173,
+                "size_bytes": 471598,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.425776,
+                  "visual_rect_count": 10,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 2337,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 462,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+                "width": 1653,
+                "height": 208,
+                "size_bytes": 59917,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.089029,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1616,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 229,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 5",
+        "caption": "Case study of PINNs for incompressible flows: inference result of PINNs for Case 2. (a) Iso-surfaces of vorticity",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_007_fig_fig_5.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_fig_fig_5.png",
+          "width": 1438,
+          "height": 1202,
+          "size_bytes": 695257,
+          "label": "Fig. 5",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "large_text_block_suspected"
+            ],
+            "page_coverage_ratio": 0.44725,
+            "visual_rect_count": 7,
+            "visual_body_ratio": 1.0,
+            "paragraph_text_chars": 607,
+            "table_body_rows": 0,
+            "caption_text_chars": 430,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 6,
+            "score": 8,
+            "matched_terms": [
+              "fig. 5",
+              "case",
+              "pinns",
+              "incompressible",
+              "flows",
+              "inference"
+            ],
+            "snippet": "nstrate the iso-surface of vorticity magnitude and iso-surfaces of pressure at t = 8.0 in Fig. 5, where Fig. 5(a) shows the reference CFD data and Fig. 5(b) shows the result inferred by",
+            "images": [
+              {
+                "filename": "page_006_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_01.png",
+                "width": 1606,
+                "height": 683,
+                "size_bytes": 102659
+              },
+              {
+                "filename": "page_006_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_02.png",
+                "width": 1531,
+                "height": 669,
+                "size_bytes": 115007
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+                "width": 1440,
+                "height": 1062,
+                "size_bytes": 232713,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.395808,
+                  "visual_rect_count": 3,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 1312,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 262,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+                "width": 1653,
+                "height": 714,
+                "size_bytes": 203480,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.305371,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 805,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 855,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 7,
+            "score": 8,
+            "matched_terms": [
+              "fig. 5",
+              "case",
+              "pinns",
+              "incompressible",
+              "inference"
+            ],
+            "snippet": "4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 pressure 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 vorticity Fig. 5: Case study of PINNs for incompressible ﬂows: inference result of PINNs for Case 2. (a) I",
+            "images": [
+              {
+                "filename": "page_007_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_01.png",
+                "width": 923,
+                "height": 790,
+                "size_bytes": 44197
+              },
+              {
+                "filename": "page_007_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_02.png",
+                "width": 900,
+                "height": 790,
+                "size_bytes": 38706
+              },
+              {
+                "filename": "page_007_img_03.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_03.jpeg",
+                "width": 901,
+                "height": 735,
+                "size_bytes": 85319
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_007_fig_fig_5.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_fig_fig_5.png",
+                "width": 1438,
+                "height": 1202,
+                "size_bytes": 695257,
+                "label": "Fig. 5",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.44725,
+                  "visual_rect_count": 7,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 607,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 430,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "incompressible"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 6",
+        "caption": "Case study of PINNs for compressible flows. Left: the density obtained by using CFD simulation with the inlet flow",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_008_fig_fig_6.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_6.png",
+          "width": 1129,
+          "height": 531,
+          "size_bytes": 102391,
+          "label": "Fig. 6",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.155407,
+            "visual_rect_count": 2,
+            "visual_body_ratio": 0.749367,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 181,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 7,
+            "score": 8,
+            "matched_terms": [
+              "fig. 6",
+              "case",
+              "pinns",
+              "compressible",
+              "left"
+            ],
+            "snippet": "can obtain the steady state ﬂow. We show the density computed by CFD in the left plot of Fig. 6. We employ a 6×60 (6 hidden layer) neural network and train it by using layer-wise adapti",
+            "images": [
+              {
+                "filename": "page_007_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_01.png",
+                "width": 923,
+                "height": 790,
+                "size_bytes": 44197
+              },
+              {
+                "filename": "page_007_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_02.png",
+                "width": 900,
+                "height": 790,
+                "size_bytes": 38706
+              },
+              {
+                "filename": "page_007_img_03.jpeg",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_03.jpeg",
+                "width": 901,
+                "height": 735,
+                "size_bytes": 85319
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_007_fig_fig_5.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_fig_fig_5.png",
+                "width": 1438,
+                "height": 1202,
+                "size_bytes": 695257,
+                "label": "Fig. 5",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected"
+                  ],
+                  "page_coverage_ratio": 0.44725,
+                  "visual_rect_count": 7,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 607,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 430,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 8,
+            "score": 8,
+            "matched_terms": [
+              "fig. 6",
+              "case",
+              "pinns",
+              "compressible",
+              "flows",
+              "left"
+            ],
+            "snippet": "8 Shengze Cai1 et al. Fig. 6: Case study of PINNs for compressible ﬂows. Left: the density obtained by using CFD simul",
+            "images": [
+              {
+                "filename": "page_008_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_01.png",
+                "width": 840,
+                "height": 630,
+                "size_bytes": 45435
+              },
+              {
+                "filename": "page_008_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_02.png",
+                "width": 840,
+                "height": 630,
+                "size_bytes": 22068
+              },
+              {
+                "filename": "page_008_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_03.png",
+                "width": 1080,
+                "height": 1404,
+                "size_bytes": 115626
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_008_fig_fig_6.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_6.png",
+                "width": 1129,
+                "height": 531,
+                "size_bytes": 102391,
+                "label": "Fig. 6",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.155407,
+                  "visual_rect_count": 2,
+                  "visual_body_ratio": 0.749367,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 181,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_008_fig_fig_7.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_7.png",
+                "width": 679,
+                "height": 1010,
+                "size_bytes": 182269,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.177576,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.818383,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 159,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "compressible"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 7",
+        "caption": "Case study of PINNs for compressible flows.",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_008_fig_fig_7.png",
+          "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_7.png",
+          "width": 679,
+          "height": 1010,
+          "size_bytes": 182269,
+          "label": "Fig. 7",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.177576,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.818383,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 159,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 8,
+            "score": 8,
+            "matched_terms": [
+              "fig. 7",
+              "case",
+              "pinns",
+              "compressible",
+              "flows"
+            ],
+            "snippet": "simulation with the inlet ﬂow condition (11). Right: training loss vs. number of epochs. Fig. 7: Case study of PINNs for compressible ﬂows. Comparison between the PINN solutions and the",
+            "images": [
+              {
+                "filename": "page_008_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_01.png",
+                "width": 840,
+                "height": 630,
+                "size_bytes": 45435
+              },
+              {
+                "filename": "page_008_img_02.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_02.png",
+                "width": 840,
+                "height": 630,
+                "size_bytes": 22068
+              },
+              {
+                "filename": "page_008_img_03.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_03.png",
+                "width": 1080,
+                "height": 1404,
+                "size_bytes": 115626
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_008_fig_fig_6.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_6.png",
+                "width": 1129,
+                "height": 531,
+                "size_bytes": 102391,
+                "label": "Fig. 6",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.155407,
+                  "visual_rect_count": 2,
+                  "visual_body_ratio": 0.749367,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 181,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_008_fig_fig_7.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_7.png",
+                "width": 679,
+                "height": 1010,
+                "size_bytes": 182269,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.177576,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.818383,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 159,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "compressible"
+            ],
+            "snippet": "conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inver",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+                "width": 1653,
+                "height": 644,
+                "size_bytes": 228157,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.275592,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 3260,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 117,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 3,
+            "score": 3,
+            "matched_terms": [
+              "case",
+              "pinns",
+              "compressible"
+            ],
+            "snippet": "the governing equations, the loss function and the neural network conﬁgurations of PINNs case-by-case in the rest of this paper. 2.2 Recent Advances of PINNs First proposed in [19,20]",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_img_01.png",
+                "width": 1164,
+                "height": 554,
+                "size_bytes": 184828
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_fig_fig_1.png",
+                "width": 1118,
+                "height": 780,
+                "size_bytes": 249164,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.225796,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.654655,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 620,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_fig_fig_1.png",
+                "width": 1653,
+                "height": 421,
+                "size_bytes": 110282,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.180195,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1436,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 154,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      }
+    ]
+  },
+  "pdf_assets": {
+    "asset_root": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb",
+    "images_dir": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images",
+    "page_assets": [
+      {
+        "page_number": 1,
+        "searchable_text_chars": 4085,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb https://doi.org/10.1007/s10409-021-0xxxx-x RESEARCH PAPER Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review Shengze Cai1 · Zhiping Mao2 · Zhicheng Wang3 · Minglang Yin4,5 G"
+      },
+      {
+        "page_number": 2,
+        "searchable_text_chars": 5009,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "2 Shengze Cai1 et al. data are available for the ﬂow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress espec"
+      },
+      {
+        "page_number": 3,
+        "searchable_text_chars": 3613,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 1,
+        "text_preview": "Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review 3 Fig. 1: Schematic of a physics-informed neural network (PINN). A fully-connected neural network, with time and space coordinates (t,x) as inputs, is used to approximate"
+      },
+      {
+        "page_number": 4,
+        "searchable_text_chars": 3337,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 5,
+        "text_preview": "4 Shengze Cai1 et al. 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐮velocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐯velocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐰velocity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 pressure Inflow (a) (b) Fig. 2: Case study of PINNs for incompressible ﬂows: illustratio"
+      },
+      {
+        "page_number": 5,
+        "searchable_text_chars": 3434,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 4,
+        "text_preview": "Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review 5 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 𝐲 𝐳 𝐱 𝐱−plane 𝐲−plane 𝐳−plane (a) (b) (c) Fig. 3: Case study of PINNs for incompressible ﬂows"
+      },
+      {
+        "page_number": 6,
+        "searchable_text_chars": 3737,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 2,
+        "text_preview": "6 Shengze Cai1 et al. Fig. 4: Case study of PINNs for incompressible ﬂows: relative L2-norm errors of velocities and pressure for different ﬂow reconstruction setups. These three cases correspond to those shown in Fig. 3. The errors are com"
+      },
+      {
+        "page_number": 7,
+        "searchable_text_chars": 2718,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 6,
+        "text_preview": "Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review 7 vorticity 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 (a) (b) (c) pressure 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 pressure 8 6 4 𝐳 -2 0 2 𝐲 2 4 6 𝐱 vorticity Fig. 5: Case study"
+      },
+      {
+        "page_number": 8,
+        "searchable_text_chars": 1811,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 3,
+        "text_preview": "8 Shengze Cai1 et al. Fig. 6: Case study of PINNs for compressible ﬂows. Left: the density obtained by using CFD simulation with the inlet ﬂow condition (11). Right: training loss vs. number of epochs. Fig. 7: Case study of PINNs for compre"
+      },
+      {
+        "page_number": 9,
+        "searchable_text_chars": 3225,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 1,
+        "text_preview": "Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review 9 Fig. 8: Case study for 2D ﬂow past a thrombus with phase dependent permeability. (a) A channel with walls on the top and bottom boundaries with the inlet ﬂow u(t,y) ent"
+      },
+      {
+        "page_number": 10,
+        "searchable_text_chars": 4221,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 1,
+        "text_preview": "10 Shengze Cai1 et al. Fig. 9: Inference results for 2D ﬂow past a thrombus with phase-dependent permeability. (a) History of network losses (Loss PDE, Loss IC, Loss BC, and Loss Data) and (b) inferred permeability κ as a function of φ. (c)"
+      },
+      {
+        "page_number": 11,
+        "searchable_text_chars": 6964,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "Physics-informed neural networks (PINNs) for ﬂuid mechanics: A review 11 development of closure models for unresolved ﬂow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing ﬂow pr"
+      },
+      {
+        "page_number": 12,
+        "searchable_text_chars": 5534,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "12 Shengze Cai1 et al. 33. Yang, L., Meng, X., Karniadakis, G.E.: B-PINNs: Bayesian physics-informed neural networks for forward and inverse PDE problems with noisy data. Journal of Computational Physics 425, 109913 (2021) 34. Meng, X., Kar"
+      }
+    ],
+    "image_assets": [
+      {
+        "page_number": 3,
+        "image_index": 1,
+        "xref": 123,
+        "filename": "page_003_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_img_01.png",
+        "ext": "png",
+        "width": 1164,
+        "height": 554,
+        "colorspace": 3,
+        "size_bytes": 184828,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 1,
+        "xref": 323,
+        "filename": "page_004_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_01.png",
+        "ext": "png",
+        "width": 686,
+        "height": 545,
+        "colorspace": 3,
+        "size_bytes": 75850,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 2,
+        "xref": 324,
+        "filename": "page_004_img_02.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_02.png",
+        "ext": "png",
+        "width": 679,
+        "height": 546,
+        "colorspace": 3,
+        "size_bytes": 94292,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 3,
+        "xref": 325,
+        "filename": "page_004_img_03.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_03.png",
+        "ext": "png",
+        "width": 684,
+        "height": 542,
+        "colorspace": 3,
+        "size_bytes": 75618,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 4,
+        "xref": 326,
+        "filename": "page_004_img_04.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_04.jpeg",
+        "ext": "jpeg",
+        "width": 1426,
+        "height": 1261,
+        "colorspace": 3,
+        "size_bytes": 178163,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 5,
+        "xref": 327,
+        "filename": "page_004_img_05.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_img_05.png",
+        "ext": "png",
+        "width": 679,
+        "height": 546,
+        "colorspace": 3,
+        "size_bytes": 71159,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 5,
+        "image_index": 1,
+        "xref": 367,
+        "filename": "page_005_img_01.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 389,
+        "height": 393,
+        "colorspace": 3,
+        "size_bytes": 23850,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 5,
+        "image_index": 2,
+        "xref": 368,
+        "filename": "page_005_img_02.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_02.jpeg",
+        "ext": "jpeg",
+        "width": 389,
+        "height": 389,
+        "colorspace": 3,
+        "size_bytes": 26543,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 5,
+        "image_index": 3,
+        "xref": 369,
+        "filename": "page_005_img_03.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_03.png",
+        "ext": "png",
+        "width": 130,
+        "height": 133,
+        "colorspace": 3,
+        "size_bytes": 968,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 5,
+        "image_index": 4,
+        "xref": 370,
+        "filename": "page_005_img_04.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_img_04.jpeg",
+        "ext": "jpeg",
+        "width": 394,
+        "height": 408,
+        "colorspace": 3,
+        "size_bytes": 21416,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 6,
+        "image_index": 1,
+        "xref": 412,
+        "filename": "page_006_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_01.png",
+        "ext": "png",
+        "width": 1606,
+        "height": 683,
+        "colorspace": 3,
+        "size_bytes": 102659,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 6,
+        "image_index": 2,
+        "xref": 413,
+        "filename": "page_006_img_02.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_img_02.png",
+        "ext": "png",
+        "width": 1531,
+        "height": 669,
+        "colorspace": 3,
+        "size_bytes": 115007,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 7,
+        "image_index": 1,
+        "xref": 444,
+        "filename": "page_007_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_01.png",
+        "ext": "png",
+        "width": 923,
+        "height": 790,
+        "colorspace": 3,
+        "size_bytes": 44197,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 7,
+        "image_index": 2,
+        "xref": 445,
+        "filename": "page_007_img_02.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_02.png",
+        "ext": "png",
+        "width": 900,
+        "height": 790,
+        "colorspace": 3,
+        "size_bytes": 38706,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 7,
+        "image_index": 3,
+        "xref": 446,
+        "filename": "page_007_img_03.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_03.jpeg",
+        "ext": "jpeg",
+        "width": 901,
+        "height": 735,
+        "colorspace": 3,
+        "size_bytes": 85319,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 7,
+        "image_index": 4,
+        "xref": 447,
+        "filename": "page_007_img_04.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_04.jpeg",
+        "ext": "jpeg",
+        "width": 941,
+        "height": 763,
+        "colorspace": 3,
+        "size_bytes": 85719,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 7,
+        "image_index": 5,
+        "xref": 448,
+        "filename": "page_007_img_05.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_05.jpeg",
+        "ext": "jpeg",
+        "width": 938,
+        "height": 763,
+        "colorspace": 3,
+        "size_bytes": 97811,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 7,
+        "image_index": 6,
+        "xref": 449,
+        "filename": "page_007_img_06.jpeg",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_img_06.jpeg",
+        "ext": "jpeg",
+        "width": 907,
+        "height": 745,
+        "colorspace": 3,
+        "size_bytes": 96261,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 8,
+        "image_index": 1,
+        "xref": 396,
+        "filename": "page_008_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_01.png",
+        "ext": "png",
+        "width": 840,
+        "height": 630,
+        "colorspace": 3,
+        "size_bytes": 45435,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 8,
+        "image_index": 2,
+        "xref": 397,
+        "filename": "page_008_img_02.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_02.png",
+        "ext": "png",
+        "width": 840,
+        "height": 630,
+        "colorspace": 3,
+        "size_bytes": 22068,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 8,
+        "image_index": 3,
+        "xref": 416,
+        "filename": "page_008_img_03.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_img_03.png",
+        "ext": "png",
+        "width": 1080,
+        "height": 1404,
+        "colorspace": 3,
+        "size_bytes": 115626,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 9,
+        "image_index": 1,
+        "xref": 463,
+        "filename": "page_009_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_009_img_01.png",
+        "ext": "png",
+        "width": 1248,
+        "height": 418,
+        "colorspace": 3,
+        "size_bytes": 58259,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 10,
+        "image_index": 1,
+        "xref": 486,
+        "filename": "page_010_img_01.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_010_img_01.png",
+        "ext": "png",
+        "width": 938,
+        "height": 940,
+        "colorspace": 3,
+        "size_bytes": 259873,
+        "extraction_level": "xref"
+      }
+    ],
+    "figure_assets": [
+      {
+        "filename": "page_002_fig_fig_1.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_002_fig_fig_1.png",
+        "page_number": 2,
+        "label": "Fig. 1",
+        "kind": "figure",
+        "caption_text": "Fig. 1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as",
+        "width": 1653,
+        "height": 644,
+        "size_bytes": 228157,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected",
+            "low_visual_body_ratio"
+          ],
+          "page_coverage_ratio": 0.275592,
+          "visual_rect_count": 0,
+          "visual_body_ratio": 0.0,
+          "paragraph_text_chars": 3260,
+          "table_body_rows": 0,
+          "caption_text_chars": 117,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_003_fig_fig_1.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_fig_fig_1.png",
+        "page_number": 3,
+        "label": "Fig. 1",
+        "kind": "figure",
+        "caption_text": "Fig. 1: Schematic of a physics-informed neural network (PINN). A fully-connected neural network, with time and space coordinates (t,x) as inputs, is used to approximate the multi-physics solutions ˆu = [u,v, p,φ]. The derivatives of ˆu with respect to the inputs are calculated using automatic differentiation (AD) and then used to formulate the residuals of the governing equations in the loss function, that is generally composed of multiple terms weighted by different coefficients. The parameters of the neural network θ and the unknown PDE parameters λ can be learned simultaneously by minimizing the loss function.",
+        "width": 1118,
+        "height": 780,
+        "size_bytes": 249164,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.225796,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.654655,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 620,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_003_fig_fig_1.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_003_fig_fig_1.png",
+        "page_number": 3,
+        "label": "Fig. 1",
+        "kind": "figure",
+        "caption_text": "Fig. 1, we will describe the governing equations, the loss function and the neural network configurations of PINNs case-by-case in the rest of this paper.",
+        "width": 1653,
+        "height": 421,
+        "size_bytes": 110282,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected",
+            "low_visual_body_ratio"
+          ],
+          "page_coverage_ratio": 0.180195,
+          "visual_rect_count": 0,
+          "visual_body_ratio": 0.0,
+          "paragraph_text_chars": 1436,
+          "table_body_rows": 0,
+          "caption_text_chars": 154,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_004_fig_fig_2.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+        "page_number": 4,
+        "label": "Fig. 2",
+        "kind": "figure",
+        "caption_text": "Fig. 2: Case study of PINNs for incompressible flows: illustration of simulating the 3D wake flow over a circular cylinder. (a) Iso-surface of the vorticity (x-component) in the whole domain color-coded by the streamwise velocity. The cube with blue edges represents the computational domain in this case. (b) Velocity and pressure fields in the domain. The simulation was performed by the CFD solver Nektar, which is based on the spectral/hp element method [2].",
+        "width": 1403,
+        "height": 1173,
+        "size_bytes": 471598,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected"
+          ],
+          "page_coverage_ratio": 0.425776,
+          "visual_rect_count": 10,
+          "visual_body_ratio": 1.0,
+          "paragraph_text_chars": 2337,
+          "table_body_rows": 0,
+          "caption_text_chars": 462,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_004_fig_fig_2.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_004_fig_fig_2.png",
+        "page_number": 4,
+        "label": "Fig. 2",
+        "kind": "figure",
+        "caption_text": "Fig. 2, where Fig. 2(a) shows the iso-surface of streamwise vorticity (ωx = −0.3) color-coded with the streamwise velocity u. In this section, we are interested in the 3D flow reconstruction problem from limited data, and we only",
+        "width": 1653,
+        "height": 208,
+        "size_bytes": 59917,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected",
+            "low_visual_body_ratio"
+          ],
+          "page_coverage_ratio": 0.089029,
+          "visual_rect_count": 0,
+          "visual_body_ratio": 0.0,
+          "paragraph_text_chars": 1616,
+          "table_body_rows": 0,
+          "caption_text_chars": 229,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_005_fig_fig_3.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_3.png",
+        "page_number": 5,
+        "label": "Fig. 3",
+        "kind": "figure",
+        "caption_text": "Fig. 3: Case study of PINNs for incompressible flows: problem setup for 3D flow reconstruction from 2D2C observations. (a) Case 1: two x-planes (x = 1.5,7.5), one y-plane (y = 0) and two z-planes (z = 4.0,9.0) are observed. (b) Case 2: two x-planes (x = 1.5,7.5), one y-plane (y = 0) and one z-plane (z = 6.4) are observed. (c) Case 3: one x-plane (x = 1.5), one y-plane (y = 0) and one z-plane (z = 6.4) are observed. Note that for the cross-planes, only the projected vectors are measured. The goal is to infer the 3D flow in the investigated domain using PINNs from these 2D2C observations.",
+        "width": 1338,
+        "height": 1119,
+        "size_bytes": 488056,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected"
+          ],
+          "page_coverage_ratio": 0.387389,
+          "visual_rect_count": 17,
+          "visual_body_ratio": 1.0,
+          "paragraph_text_chars": 1552,
+          "table_body_rows": 0,
+          "caption_text_chars": 593,
+          "other_caption_count": 1,
+          "other_caption_labels": [
+            "Table 1"
+          ]
+        }
+      },
+      {
+        "filename": "page_005_fig_fig_2.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_005_fig_fig_2.png",
+        "page_number": 5,
+        "label": "Fig. 2",
+        "kind": "figure",
+        "caption_text": "Fig. 2(b). An Eulerian mesh with 61 × 61 × 26 grid points is used for plotting. To demonstrate the unsteadiness of the motion, we consider 50 snapshots with ∆t = 0.2, which is about two periods of the vortex shedding cycle. Here, we aim to apply PINNs for reconstructing the 3D flow field from the velocity observations of a few 2D planes. As illustrated in Fig. 3, three different “experimental” setups are considered in this paper:",
+        "width": 1653,
+        "height": 498,
+        "size_bytes": 112266,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.213202,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.11542,
+          "paragraph_text_chars": 413,
+          "table_body_rows": 0,
+          "caption_text_chars": 433,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_006_fig_fig_4.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+        "page_number": 6,
+        "label": "Fig. 4",
+        "kind": "figure",
+        "caption_text": "Fig. 4: Case study of PINNs for incompressible flows: relative L2-norm errors of velocities and pressure for different flow reconstruction setups. These three cases correspond to those shown in Fig. 3. The errors are computed over the entire investigated domain.",
+        "width": 1440,
+        "height": 1062,
+        "size_bytes": 232713,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected"
+          ],
+          "page_coverage_ratio": 0.395808,
+          "visual_rect_count": 3,
+          "visual_body_ratio": 1.0,
+          "paragraph_text_chars": 1312,
+          "table_body_rows": 0,
+          "caption_text_chars": 262,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_006_fig_fig_4.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_006_fig_fig_4.png",
+        "page_number": 6,
+        "label": "Fig. 4",
+        "kind": "figure",
+        "caption_text": "Fig. 4. It can be seen from the plots that PINNs can infer the 3D flow very accurately for Case 1 and Case 2; using 5 planes (Case 1) is slightly better than using 4 planes (Case 2). When only 3 cross-planes are available (Case 3), the errors become much larger. However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%). We note that the errors of w-velocity are larger than the other components since the w-velocity magnitude is relatively small. Moreover, we observe larger discrepancy for the initial and final time instants, which can be attributed to the lack of training data for computing derivatives at t < 0 and t > 10. This generally happens in the cases when the initial condition is not provided in the unsteady case [12].",
+        "width": 1653,
+        "height": 714,
+        "size_bytes": 203480,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected",
+            "low_visual_body_ratio"
+          ],
+          "page_coverage_ratio": 0.305371,
+          "visual_rect_count": 0,
+          "visual_body_ratio": 0.0,
+          "paragraph_text_chars": 805,
+          "table_body_rows": 0,
+          "caption_text_chars": 855,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_007_fig_fig_5.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_007_fig_fig_5.png",
+        "page_number": 7,
+        "label": "Fig. 5",
+        "kind": "figure",
+        "caption_text": "Fig. 5: Case study of PINNs for incompressible flows: inference result of PINNs for Case 2. (a) Iso-surfaces of vorticity magnitude (top) and pressure (bottom) at t = 8.0 from CFD data. (b) Iso-surfaces of vorticity magnitude (top) and pressure (bottom) at t = 8.0 inferred by PINNs. (c) Point measurement (x = 3,y = 0,z = 6.4) of velocity (u,v) against time. In this case, the 3D flow is inferred by PINNs from four cross-planes.",
+        "width": 1438,
+        "height": 1202,
+        "size_bytes": 695257,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "reject",
+          "quality_reason_codes": [
+            "large_text_block_suspected"
+          ],
+          "page_coverage_ratio": 0.44725,
+          "visual_rect_count": 7,
+          "visual_body_ratio": 1.0,
+          "paragraph_text_chars": 607,
+          "table_body_rows": 0,
+          "caption_text_chars": 430,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_008_fig_fig_6.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_6.png",
+        "page_number": 8,
+        "label": "Fig. 6",
+        "kind": "figure",
+        "caption_text": "Fig. 6: Case study of PINNs for compressible flows. Left: the density obtained by using CFD simulation with the inlet flow condition (11). Right: training loss vs. number of epochs.",
+        "width": 1129,
+        "height": 531,
+        "size_bytes": 102391,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.155407,
+          "visual_rect_count": 2,
+          "visual_body_ratio": 0.749367,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 181,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_008_fig_fig_7.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_008_fig_fig_7.png",
+        "page_number": 8,
+        "label": "Fig. 7",
+        "kind": "figure",
+        "caption_text": "Fig. 7: Case study of PINNs for compressible flows. Comparison between the PINN solutions and the CFD solutions. Top: pressure p, Bottom: velocity component u.",
+        "width": 679,
+        "height": 1010,
+        "size_bytes": 182269,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.177576,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.818383,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 159,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_009_fig_fig_8.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_009_fig_fig_8.png",
+        "page_number": 9,
+        "label": "Fig. 8",
+        "kind": "figure",
+        "caption_text": "Fig. 8: Case study for 2D flow past a thrombus with phase dependent permeability. (a) A channel with walls on the top and bottom boundaries with the inlet flow u(t,y) entering from the left side; φ=1 is the fluid. A thrombus with an impermeable core φ = −1 and permeable shell φ = 0 is present at the bottom boundary. (b) Sampling points for inferring permeability include initial points (⋆) at the time t0, inner points (⋆) from t1 to tn, boundary points (⋆) on boundaries, and point measurements (⋆) with PDE solutions. (Figure adapted from [14]).",
+        "width": 1255,
+        "height": 637,
+        "size_bytes": 131423,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.206972,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.63612,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 549,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_010_fig_fig_9.png",
+        "path": "E:\\ESCI\\1_日期\\tmp\\DeepPaperNote\\assets\\Acta_Mechanica_Sinica_2021_volissueppbppb\\images\\page_010_fig_fig_9.png",
+        "page_number": 10,
+        "label": "Fig. 9",
+        "kind": "figure",
+        "caption_text": "Fig. 9: Inference results for 2D flow past a thrombus with phase-dependent permeability. (a) History of network losses (Loss PDE, Loss IC, Loss BC, and Loss Data) and (b) inferred permeability κ as a function of φ. (c) Comparison of phase field and velocity field for κ(φ) at t = 0.78 and their absolute error. The core permeability is 0.001 and the shell permeability is set 1 as the actual values. 10,000 data points are scattered in the spatio-temporal domain from 30 snapshots (t ∈[0.03,0.93]) as the training data to infer the permeability. Inferred a and b are 7.10 and 0.0003 compared to the true value at 6.9 and 0.0. (Figure adapted from [14])",
+        "width": 707,
+        "height": 1118,
+        "size_bytes": 256843,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.204568,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.594294,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 652,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      }
+    ],
+    "ocr_available": false
+  },
+  "summary": {
+    "paper_type": "AI_method",
+    "paper_type_rationale": "The paper is best treated as a method-focused technical paper.",
+    "datasets": [],
+    "metrics": [
+      "Moreover, some other researches on PINNs focused on the development of the neural network architecture and the training, e.g., using multi-fidelity framework [34], adaptive activation functions [35] and dynamic weights the loss function [36], hard constraints [37] and CNN-based network architectures [38], which can improve the performance of PINNs on different problems.",
+      "The loss function in PINN can be defined as: L = Ldata +LPDE, (4) where Ldata = 1 ∥u(xi data,ti data)−ui data ∥2 + 1 ∥v(xi data,ti data)−vi data ∥2 + 1 ∥w(xi data,ti data)−wi data ∥2, (5) and LPDE = 1 ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u.",
+      "3.3 Inference results For a quantitative assessment, we first define the relative L2- norm error as the evaluation metric, which is expressed as: εV = ∥VCFD −ˆV ∥2 ∥VCFD ∥2 ×100%, (7) where V ∈{u,v,w, p}; VCFD and ˆV account for the CFD data and the output of PINNs, respectively.",
+      "However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%)."
+    ],
+    "mechanism_signals": [
+      "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+      "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+      "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle."
+    ],
+    "ablation_signals": [],
+    "equation_candidates": [
+      {
+        "equation": "O(10−3)",
+        "source_section": "method",
+        "kind_hint": "complexity"
+      },
+      {
+        "equation": "L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefﬁcients for different loss terms",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "L = Ldata +LPDE, (4) where Ldata = 1 Nu Nu ∑ i ∥u(xi data,ti data)−ui data ∥2 + 1 Nv Nv ∑ i ∥v(xi data,ti data)−vi data ∥2 +",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "LPDE = 1 Nf Nf ∑ i 4 ∑ j ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "Loss = ω1LossF +ω2Loss∇ρ|D +ω3Lossinflow +ω4Lossp∗ +ω5 (LossMass +LossMomentum +LossEnergy)+ω6Lossn·u, (10) whre the last term",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "L = ω1LPDE +ω2LIC +ω3LBC +ω4Ldata, (19) where LPDE is the PDEs residual loss, LIC is the initial condition loss, LBC is the",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      }
+    ],
+    "section_keys": [
+      "preamble",
+      "introduction",
+      "experiment",
+      "method"
+    ],
+    "pdf_used": true,
+    "candidate_chunk_sections": [
+      "data",
+      "experiment",
+      "general",
+      "introduction",
+      "method"
+    ]
+  },
+  "writing_contract": {
+    "language": "zh-CN",
+    "must_distinguish": [
+      "研究问题 vs 任务定义",
+      "真实贡献 vs 标题包装",
+      "核心结果 vs 好看的结果",
+      "作者声称什么 vs 论文没有证明什么"
+    ],
+    "must_include_sections": [
+      "核心信息",
+      "原文摘要翻译",
+      "创新点",
+      "一句话总结",
+      "研究问题",
+      "数据与任务定义",
+      "方法主线",
+      "关键结果",
+      "深度分析",
+      "局限",
+      "我的笔记",
+      "引用"
+    ],
+    "core_info_contract": {
+      "role": "fixed_metadata_block",
+      "format": "template_style_metadata_bullets",
+      "fixed_field_behavior": [
+        "Use the predefined template fields only.",
+        "Keep each line in `- 字段名: 值` form.",
+        "Do not add ad hoc metadata fields just because they seem helpful.",
+        "If a field is unavailable, leave it blank or mark it as unavailable instead of replacing it with commentary."
+      ],
+      "forbidden_content": [
+        "analysis",
+        "judgment",
+        "takeaways",
+        "mini_summaries",
+        "my_view_sentences"
+      ],
+      "redirect_analysis_to": [
+        "一句话总结",
+        "深度分析",
+        "我的笔记"
+      ]
+    },
+    "must_not_do": [
+      "不要摘要改写",
+      "不要把英文证据原句揉进中文正文",
+      "不要把脚本 heuristics 当成论文结论",
+      "不要把方法论文写成科普式总结",
+      "不要为了通过 lint 而编造事实、失败案例、机制细节或比较结论",
+      "不要加入只是为了看起来合规却没有信息量的 filler text",
+      "不要为了通过 mixed-language 检查而把句子硬改成不自然的翻译",
+      "不要因为怕触发 lint 就删掉有价值的公式、术语或必要英文原文",
+      "不要在 `核心信息` 里加入解释性判断、总结性句子或“我对这篇论文的判断”之类的分析内容"
+    ],
+    "writer_persona": [
+      "把自己当作顶尖人工智能研究员和算法工程师",
+      "默认读者是熟悉 Python、PyTorch、训练流程和实验设计的课题组成员",
+      "目标是写一份复现级精读笔记，而不是写给大众的科普摘要"
+    ],
+    "planning_rules": [
+      "先基于证据做显式 note_plan，再写最终笔记",
+      "note_plan 应该是一个简短、结构化、可检查的工件，例如 `<note_plan>...</note_plan>` 或独立 planning file",
+      "不要只依赖隐式的隐藏规划步骤，也不要输出冗长的自由思维链",
+      "`核心信息` 是固定字段的 metadata 区，不要擅自增删字段，也不要把解释性 prose 塞进这里",
+      "在章节骨架上，`创新点` 应该作为独立 `##` 章节放在 `原文摘要翻译` 之后、`一句话总结` 之前",
+      "创新点部分不要只写抽象赞美，要列出 3 到 5 个真正的 paper-specific innovations，并分别解释它们解决了什么问题、带来了什么能力或评估增益",
+      "决定哪些部分需要更多篇幅，哪些部分需要 `###` 子标题",
+      "复杂论文不能只写扁平的 `##` 结构",
+      "优先提炼关键数字、关键比较和论文特有洞察",
+      "优先自己从 candidate_chunks 和 section_texts 判断重点，而不是盲信脚本挑出来的 top items",
+      "方法型论文默认优先展开训练目标、推理链路、关键实现细节、复杂度和消融逻辑",
+      "对于 method/system/framework 类型论文，`方法主线` 下默认包含固定小节 `### 机制流程`，不要把机制解释分散成难以扫描的散文",
+      "如果 Algorithm 伪代码框或流程框在抽取后已经损坏，不要尝试逐字还原；应基于 method 的 section_texts、candidate_chunks 与 mechanism evidence，在 `### 机制流程` 中用 3 到 4 步工程流程重建核心机制",
+      "机制流程的每一步都应尽量说清楚 Input、关键中间变换和 Output 去向，而不是只复述模块名或术语",
+      "如果论文同时存在训练主线与推理主线，`### 机制流程` 优先写最核心的主执行链，不要把它膨胀成完整训练 recipe",
+      "如果 metadata.abstract 可用，`原文摘要翻译` 部分应默认写成单一的中文翻译块，而不是英文原文加中文翻译的双子节结构",
+      "`原文摘要翻译` 的标题固定为 `## 原文摘要翻译`，不要改成 `摘要`、`原始摘要`，也不要在里面再拆出 `### 英文原文` 或 `### 中文翻译`",
+      "`原文摘要翻译` 这个 section 本身必须直接写成中文，不要在这里输出英文摘要句子、英文段落或英文原文摘录",
+      "`原文摘要翻译` 的任务很简单：把原文 abstract 翻译成中文，不要把它改写成你自己对全文的总结",
+      "`原文摘要翻译` 不要写成基于整篇论文内容重新整理后的 summary，也不要混入创新点、价值判断或后文分析",
+      "如果 abstract 较长，也应完整翻译；提炼和压缩应放到 `一句话总结`、`创新点` 或其他分析章节，而不是发生在 `原文摘要翻译` 里"
+    ],
+    "mechanism_flow_contract": {
+      "title": "机制流程",
+      "apply_when_paper_type_in": [
+        "AI_method",
+        "system",
+        "framework"
+      ],
+      "required_step_count": "3_to_4",
+      "required_step_fields": [
+        "input",
+        "operation",
+        "output_destination"
+      ],
+      "figure_policy": "If a high-confidence pipeline or architecture figure matches the core execution chain, place it in this subsection first.",
+      "fallback_policy": "If no high-confidence figure exists, keep the subsection as text-only and do not lower the figure-matching threshold."
+    },
+    "note_plan_contract": {
+      "required_fields": [
+        "paper_type",
+        "dominant_domain",
+        "must_cover",
+        "key_numbers",
+        "real_comparisons",
+        "section_plan"
+      ],
+      "format_preference": "compact_structured_plan",
+      "forbidden_style": "verbose_freeform_chain_of_thought"
+    },
+    "formula_rules": [
+      "如果公式、概率分解、优化目标或复杂度表达式是理解方法的核心，应该在笔记里保留少量关键 LaTeX 公式",
+      "优先保留 1 到 3 个真正关键的公式，不要为了显得技术化而堆砌公式",
+      "优先从 equation_candidates、candidate_chunks 和 section_texts 中重建关键公式语境",
+      "每个保留的关键公式后都要补一句工程解释，说明它在实现上对应什么操作、训练目标或状态更新；不要只解释变量名",
+      "公式解释应尽量服务于 `### 机制流程` 或其相邻方法子节，而不是让公式孤立悬空",
+      "最终 Markdown 中的公式必须按 Obsidian/MathJax 可直接渲染的 TeX 写法输出，不要把它们写成 JSON 或字符串风格的双反斜杠转义文本",
+      "避免把 `\\tau`、`\\frac`、`\\bar`、`\\begin`、`\\end` 这类命令错误地写成双反斜杠；在最终笔记里应保留单反斜杠 TeX 命令",
+      "行内公式使用 `$...$`，公式块使用 `$$ ... $$`",
+      "不要把公式写成反引号代码或 fenced code block"
+    ],
+    "self_review_rules": [
+      "在生成最终 Markdown 前，先自查这篇笔记是否包含关键数字、关键比较、必要时的公式或复杂度表达式",
+      "如果方法论文里没有训练目标、推理流程、关键维度、复杂度或核心机制解释，说明写得太浅，需要重写相关小节",
+      "如果这是 method/system/framework 类型论文，检查 `方法主线` 下是否显式包含 `### 机制流程`，并且该小节是 3 到 4 步的编号列表，而不是一段泛化散文",
+      "如果 bundle 中存在 ablation_evidence，最终笔记必须至少写出一项次优、失败或不稳定设定；如果不存在，也要明确说明论文未充分报告这类负面经验",
+      "如果正文不能让熟悉 Python 和深度学习框架的开发者看懂方法主线，说明仍停留在总结层面，需要继续下钻",
+      "如果出现句中异常换行、逗号后换行或明显继承 PDF 折行的 prose，必须整理后再输出",
+      "脚本 lint 通过后，仍必须重新通读整篇笔记做最终可读性质检；lint 只是下限，不是写作目标",
+      "最终可读性质检只能修表达：改善句子流畅度、消除生硬翻译、把普通英文短语改成自然中文、并在必要时给稳定专名补中文解释",
+      "最终可读性质检不得新增无证据支撑的信息，不得改动核心数字、结论或实验判断，也不得借润色之名把笔记写浅",
+      "如果为了满足章节要求而写出了空壳句子、合规模板话或明显写给 lint 看的表述，必须改掉再输出",
+      "如果笔记中保留了 LaTeX 公式，最终输出前要快速自查是否存在双反斜杠误转义、损坏的 math delimiter 或明显无法渲染的 TeX 命令"
+    ],
+    "readability_review_contract": {
+      "stage_name": "final_readability_review",
+      "position_in_workflow": "after_lint_before_save",
+      "role": "final_model_side_language_and_readability_review",
+      "core_rule": "Lint is a floor, not the writing objective.",
+      "allowed_kept_english": [
+        "stable model names",
+        "stable dataset names",
+        "stable metric names",
+        "method names",
+        "source-faithful technical labels",
+        "math symbols",
+        "code tokens",
+        "original paper figure/table ids"
+      ],
+      "should_be_natural_chinese": [
+        "ordinary English phrases",
+        "abstract descriptive phrases in analytical prose",
+        "English leftovers that have no clear reason to remain"
+      ],
+      "checklist": [
+        "有没有普通英文短语其实应写成自然中文",
+        "有没有术语被翻得过硬过怪",
+        "有没有为了满足章节要求而写出的空壳句子",
+        "有没有写给 lint 看而不是写给读者看的语气",
+        "有没有本可自然中文表达却仍残留英文导致阅读发涩的句子"
+      ],
+      "must_not_do": [
+        "do_not_invent_new_facts",
+        "do_not_change_core_numbers_or_conclusions",
+        "do_not_flatten_the_note_under_the_name_of_polish",
+        "do_not_translate_stable_proper_nouns_mechanically"
+      ],
+      "rerun_rule": "If the readability review edits the note, rerun lint before write_obsidian_note."
+    },
+    "figure_rules": [
+      "先规划主要图表的占位标签，再决定哪些可以替换成真实图片",
+      "label/caption match is not insertion approval; it only proves identity, and visual usability is a separate hard gate.",
+      "Reject caption-only crops, missing table body crops, table crops with paragraph or other-caption contamination, large text/title/abstract crops, and low visual body ratio crops.",
+      "If visual quality is missing, ambiguous, or marked review/reject, fail closed: keep the placeholder instead of inserting the image.",
+      "Every kept placeholder must appear directly under the most relevant analytical section named by its `建议位置`; do not collect unresolved placeholders in catch-all sections such as `剩余图表占位`, `未放置图表`, `Remaining figures`, or `Leftover figures`.",
+      "Every kept placeholder must use the standard `> [!figure]` callout with `建议位置`, `放置原因`, and `当前状态`; never use plain paragraph placeholders such as `[图表占位 | Fig. 1]`, `图表占位：Table 2`, or `Figure Placeholder | Fig. 3`.",
+      "`reject_visual_quality` means the candidate image is unsafe to insert; it does not require keeping a final-note placeholder for every rejected candidate.",
+      "For survey papers, summarize repetitive representative-work figures or appendix tables in prose when they do not materially help the reader as standalone callouts.",
+      "When inserting a real image, prefer the `obsidian_embed` returned by materialize_figure_asset.py; Markdown image syntax is a compatibility fallback, not the preferred note format.",
+      "如果没有高置信度图像匹配，不要删除占位标签",
+      "图注必须保留论文原始编号，例如 Fig. 1、Table 2",
+      "如果插入的是局部子图或不完整裁剪，必须明确说明",
+      "图可以不全，但文字覆盖必须完整"
+    ]
+  }
+}

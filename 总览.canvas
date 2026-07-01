@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"oil","type":"text","text":"## 🛢️ 02_溢油检测\n\n**5 篇论文**\n━━━━━━━━━━━━━━━━━\n• HMOSD — 超像素 + Attention\n• HDFNet — 空洞卷积降噪\n• 坐标注意力 — 溢油方向性\n• Attention U-Net\n• 检测摘要报告","x":325,"y":140,"width":280,"height":180,"color":"5"},
+		{"id":"foundation","type":"text","text":"## 🏛️ 05_基础架构\n\n**13 篇经典论文与基础笔记**\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nMamba · Transformer · RWKV · CNN · UNet · ResNet · ViT\nAlexNet · GAN · GNN · BERT · MOCO · 损失函数","x":240,"y":410,"width":520,"height":180,"color":"3"},
+		{"id":"logs","type":"text","text":"## 📅 06_实验日志\n\n━━━━━━━━━━━━━━━━━\n• 2026-03 ~ 07 月度研究日志\n• 想法与实验记录\n• 代码实验笔记","x":205,"y":690,"width":280,"height":130,"color":"7"},
+		{"id":"queue","type":"text","text":"## 📖 07_待读队列\n\n━━━━━━━━━━━━━━━━━\n• 待读 / 未读论文\n• 待分类笔记\n• arXiv 论文队列","x":670,"y":690,"width":280,"height":130,"color":"7"},
+		{"id":"knowledge","type":"text","text":"## 📚 基础知识\n\n*独立保留*  \n━━━━━━━━━━━━━\n• CNN / Attention\n• 激活函数\n• 上下采样\n• 多模态融合\n• Mamba / 离散","x":950,"y":410,"width":220,"height":160,"color":"2"},
+		{"id":"physics","type":"text","text":"## ⚛️ 04_物理融合\n\n**3 篇论文**\n━━━━━━━━━━━━━━━━━\n• PINNs 流体力学\n• PINNs 物理先验\n• RingMoE 遥感大模型\n零标注泛化","x":1060,"y":140,"width":280,"height":180,"color":"6"},
+		{"id":"crack","type":"text","text":"## 🔨 03_裂缝分割\n\n**5 篇论文**\n━━━━━━━━━━━━━━━━━\n• ECFormer — 裂缝 Transformer\n• LMA-Net — 土壤裂缝\n• 纵向裂缝检测 — 纹理重建\n• waveDH — 小波 CNN\n• LCGA — 曲率引导注意力","x":760,"y":140,"width":280,"height":180,"color":"1"},
+		{"id":"hsi","type":"text","text":"## 🌈 01_高光谱分类\n\n**20 篇论文**\n━━━━━━━━━━━━━━━━━\n🟢 **Mamba系** — 8 篇\n🔵 **Transformer系** — 6 篇\n🟠 **CNN混合系** — 2 篇\n🔴 **UNet系** — 6 篇","x":-180,"y":140,"width":280,"height":180,"color":"4"},
+		{"id":"title","type":"text","text":"# 🗺️ ESCI 知识库总览\n\n重构后的目录结构总图","x":245,"y":0,"width":360,"height":70,"color":"6"}
+	],
+	"edges":[
+		{"id":"e_hsi_oil","fromNode":"hsi","fromSide":"right","toNode":"oil","toSide":"left","label":"同类任务"},
+		{"id":"e_oil_crack","fromNode":"oil","fromSide":"right","toNode":"crack","toSide":"left","label":"分割任务"},
+		{"id":"e_hsi_foundation","fromNode":"hsi","fromSide":"bottom","toNode":"foundation","toSide":"top","label":"依赖基础架构"},
+		{"id":"e_oil_foundation","fromNode":"oil","fromSide":"bottom","toNode":"foundation","toSide":"top"},
+		{"id":"e_crack_foundation","fromNode":"crack","fromSide":"bottom","toNode":"foundation","toSide":"top"},
+		{"id":"e_physics_foundation","fromNode":"physics","fromSide":"bottom","toNode":"foundation","toSide":"top"},
+		{"id":"e_knowledge_foundation","fromNode":"knowledge","fromSide":"left","toNode":"foundation","toSide":"right","label":"理论基础"},
+		{"id":"e_foundation_logs","fromNode":"foundation","fromSide":"bottom","toNode":"logs","toSide":"top"},
+		{"id":"e_foundation_queue","fromNode":"foundation","fromSide":"bottom","toNode":"queue","toSide":"top"}
+	]
+}

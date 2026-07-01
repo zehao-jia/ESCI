@@ -1,0 +1,2606 @@
+{
+  "status": "ok",
+  "script": "plan_figures.py",
+  "paper_id": "doi:10.1016/j.asoc.2025.114513",
+  "latex_sources_used": false,
+  "figure_plan": {
+    "paper_id": "doi:10.1016/j.asoc.2025.114513",
+    "figures": [
+      {
+        "id": "Fig. 2",
+        "caption": "illustrates the overall structure of ECFormer, a five-stage model",
+        "kind": "method_overview",
+        "section": "机制流程",
+        "reason": "这张图概括了整体方法或系统流程；如果匹配置信度足够高，最适合放在 `### 机制流程` 帮助快速建立执行链理解。",
+        "priority": 1,
+        "anchor_text": "机制流程",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_005_fig_fig_2.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_2.png",
+          "width": 967,
+          "height": 416,
+          "size_bytes": 63577,
+          "label": "Fig. 2",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.110424,
+            "visual_rect_count": 23,
+            "visual_body_ratio": 1.0,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 41,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "fig. 2",
+              "illustrates",
+              "overall",
+              "structure",
+              "ecformer",
+              "five-stage"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Fig. 2. Overall architecture of ECFormer. Fig. 3. ECFormer block. 4 . Methodology In this sectio",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_2.png",
+                "width": 967,
+                "height": 416,
+                "size_bytes": 63577,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.110424,
+                  "visual_rect_count": 23,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 41,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_005_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_3.png",
+                "width": 967,
+                "height": 499,
+                "size_bytes": 57241,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.132547,
+                  "visual_rect_count": 41,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 23,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_2.png",
+                "width": 1653,
+                "height": 646,
+                "size_bytes": 244458,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.29315,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1433,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 1399,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 10,
+            "score": 3,
+            "matched_terms": [
+              "overall",
+              "structure",
+              "ecformer"
+            ],
+            "snippet": "ore, although RTFormer-Slim and CrackFormer have advantages in terms of parameters, their overall per­ formance still falls short of ECFormer. Particularly, CrackFormer, with an mIoU of 8",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_img_01.jpeg",
+                "width": 1419,
+                "height": 638,
+                "size_bytes": 248465
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_fig_8.png",
+                "width": 968,
+                "height": 536,
+                "size_bytes": 668213,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.14262,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.77341,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 53,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_table_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_table_3.png",
+                "width": 1488,
+                "height": 742,
+                "size_bytes": 198509,
+                "label": "Table 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.303293,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2392,
+                  "table_body_rows": 14,
+                  "caption_text_chars": 46,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 12,
+            "score": 3,
+            "matched_terms": [
+              "illustrates",
+              "overall",
+              "structure",
+              "ecformer"
+            ],
+            "snippet": "ess despite some omissions, outperforming other models that misidentify features. Fig. 12 illustrates some visual results on Concrete3k. In the first row, images fraught with severe impact no",
+            "images": [
+              {
+                "filename": "page_012_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_img_01.png",
+                "width": 1359,
+                "height": 745,
+                "size_bytes": 183798
+              },
+              {
+                "filename": "page_012_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_img_02.jpeg",
+                "width": 1359,
+                "height": 743,
+                "size_bytes": 188869
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_012_fig_fig_12.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_fig_fig_12.png",
+                "width": 1653,
+                "height": 657,
+                "size_bytes": 248753,
+                "label": "Fig. 12",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.298217,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 997,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 1148,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Fig. 11"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_012_fig_fig_11.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_fig_fig_11.png",
+                "width": 928,
+                "height": 574,
+                "size_bytes": 148889,
+                "label": "Fig. 11",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.146296,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.84325,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 107,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_012_fig_fig_12.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_fig_fig_12.png",
+                "width": 928,
+                "height": 572,
+                "size_bytes": 230818,
+                "label": "Fig. 12",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.145889,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.842879,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 108,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 1",
+        "caption": "Comparison of CNN and self-attention.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_002_fig_fig_1.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_fig_fig_1.png",
+          "width": 715,
+          "height": 653,
+          "size_bytes": 250318,
+          "label": "Fig. 1",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.128245,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.853002,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 45,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 2,
+            "score": 7,
+            "matched_terms": [
+              "fig. 1",
+              "comparison",
+              "self-attention"
+            ],
+            "snippet": "ing a global receptive field [9]. A comparison between CNN and self-attention is shown in Fig. 1. The introduction of Vision Transformer (ViT) has further demonstrated the significant po",
+            "images": [
+              {
+                "filename": "page_002_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_img_01.jpeg",
+                "width": 1040,
+                "height": 863,
+                "size_bytes": 201527
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_fig_fig_1.png",
+                "width": 715,
+                "height": 653,
+                "size_bytes": 250318,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.128245,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853002,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 45,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 14,
+            "score": 7,
+            "matched_terms": [
+              "fig. 1",
+              "comparison",
+              "self-attention"
+            ],
+            "snippet": "mance is compared with reduction factors 𝑝 set to 1, 3, 5, 7, 11, 23, and 45, as shown in Fig. 14. In Fig. 14(a), it can be observed that the performance of the SRA gradually approaches",
+            "images": [
+              {
+                "filename": "page_014_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_014_img_01.jpeg",
+                "width": 1359,
+                "height": 666,
+                "size_bytes": 105417
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_014_fig_fig_14.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_014_fig_fig_14.png",
+                "width": 928,
+                "height": 521,
+                "size_bytes": 91171,
+                "label": "Fig. 14",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.132853,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.82981,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 51,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 11,
+            "score": 6,
+            "matched_terms": [
+              "fig. 1",
+              "comparison"
+            ],
+            "snippet": "nd R. Ma Fig. 9. Qualitative results of ECFormer, FCN, UNet, and BiSeNetV2 on CrackSeg9k. Fig. 10. Qualitative results of OCRNet, DMA-Net, SegFormer, RTFormer, CrackFormer, CT and SegCra",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_01.jpeg",
+                "width": 1359,
+                "height": 1026,
+                "size_bytes": 298992
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_02.jpeg",
+                "width": 1359,
+                "height": 1029,
+                "size_bytes": 290439
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_9.png",
+                "width": 928,
+                "height": 762,
+                "size_bytes": 317203,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194062,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.875938,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 80,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_10.png",
+                "width": 928,
+                "height": 763,
+                "size_bytes": 308192,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194469,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.876149,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 113,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_table_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_table_4.png",
+                "width": 1653,
+                "height": 370,
+                "size_bytes": 121020,
+                "label": "Table 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_body_missing",
+                    "caption_only_suspected",
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.168034,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 806,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 332,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 10",
+        "caption": "Qualitative results of OCRNet, DMA-Net, SegFormer, RTFormer, CrackFormer, CT and SegCrack on CrackSeg9k.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_011_fig_fig_10.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_10.png",
+          "width": 928,
+          "height": 763,
+          "size_bytes": 308192,
+          "label": "Fig. 10",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.194469,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.876149,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 113,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 11,
+            "score": 8,
+            "matched_terms": [
+              "fig. 10",
+              "qualitative",
+              "ocrnet",
+              "dma-net",
+              "segformer",
+              "rtformer"
+            ],
+            "snippet": "nd R. Ma Fig. 9. Qualitative results of ECFormer, FCN, UNet, and BiSeNetV2 on CrackSeg9k. Fig. 10. Qualitative results of OCRNet, DMA-Net, SegFormer, RTFormer, CrackFormer, CT and SegCrac",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_01.jpeg",
+                "width": 1359,
+                "height": 1026,
+                "size_bytes": 298992
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_02.jpeg",
+                "width": 1359,
+                "height": 1029,
+                "size_bytes": 290439
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_9.png",
+                "width": 928,
+                "height": 762,
+                "size_bytes": 317203,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194062,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.875938,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 80,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_10.png",
+                "width": 928,
+                "height": 763,
+                "size_bytes": 308192,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194469,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.876149,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 113,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_table_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_table_4.png",
+                "width": 1653,
+                "height": 370,
+                "size_bytes": 121020,
+                "label": "Table 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_body_missing",
+                    "caption_only_suspected",
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.168034,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 806,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 332,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 9,
+            "score": 3,
+            "matched_terms": [
+              "ocrnet",
+              "dma-net",
+              "segformer",
+              "rtformer"
+            ],
+            "snippet": "and Transformer-based models. The CNN models include FCN [36], UNet [40], BiSeNetV2 [84], OCRNet [85], and DMA-Net [47], while the Transformer-based models are SegFormer [86], RTFormer [",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_009_fig_table_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_009_fig_table_1.png",
+                "width": 1431,
+                "height": 303,
+                "size_bytes": 77375,
+                "label": "Table 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.119153,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 253,
+                  "table_body_rows": 3,
+                  "caption_text_chars": 245,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 10,
+            "score": 3,
+            "matched_terms": [
+              "qualitative",
+              "ocrnet",
+              "dma-net",
+              "segformer",
+              "rtformer"
+            ],
+            "snippet": "del performance as scale increases demonstrates ECFormer’s scalability advantage. 5.3.2 . Qualitative analysis Figs. 9 and 10 visually present some results of ECFormer and other methods on th",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_img_01.jpeg",
+                "width": 1419,
+                "height": 638,
+                "size_bytes": 248465
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_fig_8.png",
+                "width": 968,
+                "height": 536,
+                "size_bytes": 668213,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.14262,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.77341,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 53,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_table_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_table_3.png",
+                "width": 1488,
+                "height": 742,
+                "size_bytes": 198509,
+                "label": "Table 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.303293,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2392,
+                  "table_body_rows": 14,
+                  "caption_text_chars": 46,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 4",
+        "caption": "Comparison of original self-attention, spatial-reduction attention, multi-scale spatial-reduction attention.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_006_fig_fig_4.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_006_fig_fig_4.png",
+          "width": 880,
+          "height": 374,
+          "size_bytes": 49607,
+          "label": "Fig. 4",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.09052,
+            "visual_rect_count": 17,
+            "visual_body_ratio": 0.342472,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 116,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "fig. 4",
+              "original",
+              "self-attention",
+              "spatial-reduction",
+              "attention"
+            ],
+            "snippet": "nal spatial-reduction module between the linear projection layer and the MSA, as shown in Fig. 4(b). Specifically, the spatial reduction mod­ ule first performs downsampling on the spati",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_2.png",
+                "width": 967,
+                "height": 416,
+                "size_bytes": 63577,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.110424,
+                  "visual_rect_count": 23,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 41,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_005_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_3.png",
+                "width": 967,
+                "height": 499,
+                "size_bytes": 57241,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.132547,
+                  "visual_rect_count": 41,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 23,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_005_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_005_fig_fig_2.png",
+                "width": 1653,
+                "height": 646,
+                "size_bytes": 244458,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.29315,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1433,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 1399,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 6,
+            "score": 8,
+            "matched_terms": [
+              "fig. 4",
+              "comparison",
+              "original",
+              "self-attention",
+              "spatial-reduction",
+              "attention"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Fig. 4. Comparison of original self-attention, spatial-reduction attention, multi-scale spatial-",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_006_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_006_fig_fig_4.png",
+                "width": 880,
+                "height": 374,
+                "size_bytes": 49607,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.09052,
+                  "visual_rect_count": 17,
+                  "visual_body_ratio": 0.342472,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 116,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 1,
+            "score": 3,
+            "matched_terms": [
+              "self-attention",
+              "spatial-reduction",
+              "attention"
+            ],
+            "snippet": "ferent branches. A R T I C L E I N F O Keywords: Crack segmentation Transformer Efficient self-attention High-resolution dense prediction Dual-branch network A B S T R A C T Recent studies show",
+            "images": [
+              {
+                "filename": "page_001_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_01.png",
+                "width": 118,
+                "height": 117,
+                "size_bytes": 479
+              },
+              {
+                "filename": "page_001_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_02.jpeg",
+                "width": 236,
+                "height": 298,
+                "size_bytes": 40101
+              },
+              {
+                "filename": "page_001_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_03.png",
+                "width": 248,
+                "height": 272,
+                "size_bytes": 88304
+              }
+            ],
+            "figure_assets": []
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 9",
+        "caption": "Qualitative results of ECFormer, FCN, UNet, and BiSeNetV2 on CrackSeg9k.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_011_fig_fig_9.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_9.png",
+          "width": 928,
+          "height": 762,
+          "size_bytes": 317203,
+          "label": "Fig. 9",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.194062,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.875938,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 80,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 11,
+            "score": 8,
+            "matched_terms": [
+              "fig. 9",
+              "qualitative",
+              "ecformer",
+              "unet",
+              "bisenetv",
+              "crackseg"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Fig. 9. Qualitative results of ECFormer, FCN, UNet, and BiSeNetV2 on CrackSeg9k. Fig. 10. Qualit",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_01.jpeg",
+                "width": 1359,
+                "height": 1026,
+                "size_bytes": 298992
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_02.jpeg",
+                "width": 1359,
+                "height": 1029,
+                "size_bytes": 290439
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_9.png",
+                "width": 928,
+                "height": 762,
+                "size_bytes": 317203,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194062,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.875938,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 80,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_10.png",
+                "width": 928,
+                "height": 763,
+                "size_bytes": 308192,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194469,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.876149,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 113,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_table_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_table_4.png",
+                "width": 1653,
+                "height": 370,
+                "size_bytes": 121020,
+                "label": "Table 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_body_missing",
+                    "caption_only_suspected",
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.168034,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 806,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 332,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 9,
+            "score": 3,
+            "matched_terms": [
+              "ecformer",
+              "unet",
+              "bisenetv",
+              "crackseg"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Table 1 Detailed configuration of ECFormer. 𝑠 denotes convolution stride, 𝑡 represents the intermediate expansion rate of MBConv, 𝑝",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_009_fig_table_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_009_fig_table_1.png",
+                "width": 1431,
+                "height": 303,
+                "size_bytes": 77375,
+                "label": "Table 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.119153,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 253,
+                  "table_body_rows": 3,
+                  "caption_text_chars": 245,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 10,
+            "score": 3,
+            "matched_terms": [
+              "qualitative",
+              "ecformer",
+              "unet",
+              "bisenetv",
+              "crackseg"
+            ],
+            "snippet": "del performance as scale increases demonstrates ECFormer’s scalability advantage. 5.3.2 . Qualitative analysis Figs. 9 and 10 visually present some results of ECFormer and other methods on th",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_img_01.jpeg",
+                "width": 1419,
+                "height": 638,
+                "size_bytes": 248465
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_fig_8.png",
+                "width": 968,
+                "height": 536,
+                "size_bytes": 668213,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.14262,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.77341,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 53,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_table_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_table_3.png",
+                "width": 1488,
+                "height": 742,
+                "size_bytes": 198509,
+                "label": "Table 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.303293,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2392,
+                  "table_body_rows": 14,
+                  "caption_text_chars": 46,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Table 1",
+        "caption": "Detailed configuration of ECFormer. 𝑠 denotes convolution stride,",
+        "kind": "table_result",
+        "section": "关键结果",
+        "reason": "这是关键结果表，适合放在关键结果部分辅助定位核心数值。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_009_fig_table_1.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_009_fig_table_1.png",
+          "width": 1431,
+          "height": 303,
+          "size_bytes": 77375,
+          "label": "Table 1",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.119153,
+            "visual_rect_count": 0,
+            "visual_body_ratio": 0.0,
+            "paragraph_text_chars": 253,
+            "table_body_rows": 3,
+            "caption_text_chars": 245,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 8,
+            "score": 8,
+            "matched_terms": [
+              "table 1",
+              "detailed",
+              "configuration",
+              "ecformer",
+              "convolution"
+            ],
+            "snippet": "for experiments, where 16, 32, and 48 represent the channel dimensions of the HR branch. Table 1 provides details of the ECFormer configuration. ECFormer consists of two branches, where",
+            "images": [
+              {
+                "filename": "page_008_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_008_img_01.jpeg",
+                "width": 1359,
+                "height": 656,
+                "size_bytes": 114052
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_008_fig_fig_6.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_008_fig_fig_6.png",
+                "width": 928,
+                "height": 518,
+                "size_bytes": 110208,
+                "label": "Fig. 6",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.131949,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.822688,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 35,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_008_fig_fig_7.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_008_fig_fig_7.png",
+                "width": 573,
+                "height": 637,
+                "size_bytes": 43841,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.100255,
+                  "visual_rect_count": 24,
+                  "visual_body_ratio": 0.551309,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_008_fig_fig_7.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_008_fig_fig_7.png",
+                "width": 1653,
+                "height": 335,
+                "size_bytes": 123288,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.152249,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1295,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 414,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 1"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 9,
+            "score": 8,
+            "matched_terms": [
+              "table 1",
+              "detailed",
+              "configuration",
+              "ecformer",
+              "denotes",
+              "convolution"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Table 1 Detailed configuration of ECFormer. 𝑠 denotes convolution stride, 𝑡 represents the interm",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_009_fig_table_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_009_fig_table_1.png",
+                "width": 1431,
+                "height": 303,
+                "size_bytes": 77375,
+                "label": "Table 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.119153,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 253,
+                  "table_body_rows": 3,
+                  "caption_text_chars": 245,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 15,
+            "score": 8,
+            "matched_terms": [
+              "table 1",
+              "detailed",
+              "configuration",
+              "ecformer",
+              "convolution"
+            ],
+            "snippet": "n global features as a complement to the HR branch. As observed in Table 9, ERLA achieves Table 10 Performance comparison of different fusion methods. Module mIoU(%) Params(M) GFLOPs FPS",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_015_fig_table_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_10.png",
+                "width": 1249,
+                "height": 295,
+                "size_bytes": 59740,
+                "label": "Table 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "multiple_caption_regions_suspected"
+                  ],
+                  "page_coverage_ratio": 0.101122,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 347,
+                  "table_body_rows": 12,
+                  "caption_text_chars": 60,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 8"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_015_fig_table_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_9.png",
+                "width": 1378,
+                "height": 340,
+                "size_bytes": 73250,
+                "label": "Table 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "multiple_caption_regions_suspected"
+                  ],
+                  "page_coverage_ratio": 0.128594,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 464,
+                  "table_body_rows": 12,
+                  "caption_text_chars": 82,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 8"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_015_fig_table_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_10.png",
+                "width": 1653,
+                "height": 551,
+                "size_bytes": 248416,
+                "label": "Table 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_body_missing",
+                    "caption_only_suspected",
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.250115,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2240,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 930,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Table 10",
+        "caption": "Performance comparison of different fusion methods.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_015_fig_table_10.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_10.png",
+          "width": 1249,
+          "height": 295,
+          "size_bytes": 59740,
+          "label": "Table 10",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "multiple_caption_regions_suspected"
+            ],
+            "page_coverage_ratio": 0.101122,
+            "visual_rect_count": 0,
+            "visual_body_ratio": 0.0,
+            "paragraph_text_chars": 347,
+            "table_body_rows": 12,
+            "caption_text_chars": 60,
+            "other_caption_count": 1,
+            "other_caption_labels": [
+              "Table 8"
+            ]
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 15,
+            "score": 8,
+            "matched_terms": [
+              "table 10",
+              "performance",
+              "comparison",
+              "different",
+              "fusion",
+              "methods"
+            ],
+            "snippet": "n global features as a complement to the HR branch. As observed in Table 9, ERLA achieves Table 10 Performance comparison of different fusion methods. Module mIoU(%) Params(M) GFLOPs FPS C",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_015_fig_table_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_10.png",
+                "width": 1249,
+                "height": 295,
+                "size_bytes": 59740,
+                "label": "Table 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "multiple_caption_regions_suspected"
+                  ],
+                  "page_coverage_ratio": 0.101122,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 347,
+                  "table_body_rows": 12,
+                  "caption_text_chars": 60,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 8"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_015_fig_table_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_9.png",
+                "width": 1378,
+                "height": 340,
+                "size_bytes": 73250,
+                "label": "Table 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "multiple_caption_regions_suspected"
+                  ],
+                  "page_coverage_ratio": 0.128594,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 464,
+                  "table_body_rows": 12,
+                  "caption_text_chars": 82,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Table 8"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_015_fig_table_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_10.png",
+                "width": 1653,
+                "height": 551,
+                "size_bytes": 248416,
+                "label": "Table 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_body_missing",
+                    "caption_only_suspected",
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.250115,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2240,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 930,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 1,
+            "score": 3,
+            "matched_terms": [
+              "performance",
+              "different",
+              "fusion",
+              "methods"
+            ],
+            "snippet": "ative state-of-the-art models and also achieves the best trade-off between efficiency and performance. Additionally, a robustness benchmark on common corruptions shows the proposed model degr",
+            "images": [
+              {
+                "filename": "page_001_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_01.png",
+                "width": 118,
+                "height": 117,
+                "size_bytes": 479
+              },
+              {
+                "filename": "page_001_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_02.jpeg",
+                "width": 236,
+                "height": 298,
+                "size_bytes": 40101
+              },
+              {
+                "filename": "page_001_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_03.png",
+                "width": 248,
+                "height": 272,
+                "size_bytes": 88304
+              }
+            ],
+            "figure_assets": []
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "performance",
+              "comparison",
+              "different",
+              "methods"
+            ],
+            "snippet": "al regions of the image, CNNs can accurately identify and locate cracks, maintaining high performance regardless of variations in crack morphology and position. Although CNNs have demonstrate",
+            "images": [
+              {
+                "filename": "page_002_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_img_01.jpeg",
+                "width": 1040,
+                "height": 863,
+                "size_bytes": 201527
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_fig_fig_1.png",
+                "width": 715,
+                "height": 653,
+                "size_bytes": 250318,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.128245,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853002,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 45,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Table 3",
+        "caption": "Quantitative evaluation on CrackSeg9k.",
+        "kind": "table_result",
+        "section": "关键结果",
+        "reason": "这是关键结果表，适合放在关键结果部分辅助定位核心数值。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_010_fig_table_3.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_table_3.png",
+          "width": 1488,
+          "height": 742,
+          "size_bytes": 198509,
+          "label": "Table 3",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "table_text_contamination_suspected"
+            ],
+            "page_coverage_ratio": 0.303293,
+            "visual_rect_count": 0,
+            "visual_body_ratio": 0.0,
+            "paragraph_text_chars": 2392,
+            "table_body_rows": 14,
+            "caption_text_chars": 46,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 9,
+            "score": 8,
+            "matched_terms": [
+              "table 3",
+              "quantitative",
+              "evaluation",
+              "crackseg"
+            ],
+            "snippet": "CrackFormer, CT, and SegCrack represent leading models in crack segmentation since 2022. Table 3 presents the quantitative evaluation results of all models on CrackSeg9k. 5.3.1 . Quantit",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_009_fig_table_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_009_fig_table_1.png",
+                "width": 1431,
+                "height": 303,
+                "size_bytes": 77375,
+                "label": "Table 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.119153,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 253,
+                  "table_body_rows": 3,
+                  "caption_text_chars": 245,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 10,
+            "score": 8,
+            "matched_terms": [
+              "table 3",
+              "quantitative",
+              "evaluation",
+              "crackseg"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Fig. 8. Samples of CrackSeg9k, Concrete3k, Asphalt3k. Table 3 Quantitative evaluation on CrackSeg9k. Model mIoU (%) Pr (%) Re (%) F1 (%) FPS Params (M)",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_img_01.jpeg",
+                "width": 1419,
+                "height": 638,
+                "size_bytes": 248465
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_fig_8.png",
+                "width": 968,
+                "height": 536,
+                "size_bytes": 668213,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.14262,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.77341,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 53,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_table_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_table_3.png",
+                "width": 1488,
+                "height": 742,
+                "size_bytes": 198509,
+                "label": "Table 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.303293,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2392,
+                  "table_body_rows": 14,
+                  "caption_text_chars": 46,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 2,
+            "score": 2,
+            "matched_terms": [
+              "evaluation",
+              "crackseg"
+            ],
+            "snippet": "nd achieves the best trade-off between performance and efficiency. • A focused robustness evaluation benchmark on CrackSeg9k, covering Gaussian noise, motion blur, brightness shifts, and JPE",
+            "images": [
+              {
+                "filename": "page_002_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_img_01.jpeg",
+                "width": 1040,
+                "height": 863,
+                "size_bytes": 201527
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_fig_fig_1.png",
+                "width": 715,
+                "height": 653,
+                "size_bytes": 250318,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.128245,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853002,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 45,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Table 4",
+        "caption": "Performance comparisons on Asphalt3k and Concrete3k.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_011_fig_table_4.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_table_4.png",
+          "width": 1653,
+          "height": 370,
+          "size_bytes": 121020,
+          "label": "Table 4",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "table_body_missing",
+              "caption_only_suspected",
+              "table_text_contamination_suspected"
+            ],
+            "page_coverage_ratio": 0.168034,
+            "visual_rect_count": 0,
+            "visual_body_ratio": 0.0,
+            "paragraph_text_chars": 806,
+            "table_body_rows": 0,
+            "caption_text_chars": 332,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 11,
+            "score": 8,
+            "matched_terms": [
+              "table 4",
+              "performance",
+              "asphalt",
+              "concrete"
+            ],
+            "snippet": "on Concrete3k and Asphalt3k is analyzed to assess its effectiveness in specific contexts. Table 4 com­ pares the crack segmentation performance of models that performed well on CrackSeg9k",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_01.jpeg",
+                "width": 1359,
+                "height": 1026,
+                "size_bytes": 298992
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_img_02.jpeg",
+                "width": 1359,
+                "height": 1029,
+                "size_bytes": 290439
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_9.png",
+                "width": 928,
+                "height": 762,
+                "size_bytes": 317203,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194062,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.875938,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 80,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_fig_10.png",
+                "width": 928,
+                "height": 763,
+                "size_bytes": 308192,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.194469,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.876149,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 113,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_table_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_011_fig_table_4.png",
+                "width": 1653,
+                "height": 370,
+                "size_bytes": 121020,
+                "label": "Table 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_body_missing",
+                    "caption_only_suspected",
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.168034,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 806,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 332,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          },
+          {
+            "page_number": 12,
+            "score": 8,
+            "matched_terms": [
+              "table 4",
+              "performance",
+              "comparisons",
+              "asphalt",
+              "concrete"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Table 4 Performance comparisons on Asphalt3k and Concrete3k. Model Asphalt3k Concrete3k mIoU (%)",
+            "images": [
+              {
+                "filename": "page_012_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_img_01.png",
+                "width": 1359,
+                "height": 745,
+                "size_bytes": 183798
+              },
+              {
+                "filename": "page_012_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_img_02.jpeg",
+                "width": 1359,
+                "height": 743,
+                "size_bytes": 188869
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_012_fig_fig_12.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_fig_fig_12.png",
+                "width": 1653,
+                "height": 657,
+                "size_bytes": 248753,
+                "label": "Fig. 12",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "large_text_block_suspected",
+                    "low_visual_body_ratio"
+                  ],
+                  "page_coverage_ratio": 0.298217,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 997,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 1148,
+                  "other_caption_count": 1,
+                  "other_caption_labels": [
+                    "Fig. 11"
+                  ]
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_012_fig_fig_11.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_fig_fig_11.png",
+                "width": 928,
+                "height": 574,
+                "size_bytes": 148889,
+                "label": "Fig. 11",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.146296,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.84325,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 107,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_012_fig_fig_12.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_012_fig_fig_12.png",
+                "width": 928,
+                "height": 572,
+                "size_bytes": 230818,
+                "label": "Fig. 12",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.145889,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.842879,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 108,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 1,
+            "score": 3,
+            "matched_terms": [
+              "performance",
+              "asphalt",
+              "concrete"
+            ],
+            "snippet": "ative state-of-the-art models and also achieves the best trade-off between efficiency and performance. Additionally, a robustness benchmark on common corruptions shows the proposed model degr",
+            "images": [
+              {
+                "filename": "page_001_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_01.png",
+                "width": 118,
+                "height": 117,
+                "size_bytes": 479
+              },
+              {
+                "filename": "page_001_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_02.jpeg",
+                "width": 236,
+                "height": 298,
+                "size_bytes": 40101
+              },
+              {
+                "filename": "page_001_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_03.png",
+                "width": 248,
+                "height": 272,
+                "size_bytes": 88304
+              }
+            ],
+            "figure_assets": []
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Table 5",
+        "caption": "Robustness on CrackSeg9k (400 × 400). Moderate severity (𝑠=3) mIoU per",
+        "kind": "table_result",
+        "section": "关键结果",
+        "reason": "这是关键结果表，适合放在关键结果部分辅助定位核心数值。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "figure_asset_candidate": {
+          "filename": "page_013_fig_table_5.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_013_fig_table_5.png",
+          "width": 1494,
+          "height": 183,
+          "size_bytes": 64140,
+          "label": "Table 5",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "reject",
+            "quality_reason_codes": [
+              "table_text_contamination_suspected"
+            ],
+            "page_coverage_ratio": 0.075141,
+            "visual_rect_count": 0,
+            "visual_body_ratio": 0.0,
+            "paragraph_text_chars": 1086,
+            "table_body_rows": 2,
+            "caption_text_chars": 124,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "reject_visual_quality"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 13,
+            "score": 8,
+            "matched_terms": [
+              "table 5",
+              "robustness",
+              "crackseg",
+              "moderate",
+              "severity",
+              "miou"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Table 5 Robustness on CrackSeg9k (400 × 400). Moderate severity (𝑠=3) mIoU per corruption and agg",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_013_fig_table_5.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_013_fig_table_5.png",
+                "width": 1494,
+                "height": 183,
+                "size_bytes": 64140,
+                "label": "Table 5",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.075141,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1086,
+                  "table_body_rows": 2,
+                  "caption_text_chars": 124,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_013_fig_fig_13.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_013_fig_fig_13.png",
+                "width": 996,
+                "height": 787,
+                "size_bytes": 106644,
+                "label": "Fig. 13",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.215367,
+                  "visual_rect_count": 24,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 212,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 1,
+            "score": 3,
+            "matched_terms": [
+              "robustness",
+              "crackseg",
+              "miou"
+            ],
+            "snippet": "and also achieves the best trade-off between efficiency and performance. Additionally, a robustness benchmark on common corruptions shows the proposed model degrades less than comparable li",
+            "images": [
+              {
+                "filename": "page_001_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_01.png",
+                "width": 118,
+                "height": 117,
+                "size_bytes": 479
+              },
+              {
+                "filename": "page_001_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_02.jpeg",
+                "width": 236,
+                "height": 298,
+                "size_bytes": 40101
+              },
+              {
+                "filename": "page_001_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_03.png",
+                "width": 248,
+                "height": 272,
+                "size_bytes": 88304
+              }
+            ],
+            "figure_assets": []
+          },
+          {
+            "page_number": 10,
+            "score": 3,
+            "matched_terms": [
+              "robustness",
+              "crackseg",
+              "miou"
+            ],
+            "snippet": "ght ECFormer’s superior segmentation accuracy but also provide compelling evidence of its robustness across various challenging real-world scenar­ ios. For instance, in the case of thin, eve",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_img_01.jpeg",
+                "width": 1419,
+                "height": 638,
+                "size_bytes": 248465
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_fig_8.png",
+                "width": 968,
+                "height": 536,
+                "size_bytes": 668213,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.14262,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.77341,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 53,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_table_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_010_fig_table_3.png",
+                "width": 1488,
+                "height": 742,
+                "size_bytes": 198509,
+                "label": "Table 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.303293,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 2392,
+                  "table_body_rows": 14,
+                  "caption_text_chars": 46,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Table 6",
+        "caption": "Ablation experiments on CrackSeg9k.",
+        "kind": "table_result",
+        "section": "关键结果",
+        "reason": "这是关键结果表，适合放在关键结果部分辅助定位核心数值。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "candidate_pages": [
+          {
+            "page_number": 13,
+            "score": 8,
+            "matched_terms": [
+              "table 6",
+              "ablation",
+              "experiments",
+              "crackseg"
+            ],
+            "snippet": "the HR branch, while ERLA is exclusively used in the LR branch. The results are shown in Table 6. By substituting the convolution with MSSRA, the model’s mIoU increased to 77.60 %, showi",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_013_fig_table_5.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_013_fig_table_5.png",
+                "width": 1494,
+                "height": 183,
+                "size_bytes": 64140,
+                "label": "Table 5",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "reject",
+                  "quality_reason_codes": [
+                    "table_text_contamination_suspected"
+                  ],
+                  "page_coverage_ratio": 0.075141,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 1086,
+                  "table_body_rows": 2,
+                  "caption_text_chars": 124,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "reject_visual_quality"
+              },
+              {
+                "filename": "page_013_fig_fig_13.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_013_fig_fig_13.png",
+                "width": 996,
+                "height": 787,
+                "size_bytes": 106644,
+                "label": "Fig. 13",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.215367,
+                  "visual_rect_count": 24,
+                  "visual_body_ratio": 1.0,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 212,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 14,
+            "score": 8,
+            "matched_terms": [
+              "table 6",
+              "ablation",
+              "experiments",
+              "crackseg"
+            ],
+            "snippet": "Y. Li, Z. Ma and R. Ma Table 6 Ablation experiments on CrackSeg9k. Model mIoU (%) Params (M) GFLOPs FPS Baseline 77.04 0",
+            "images": [
+              {
+                "filename": "page_014_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_014_img_01.jpeg",
+                "width": 1359,
+                "height": 666,
+                "size_bytes": 105417
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_014_fig_fig_14.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_014_fig_fig_14.png",
+                "width": 928,
+                "height": 521,
+                "size_bytes": 91171,
+                "label": "Fig. 14",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.132853,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.82981,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 51,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 9,
+            "score": 3,
+            "matched_terms": [
+              "ablation",
+              "experiments",
+              "crackseg"
+            ],
+            "snippet": "rations on CrackSeg9k and 20,000 iterations on Concrete3k and Asphalt3k. Notably, for the ablation studies on CrackSeg9k, the random crop size is 200 × 200, with 20,000 iterations per expe",
+            "images": [],
+            "figure_assets": [
+              {
+                "filename": "page_009_fig_table_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_009_fig_table_1.png",
+                "width": 1431,
+                "height": 303,
+                "size_bytes": 77375,
+                "label": "Table 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.119153,
+                  "visual_rect_count": 0,
+                  "visual_body_ratio": 0.0,
+                  "paragraph_text_chars": 253,
+                  "table_body_rows": 3,
+                  "caption_text_chars": 245,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "page-proximity-and-caption-cues"
+      },
+      {
+        "id": "Table 7",
+        "caption": "Performance comparison of different attention mechanisms in the HR",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "placeholder",
+        "candidate_pages": [
+          {
+            "page_number": 14,
+            "score": 8,
+            "matched_terms": [
+              "table 7",
+              "performance",
+              "comparison",
+              "different",
+              "attention",
+              "mechanisms"
+            ],
+            "snippet": "+MSSRA 77.60 0.79 0.147 185.1 +ERLA 77.83 0.80 0.162 163.8 +BDCRFE 78.05 0.82 0.185 143.7 Table 7 Performance comparison of different attention mechanisms in the HR branch. Module mIoU (%",
+            "images": [
+              {
+                "filename": "page_014_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_014_img_01.jpeg",
+                "width": 1359,
+                "height": 666,
+                "size_bytes": 105417
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_014_fig_fig_14.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_014_fig_fig_14.png",
+                "width": 928,
+                "height": 521,
+                "size_bytes": 91171,
+                "label": "Fig. 14",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.132853,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.82981,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 51,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 1,
+            "score": 3,
+            "matched_terms": [
+              "performance",
+              "different",
+              "attention"
+            ],
+            "snippet": "ative state-of-the-art models and also achieves the best trade-off between efficiency and performance. Additionally, a robustness benchmark on common corruptions shows the proposed model degr",
+            "images": [
+              {
+                "filename": "page_001_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_01.png",
+                "width": 118,
+                "height": 117,
+                "size_bytes": 479
+              },
+              {
+                "filename": "page_001_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_02.jpeg",
+                "width": 236,
+                "height": 298,
+                "size_bytes": 40101
+              },
+              {
+                "filename": "page_001_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_001_img_03.png",
+                "width": 248,
+                "height": 272,
+                "size_bytes": 88304
+              }
+            ],
+            "figure_assets": []
+          },
+          {
+            "page_number": 2,
+            "score": 3,
+            "matched_terms": [
+              "performance",
+              "comparison",
+              "different",
+              "attention"
+            ],
+            "snippet": "al regions of the image, CNNs can accurately identify and locate cracks, maintaining high performance regardless of variations in crack morphology and position. Although CNNs have demonstrate",
+            "images": [
+              {
+                "filename": "page_002_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_img_01.jpeg",
+                "width": 1040,
+                "height": 863,
+                "size_bytes": 201527
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_002_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_002_fig_fig_1.png",
+                "width": 715,
+                "height": 653,
+                "size_bytes": 250318,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.128245,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853002,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 45,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "page-proximity-and-caption-cues"
+      }
+    ]
+  }
+}

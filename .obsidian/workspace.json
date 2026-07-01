@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4ec6c877f194a8f8",
+        "id": "73aa2131d19085d8",
         "type": "tabs",
         "children": [
           {
-            "id": "4491aa2841d9e10f",
+            "id": "4c5c7e55610cde7a",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf"
+                "file": "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1)"
+              "icon": "lucide-file",
+              "title": "ECFormer_crack_segmentation"
             }
           }
         ]
@@ -148,16 +150,27 @@
               "icon": "lucide-list",
               "title": "note1 的大纲"
             }
+          },
+          {
+            "id": "86d1e683ab8fe50f",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 573.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "apex-dashboard:打开工作台": false,
       "nutstore-sync:Start sync": false,
       "nutstore-sync:Stop sync": false,
       "bases:新建数据库": false,
@@ -167,57 +180,59 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "vscode-editor:新建代码文件": false
+      "vscode-editor:新建代码文件": false,
+      "realclaudian:Open Claudian": false
     }
   },
-  "active": "c0a8becf56e218ad",
+  "active": "4c5c7e55610cde7a",
   "lastOpenFiles": [
-    "1_日期/五月/5_10_CTCFNet/CTCFNet_CNN-Transformer_Complementary_and_Fusion_Network_for_High-Resolution_Remote_Sensing_Image_Semantic_Segmentation.pdf",
-    "1_日期/五月/5_10_CTCFNet/CTCFNet_CNN-Transformer_Complementary_and_Fusion_Network_for_High-Resolution_Remote_Sensing_Image_Semantic_Segmentation.pdf.crdownload",
-    "1_日期/五月/5_10_CTCFNet",
-    "1_日期/五月/新建文件夹",
-    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/未命名.md",
-    "1_日期/五月/5_1曲率引导的注意力/LCGA.md",
-    "高光谱/Transformer相关/HMOSD_基于增强超像素分割和注意力机制的海面溢油检测/Hyperspectral Marine Oil Spill Detection Network With Enhanced Superpixel Segmentation and Attention Mechanisms(1).pdf",
-    "高光谱/Transformer相关/ASSA_自适应transformer/ASSA.md",
-    "高光谱/Transformer相关/ASSA_自适应transformer/Zhou_Adapt_or_Perish_Adaptive_Sparse_Transformer_with_Attentive_Feature_Refinement_CVPR_2024_paper.pdf",
-    "高光谱/Transformer相关/ASSA_自适应transformer/overview.png",
-    "1_日期/五月/5_2MKUnet/MKUnet.md",
-    "1_日期/五月/5_2MKUnet/2509.18493v1.pdf",
-    "1_日期/五月/5_2MKUnet/屏幕截图 2026-05-02 143352.png",
-    "1_日期/五月/5_1曲率引导的注意力/CGA_Curvature-Guided_Attention_for_Remote_Sensing_Image_Super-Resolution.pdf",
-    "1_日期/五月/5_1曲率引导的注意力/屏幕截图 2026-05-02 161150.png",
-    "1_日期/五月/5_1曲率引导的注意力/LCGA.png",
-    "1_日期/五月/5_1曲率引导的注意力/overall.png",
-    "高光谱/mamba相关/DualMamba_一种用于高光谱图像分类的轻量级光谱空间mamba卷积网络/DualMamba：A Lightweight Spectral-Spatial Mamba-Convolution Network for Hyperspectral Image Classification.pdf",
-    "1_日期/四月/4_26_坐标注意力适配溢油方向性/坐标注意力.md",
-    "~$论文.xlsx",
-    "1_日期/四月/4_25_空洞卷积降低噪声/HDFNet.md",
-    "1_日期/四月/4_25_空洞卷积降低噪声/屏幕截图 2026-04-25 225228.png",
-    "1_日期/四月/4_21__PDmatch/PDMatch框架.md",
-    "1_日期/四月/4_8_rwkv/2305.13048v2.pdf",
-    "1_日期/四月/4_25_空洞卷积降低噪声/屏幕截图 2026-04-25 225253.png",
-    "1_日期/四月/4_25_空洞卷积降低噪声/屏幕截图 2026-04-25 225246.png",
-    "1_日期/四月/4_14_unet中加入Mamba,skipconnection改进CM_unet/CM-UNet_快速阅读摘要报告.md",
-    "1_日期/四月/4_14_unet中加入Mamba,skipconnection改进CM_unet/cmunet.md",
-    "1_日期/四月/4_13_物理特性和moeRingmoe/idea.md",
-    "1_日期/四月/4_13_物理特性和moeRingmoe/屏幕截图 2026-04-13 224803.png",
-    "1_日期/四月/4_13_物理特性和moeRingmoe/ringmoe遥感大模型零标注泛化.md",
-    "屏幕截图 2026-04-13 224810.png",
-    "1_日期/未命名/如何改模块.md",
-    "1_日期/四月/4_10_graphunet/4_10.md",
-    "1_日期/四月/4_9_三元组损失/三元组损失.md",
-    "1_日期/四月/4_8_rwkv/rwkv.md",
-    "1_日期/四月/4_7_MOE/MOE.md",
-    "1_日期/三月/3_30_Moco/MoCo_中文总结.md",
-    "1_日期/三月/3_30_Moco/Moco_Summary.md",
-    "1_日期/3_30_Moco/Moco.md",
-    "1_日期/三月/3_29_S2Gformer/快速阅读摘要报告.md",
-    "1_日期/三月/3_26_graphormer/graphormer.md",
-    "1_日期/四月/4_1_mamba与知识蒸馏/Byte_Latent_Mamba论文总结.md",
-    "1_日期/3_21_SPGFormer_将图论方法融合/未命名.md",
-    "1_日期/四月/4_1_mamba与知识蒸馏/师生模型.md",
-    "1_日期/高光谱海面溢油检测摘要报告.md",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.cfe6e922b27a",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.e6a25913907e",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.6a65cd9eb6e4",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.d2d1ad425a1e",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.ff75891b13d3",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.7c61105602a5",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.d44eab9e0465",
+    "研究课题/03_裂缝分割/ECFormer/images/Table10_BDCRFE消融.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Table9_注意力对比.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Table5_模块消融.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Table4_场景数据集对比.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Table3_CrackSeg9k对比.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Fig14_MSSRA消融.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Fig13_效率对比.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Fig12_混凝土定性.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Fig11_沥青定性.png",
+    "研究课题/03_裂缝分割/ECFormer/images/Fig10_定性结果2.png",
+    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation/images",
+    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation",
+    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table9_attention_compare/images",
+    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table9_attention_compare",
+    "研究课题/02_溢油检测/坐标注意力/坐标注意力.md",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md",
+    "总览.canvas",
+    "研究课题/05_基础架构/RWKV/rwkv.md",
+    "研究课题/05_基础架构/Byte_Latent_Mamba/师生模型.md",
+    "研究课题/05_基础架构/Byte_Latent_Mamba/Byte_Latent_Mamba论文总结.md",
+    "研究课题/07_待读队列/待读/1-s2.0-S1568494625013821-main_笔记.md",
+    "研究课题/06_实验日志/残差创新.md",
+    "研究课题/06_实验日志/OpenCode_OhMyOpenCode_使用指南.md",
+    "研究课题/06_实验日志/5_20pulearning/pulearning/README.md",
+    "研究课题/06_实验日志/三月内容.md",
+    "研究课题/02_溢油检测/高光谱海面溢油检测摘要报告.md",
+    "研究课题/03_裂缝分割/纵向裂缝检测/full.md",
+    "研究课题/03_裂缝分割/纵向裂缝检测/纵向裂缝检测_纹理重建与深度分割笔记.md",
+    "研究课题/03_裂缝分割/LMA-Net/LMA-Net_土壤裂缝分割笔记.md",
+    "研究课题/03_裂缝分割/LMA-Net/full.md",
+    "研究课题/04_物理融合/PINN_流体/PINNs_fluid_mechanics_review/PINNs_fluid_mechanics_review.md",
+    "研究课题/04_物理融合/PINN_物理先验/论文总结.md",
+    "研究课题/04_物理融合/PINN_物理先验/PINN_快速阅读摘要报告.md",
+    "研究课题/01_高光谱分类/CNN混合系/CTCFNet/论文总结.md",
+    "研究课题/01_高光谱分类/UNet系/MKUnet/MKUnet.md",
+    "研究课题/03_裂缝分割/LCGA/LCGA.md",
+    "研究课题/02_溢油检测/HDFNet/HDFNet.md",
+    "研究课题/01_高光谱分类/CNN混合系/PDmatch/PDMatch框架.md",
+    "研究课题/01_高光谱分类/UNet系/CM-UNet/CM-UNet_快速阅读摘要报告.md",
+    "研究课题/01_高光谱分类/UNet系/CM-UNet/cmunet.md",
     "组.canvas"
   ]
 }

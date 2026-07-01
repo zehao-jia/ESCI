@@ -1,0 +1,613 @@
+{
+  "status": "ok",
+  "script": "extract_evidence.py",
+  "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+  "title": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb",
+  "evidence_pack": {
+    "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+    "problem_evidence": [
+      {
+        "claim": "Yet, for real-world applications, still cannot incorporate seamlessly (multi-fidelity) data into existing algorithms, and for industrial-complexity problems the mesh generation is time consuming and still an art.",
+        "evidence": "Yet, for real-world applications, still cannot incorporate seamlessly (multi-fidelity) data into existing algorithms, and for industrial-complexity problems the mesh generation is time consuming and still an art.",
+        "source_section": "introduction",
+        "page_hint": ""
+      },
+      {
+        "claim": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes.",
+        "evidence": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes.",
+        "source_section": "introduction",
+        "page_hint": ""
+      },
+      {
+        "claim": "PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-order CFD codes [2] for solving the standard forward problems.",
+        "evidence": "PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-order CFD codes [2] for solving the standard forward problems.",
+        "source_section": "introduction",
+        "page_hint": ""
+      },
+      {
+        "claim": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning.",
+        "evidence": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning.",
+        "source_section": "introduction",
+        "page_hint": ""
+      }
+    ],
+    "task_evidence": [
+      {
+        "claim": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+        "evidence": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "claim": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+        "evidence": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "claim": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+        "evidence": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+        "source_section": "task",
+        "page_hint": ""
+      }
+    ],
+    "data_evidence": [
+      {
+        "claim": "At the end, the time-dependent data are collected for PINN training and The simulation results of the 3D flow are shown in Fig.",
+        "evidence": "At the end, the time-dependent data are collected for PINN training and The simulation results of the 3D flow are shown in Fig.",
+        "source_section": "data",
+        "page_hint": ""
+      }
+    ],
+    "method_evidence": [
+      {
+        "claim": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+        "evidence": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "evidence": "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle.",
+        "evidence": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "mechanism_evidence": [
+      {
+        "claim": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+        "evidence": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "evidence": "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle.",
+        "evidence": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "results_evidence": [
+      {
+        "claim": "Moreover, some other researches on PINNs focused on the development of the neural network architecture and the training, e.g., using multi-fidelity framework [34], adaptive activation functions [35] and dynamic weights the loss function [36], hard constraints [37] and CNN-based network architectures [38], which can improve the performance of PINNs on different problems.",
+        "evidence": "Moreover, some other researches on PINNs focused on the development of the neural network architecture and the training, e.g., using multi-fidelity framework [34], adaptive activation functions [35] and dynamic weights the loss function [36], hard constraints [37] and CNN-based network architectures [38], which can improve the performance of PINNs on different problems.",
+        "source_section": "experiment",
+        "page_hint": ""
+      },
+      {
+        "claim": "The loss function in PINN can be defined as: L = Ldata +LPDE, (4) where Ldata = 1 ∥u(xi data,ti data)−ui data ∥2 + 1 ∥v(xi data,ti data)−vi data ∥2 + 1 ∥w(xi data,ti data)−wi data ∥2, (5) and LPDE = 1 ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u.",
+        "evidence": "The loss function in PINN can be defined as: L = Ldata +LPDE, (4) where Ldata = 1 ∥u(xi data,ti data)−ui data ∥2 + 1 ∥v(xi data,ti data)−vi data ∥2 + 1 ∥w(xi data,ti data)−wi data ∥2, (5) and LPDE = 1 ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u.",
+        "source_section": "experiment",
+        "page_hint": ""
+      },
+      {
+        "claim": "3.3 Inference results For a quantitative assessment, we first define the relative L2- norm error as the evaluation metric, which is expressed as: εV = ∥VCFD −ˆV ∥2 ∥VCFD ∥2 ×100%, (7) where V ∈{u,v,w, p}; VCFD and ˆV account for the CFD data and the output of PINNs, respectively.",
+        "evidence": "3.3 Inference results For a quantitative assessment, we first define the relative L2- norm error as the evaluation metric, which is expressed as: εV = ∥VCFD −ˆV ∥2 ∥VCFD ∥2 ×100%, (7) where V ∈{u,v,w, p}; VCFD and ˆV account for the CFD data and the output of PINNs, respectively.",
+        "source_section": "experiment",
+        "page_hint": ""
+      },
+      {
+        "claim": "However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%).",
+        "evidence": "However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%).",
+        "source_section": "experiment",
+        "page_hint": ""
+      }
+    ],
+    "ablation_evidence": [],
+    "limitations_evidence": [],
+    "equation_candidates": [
+      {
+        "equation": "O(10−3)",
+        "source_section": "method",
+        "kind_hint": "complexity"
+      },
+      {
+        "equation": "L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefﬁcients for different loss terms",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "L = Ldata +LPDE, (4) where Ldata = 1 Nu Nu ∑ i ∥u(xi data,ti data)−ui data ∥2 + 1 Nv Nv ∑ i ∥v(xi data,ti data)−vi data ∥2 +",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "LPDE = 1 Nf Nf ∑ i 4 ∑ j ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "Loss = ω1LossF +ω2Loss∇ρ|D +ω3Lossinflow +ω4Lossp∗ +ω5 (LossMass +LossMomentum +LossEnergy)+ω6Lossn·u, (10) whre the last term",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "L = ω1LPDE +ω2LIC +ω3LBC +ω4Ldata, (19) where LPDE is the PDEs residual loss, LIC is the initial condition loss, LBC is the",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i=1, where the number of points (denoted by N) for different loss terms can be different",
+        "source_section": "method",
+        "kind_hint": "equation"
+      }
+    ],
+    "figure_captions": [
+      {
+        "id": "Fig. 1",
+        "caption": "Let the hidden variable of the kth hidden layer be"
+      },
+      {
+        "id": "Fig. 1",
+        "caption": "Schematic of a physics-informed neural network (PINN). A fully-connected neural network, with time and space"
+      },
+      {
+        "id": "Fig. 1",
+        "caption": ", we will describe the governing equations, the loss"
+      },
+      {
+        "id": "Fig. 2",
+        "caption": "Case study of PINNs for incompressible flows: illustration of simulating the 3D wake flow over a circular"
+      },
+      {
+        "id": "Fig. 2",
+        "caption": ", where Fig. 2(a) shows the iso-surface of streamwise"
+      },
+      {
+        "id": "Fig. 3",
+        "caption": "Case study of PINNs for incompressible flows: problem setup for 3D flow reconstruction from 2D2C"
+      },
+      {
+        "id": "Fig. 2",
+        "caption": "(b). An Eulerian mesh with 61 × 61 × 26 grid points"
+      },
+      {
+        "id": "Fig. 4",
+        "caption": "Case study of PINNs for incompressible flows: relative L2-norm errors of velocities and pressure for different"
+      },
+      {
+        "id": "Fig. 4",
+        "caption": "It can be seen from the plots that PINNs can infer"
+      },
+      {
+        "id": "Fig. 5",
+        "caption": "Case study of PINNs for incompressible flows: inference result of PINNs for Case 2. (a) Iso-surfaces of vorticity"
+      },
+      {
+        "id": "Fig. 6",
+        "caption": "Case study of PINNs for compressible flows. Left: the density obtained by using CFD simulation with the inlet flow"
+      },
+      {
+        "id": "Fig. 7",
+        "caption": "Case study of PINNs for compressible flows."
+      }
+    ],
+    "table_captions": [
+      {
+        "id": "Table 1",
+        "caption": "Case study of PINNs for incompressible flows:"
+      }
+    ],
+    "sections": [
+      {
+        "name": "preamble",
+        "length": 1256,
+        "preview": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb https://doi.org/10.1007/s10409-021-0xxxx-x RESEARCH PAPER Physics-informed neural networks (PINNs) for fluid mechanics: A review Shengze Cai1 · Zhiping Mao2 · Zhicheng Wang3 · Minglang Yin4,5 "
+      },
+      {
+        "name": "introduction",
+        "length": 3422,
+        "preview": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: georg"
+      },
+      {
+        "name": "experiment",
+        "length": 30232,
+        "preview": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basi"
+      },
+      {
+        "name": "method",
+        "length": 616,
+        "preview": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a"
+      }
+    ],
+    "section_texts": {
+      "preamble": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb https://doi.org/10.1007/s10409-021-0xxxx-x RESEARCH PAPER Physics-informed neural networks (PINNs) for fluid mechanics: A review Shengze Cai1 · Zhiping Mao2 · Zhicheng Wang3 · Minglang Yin4,5 George Em Karniadakis1,4∗ ©Acta Mechanica Sinica, The Chinese Society of Theoretical and Applied Mechanics (CSTAM) 2020 Abstract Despite the significant progress over the last 50 years simulating flow problems using numerical discretization of the Navier-Stokes equations (NSE), we still cannot incorporate seamlessly noisy data into existing algorithms, mesh-generation is complex, and we cannot tackle high-dimensional problems governed parametrized NSE. Moreover, solving inverse flow problems is often prohibitively expensive and requires complex and expensive formulations and new computer codes. Here, we review flow physics-informed learning, integrating seamlessly data and mathematical models, and implementing them using physics-informed neural networks (PINNs). We demonstrate the effectiveness of PINNs for inverse problems related to three-dimensional wake flows, supersonic flows, and biomedical flows. Keywords Physics-informed learning · PINNs · Inverse problems · Supersonic flows · Biomedical flows",
+      "introduction": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian, 116024, China 4 School of Engineering, Brown University, Providence, RI 02912, USA 5 Center for Biomedical Engineering, Brown University, Providence, RI 02912, USA spectral, and even meshless methods [1,2,3,4]. Yet, for real-world applications, still cannot incorporate seamlessly (multi-fidelity) data into existing algorithms, and for industrial-complexity problems the mesh generation is time consuming and still an art. Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next. Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh generation. Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-order CFD codes [2] for solving the standard forward problems. This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al. data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past. In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder. also show",
+      "experiment": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basic PINN concept and subsequently discuss more recent advancements incompressible, compressible and biomedical flows. 2.1 PINNs: Basic Concepts We consider a parametrized partial differential equation (PDE) system given by: f(x,t, ˆu,∂x ˆu,∂t ˆu,...,λ) = 0, x ∈Ω, t ∈[0,T] ˆu(x,t0) = g0(x) x ∈Ω, ˆu(x,t) = gΓ (t), x ∈∂Ω, t ∈[0,T], (1) where x ∈Rd is the spatial coordinate and t is the time; f denotes the residual of the PDE, containing the differential operators (i.e., [∂x ˆu,∂t ˆu,...]); λ = [λ1,λ2,...] are the PDE parameters; ˆu(x,t) is the solution of the PDE with initial condition g0(x) and boundary condition gΓ (t) (which can be Dirichlet, Neumann or mixed boundary condition); Ω and ∂Ωrepresent the spatial domain and the boundary, respectively. the context the vanilla PINNs [15], fully-connected feed-forward neural network, which is composed of multiple hidden layers, is used to approximate the solution of the PDE ˆu by taking the space and time coordinates (x,t) as inputs, as shown in the blue panel in Fig. 1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer is used to approximate the true solution, namely ˆu ≈zL. Wk and bk denote the weight matrix and bias vector of the kth layer; σ(·) is a nonlinear activation function. All the trainable model parameters, i.e., weights and biases, are denoted by θ in this paper. In PINNs, solving a PDE system (denoted by equ. 1) is converted into an optimization problem by iteratively updating θ with the goal to minimize the loss function L: L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefficients for different loss terms. The first term LPDE in equ. 3 penalizes the residual of the governing equations. The other terms are imposed to satisfy the model predictions for the measurements Ldata, the initial condition LIC, and the boundary condition LBC, respectively. In general, the mean square error (MSE), taking the L2-norm of the sampling points, is employed to compute the losses in equ. 3. The sampling points are defined as a data set {xi,ti}N i=1, where the number of points (denoted by N) for different loss terms can be different. Generally, we use the ADAM optimizer [16], an adaptive algorithm for gradient-based first-order optimization, to optimize the model parameters θ. Remark 1: We note that the definition of the loss function shown in equ. 3 is problem-dependent, hence some terms may disappear for different types of the problem. For example, when we solve a forward problem in fluid mechanics with the known parameters (λ) and the initial/boundary conditions of the PDEs, the data loss Ldata is not necessarily required. However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inverse problems), the data measurements should be taken into account in order to make the optimization problem solvable. We also note that the PINN framework can be employed to solve an “over-determined” system, e.g., well-posed in a classical sense with initial and boundary conditions known and additionally some measurements inside the domain or at boundaries (e.g., pressure measurements). One of the key procedures to construct the PDE loss in equ. 3 is the computation of partial derivatives, which is addressed by using automatic differentiation (AD). Relying on the combination of the derivatives for a sequence of operations by using the chain rule, AD calculates the derivatives of the outputs with respect to the network inputs directly in the computational graph. The computation of partial derivatives can be calculated with an explicit expression, hence avoiding introducing truncation errors in conventional numerical approximations. At the present time, AD has been implemented in various deep learning frameworks [17,18], which makes it convenient for the development of PINNs. A schematic of PINNs is shown in Fig. 1, where the key elements (e.g., neural network, AD, loss function) are indicated different colors. Here, consider Physics-informed neural networks (PINNs) for fluid mechanics: A review Fig. 1: Schematic of a physics-informed neural network (PINN). A fully-connected neural network, with time and space coordinates (t,x) as inputs, is used to approximate the multi-physics solutions ˆu = [u,v, p,φ]. The derivatives of ˆu with respect to the inputs are calculated using automatic differentiation (AD) and then used to formulate the residuals of the governing equations in the loss function, that is generally composed of multiple terms weighted by different coefficients. The parameters of the neural network θ and the unknown PDE parameters λ can be learned simultaneously by minimizing the loss function. multi-physics problem, where the solutions include the velocity (u,v), pressure p and a scalar field φ, which are coupled in a PDE system f. The schematic in Fig. 1 represents most of the typical problems in fluid mechanics. For instance, the PDEs considered here can be the Boussinesq approximation of the Navier-Stokes equations, where φ is the temperature. Following the paradigm in Fig. 1, we will describe the governing equations, the loss function and the neural network configurations of PINNs case-by-case in the rest of this paper. 2.2 Recent Advances of PINNs First proposed in [19,20], see also [15], PINNs have attracted a lot of attention in the scientific computing community as well as the fluid mechanics community. Here, we review some related works regarding the methodology and the application to fluid mechanics. Beneficial due to the high flexibility and the expressive ability in function approximation, PINNs have been extended solve various classes PDEs, e.g., integro-differential equations [21], fractional equations [21], surfaces PDEs [22] and stochastic differential equations [23]. A variational formulation of PINNs based on the Galerkin method (hp-VPINN) was proposed deal with PDEs with non-smooth solutions [24]. In addition, the variational hp-VPINN considered domain decomposition, and similar pointwise versions were also studied CPINN [25], and XPINN [26]. A general parallel implementation of PINNs with domain decomposition for flow problems is presented in [27]; the NVIDIA library SimNet [28] is also a very efficient implementation of PINNs. Another important extension is the uncertainty quantification for the PDE solutions inferred by neural networks [29,30,31,32,33]. This has been studied using the Bayesian framework [33]. Moreover, some other researches on PINNs focused on the development of the neural network architecture and the training, e.g., using multi-fidelity framework [34], adaptive activation functions [35] and dynamic weights the loss function [36], hard constraints [37] and CNN-based network architectures [38], which can improve the performance of PINNs on different problems. On the theoretical side, some recent works [39, 40,41] have provided more guarantees and insights into the convergence of PINNs. The development of the methodology has inspired a number of applications in other fields, especially in fluid mechanics where the flow phenomena can be described by the NSE. In [15], the vanilla PINN was proposed to infer the unknown parameters (e.g., the coefficient of the convection term) in the NS equations based on velocity measurements for the 2D flow over a cylinder. Following this work, PINNs were then applied to various flows [10, 11,12,13,14,42,43,44,45,46,47,48,49], covering the applications compressible flows [13], biomedical flows [14,42,50], turbulent convection flows [48], free boundary and Stefan problems [47], etc. The main Shengze Cai1 et al. 𝐮velocity 𝐯velocity 𝐰velocity pressure Inflow (a) (b) Fig. 2: Case study of PINNs for incompressible flows: illustration of simulating the 3D wake flow over a circular cylinder. (a) Iso-surface of the vorticity (x-component) in the whole domain color-coded by the streamwise velocity. The cube with blue edges represents the computational domain in this case. (b) Velocity and pressure fields in the domain. The simulation was performed by the CFD solver Nektar, which is based on the spectral/hp element method [2]. attractive advantage of PINNs in solving fluid mechanics problems is that a unified framework (shown in Fig. 1) can be used for both forward and inverse problems. Compared to the traditional CFD solvers, PINNs are superior at integrating the data (observations of the flow quantities) and physics (governing equations). A promising application is on the flow visualization technology [12,51], where the flow fields can be easily inferred from the observations such as concentration fields and images. On the contrary, such inverse problems are difficult for conventional CFD solvers. More relevant works on mechanics in general can be found in [52] for turbulent flow, [53] for phase-field fracture model, and [54] for inferring modulus in a nonhomogeneous material. 3 Case Study for 3D Incompressible Flows In this section, we demonstrate the effectiveness of PINNs for solving inverse problems in incompressible flows. In particular, we apply PINNs to reconstruct the 3D flow fields based on a few two-dimensional and two-component (2D2C) velocity observations. The proposed algorithm is able to infer the full velocity and pressure fields very accurately with limited data, which is promising for diagnosis of complex flows when only 2D measurements (e.g., planar particle image velocimetry) are available. 3.1 Problem setup We consider the 3D wake flow past a stationary cylinder at Reynolds number Re = 200 in this section. In order to evaluate the performance of PINNs, we generate the reference solution numerically by using the spectral/hp element method [2]. The computational domain is defined [−7.5,28.5] × [−20,20] × [0,12.5], where the coordinates are non-dimensionalized by the diameter of the cylinder. The center the cylinder located (x,y) = (0,0). We assume that the velocity (u = 1) is uniform at the inflow boundary where x = −7.5. A periodic boundary condition is used at the lateral boundaries where y = ±20, and the zero-pressure is prescribed at the outlet where x = 28.5. Moreover, the no-slip boundary condition imposed the cylinder surface. The governing equations this case study are the dimensionless incompressible Navier-Stokes equations with Re = 200. Under this configuration, the wake flow over the cylinder is 3D and unsteady. The simulation is performed until the vortex shedding flow becomes stable. At the end, the time-dependent data are collected for PINN training and The simulation results of the 3D flow are shown in Fig. 2, where Fig. 2(a) shows the iso-surface of streamwise vorticity (ωx = −0.3) color-coded with the streamwise velocity u. In this section, we are interested in the 3D flow reconstruction problem from limited data, and we only Physics-informed neural networks (PINNs) for fluid mechanics: A review 𝐱−plane 𝐲−plane 𝐳−plane (a) (b) (c) Fig. 3: Case study of PINNs for incompressible flows: problem setup for 3D flow reconstruction from 2D2C observations. (a) Case 1: two x-planes (x = 1.5,7.5), one y-plane (y = 0) and two z-planes (z = 4.0,9.0) are observed. (b) Case 2: two x-planes (x = 1.5,7.5), one y-plane (y = 0) and one z-plane (z = 6.4) are observed. (c) Case 3: one x-plane (x = 1.5), one y-plane (y = 0) and one z-plane (z = 6.4) are observed. Note that for the cross-planes, only the projected vectors are measured. The goal is to infer the 3D flow in the investigated domain using PINNs from these 2D2C observations. Table 1: Case study of PINNs for incompressible flows: details of the 2D2C observations. Cross-section Observed Observed velocity components spatial resolution x-plane (v,w) 61×26 y-plane (u,w) 61×26 z-plane (u,v) 61×61 focus on a sub-domain in the wake flow, namely Ωs: [1.5,7.5] × [−3,3] × [4,9], which is represented by a cube with blue edges in Fig. 2(a). The contours of the three velocity components and pressure field are shown in Fig. 2(b). An Eulerian mesh with 61 × 61 × 26 grid points is used for plotting. To demonstrate the unsteadiness of the motion, we consider 50 snapshots with ∆t = 0.2, which is about two periods of the vortex shedding cycle. Here, we aim to apply PINNs for reconstructing the 3D flow field from the velocity observations of a few 2D planes. As illustrated in Fig. 3, three different “experimental” setups are considered in this paper: – Case 1: two x-planes (x = 1.5,7.5), one y-plane (y = 0) and two z-planes (z = 4.0,9.0) are observed. – Case 2: two x-planes (x = 1.5,7.5), one y-plane (y = 0) and one z-plane (z = 6.4) are observed. – Case 3: one x-plane (x = 1.5), one y-plane (y = 0) and one z-plane (z = 6.4) are observed. We note that for these cross-planes, only the projected vectors (two components) are considered known. For example, the velocities (u,v) can be observed on the z-plane, while the orthogonal component (w) is unknown. The purpose of doing this is to mimic the planar particle image velocimetry in real experiments. Moreover, the resolutions of these 2D2C observations are different, which can be found in Table 1. 3.2 Implementation of PINNs Given the observation data on the cross-planes, we train a PINNs model to approximate the flow fields over the space- time domain. The PINN in this section take (x,t) = (x,y,z,t) as inputs and outputs the velocity and pressure (u,v,w, p). The loss function in PINN can be defined as: L = Ldata +LPDE, (4) where Ldata = 1 ∥u(xi data,ti data)−ui data ∥2 + 1 ∥v(xi data,ti data)−vi data ∥2 + 1 ∥w(xi data,ti data)−wi data ∥2, (5) and LPDE = 1 ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u. The data loss Ldata is composed of three components, and the number of training data (namely Nu, Nv and Nw) depends on the number of observed planes, the data resolution of each plane as well as the number of snapshots. On the other hand, the residual points for LPDE can be randomly selected, and here we sample Nf = 3×106 points over the investigated space and time domain Ωs. Note that in this study, the boundary and initial conditions are not required unlike the classical setting. Moreover, Shengze Cai1 et al. Fig. 4: Case study of PINNs for incompressible flows: relative L2-norm errors of velocities and pressure for different flow reconstruction setups. These three cases correspond to those shown in Fig. 3. The errors are computed over the entire investigated domain. information about the pressure is given. The weighting coefficients for the loss terms are all equal to 1. A fully-connected neural network with 8 hidden layers and 200 neurons per layer is employed. The activation function of each neuron is σ = sin(·). We apply the ADAM optimizer with mini-batch for network training, where a batch size of N = 104 is used for both data and residual points. The network is trained for 150 epochs with learning rates 1×10−3, 5×10−4 and 1×10−4 for every 50 epochs. After training, the velocity and pressure fields are evaluated on the Eulerian grid for comparison and visualization. 3.3 Inference results For a quantitative assessment, we first define the relative L2- norm error as the evaluation metric, which is expressed as: εV = ∥VCFD −ˆV ∥2 ∥VCFD ∥2 ×100%, (7) where V ∈{u,v,w, p}; VCFD and ˆV account for the CFD data and the output of PINNs, respectively. We compute the errors in the investigated time domain, which are shown in Fig. 4. It can be seen from the plots that PINNs can infer the 3D flow very accurately for Case 1 and Case 2; using 5 planes (Case 1) is slightly better than using 4 planes (Case 2). When only 3 cross-planes are available (Case 3), the errors become much larger. However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%). We note that the errors of w-velocity are larger than the other components since the w-velocity magnitude is relatively small. Moreover, we observe larger discrepancy for the initial and final time instants, which can be attributed to the lack of training data for computing derivatives at t < 0 and t > 10. This generally happens in the cases when the initial condition is not provided in the unsteady case [12]. To visualize more details, we emphasize the result of Case 2 and demonstrate the iso-surface of vorticity magnitude and iso-surfaces of pressure at t = 8.0 in Fig. 5, where Fig. 5(a) shows the reference CFD data and Fig. 5(b) shows the result inferred by PINNs. The vorticity value is |ω| = 1.2 and the color represents the streamwise velocity component. It can be seen that the PINNs inference result (inferred from a few 2D2C observations) is very consistent with the CFD simulation. In addition, the velocities (u,v) at a single point (x = 3,y = 0,z = 6.4) against time are plotted in Fig. 5(c), where we can find that PINNs can capture the unsteadiness of vortex shedding flow very accurately. 4 Case Study for Compressible Flows PINNs have also been used in simulating high-speed flows [13]. In this section, we consider the following 2D steady compressible Euler equations: ∇· f(U) = 0, x ∈Ω⊂R2, (8) where U = [ρ,ρu,ρv,ρE]T, f = (G1,G2) with G1(U) = [ρu, p + ρu2,ρuv, pu + ρuE], G2(U) = [ρv,ρuv, p+ρv2, pv+ρvE]. Here, ρ is the density, p is the pressure, [u, v] are the velocity components, and E is the total energy. We use the additional equation of state, which describes the relation of the pressure and energy, to close the above Euler equations. For instance, we consider the equation of state for a polytropic gas given by p = (γ −1) ρE −1 2ρ∥u∥2 (9) where γ is the adiabatic index and u = (u,v). We shall employ the PINNs to solve the inverse problem of the compressible Euler equ. 8. In particular, we shall infer the density, pressure and velocity fields by using PINNs based on the information of density gradients, Physics-informed neural networks (PINNs) for fluid mechanics: A review vorticity (a) (b) (c) pressure pressure vorticity Fig. 5: Case study of PINNs for incompressible flows: inference result of PINNs for Case 2. (a) Iso-surfaces of vorticity magnitude (top) and pressure (bottom) at t = 8.0 from CFD data. (b) Iso-surfaces of vorticity magnitude (top) and pressure (bottom) at t = 8.0 inferred by PINNs. (c) Point measurement (x = 3,y = 0,z = 6.4) of velocity (u,v) against time. In this case, the 3D flow is inferred by PINNs from four cross-planes. limited data of pressure (pressure on the surface of the body), inflow conditions and global physical constrains. 4.1 Problem setup We consider a 2D bow shock wave problem. For traditional CFD simulations, it is crucial that the boundary conditions, which play an important role, are properly implemented. However, for the shock wave problem in high-speed flows, the boundary conditions in real experiments are usually not known and can only be estimated approximately. In the present work, instead of using most of the boundary conditions required by the traditional CFD simulation, we solve the Euler equ. 8 using PINNs based on the data of density gradients motivated the Schlieren photography available experimentally; additionally, we use limited data of the surface pressure obtained by pressure sensors as well as the global constrains (mass, momentum and energy). We also use the inflow conditions here. Note that unlike the one-dimensional case, where the density gradient in the whole computational domain is used in [13], here we only use the density gradients in a sub-domain D of the computational domain Ω, i.e., D ⊂Ω. By combining the mathematical model and the given data, we have the weighted loss function of PINN given by Loss = ω1LossF +ω2Loss∇ρ|D +ω3Lossinflow +ω4Lossp∗ +ω5 (LossMass +LossMomentum +LossEnergy)+ω6Lossn·u, (10) whre the last term corresponds to the velocity condition on the surface. 4.2 Inference results demonstrate the effectiveness PINNs for compressible flows, we consider the bow shock problem with the following inlet flow conditions M∞= 4, p∞= 101253.6Pa, ρ∞= 1.225kg/m3, u∞= 1360.6963m/s, v∞= 0, T∞= 288K. (11) The data points for the pressure are located on the surface of the body. By using the above inflow conditions and CFD code, we can obtain the steady state flow. We show the density computed by CFD in the left plot of Fig. 6. We employ a 6×60 (6 hidden layer) neural network and train it by using layer-wise adaptive tanh activate function [35] and the Adam optimizer with the learning late being 6 × 10−4 Shengze Cai1 et al. Fig. 6: Case study of PINNs for compressible flows. Left: the density obtained by using CFD simulation with the inlet flow condition (11). Right: training loss vs. number of epochs. Fig. 7: Case study of PINNs for compressible flows. Comparison between the PINN solutions and the CFD solutions. Top: pressure p, Bottom: velocity component u. and 3 × 105 epochs. Here, we also use the technique of dynamic weights [36,11]. The history of the training loss is shown in the right plot of Fig. 6. The results of the PINN solutions for the pressure and velocity (u) are shown in Fig. 7. Observe that the PINN solutions are in good agreement with the CFD data. This indicates that we can reconstruct the flow fields for high-speed flows using some other available knowledge different from the boundary conditions required by the traditional CFD simulation. 5 Case Study for Biomedical Flows In addition to the aforementioned flow examples, PINNs have also been used in biomedical flows [14]. In this section, we consider inferring material properties of a thrombus in arterial flow described by the Navier-Stokes and Cahn-Hilliard equations. Such equations can be used for describing the mechanical interaction between thrombus and blood flow as a fluid-structure interaction (FSI) problem. The PDE system can be written as: ρ(∂u ∂t +u·∇u)+∇p = ∇·(σvis +σcoh)−µ (1−φ)u 2κ(φ) , (12) ∇·u = 0, (13) ∂t +u·∇ψ = 0, (14) ∂t +u·∇φ = τ∆ω, (15) ω = ∆φ +γg(φ), (16) g(φ) the derivative the double-well potential (φ 2 −1)2/4h2. u(x,t), p(x,t) σ(x,t), and φ(x,t) represent the velocity, pressure, stress, and phase field. h is the interfacial length; ψ denotes the auxiliary vector and its gradients are the components of the deformation gradient tensor F as follows: F := −∂ψ1 ∂y −ψ2 ∂ψ1 ∂ψ2 Physics-informed neural networks (PINNs) for fluid mechanics: A review Fig. 8: Case study for 2D flow past a thrombus with phase dependent permeability. (a) A channel with walls on the top and bottom boundaries with the inlet flow u(t,y) entering from the left side; φ=1 is the fluid. A thrombus with an impermeable core φ = −1 and permeable shell φ = 0 is present at the bottom boundary. (b) Sampling points for inferring permeability include initial points (⋆) at the time t0, inner points (⋆) from t1 to tn, boundary points (⋆) on boundaries, and point measurements (⋆) with PDE solutions. (Figure adapted from [14]). Equ. 12 is the Navier-Stokes equation with viscous and cohesive stresses, respectively, which can be written as: σvis = µ∇u, (17) σcoh = λ∇·(∇φ ⊗φ). (18) Moreover, γ, τ, and λ are the interfacial mobility, relaxation parameter, and mixing energy density, respectively. We follow the normalization in [55] and write κ = k f f , kf is the true permeability and af is the fibrin radius. We set the density ρ = 1, viscosity µ = 0.1, λ = 4.2428 × 10−5, τ = 10−6, and the interface length h= 0.05. These parameters in PINNs are non-dimensionalized values so as to be consistent with the CFD solver. The velocity at inlet Γi is set as Dirichlet boundary conditions u = g,(x,t) ∈Γi ×(0,T). We impose the no-slip boundary the wall and Neumann boundary conditions, i.e., ∂φ ∂n = ∂ω ∂n = 0,x ∈Γw ∪Γi ∪Γo for φ and ω at all boundaries. 5.1 PINNs We construct two fully-connected neural networks, Net U and Net W, where the outputs of Net U represents a surrogate model for the PDE solutions u, v, p, and φ and the outputs of Net W are PDE solutions ω, ψ1, and ψ2. Each network has 9 hidden layers with 20 neurons per layer. The total loss L is a combination of different losses as: L = ω1LPDE +ω2LIC +ω3LBC +ω4Ldata, (19) where LPDE is the PDEs residual loss, LIC is the initial condition loss, LBC is the boundary condition loss, and Ldata is the data loss. In particular: LPDE(θ,λ;XPDE) = |XPDE| ∑ x∈XPDE ∥f(x,∂t ˆu,∂x ˆu,...;λ)∥2 2 , (20) LBC(θ,λ;XBC) = |XBC| ∑ x∈XBC ∥B(ˆu,x)∥2 2 , (21) LIC(θ,λ;XIC) = |XIC| ∑ x∈XIC ˆu−ut0 2 , (22) Ldata(θ,λ;Xdata) = |Xdata| ∑ x∈Xdata ∥ˆu−udata∥2 2 , (23) where ω1, ω2, ω3, and ω4 are the weights of each term. The training sets XPDE, XBC, and XIC are sampled from the inner spatio-temporal domain, boundaries, and initial snapshot, respectively. Xdata the set that contains sensor coordinates and point measurements; |·| denotes the number of training data in the training set. In particular, B represents a combination of the Dirichlet and Neumann residuals at boundaries. Finally, we optimize the model parameters θ and the PDE parameters λ = [κ] by minimizing the total loss L(θ,λ) iteratively until the loss satisfies the stopping criteria. Minimizing the total loss is an optimization process for λ such that the outputs of the PINN satisfy the PDE system, initial/boundary conditions, and point measurements. 5.2 Problem setup We consider a computational setup with a semi-circle permeable thrombus in a channel with a steady parabolic flow coming from the left (Fig. 8). This setup is meaningful in a sense that it presents an idealized thrombus with an Shengze Cai1 et al. Fig. 9: Inference results for 2D flow past a thrombus with phase-dependent permeability. (a) History of network losses (Loss PDE, Loss IC, Loss BC, and Loss Data) and (b) inferred permeability κ as a function of φ. (c) Comparison of phase field and velocity field for κ(φ) at t = 0.78 and their absolute error. The core permeability is 0.001 and the shell permeability is set 1 as the actual values. 10,000 data points are scattered in the spatio-temporal domain from 30 snapshots (t ∈[0.03,0.93]) as the training data to infer the permeability. Inferred a and b are 7.10 and 0.0003 compared to the true value at 6.9 and 0.0. (Figure adapted from [14]) impermeable core, which consists of a fibrin clot and a permeable shell (consisting loosely-packed and partially-activated platelets). This model has been adapted as an idealized thrombus in previous works [56,57,58]. The goal is to infer the unknown permeability (for the shell and core) and velocity field based on the measurable phase field data. Fig. 8(b) presents all the types of training data, namely the initial snapshot t0 (⋆), inner spatio-temporal domain from t1 to tn (⋆), and at the boundaries (⋆). Also, point measurements (⋆) including their coordinates and phase field value are sampled in the spatio-temporal domain to calculate the data loss term in the total loss. We draw 1,000 points from an initial snapshot, 10,000 inner points to compute the PDE residuals, and 1,000 boundary points to compute the residuals at boundaries. Note that point measurements and inner points are drawn from the inner spatio-temporal domain; the former contains the PDE solutions whereas the latter does not. The thrombus is present in the middle of the channel as shown in Fig. 8(a) with permeability κ = 0.001 in the core (φ = −1) and κ = 1 in the outer shell layer (φ = 0). To express such spatial variation explicitly, we consider a relation between φ and κ in this case: κ(φ) = eaφ +b, (24) where a and b are model parameters to be optimized in the PINN model and the true values of a and b are 6.90 and 0.0. Notice that the relation is not unique in terms of its form as long as the permeability value matches the true value for φ = 0 and 1. 5.3 Inference Results We present the inference results in Fig. 9. Fig. 9(a) shows the history of the different losses, namely PDE loss, boundary condition loss (Loss BC), initial condition loss (Loss IC), and data loss (Loss Data) in (a). We trained the model with 300,000 epochs with PDE loss as the largest component. The other errors are lower than O(10−3) Plot (b) shows the inference result for κ as a function of φ; the inferred a and b are at 7.1 and 0.0003, indicating that the permeability at core area (κ(φ = −1) = 0.0011) and shell area (κ(φ = 0) = 1.0003) match the reference values well. As a qualitative comparison, we present the predicted fields of φpred and vpred and their difference with the reference data at t = 0.78 in Fig. 9(c). The phase field prediction exhibits a good agreement compared with the ground truth data. More importantly, the hidden velocity field can also be accurately inferred only based on the phase field data. Notice that the errors for the phase field are mainly distributed in and around the outlet layer of the thrombus and the errors in velocity field are mainly confined within the shell layer. 6 Summary PINNs offer a new approach to simulating realistic fluid flows, where some data are available from multimodality measurements whereas the boundary conditions or initial conditions may be unknown. While this is perhaps the prevailing scenario in practice, existing CFD solvers cannot handle such ill-posed problems and hence one can think of PINNs for fluid problems as a complementary approach to the plethora of existing numerical methods for CFD for idealized problems. There are several opportunities for further research, e.g., using PINNs for active flow control to replace expensive experiments and time-consuming large-scale simulations as in [59], or predict fast the flow at a new high Reynolds number using transfer learning techniques assuming we have available solutions at lower Reynolds numbers. Moreover, a new area for exploration could be the Physics-informed neural networks (PINNs) for fluid mechanics: A review development closure",
+      "method": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27]. The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle. Acknowledgements The last author (GEK) would like acknowledge support by the Alexander von Humboldt fellowship."
+    },
+    "candidate_chunks": {
+      "abstract": [],
+      "introduction": [
+        {
+          "text": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-...",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al.",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past.",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder.",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        },
+        {
+          "text": "also show",
+          "source_section": "introduction",
+          "page_hint": "",
+          "kind_hint": "problem"
+        }
+      ],
+      "method": [
+        {
+          "text": "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle. Acknowledgements The last author (GEK) would like acknowledge support by the Alexander von Humboldt fellowship.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        }
+      ],
+      "experiment": [
+        {
+          "text": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basic PINN concept and subsequently discuss more recent advancements incompressible, compressible and biomedical flows.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "2.1 PINNs: Basic Concepts We consider a parametrized partial differential equation (PDE) system given by: f(x,t, ˆu,∂x ˆu,∂t ˆu,...,λ) = 0, x ∈Ω, t ∈[0,T] ˆu(x,t0) = g0(x) x ∈Ω, ˆu(x,t) = gΓ (t), x ∈∂Ω, t ∈[0,T], (1) where x ∈Rd is the spatial coordinate and t is the time; f denotes the residual of the PDE, containing the differential operators (i.e., [∂x ˆu,∂t ˆu,...]); λ = [λ1,λ2,...] are the PDE parameters; ˆu(x,t) is the solution of the PDE with initial condition g0(x) and boundary condition gΓ (t) (which ca...",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer is used to approximate the true solution, namely ˆu ≈zL.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "Wk and bk denote the weight matrix and bias vector of the kth layer; σ(·) is a nonlinear activation function. All the trainable model parameters, i.e., weights and biases, are denoted by θ in this paper.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "In PINNs, solving a PDE system (denoted by equ. 1) is converted into an optimization problem by iteratively updating θ with the goal to minimize the loss function L: L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefficients for different loss terms.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "The first term LPDE in equ. 3 penalizes the residual of the governing equations.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "The other terms are imposed to satisfy the model predictions for the measurements Ldata, the initial condition LIC, and the boundary condition LBC, respectively. In general, the mean square error (MSE), taking the L2-norm of the sampling points, is employed to compute the losses in equ.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "3. The sampling points are defined as a data set {xi,ti}N i=1, where the number of points (denoted by N) for different loss terms can be different.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "Generally, we use the ADAM optimizer [16], an adaptive algorithm for gradient-based first-order optimization, to optimize the model parameters θ. Remark 1: We note that the definition of the loss function shown in equ.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "3 is problem-dependent, hence some terms may disappear for different types of the problem. For example, when we solve a forward problem in fluid mechanics with the known parameters (λ) and the initial/boundary conditions of the PDEs, the data loss Ldata is not necessarily required.",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "However, in the cases where the model parameters or the initial/boundary conditions are unknown (namely, inverse problems), the data measurements should be taken into account in order to make the optimization problem solvable. We also note that the PINN framework can be employed to solve an “over-determined” system, e.g., well-posed in a classical sense with initial and boundary conditions known and additionally some measurements inside the domain or at boundaries (e.g., pressure measurements).",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        },
+        {
+          "text": "One of the key procedures to construct the PDE loss in equ. 3 is the computation of partial derivatives, which is addressed by using automatic differentiation (AD).",
+          "source_section": "experiment",
+          "page_hint": "",
+          "kind_hint": "results"
+        }
+      ],
+      "conclusion": [],
+      "data": [
+        {
+          "text": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-...",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "also show for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle. Acknowledgements The last author (GEK) would like acknowledge support by the Alexander von Humboldt fellowship.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basic PINN concept and subsequently discuss more recent advancements incompressible, compressible and biomedical flows.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "2.1 PINNs: Basic Concepts We consider a parametrized partial differential equation (PDE) system given by: f(x,t, ˆu,∂x ˆu,∂t ˆu,...,λ) = 0, x ∈Ω, t ∈[0,T] ˆu(x,t0) = g0(x) x ∈Ω, ˆu(x,t) = gΓ (t), x ∈∂Ω, t ∈[0,T], (1) where x ∈Rd is the spatial coordinate and t is the time; f denotes the residual of the PDE, containing the differential operators (i.e., [∂x ˆu,∂t ˆu,...]); λ = [λ1,λ2,...] are the PDE parameters; ˆu(x,t) is the solution of the PDE with initial condition g0(x) and boundary condition gΓ (t) (which ca...",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer is used to approximate the true solution, namely ˆu ≈zL.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        }
+      ],
+      "general": [
+        {
+          "text": "In the last 50 years there has been a tremendous progress in computational fluid dynamics (CFD) solving numerically the incompressible and compressible Navier-Stokes equations (NSE) using finite elements, George Em Karniadakis E-mail: george karniadakis@brown.edu 1 Division of Applied Mathematics, Brown University, Providence, RI 02912, USA 2 School of Mathematical Sciences Xiamen University, 361005 China 3 Laboratory of Ocean Energy Utilization of Ministry of Education, Dalian University of Technology, Dalian...",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Moreover, solving inverse problems, e.g., for unknown boundary conditions or conductivities [5], etc., is often prohibitively expensive and requires different formulations and new computer codes. Finally, computer programs such as OpenFOAM [6] have more than 100,000 lines of code, making it almost impossible to maintain and update them from one generation to the next.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Physics-informed learning [7], introduced in a series of papers by Karniadakis’s group both for Gaussian-process regression [8,9] and physics-informed neural networks (PINNs) [10], can seamlessly integrate multifidelity/multimodality experimental data with the various Navier-Stokes formulations for incompressible flows [11,12] as well as compressible flows [13] and biomedical flows [14]. PINNs use automatic differentiation to represent all the differential operators and hence there is no explicit need for a mesh...",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Instead, the Navier-Stokes equations and any other kinematic or thermodynamic constraints can be directly incorporated in the loss function of the neural network (NN) by penalizing deviations from the target values (e.g., zero residuals for the conservation laws) and are properly weighted with any given data, e.g., partial measurements of the surface pressure. PINNs are not meant to be a replacement of the existing CFD codes, and in fact the current generation of PINNs is not as accurate or as efficient as high-...",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "This limitation is associated with the minimization of the loss function, which is a high-dimensional non-convex function, a limitation which is a grand challenge of all neural networks for even commercial machine learning. However, PINNs perform much more accurately and more efficiently than any CFD solver if any scattered partial spatio-temporal arXiv:2105.09506v1 [physics.flu-dyn] 20 May 2021 Shengze Cai1 et al.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "data are available for the flow problem under consideration. Moreover, the forward and inverse PINN formulations are identical so there is no need for expensive data assimilation schemes that have stalled progress especially for optimization and design applications of flow problems in the past.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "In this paper we first review the basic principles of PINNs and recent extensions using domain decomposition for multiphysics and multiscale flow problems. We then present new results for a three-dimensional (3D) wake formed in incompressible flow behind a circular cylinder.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "also show for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs. Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle. Acknowledgements The last author (GEK) would like acknowledge support by the Alexander von Humboldt fellowship.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "for two-dimensional (2D) supersonic flow past a blunt body, and finally we infer material parameters in simulating thrombus deformation in a biomedical flow. 2 PINNs: Physics-Informed Neural Networks In this section we first review the basic PINN concept and subsequently discuss more recent advancements incompressible, compressible and biomedical flows.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "2.1 PINNs: Basic Concepts We consider a parametrized partial differential equation (PDE) system given by: f(x,t, ˆu,∂x ˆu,∂t ˆu,...,λ) = 0, x ∈Ω, t ∈[0,T] ˆu(x,t0) = g0(x) x ∈Ω, ˆu(x,t) = gΓ (t), x ∈∂Ω, t ∈[0,T], (1) where x ∈Rd is the spatial coordinate and t is the time; f denotes the residual of the PDE, containing the differential operators (i.e., [∂x ˆu,∂t ˆu,...]); λ = [λ1,λ2,...] are the PDE parameters; ˆu(x,t) is the solution of the PDE with initial condition g0(x) and boundary condition gΓ (t) (which ca...",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "1. Let the hidden variable of the kth hidden layer be denoted by zk, then the neural network can be expressed as z0 = (x,t), zk = σ(Wkzk−1 +bk), 1 ≤k ≤L−1 zk = Wkzk−1 +bk, k = L, (2) where the output of the last layer is used to approximate the true solution, namely ˆu ≈zL.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        }
+      ]
+    },
+    "quotes": [],
+    "extraction_failures": [],
+    "evidence_quality": "high"
+  },
+  "summary": {
+    "paper_type": "AI_method",
+    "paper_type_rationale": "The paper is best treated as a method-focused technical paper.",
+    "datasets": [],
+    "metrics": [
+      "Moreover, some other researches on PINNs focused on the development of the neural network architecture and the training, e.g., using multi-fidelity framework [34], adaptive activation functions [35] and dynamic weights the loss function [36], hard constraints [37] and CNN-based network architectures [38], which can improve the performance of PINNs on different problems.",
+      "The loss function in PINN can be defined as: L = Ldata +LPDE, (4) where Ldata = 1 ∥u(xi data,ti data)−ui data ∥2 + 1 ∥v(xi data,ti data)−vi data ∥2 + 1 ∥w(xi data,ti data)−wi data ∥2, (5) and LPDE = 1 ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u.",
+      "3.3 Inference results For a quantitative assessment, we first define the relative L2- norm error as the evaluation metric, which is expressed as: εV = ∥VCFD −ˆV ∥2 ∥VCFD ∥2 ×100%, (7) where V ∈{u,v,w, p}; VCFD and ˆV account for the CFD data and the output of PINNs, respectively.",
+      "However, the result of Case 3 is still acceptable as we are able to infer the main flow features with high accuracy (the error of the streamwise velocity is mostly less than 2%)."
+    ],
+    "mechanism_signals": [
+      "for unresolved flow dynamics at very high Reynolds number using the automatic data assimilation method provided by PINNs.",
+      "Computing flow problems at scale requires efficient multi-GPU implementations in the spirit of data parallel [28] or a hybrid data parallel and model parallel paradigms as in [27].",
+      "The parallel speed up obtained for flow simulations so far is very good, suggesting that PINNs can be used in the near future for industrial complexity problems at scale that CFD methods cannot tackle."
+    ],
+    "ablation_signals": [],
+    "equation_candidates": [
+      {
+        "equation": "O(10−3)",
+        "source_section": "method",
+        "kind_hint": "complexity"
+      },
+      {
+        "equation": "L = ω1LPDE +ω2Ldata +ω3LIC +ω4LBC, (3) where ω1−4 are the weighting coefﬁcients for different loss terms",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "L = Ldata +LPDE, (4) where Ldata = 1 Nu Nu ∑ i ∥u(xi data,ti data)−ui data ∥2 + 1 Nv Nv ∑ i ∥v(xi data,ti data)−vi data ∥2 +",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "LPDE = 1 Nf Nf ∑ i 4 ∑ j ∥f j(xi f ,ti f ) ∥2, (6) f1,2,3 = ∂u ∂t +(u·∇)u+∇p−1 Re∇2u, f4 = ∇·u",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "Loss = ω1LossF +ω2Loss∇ρ|D +ω3Lossinflow +ω4Lossp∗ +ω5 (LossMass +LossMomentum +LossEnergy)+ω6Lossn·u, (10) whre the last term",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "L = ω1LPDE +ω2LIC +ω3LBC +ω4Ldata, (19) where LPDE is the PDEs residual loss, LIC is the initial condition loss, LBC is the",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      }
+    ],
+    "section_keys": [
+      "preamble",
+      "introduction",
+      "experiment",
+      "method"
+    ],
+    "pdf_used": true,
+    "candidate_chunk_sections": [
+      "data",
+      "experiment",
+      "general",
+      "introduction",
+      "method"
+    ]
+  }
+}

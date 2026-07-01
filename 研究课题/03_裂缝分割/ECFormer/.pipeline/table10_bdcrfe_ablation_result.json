@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "script": "materialize_figure_asset.py",
+  "title": "Efficient dual-branch high-resolution transformer design for crack segmentation",
+  "note_path": "E:\\ESCI\\Research\\Papers\\研究课题\\03_裂缝分割\\ECFormer\\table10_bdcrfe_ablation\\table10_bdcrfe_ablation",
+  "source_image": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Efficient_dual_branch_high_resolution_transformer_design_for_crack_segmentation\\images\\page_015_fig_table_10.png",
+  "dest_image_path": "E:\\ESCI\\Research\\Papers\\研究课题\\03_裂缝分割\\ECFormer\\table10_bdcrfe_ablation\\images\\page_015_fig_table_10.png",
+  "absolute_markdown_embed": "![Table 10](E:\\ESCI\\Research\\Papers\\研究课题\\03_裂缝分割\\ECFormer\\table10_bdcrfe_ablation\\images\\page_015_fig_table_10.png)",
+  "relative_markdown_embed": "![Table 10](images/page_015_fig_table_10.png)",
+  "label": "Table 10",
+  "output_mode": "obsidian",
+  "subdir": "研究课题/03_裂缝分割/ECFormer",
+  "vault_relative_image_path": "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation/images/page_015_fig_table_10.png",
+  "obsidian_embed": "![[Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation/images/page_015_fig_table_10.png]]"
+}

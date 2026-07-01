@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "script": "create_input_record.py",
+  "title": "Efficient dual-branch high-resolution transformer design for crack segmentation",
+  "translated_title": "高效双分支高分辨率Transformer设计用于裂缝分割",
+  "authors": [
+    "Yongshang Li",
+    "Zihan Ma",
+    "Ronggui Ma"
+  ],
+  "affiliations": [],
+  "year": "2026",
+  "venue": "Applied Soft Computing",
+  "doi": "10.1016/j.asoc.2025.114513",
+  "arxiv_id": "",
+  "source_url": "",
+  "pdf_url": "",
+  "local_pdf_path": "E:/ESCI/研究课题/03_裂缝分割/ECFormer/cracktransformer.pdf",
+  "zotero_key": "",
+  "abstract": "",
+  "source_type": "local_pdf",
+  "metadata_sources": [
+    "seed_record"
+  ],
+  "paper_id": "doi:10.1016/j.asoc.2025.114513"
+}

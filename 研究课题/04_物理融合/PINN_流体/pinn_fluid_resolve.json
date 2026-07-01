@@ -1,0 +1,14 @@
+{
+  "status": "ok",
+  "source_type": "local_pdf",
+  "source_url": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+  "local_pdf_path": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+  "title": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb",
+  "metadata_sources": [
+    "local_pdf"
+  ],
+  "doi": "10.1007/s10409-021-0xxxx-x",
+  "arxiv_id": "2105.09506",
+  "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+  "script": "resolve_paper.py"
+}

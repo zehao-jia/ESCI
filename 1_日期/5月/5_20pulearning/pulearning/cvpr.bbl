@@ -1,0 +1,301 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{DBLP:conf/ijcnn/ArazoOAOM20}
+Eric Arazo, Diego Ortego, Paul Albert, Noel~E. O'Connor, and Kevin McGuinness.
+\newblock Pseudo-labeling and confirmation bias in deep semi-supervised
+  learning.
+\newblock In {\em Proceedings of the {IEEE} International Joint Conference on
+  Neural Networks}, pages 1--8, 2020.
+
+\bibitem{DBLP:conf/aaai/BekkerD18}
+Jessa Bekker and Jesse Davis.
+\newblock Estimating the class prior in positive and unlabeled data through
+  decision tree induction.
+\newblock In {\em Proceedings of the Thirty-Second {AAAI} Conference on
+  Artificial Intelligence}, pages 2712--2719, 2018.
+
+\bibitem{DBLP:journals/ml/BekkerD20}
+Jessa Bekker and Jesse Davis.
+\newblock Learning from positive and unlabeled data: a survey.
+\newblock {\em Machine Learning}, 109(4):719--760, 2020.
+
+\bibitem{bepler2019positive}
+Tristan Bepler, Andrew Morin, Micah Rapp, Julia Brasch, Lawrence Shapiro,
+  Alex~J Noble, and Bonnie Berger.
+\newblock Positive-unlabeled convolutional neural networks for particle picking
+  in cryo-electron micrographs.
+\newblock {\em Nature Methods}, 16(11):1153--1160, 2019.
+
+\bibitem{DBLP:conf/iclr/BerthelotCCKSZR20}
+David Berthelot, Nicholas Carlini, Ekin~D. Cubuk, Alex Kurakin, Kihyuk Sohn,
+  Han Zhang, and Colin Raffel.
+\newblock Remixmatch: Semi-supervised learning with distribution matching and
+  augmentation anchoring.
+\newblock In {\em Proceedings of the 8th International Conference on Learning
+  Representations}, 2020.
+
+\bibitem{DBLP:conf/nips/BerthelotCGPOR19}
+David Berthelot, Nicholas Carlini, Ian~J. Goodfellow, Nicolas Papernot, Avital
+  Oliver, and Colin Raffel.
+\newblock Mixmatch: {A} holistic approach to semi-supervised learning.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  5050--5060, 2019.
+
+\bibitem{DBLP:conf/ijcai/Chang0Z20}
+Shizhen Chang, Bo Du, and Liangpei Zhang.
+\newblock Positive unlabeled learning with class-prior approximation.
+\newblock In {\em Proceedings of the Twenty-Ninth International Joint
+  Conference on Artificial Intelligence}, pages 2014--2021, 2020.
+
+\bibitem{DBLP:conf/nips/ChapelleWBV00}
+Olivier Chapelle, Jason Weston, L{\'{e}}on Bottou, and Vladimir Vapnik.
+\newblock Vicinal risk minimization.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  416--422, 2000.
+
+\bibitem{DBLP:conf/iconip/ChaudhariS12}
+Sneha Chaudhari and Shirish~K. Shevade.
+\newblock Learning from positive and unlabelled examples using maximum margin
+  clustering.
+\newblock In {\em Proceedings of the 19th International Conference on Neural
+  Information Processing}, volume 7665, pages 465--473, 2012.
+
+\bibitem{DBLP:conf/nips/ChenLWZW20}
+Hui Chen, Fangqing Liu, Yin Wang, Liyue Zhao, and Hao Wu.
+\newblock A variational approach for learning from positive and unlabeled data.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem{DBLP:conf/icml/ChenCCYG0W20}
+Xuxi Chen, Wuyang Chen, Tianlong Chen, Ye Yuan, Chen Gong, Kewei Chen, and
+  Zhangyang Wang.
+\newblock Self-pu: Self boosted and calibrated positive-unlabeled training.
+\newblock In {\em Proceedings of the 37th International Conference on Machine
+  Learning}, volume 119, pages 1510--1519, 2020.
+
+\bibitem{DBLP:conf/nips/PlessisNS14}
+Marthinus~Christoffel du Plessis, Gang Niu, and Masashi Sugiyama.
+\newblock Analysis of learning from positive and unlabeled data.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  703--711, 2014.
+
+\bibitem{DBLP:conf/acml/PlessisNS15}
+Marthinus~Christoffel du Plessis, Gang Niu, and Masashi Sugiyama.
+\newblock Class-prior estimation for learning from positive and unlabeled data.
+\newblock In {\em Proceedings of The 7th Asian Conference on Machine Learning},
+  volume~45, pages 221--236, 2015.
+
+\bibitem{DBLP:conf/icml/PlessisNS15}
+Marthinus~Christoffel du Plessis, Gang Niu, and Masashi Sugiyama.
+\newblock Convex formulation for learning from positive and unlabeled data.
+\newblock In {\em Proceedings of the 32nd International Conference on Machine
+  Learning}, volume~37, pages 1386--1394, 2015.
+
+\bibitem{DBLP:journals/ml/PlessisNS17}
+Marthinus~Christoffel du Plessis, Gang Niu, and Masashi Sugiyama.
+\newblock Class-prior estimation for learning from positive and unlabeled data.
+\newblock {\em Machine Learning}, 106(4):463--492, 2017.
+
+\bibitem{DBLP:conf/nips/GargWSBL21}
+Saurabh Garg, Yifan Wu, Alexander~J. Smola, Sivaraman Balakrishnan, and
+  Zachary~C. Lipton.
+\newblock Mixture proportion estimation and {PU} learning: {A} modern approach.
+\newblock In {\em Advances in Neural Information Processing Systems 34}, pages
+  8532--8544, 2021.
+
+\bibitem{gong2019loss}
+Chen Gong, Hong Shi, Tongliang Liu, Chuang Zhang, Jian Yang, and Dacheng Tao.
+\newblock Loss decomposition and centroid estimation for positive and unlabeled
+  learning.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  43(3):918--932, 2019.
+
+\bibitem{gong2021instance}
+Chen Gong, Qizhou Wang, Tongliang Liu, Bo Han, Jane~J You, Jian Yang, and
+  Dacheng Tao.
+\newblock Instance-dependent positive and unlabeled learning with labeling bias
+  estimation.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  2021.
+
+\bibitem{DBLP:conf/nips/GrandvaletB04}
+Yves Grandvalet and Yoshua Bengio.
+\newblock Semi-supervised learning by entropy minimization.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  529--536, 2004.
+
+\bibitem{DBLP:conf/nips/HammoudehL20}
+Zayd Hammoudeh and Daniel Lowd.
+\newblock Learning from positive and unlabeled data with arbitrary positive
+  shift.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem{DBLP:journals/corr/abs-1712-00409}
+Joel Hestness, Sharan Narang, Newsha Ardalani, Gregory~F. Diamos, Heewoo Jun,
+  Hassan Kianinejad, Md. Mostofa~Ali Patwary, Yang Yang, and Yanqi Zhou.
+\newblock Deep learning scaling is predictable, empirically.
+\newblock {\em CoRR}, abs/1712.00409, 2017.
+
+\bibitem{hou2018generative}
+Ming Hou, Brahim Chaib-Draa, Chao Li, and Qibin Zhao.
+\newblock Generative adversarial positive-unlabeled learning.
+\newblock In {\em Proceedings of the 27th International Joint Conference on
+  Artificial Intelligence}, pages 2255--2261, 2018.
+
+\bibitem{DBLP:conf/icml/HsiehNS19}
+Yu{-}Guan Hsieh, Gang Niu, and Masashi Sugiyama.
+\newblock Classification from positive, unlabeled and biased negative data.
+\newblock In {\em Proceedings of the 36th International Conference on Machine
+  Learning}, volume~97, pages 2820--2829, 2019.
+
+\bibitem{DBLP:conf/aaai/HuL0JM0021}
+Wenpeng Hu, Ran Le, Bing Liu, Feng Ji, Jinwen Ma, Dongyan Zhao, and Rui Yan.
+\newblock Predictive adversarial learning from positive and unlabeled data.
+\newblock In {\em Thirty-Fifth {AAAI} Conference on Artificial Intelligence},
+  pages 7806--7814, 2021.
+
+\bibitem{DBLP:conf/iclr/KatoTH19}
+Masahiro Kato, Takeshi Teshima, and Junya Honda.
+\newblock Learning from positive and unlabeled data with a selection bias.
+\newblock In {\em Preceedings of the 7th International Conference on Learning
+  Representations}, 2019.
+
+\bibitem{DBLP:journals/corr/KingmaB14}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock Adam: {A} method for stochastic optimization.
+\newblock In {\em Proceedings of the 3rd International Conference on Learning
+  Representations}, 2015.
+
+\bibitem{DBLP:conf/nips/KiryoNPS17}
+Ryuichi Kiryo, Gang Niu, Marthinus~Christoffel du Plessis, and Masashi
+  Sugiyama.
+\newblock Positive-unlabeled learning with non-negative risk estimator.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  1675--1685, 2017.
+
+\bibitem{krizhevsky2009learning}
+Alex Krizhevsky et~al.
+\newblock Learning multiple layers of features from tiny images.
+\newblock 2009.
+
+\bibitem{DBLP:conf/iclr/LiSH20}
+Junnan Li, Richard Socher, and Steven C.~H. Hoi.
+\newblock Dividemix: Learning with noisy labels as semi-supervised learning.
+\newblock In {\em Proceedings of the 8th International Conference on Learning
+  Representations}, 2020.
+
+\bibitem{DBLP:conf/icml/LiuLYL02}
+Bing Liu, Wee~Sun Lee, Philip~S. Yu, and Xiaoli Li.
+\newblock Partially supervised classification of text documents.
+\newblock In {\em Proceedings of the Nineteenth International on Machine
+  Learning}, pages 387--394, 2002.
+
+\bibitem{DBLP:conf/iclr/LoshchilovH17}
+Ilya Loshchilov and Frank Hutter.
+\newblock {SGDR:} stochastic gradient descent with warm restarts.
+\newblock In {\em Proceedings of the 5th International Conference on Learning
+  Representations}, 2017.
+
+\bibitem{DBLP:conf/aaai/LuoZCQDZWCHRL21}
+Chuan Luo, Pu Zhao, Chen Chen, Bo Qiao, Chao Du, Hongyu Zhang, Wei Wu, Shaowei
+  Cai, Bing He, Saravanakumar Rajmohan, and Qingwei Lin.
+\newblock {PULNS:} positive-unlabeled learning with effective negative sample
+  selector.
+\newblock In {\em Thirty-Fifth {AAAI} Conference on Artificial Intelligence},
+  pages 8784--8792, 2021.
+
+\bibitem{DBLP:conf/eccv/MahajanGRHPLBM18}
+Dhruv Mahajan, Ross~B. Girshick, Vignesh Ramanathan, Kaiming He, Manohar
+  Paluri, Yixuan Li, Ashwin Bharambe, and Laurens van~der Maaten.
+\newblock Exploring the limits of weakly supervised pretraining.
+\newblock In {\em Proceedings of European Conference on Computer Vision},
+  volume 11206, pages 185--201, 2018.
+
+\bibitem{northcutt2017rankpruning}
+Curtis~G. Northcutt, Tailin Wu, and Isaac~L. Chuang.
+\newblock Learning with confident examples: Rank pruning for robust
+  classification with noisy labels.
+\newblock In {\em Proceedings of the Thirty-Third Conference on Uncertainty in
+  Artificial Intelligence}, 2017.
+
+\bibitem{DBLP:journals/jmlr/RaffelSRLNMZLL20}
+Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael
+  Matena, Yanqi Zhou, Wei Li, and Peter~J. Liu.
+\newblock Exploring the limits of transfer learning with a unified text-to-text
+  transformer.
+\newblock {\em Journal of Machine Learning Research}, 21:140:1--140:67, 2020.
+
+\bibitem{DBLP:conf/icml/RamaswamyST16}
+Harish~G. Ramaswamy, Clayton Scott, and Ambuj Tewari.
+\newblock Mixture proportion estimation via kernel embeddings of distributions.
+\newblock In {\em Proceedings of the 33nd International Conference on Machine
+  Learning}, volume~48, pages 2052--2060, 2016.
+
+\bibitem{DBLP:conf/nips/SimardLDV96}
+Patrice~Y. Simard, Yann LeCun, John~S. Denker, and Bernard Victorri.
+\newblock Transformation invariance in pattern recognition-tangent distance and
+  tangent propagation.
+\newblock In {\em Neural Networks: Tricks of the Trade}, volume 1524, pages
+  239--27. Springer, 1996.
+
+\bibitem{DBLP:conf/ijcai/SuCX21}
+Guangxin Su, Weitong Chen, and Miao Xu.
+\newblock Positive-unlabeled learning from imbalanced data.
+\newblock In {\em Proceedings of the Thirtieth International Joint Conference
+  on Artificial Intelligence}, pages 2995--3001, 2021.
+
+\bibitem{DBLP:books/daglib/0097035}
+Vladimir Vapnik.
+\newblock {\em Statistical learning theory}.
+\newblock Wiley, 1998.
+
+\bibitem{xiao2017/online}
+Han Xiao, Kashif Rasul, and Roland Vollgraf.
+\newblock Fashion-mnist: a novel image dataset for benchmarking machine
+  learning algorithms.
+\newblock {\em CoRR}, 2017.
+
+\bibitem{DBLP:conf/nips/XieDHL020}
+Qizhe Xie, Zihang Dai, Eduard~H. Hovy, Thang Luong, and Quoc Le.
+\newblock Unsupervised data augmentation for consistency training.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem{DBLP:journals/tkde/YuHC04}
+Hwanjo Yu, Jiawei Han, and Kevin~Chen{-}Chuan Chang.
+\newblock {PEBL:} web page classification without negative examples.
+\newblock {\em {IEEE} Transactions on Knowledge and Data Engineering},
+  16(1):70--81, 2004.
+
+\bibitem{DBLP:journals/jcp/ZhangZ09}
+Bangzuo Zhang and Wanli Zuo.
+\newblock Reliable negative extracting based on knn for learning from positive
+  and unlabeled examples.
+\newblock {\em Journal of Computers}, 4(1):94--101, 2009.
+
+\bibitem{DBLP:conf/iclr/ZhangCDL18}
+Hongyi Zhang, Moustapha Ciss{\'{e}}, Yann~N. Dauphin, and David Lopez{-}Paz.
+\newblock mixup: Beyond empirical risk minimization.
+\newblock In {\em Proceedings of the 6th International Conference on Learning
+  Representations}, 2018.
+
+\bibitem{DBLP:conf/ccs/ZhangLZLLZZ17}
+Ya{-}Lin Zhang, Longfei Li, Jun Zhou, Xiaolong Li, Yujiang Liu, Yuanchao Zhang,
+  and Zhi{-}Hua Zhou.
+\newblock {POSTER:} {A} {PU} learning based system for potential malicious
+  {URL} detection.
+\newblock In {\em Proceedings of the Conference on Computer and Communications
+  Security}, pages 2599--2601, 2017.
+
+\bibitem{DBLP:conf/nips/ZhouBLWS03}
+Dengyong Zhou, Olivier Bousquet, Thomas~Navin Lal, Jason Weston, and Bernhard
+  Sch{\"{o}}lkopf.
+\newblock Learning with local and global consistency.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  321--328, 2003.
+
+\end{thebibliography}

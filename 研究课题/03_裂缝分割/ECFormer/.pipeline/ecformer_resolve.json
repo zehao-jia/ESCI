@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "source_type": "local_pdf",
+  "source_url": "E:\\ESCI\\研究课题\\03_裂缝分割\\ECFormer\\cracktransformer.pdf",
+  "local_pdf_path": "E:\\ESCI\\研究课题\\03_裂缝分割\\ECFormer\\cracktransformer.pdf",
+  "title": "Efficient dual-branch high-resolution transformer design for crack segmentation",
+  "metadata_sources": [
+    "local_pdf"
+  ],
+  "doi": "10.1016/j.asoc.2025.114513",
+  "paper_id": "doi:10.1016/j.asoc.2025.114513",
+  "script": "resolve_paper.py"
+}

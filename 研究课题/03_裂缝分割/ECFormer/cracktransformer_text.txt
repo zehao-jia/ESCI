@@ -1,0 +1,2260 @@
+
+=== Page 1 ===
+ 
+Contents lists available at ScienceDirect
+Applied Soft Computing
+journal homepage: www.elsevier.com/locate/asoc
+ 
+Efficient dual-branch high-resolution transformer design for crack 
+segmentation
+Yongshang Li a, c,∗iD, Zihan Ma b iD, Ronggui Ma c
+a School of Artificial Intelligence, Zhongyuan University of Technology, Zhengzhou, 450007, Henan, China
+b Department of Civil and Environmental Engineering, University of Maryland, College Park, MD 20742, USA
+c School of Information Engineering, Chang’an University, Xi’an, 710064, Shaanxi, China
+H I G H L I G H T S
+• An efficiently designed dual-branch high-resolution transformer model for crack segmentation.
+• A multi-scale spatial-reduction attention mechanism is incorporated in the high-resolution branch for detail extraction.
+• An enhanced ReLU-based linear attention mechanism is implemented in the low-resolution branch for learning global features.
+• A bidirectional cross-resolution feature enhancer is introduced to effectively integrate multi-scale features across different branches.
+A R T I C L E  I N F O
+Keywords:
+Crack segmentation
+Transformer
+Efficient self-attention
+High-resolution dense prediction
+Dual-branch network
+A B S T R A C T
+Recent studies show that Transformer-based crack segmentation models deliver impressive results. However, due 
+to the quadratic complexity of the self-attention mechanism, the computational cost becomes prohibitive when 
+handling high-resolution dense prediction tasks. This paper presents an efficient Transformer-based network for 
+crack segmentation, utilizing several specially optimized self-attention modules. The proposed model incorporates 
+a dual-branch structure, consisting of a high-resolution branch that maintains high resolution throughout and a 
+low-resolution branch that progressively reduces resolution. A multi-scale spatial-reduction attention is intro­
+duced to the high-resolution branch to capture fine details, while an enhanced ReLU-based linear attention in the 
+low-resolution branch learns global features. A bidirectional cross-resolution feature enhancement module con­
+nects the two branches, facilitating comprehensive information fusion. On the combined dataset CrackSeg9k and 
+the scenario-specific datasets Asphalt3k and Concrete3k, the proposed method obtains mIoU of 81.85 %, 81.29 %, 
+and 86.36 %, respectively, which outperforms the comparative state-of-the-art models and also achieves the best 
+trade-off between efficiency and performance. Additionally, a robustness benchmark on common corruptions 
+shows the proposed model degrades less than comparable lightweight baselines.
+1 . Introduction
+In civil engineering, the appearance of cracks is often a precursor to 
+structural damage, making early recognition and assessment of cracks 
+crucial [1]. Traditional crack detection methods rely on manual visual 
+inspection, which is not only time-consuming and labor-intensive but 
+also prone to subjective judgment, leading to inconsistent detection re­
+sults. With the rapid development of computer vision, automated crack 
+detection technology has emerged to revolutionize structural health 
+monitoring.
+Automated crack detection technology typically leverages functional 
+image acquisition devices and advanced image processing algorithms 
+to achieve rapid crack recognition and precise measurement [2,3]. The 
+current trend is to design automated detection systems integrated with 
+advanced artificial intelligence (AI) algorithms [4,5]. These systems 
+are capable of automatically identify crack characteristics, including 
+length, width, and depth, and even assess the rate and trend of crack 
+development. The application of AI technology can significantly en­
+hance the efficiency and accuracy of crack detection, while reducing 
+the interference of human factors.
+∗Corresponding author at: School of Artificial Intelligence, Zhongyuan University of Technology, Zhengzhou, 450007, Henan, China.
+ 
+Email addresses: yshli@zut.edu.cn (Y. Li), zihanma@umd.edu (Z. Ma), rgma@chd.edu.cn (R. Ma).
+https://doi.org/10.1016/j.asoc.2025.114513
+Received 11 March 2025; Received in revised form 31 October 2025; Accepted 21 December 2025
+Applied Soft Computing Journal 189 (2026) 114513 
+Available online 22 December 2025 
+1568-4946/© 2025 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+=== Page 2 ===
+Y. Li, Z. Ma and R. Ma
+Currently, convolutional neural networks (CNNs) dominate intelli­
+gent crack detection methods, with their success primarily attributed to 
+the inherent spatial inductive biases, namely locality and translation in­
+variance [5]. These characteristics enable CNNs to efficiently learn and 
+extract local features from images, making them particularly effective in 
+crack detection tasks. By focusing on local regions of the image, CNNs 
+can accurately identify and locate cracks, maintaining high performance 
+regardless of variations in crack morphology and position. Although 
+CNNs have demonstrated excellent performance in crack detection, they 
+still face several challenges and limitations. Firstly, to improve compu­
+tational efficiency and reduce the number of parameters, modern CNNs 
+typically use small convolutional kernels, such as 3 × 3 or 5 × 5 [6]. 
+While such design effectively captures fine local features, it limits the 
+model’s ability to capture global context. As a result, CNNs perform less 
+effectively in modeling large-scale global information, making it diffi­
+cult to fully leverage the structural information of the entire image for 
+more accurate predictions. Secondly, the locality of CNNs makes them 
+more sensitive to noise in images [7,8]. Since CNNs primarily rely on the 
+relationships between pixels in local regions, the presence of noise or in­
+terference in an image can lead the model to incorrectly identify these 
+pixels as meaningful features, thus compromising accuracy. This sensi­
+tivity to noise not only diminishes the model’s robustness but also limits 
+its generalization ability, meaning that the model may underperform 
+when dealing with unseen or differently distributed data.
+The emergence of Transformer has effectively addressed the lim­
+itations of CNNs, with its widely adopted self-attention mechanism 
+proving highly effective in handling long-range dependencies and in­
+herently possessing a global receptive field [9]. A comparison between 
+CNN and self-attention is shown in Fig. 1. The introduction of Vision 
+Transformer (ViT) has further demonstrated the significant potential 
+of the self-attention mechanism in computer vision [10]. However, 
+the computational complexity of the self-attention mechanism scales 
+quadratically with the input sequence length, making the computational 
+cost prohibitive when dealing with high-resolution features [11,12]. 
+Despite the remarkable advantages of Transformer in capturing global 
+features and managing long-range dependencies, its high computational 
+and memory demands limit its practical application in high-resolution 
+dense prediction.
+Based on the above observations, there is clearly a significant gap 
+between Transformer-based models and the accurate and efficient crack 
+detection, making these models impractical for real-world applications. 
+To bridge this gap, this paper proposes an Efficient Crack Transformer 
+(ECFormer). ECFormer adopts a dual-branch structure, with the core 
+innovation being the use of a customized efficient attention mech­
+anism for each branch. This design endows the model with both a 
+global receptive field and multi-scale learning capability, which are 
+crucial for crack segmentation. Compared to pure-Transformer mod­
+els, ECFormer significantly improves computational efficiency while 
+maintaining performance. Specifically, a multi-scale spatial-reduction 
+attention mechanism is designed to capture crack features at different 
+scales in the high-resolution branch, while an enhanced ReLU-based 
+linear attention mechanism with a global receptive field is applied 
+in the low-resolution branch to extract contextual crack information. 
+To facilitate comprehensive information exchange between the two 
+branches, a bidirectional cross-resolution feature enhancer bridges the 
+two branches, enabling thorough communication. The effectiveness 
+of ECFormer is demonstrated through its performance on multiple 
+crack segmentation benchmarks, and comparisons with state-of-the-art 
+models show that it greatly reduces computational cost while preserv­
+ing performance. The contributions of this paper are summarized as
+follows:
+• A high-resolution dual-branch Transformer-based model called 
+ECFormer is proposed for efficient crack segmentation tasks.
+• In the ECFormer’s high-resolution branch, a multi-scale spatial-
+reduction attention mechanism is designed to extract detailed 
+Fig. 1. Comparison of CNN and self-attention.
+features, while in the low-resolution branch, an enhanced ReLU-
+based linear attention mechanism is developed to capture global fea­
+tures. Additionally, a bidirectional cross-resolution feature enhancer 
+is designed to facilitate information exchange between the two
+branches.
+• ECFormer achieves the best performance compared to the state-
+of-the-art models on the combined dataset CrackSeg9k and the 
+scenario-specific datasets Concrete3k and Asphalt3k, and achieves 
+the best trade-off between performance and efficiency.
+• A focused robustness evaluation benchmark on CrackSeg9k, covering 
+Gaussian noise, motion blur, brightness shifts, and JPEG compres­
+sion, with five severities and an aggregate robustness score.
+2 . Related work
+There are three lines of work related to this study. The first is general 
+research on crack segmentation, which mainly includes rule-based and 
+data-driven methods. The second focuses on crack segmentation based 
+on Transformers, and the third involves improvement efforts aimed at 
+addressing the limitations of Transformer.
+2.1 . Generic crack segmentation
+The essence of image segmentation is to partition an image into mul­
+tiple regions with consistency and coherence, thereby extracting the 
+semantic information of the target objects or scenes and achieving a 
+structured understanding of the image content. Crack segmentation is a 
+specific application of image segmentation, aiming to extract crack re­
+gions from an image and distinguish them from the background. Over 
+the past decade, crack segmentation has made substantial progress, 
+evolving from early global threshold-based techniques to advanced deep 
+learning algorithms. Based on the decision-making criteria, existing 
+crack segmentation methods can be broadly categorized into two groups, 
+rule-based methods and data-driven methods.
+Rule-based methods rely on predefined rules, algorithms, or do­
+main knowledge to achieve crack segmentation. These methods typically 
+employ thresholding, edge detection, region growing, or clustering tech­
+niques, dividing regions based on conditions such as pixel intensity, 
+color characteristics, or geometric features of the image.
+Among rule-based approaches, thresholding and edge-based meth­
+ods are the most commonly used due to their simplicity and intuitive 
+nature. When the intensity distribution between crack and background 
+Applied Soft Computing 189 (2026) 114513 
+2 
+
+=== Page 3 ===
+Y. Li, Z. Ma and R. Ma
+pixels is significantly different, a global threshold can be applied to 
+the entire image, known as the global thresholding method [13–17].
+The main advantages of the global thresholding method are simplicity 
+and computational efficiency. However, it fails when the assumption 
+of two peaks in the histogram is violated. This is because, while the 
+histogram provides quantitative information about the pixel intensity 
+distribution, it neglects the spatial relationships and structural informa­
+tion between pixels, which are crucial for understanding and analyzing 
+image content. To overcome this limitation, many studies have adopted 
+methods that set thresholds based on local information [18,19]. These 
+approaches not only consider the pixel’s intensity but also its statistical 
+properties within the local neighborhood, such as the mean, variance, 
+or other texture features of the local region.
+Threshold-based crack detection methods typically perform well 
+in ideal imaging conditions, such as when cracks are clearly visible 
+and lighting is uniform. However, real-world images are often influ­
+enced by background textures and varying lighting conditions, which 
+introduce multiple types of noise during data acquisition. These fac­
+tors make it more challenging to establish an effective threshold for 
+distinguishing between crack and non-crack pixels. Moreover, cracks 
+exhibit significant morphological characteristics in terms of size, topol­
+ogy, continuity, and contour. As a result, many approaches exploit the 
+morphological characteristics of cracks to develop more robust detec­
+tion algorithms, with edge-based methods being the most common due 
+to the intuitive similarity between cracks and edges in terms of both 
+topology and morphology. Filter-based methods have been widely ap­
+plied to crack detection [20–23], with common spatial filters such as 
+the Canny [24] and Sobel [25]. At the same time, to address the sen­
+sitivity of these spatial filters to geometric transformations, researchers 
+developed crack detection methods based on frequency-domain filtering
+[26–29].
+Filter-based methods rely on local gradient variations in the image, 
+but random intensity fluctuations caused by noise can generate false 
+edges, resulting in false detection. Additionally, filter-based methods are 
+inadequate when dealing with discontinuous or morphologically com­
+plex cracks. These limitations prompted researchers to seek more robust 
+crack detection approaches, with morphological methods and active 
+contour models gaining significant attention. Morphological methods do 
+not rely on intensity gradients but instead enhance or extract morpho­
+logical features in the image by applying specific operations, such as 
+dilation, erosion. These methods are commonly used in post-processing 
+to refine edge detection results, remove noise, fill cracks, and connect 
+discontinuities [30–32]. Active contour models iteratively evolve an ini­
+tial contour in the image to adaptively approach crack edges. Since they 
+rely on a global energy minimization process, they are better suited 
+to handle discontinuous edges and track complex crack morphologies 
+[33–35]. This adaptive characteristic makes them particularly effective 
+for crack detection tasks in the presence of noise or irregular crack 
+shapes. However, whether threshold-based or edge-based, these meth­
+ods rely on predefined rules, which perform well when cracks exhibit 
+clear, regular structures. When crack shape, size, or edge information 
+deviates from the norm, the predefined rules may fail.
+Recent research trends in crack detection have shifted towards 
+data-driven models, which primarily rely on deep learning techniques 
+to automatically learn segmentation rules from large-scale annotated 
+datasets. Data-driven methods demonstrate high adaptability when 
+handling highly complex and diverse image scenarios [3].
+Fully convolutional network (FCN) [36], as one of the earliest 
+end-to-end semantic segmentation models, convert all layers in the 
+classification task into a fully convolutional architecture, enabling the 
+processing of input images of arbitrary size and achieving pixel-level 
+segmentation. This approach has shown outstanding performance in 
+segmentation tasks across natural scenes and medical imaging, lay­
+ing the foundation for subsequent research in semantic segmentation. 
+Building on the success of FCN, many researchers quickly applied 
+it to crack segmentation tasks [37–39], marking the first time the 
+reliance on manually designed operators was eliminated. UNet, pro­
+posed by Ronneberger et al. for medical imaging, is one of the most 
+widely used semantic segmentation model [40]. Its defining feature 
+is a symmetric encoder–decoder structure, combining convolution and 
+upsampling operations. UNet introduces skip connections for the first 
+time, which transfer features from the encoder directly to correspond­
+ing layers in the decoder, aiding in better recovery of details. The 
+model’s sensitivity to fine details is particularly beneficial for crack 
+segmentation tasks, as the skip connections effectively preserve spatial 
+information lost during encoding, allowing for more precise recon­
+struction of crack morphology and edges during decoding [41–43]. 
+The DeepLab series models introduced innovative techniques such as 
+dilated convolution and atrous spatial pyramid pooling (ASPP), signif­
+icantly improving the precision of multi-scale feature extraction and 
+edge detection in semantic segmentation tasks [44,45]. These features 
+offer notable advantages in crack segmentation tasks [46–48]. Crack 
+segmentation not only requires accurately identifying the thin, curved 
+edges of cracks but also capturing the overall morphology across differ­
+ent scales. Dilated convolution in DeepLab expands the receptive field 
+without increasing computational costs, effectively extracting multi-
+scale crack features, while the ASPP module enhances the model’s 
+ability to detect cracks in complex background by fusing informa­
+tion from multiple scales. HRNet enhances the ability to capture fine 
+details in segmentation tasks through its unique architecture, which 
+maintains high-resolution feature representations throughout the net­
+work and continuously fuses features across different resolutions [49]. 
+The model’s sustained focus on high-resolution information is par­
+ticularly important for crack segmentation [50]. Cracks often exhibit 
+thin, irregular shapes, and their edges are easily obscured by complex 
+backgrounds. Building on HRNet, many studies developed models that 
+can precisely capture crack edges and morphology without sacrificing
+detail [51–53].
+Through the above literature review, it is evident that the success of 
+precise crack detection models largely depends on the accurate capture 
+of both crack structural features and subtle details. The key to achieving 
+this lies in the model’s ability to process multi-scale features while main­
+taining a clear representation of fine details, addressing the complexity 
+of crack morphology and the interference from background noise. To this 
+end, the ECFormer model proposed in this paper adopts a dual-branch 
+structure, ensuring the effective integration of global information while 
+delivering high-resolution detail representation.
+2.2 . Transformer in crack segmentation
+The Transformer model achieved groundbreaking progress in natural 
+language processing based on its self-attention mechanism [9]. Unlike 
+traditional sequential models, the Transformer captures long-range de­
+pendencies through self-attention while significantly improving mod­
+eling efficiency through parallel computation. In recent years, the ViT 
+introduced the self-attention mechanism to computer vision, proposing 
+to divide input images into fixed-size patches and process them as se­
+quential data [10]. ViT’s exceptional performance on large-scale datasets 
+has demonstrated the potential of the self-attention mechanism in visual 
+tasks, particularly in capturing global context and long-range feature de­
+pendencies, offering a notable advantage over CNNs in learning global 
+features.
+As Transformer models rapidly advance in vision, researchers be­
+gun exploring their potential applications in crack segmentation tasks. 
+Drawing from the successful experiences of CNNs in crack segmentation, 
+an increasing number of studies attempted to combine the self-attention 
+mechanism with general CNN models to enhance the original model’s 
+ability to capture global features. For instance, several works integrated 
+Applied Soft Computing 189 (2026) 114513 
+3 
+
+=== Page 4 ===
+Y. Li, Z. Ma and R. Ma
+the self-attention mechanism into the UNet architecture [54–57], en­
+abling simultaneous capture of crack details and global features through 
+the fusion of skip connections and self-attention modules. Similarly, vari­
+ants of HRNet [58,59] and DeepLab [60] leveraged the self-attention 
+mechanism to improve performance in crack segmentation tasks, par­
+ticularly in handling complex backgrounds and multi-scale crack struc­
+tures. The above studies improved crack segmentation performance by 
+introducing the self-attention mechanism, but most rely on the original 
+softmax self-attention, which has quadratic computational complexity 
+with respect to the input sequence length. As a result, while the addi­
+tion of attention modules enhances the model’s ability to capture global 
+features, it also significantly increases the computational overhead, 
+making the models heavier, especially when processing high-resolution 
+images [61].
+2.3 . Efficient self-attention mechanism
+Early improvements to the self-attention mechanism primarily fo­
+cused on restricting the attention field to fixed, predefined patterns, 
+such as local windows [62] and block patterns with fixed strides [63], 
+thereby sparsifying the attention matrix. In contrast to fixed, prede­
+fined patterns, an extended approach involves using learnable patterns 
+[64,65]. These learnable and efficient self-attention mechanisms dynam­
+ically adjust attention allocation in a data-driven manner, eliminating 
+the reliance on fixed patterns. The model autonomously learns token 
+correlations and assigns them dynamically to different buckets or clus­
+ters, optimizing both the flexibility and adaptability of the attention 
+mechanism while reducing computational complexity. Low-rank meth­
+ods and kernel methods are two major techniques developed in recent 
+years to improve the efficiency of the self-attention mechanism. Low-
+rank methods aim to reduce computation and memory usage by applying 
+low-rank approximations to the self-attention matrix. The core idea is 
+to assume that the 𝑁× 𝑁 attention matrix has a low-rank structure, 
+allowing it to be simplified through dimensionality reduction into an 
+𝑁× 𝑘 matrix, where 𝑘 is smaller than 𝑁. Linformer is a representative 
+of low-rank methods, achieving a significant reduction in computational 
+complexity by projecting the length dimension of the Key and Value 
+into a lower-dimensional representation space [66]. Kernel methods, 
+on the other hand, improve efficiency by reformulating the attention 
+mechanism as kernel function operations. By avoiding the explicit com­
+putation of the attention matrix, kernel methods transform attention 
+computation into more efficient mathematical operations. Since ker­
+nel functions provide an approximation of the attention matrix, kernel 
+methods can also be considered a variant of low-rank approaches. 
+Relevant works include Performers [67] and Linear Transformers [68]. 
+Another intuitive approach is to reduce the resolution of the input se­
+quence, thereby proportionally decreasing the computational overhead. 
+For example, Perceiver selects a small subset of Query from the input 
+data to represent the entire sequence [69], while Funnel Transformer 
+progressively reduces the sequence length layer by layer, following a 
+pyramid-like structure, which gradually lessens the computational costs 
+at each layer [70].
+3 . Preliminaries
+3.1 . Self-attention mechanism
+Self-attention operates by calculating a set of attention weights for 
+each element in the input sequence, representing the relative importance 
+of other elements in relation to the current element [9]. In this way, 
+self-attention enables the model to dynamically adjust its focus based 
+on context, capturing long-range dependencies that traditional methods, 
+such as convolutional or recurrent layers, may overlook. The workflow 
+of the self-attention mechanism involves the following steps:
+1. Projection of Query, Key, and Value. For each element 𝑥𝑖 in the 
+input sequence 𝑋∈R𝑁×𝑑in, linear transformations are applied to 
+project it into a query vector 𝑄𝑖, a key vector 𝐾𝑖, a value vector 
+𝑉𝑖. The process is formulated as:
+𝑄𝑖= 𝑊𝑄⋅𝑥𝑖,
+𝐾𝑖= 𝑊𝐾⋅𝑥𝑖,
+𝑉𝑖= 𝑊𝑉⋅𝑥𝑖
+(1)
+where 𝑊𝑄, 𝑊𝐾 and 𝑊𝑉 are learnable projection matrices for 
+Query, Key and Value, respectively.
+2. Computation of attention weights. Each 𝑄𝑖 is multiplied by all 𝐾𝑖
+using dot product to compute the attention weights, which are 
+then normalized through the softmax function. The formula is as 
+follows:
+𝑎𝑖𝑗=
+exp (𝑄𝑖⋅𝐾𝑗
+)
+∑𝑁
+𝑗=1 exp (𝑄𝑖⋅𝐾𝑗
+)
+(2)
+3. Weighted sum. The final output is obtained by performing a 
+weighted sum of the value vectors 𝑉𝑗, where the weights are the 
+computed attention weights 𝑎𝑖𝑗. The formula for calculating the 
+output 𝑂𝑖 is:
+𝑂𝑖=
+𝑁
+∑
+𝑗=1
+𝑎𝑖𝑗⋅𝑉𝑗
+(3)
+The weighted summation enables the model to emphasize the 
+most important parts of the input sequence relative to the current 
+element 𝑥𝑖, which is the essence of self-attention.
+When calculating the attention weights, each 𝑄𝑖 must perform a dot 
+product operation with all 𝐾𝑗, resulting in a computational complexity 
+of O(𝑁2), where 𝑁 represents the length of the input sequence.
+3.2 . Self-attention in vision
+The ViT is a representative model of self-attention in vision [10]. Its 
+core idea is to divide the input image into fixed-size patches and treat 
+these patches as sequence elements, then apply the attention mechanism 
+to capture global features of the image.
+1. Patch embedding. First, the input image 𝑋∈R𝐻×𝑊×𝐶 is divided 
+into 𝑁 non-overlapping patches, each of size 𝑃× 𝑃. The patches 
+are flattened into vectors 𝑥𝑖∈R𝑃2⋅𝐶. Then, each patch is pro­
+jected into another space through a linear projection, yielding the 
+following embedding representation:
+𝑧𝑖= 𝐸⋅𝑥𝑖+ 𝑒pos
+(4)
+Where, 𝐸∈R𝐷×𝑃2⋅𝐶 is the projection matrix, and 𝑒pos represents 
+the positional embedding, which retains the spatial informa­
+tion of the patches within the original image. The sequence of 
+embeddings is then represented as 𝑍= [𝑧1, 𝑧2, … , 𝑧𝑁].
+2. ViT Block. In ViT, the input sequence 𝑍 is processed through mul­
+tiple Transformer blocks. Each ViT block consists of Multi-head 
+Self-Attention (MSA) and Layer Normalization (LN) and a Feed-
+Forward Network (FFN). The computation flow for each block can 
+be expressed as:
+𝑍′ = MSA(LN(𝑍)) + 𝑍
+𝑍′′ = FFN(LN(𝑍′)) + 𝑍′
+(5)
+In the first step, the input sequence 𝑍 is passed through LN and 
+then fed into MSA. The output is then added back to the original 
+input 𝑍 via a residual connection. In the second step, the interme­
+diate result 𝑍′ is again normalized and passed through the FFN, 
+where non-linear transformations are applied. The result is then 
+added back to 𝑍′ through another residual connection, yielding 
+the final output 𝑍′′.
+Applied Soft Computing 189 (2026) 114513 
+4 
+
+=== Page 5 ===
+Y. Li, Z. Ma and R. Ma
+Fig. 2. Overall architecture of ECFormer.
+Fig. 3. ECFormer block.
+4 . Methodology
+In this section, we describe the overall model architecture, followed 
+by a detailed introduction to its three key components: Multi-Scale 
+Spatial-Reduction Attention (MSSRA), Enhanced ReLU-based Linear 
+Attention (ERLA), and Bidirectional Cross-Resolution Feature Enhancer 
+(BDCRFE).
+4.1 . Overall architecture
+Fig. 2 illustrates the overall structure of ECFormer, a five-stage model 
+that integrates several key components to ensure efficient and accu­
+rate crack segmentation. The first stage is the input stem, consisting 
+of standard convolution, batch normalization (BN), and ReLU, which 
+reduces the spatial resolution of the input image by half while expand­
+ing the channel dimension to 𝐶1. In the second stage, the resolution 
+is further reduced to 1∕4 of the original image by the MBConv blocks 
+[71], while the channel dimension increases to 𝐶2. The use of MBConv 
+is intended to reduce computational costs. The third to fifth stages form 
+the core of the model, consisting of ECFormer blocks, which serve as 
+the backbone of the entire architecture. Each ECFormer block contains 
+two branches, a high-resolution (HR) branch and a low-resolution (LR) 
+branch. The design of resolution variation reflects the different func­
+tions of these two branches. The HR branch maintains a fixed resolution 
+of 𝐻∕4 × 𝑊∕4 throughout the model to ensure that critical detail infor­
+mation is preserved during feature extraction, thereby enhancing the 
+model’s ability to find small cracks. In contrast, the LR branch fol­
+lows a stepwise downsampling strategy, with the resolution decreasing 
+from 𝐻∕8 × 𝑊∕8 in the third stage to 𝐻∕16 × 𝑊∕16 in the fourth 
+stage, and finally to 𝐻∕32 × 𝑊∕32 in the fifth stage. The progressive
+reduction in resolution allows the model to extract high-level semantic 
+features while maintaining an effective understanding of global crack
+structures.
+The HR and LR branches work in parallel, with their outputs 
+fused at each stage to achieve a rich multi-scale representation. The 
+dual-branch structure effectively preserves multi-scale learning and 
+high-resolution representation, which are critical for accurate crack
+segmentation.
+4.2 . ECFormer block
+The ECFormer blocks form the core of the proposed model, featuring 
+not only an efficient dual-branch design but also three crafted modules: 
+MSSRA, ERLA, and BDCRFE, as shown in Fig. 3.
+4.2.1 . Multi-scale spatial-reduction attention
+The original MSA [9] takes an input 𝑋∈R𝑁×𝑑in, and then ap­
+plies a linear projection layer to transform the input 𝑋 into 𝑄, 𝐾, 𝑉∈
+R𝑁×𝑑. The self-attention then takes 𝑄, 𝐾, and 𝑉 as inputs and out­
+puts new middle features. As analyzed in Section 3.1, the primary 
+issue with the self-attention in terms of efficiency is that its computa­
+tional complexity relative to the input sequence is O(𝑁2). Wang et al. 
+[72,73] proposed spatial-reduction attention (SRA) to improve the ef­
+ficiency of the original self-attention. They introduced an additional 
+spatial-reduction module between the linear projection layer and the 
+MSA, as shown in Fig. 4(b). Specifically, the spatial reduction mod­
+ule first performs downsampling on the spatial dimension of 𝐾 and 𝑉, 
+transforming the high-resolution feature map into a low-resolution. The 
+low-resolution feature map is then processed by the MSA block. Let the 
+downsampling factor be 𝑟, and the sequence length of the input after 
+Applied Soft Computing 189 (2026) 114513 
+5 
+
+=== Page 6 ===
+Y. Li, Z. Ma and R. Ma
+Fig. 4. Comparison of original self-attention, spatial-reduction attention, multi-scale spatial-reduction attention.
+downsampling is 𝑁∕𝑟. Therefore, the computational complexity of SRA 
+is O((𝑁∕𝑟)2 × 𝑑), which can be simplified to O((𝑁2 × 𝑑)∕𝑟2). Since 𝑟 is 
+usually greater than 1, which means that the computational complexity 
+of SRA is significantly lower than that of the original self-attention. For 
+the input 𝑋, SRA can be expressed as:
+SRA(𝑋) = MSA(𝑄, SR(𝐾), SR(𝑉))
+(6)
+There are typically two methods for spatial reduction: one is convolu­
+tion with a stride greater than 1, and the other is pooling. Since pooling 
+has significantly lower complexity than convolution and does not in­
+volve learnable parameters, this study adopts adaptive average pooling 
+following PVTv2 [73].
+SRA reduces computational complexity compared to the original self-
+attention but limits the model’s capacity. Since the spatial-reduction 
+module downsamples 𝐾 and 𝑉 to a fixed spatial resolution, the 𝑄 can 
+only retrieve features at a fixed scale. For example, in PVTv2 [73], the 
+authors fixed the reduced spatial resolution to 7×7. To enhance the abil­
+ity to learn multi-scale spatial features, our paper proposes a multi-scale 
+pooling to capture features at different scales, referred to as multi-scale 
+spatial-reduction attention, as shown in Fig. 4(c). Unlike window-based 
+approaches such as Swin Transformer [62], which restrict attention to 
+local regions, MSSRA maintains a global receptive field while capturing 
+features at multiple scales. This is particularly advantageous for seg­
+menting cracks, which often exhibit long-range, continuous structures 
+that would span across local windows.
+MSSRA includes four different global adaptive average pooling sizes, 
+specifically 1, 3, 5, and 7. In the implementation, after linear projection, 
+𝑄, 𝐾, and 𝑉 are divided into four parts along the channel dimension, 
+following the multi-head setting of the original self-attention. In this 
+work, the number of heads is kept at four. Spatial pooling is applied to 
+𝐾 and 𝑉 in each head, resulting in four new sets of 𝐾 and 𝑉 at different 
+scales. Self-attention is then performed on the feature maps at different 
+scales, producing multi-scale outputs. Finally, the multi-scale features 
+are concatenated along the channel dimension. The proposed MSSRA 
+can be expressed as:
+MSSRA = Linear(Concat(Head1, … , Head𝑛))
+Head𝑖= Attention(𝑄𝑖, SR(𝐾𝑖), SR(𝑉𝑖))
+(7)
+where 𝑖 represents different attention heads, which are set to 4 in this 
+work. Each head performs adaptive global average pooling with one of 
+the sizes from 1, 3, 5, and 7, meaning that each head extracts spatial 
+features at a fixed scale.
+The reduction in computational complexity brought by MSSRA is 
+particularly beneficial for handling high-resolution features, which typ­
+ically have very long sequences. Directly applying the self-attention 
+would result in significant computational and memory overhead. By 
+introducing the multi-scale spatial-reduction module, the demand for 
+computational resources can be greatly reduced while maintaining a 
+certain level of feature representation capability. Specifically, given in­
+put features of size 𝐻× 𝑊× 𝐶, the computational costs of MSA, SRA, 
+and MSSRA can be expressed as:
+Ω(MSA) = 2(𝐻𝑊)2𝐶
+Ω(SRA) = 2𝐻𝑊𝑝2𝐶
+Ω(MSSRA) =
+4
+∑
+𝑖=1
+2𝐻𝑊𝑝2
+𝑖
+𝐶
+4
+= 1
+2
+4
+∑
+𝑖=1
+𝐻𝑊𝑝2
+𝑖𝐶
+(8)
+Here, 𝑝 represents the size of the adaptive pooling. When 𝑝 is set to 
+7, the computational complexity of the proposed MSSRA is only half 
+that of the original SRA [73]. Given its efficiency on high-resolution 
+features, this study applies the proposed MSSRA to the HR branch of
+ECFormer.
+4.2.2 . Enhanced ReLU-based linear attention
+In crack segmentation, capturing global information is crucial for 
+improving model performance. Although the original self-attention pro­
+vides a global receptive field, it comes with high computational complex­
+ity. To address this issue, this work adopts a ReLU-based linear attention 
+(RLA) [68].
+Given input 𝑋∈R𝑁×𝑑in, the general form of self-attention can be 
+represented as: 
+𝐴𝑖=
+𝑁
+∑
+𝑗=1
+Sim (𝑄𝑖, 𝐾𝑗
+) 𝑉𝑗
+∑𝑁
+𝑗=1 Sim (𝑄𝑖, 𝐾𝑗
+)
+(9)
+Where 𝑄= 𝑋𝑊𝑄, 𝐾= 𝑋𝑊𝐾, 𝑉= 𝑋𝑊𝑉, and 𝑊𝑄, 𝑊𝐾, 𝑊𝑉∈R𝑑in×𝑑
+are the learnable linear projection matrices. 𝐴𝑖 indicates the i-th row of 
+attention matrix 𝐴. Sim(⋅, ⋅) denotes a function that calculates the sim­
+ilarity between two vectors. In the original self-attention [9] and ViT 
+[10], the commonly employed method is scaled dot-product attention 
+with softmax, where the similarity metric function Sim(.,.) is:
+Sim(𝑄, 𝐾) = exp
+(𝑄𝐾T
+√
+𝑑
+)
+(10)
+where the attention matrix is obtained by calculating the similarity be­
+tween all 𝑄 and 𝐾, leading to a computational complexity of O(𝑁2). 
+Apart from the similarity metric function in Eq. (10), Angelos et al. [68] 
+proposed linear attention as an alternative to softmax attention, which 
+is generally represented as: 
+Sim(𝑄, 𝐾) = 𝜙(𝑄)𝜙(𝐾)𝑇
+(11)
+where, 𝜙() is a kernel function. Based on Eq. (11), Eq. (9) can be 
+rewritten as: 
+Applied Soft Computing 189 (2026) 114513 
+6 
+
+=== Page 7 ===
+Y. Li, Z. Ma and R. Ma
+Fig. 5. Computational flow of different attention.
+𝐴𝑖=
+𝑁
+∑
+𝑗=1
+𝜙(𝑄𝑖
+) 𝜙(𝐾𝑗
+)T𝑉𝑗
+∑𝑁
+𝑗=1 𝜙(𝑄𝑖
+) 𝜙(𝐾𝑗
+)T
+=
+∑𝑁
+𝑗=1
+(𝜙(𝑄𝑖)𝜙(𝐾𝑗)T) 𝑉𝑗
+𝜙(𝑄𝑖) ∑𝑁
+𝑗=1 𝜙(𝐾𝑗)T
+(12)
+According to the associative property of matrix multiplication, Eq. (12) 
+can be further optimized as:
+𝐴𝑖=
+∑𝑁
+𝑗=1
+[
+𝜙(𝑄𝑖
+) 𝜙(𝐾𝑗
+)T]
+𝑉𝑗
+𝜙(𝑄𝑖
+) ∑𝑁
+𝑗=1 𝜙(𝐾𝑗
+)T
+=
+∑𝑁
+𝑗=1 𝜙(𝑄𝑖
+) [(
+𝜙(𝐾𝑗
+)T𝑉𝑗
+)]
+𝜙(𝑄𝑖
+) ∑𝑁
+𝑗=1 𝜙(𝐾𝑗
+)T
+=
+𝜙(𝑄𝑖
+) (∑𝑁
+𝑗=1 𝜙(𝐾𝑗
+)T𝑉𝑗
+)
+𝜙(𝑄𝑖
+) (∑𝑁
+𝑗=1 𝜙(𝐾𝑗
+)T)
+(13)
+It can be observed that when calculating the attention matrix A, it is only 
+necessary to compute ∑𝑁
+𝑗=1 𝜙(𝐾𝑗)T𝑉𝑗 and ∑𝑁
+𝑗=1 𝜙(𝐾𝑗)T once, which can 
+then be reused for each 𝑄. Therefore, the computational complexity is 
+O(𝑁), meaning linear complexity. Researchers in EfficientViT employed 
+ReLU as the kernel function and demonstrated its effectiveness in the 
+visual domain [61]. Fig. 5 presents a comparison of the computational 
+flow between softmax attention and ReLU-based linear attention.
+Compared to the original softmax attention [9,10], ReLU-based 
+linear attention [68] offers significant advantages in terms of compu­
+tational complexity and hardware efficiency. However, it still has some 
+drawbacks. Specifically, softmax possesses a non-linear normalization 
+property, where all input vectors are normalized into a probability distri­
+bution within the range [0,1]. Additionally, since the sum of all elements 
+equals 1, which ensures a competitive relationship among the elements, 
+making the attention map more focused and thus better at capturing 
+more relevant information. In contrast, the ReLU function truncates neg­
+ative values in the input vectors to 0, resulting in sparse feature maps. 
+Due to the lack of normalization and non-linear competition, the fea­
+ture maps generated by ReLU tend to be smoother, making it harder to 
+highlight important attention regions and less effective at capturing key 
+features compared to softmax attention. Based on the above analysis, 
+this work proposes an enhancement to ReLU-based linear attention by 
+applying an exponential function mapping to the input tensor. By ad­
+justing the direction of each 𝑄 and 𝐾, it brings closer the 𝑄∕𝐾 pairs 
+that are more similar and pushes apart those that are less similar. The 
+proposed new similarity metric function: 
+Sim (𝑄𝑖, 𝐾𝑗
+) = 𝜙𝑝
+(𝑄𝑖
+) 𝜙𝑝
+(𝐾𝑗
+)T
+(14)
+Where, 
+𝜙𝑝(𝑥) = 𝑓𝑝(ReLU(𝑥))
+𝑓𝑝(𝑥) =
+∥𝑥∥
+‖𝑒𝑥−1‖ (𝑒𝑥−1)
+(15)
+To provide a more intuitive understanding, an example is given here 
+to demonstrate the effect of the mapping function 𝑓𝑝, as shown in Fig. 6. 
+It can be directly observed that the norm of the feature vectors remains 
+unchanged before and after the 𝑓𝑝 mapping, while only the direction 
+changes. At the same time, features that are close to each other are 
+drawn closer, whereas those that are farther apart become more dis­
+tant. This ensures that the distribution of the feature matrix becomes 
+sharper, allowing the model to focus on the most important features. 
+While other linear attention methods like Performer [67] achieve effi­
+ciency by approximating the softmax function with feature kernels, the 
+unique contribution of ERLA is this explicit feature sharpening via the 
+𝑓𝑝 function.
+The LR branch has the ability to learn global semantic features
+[50,74], while the global receptive field can capture the overall struc­
+ture of the image and long-range dependencies [44]. The proposed ERLA 
+module achieves a global receptive field with only linear complexity. 
+Therefore, this paper applies the module to the LR branch.
+4.2.3 . Bidirectional cross-resolution feature enhancer
+In most dual-branch or multi-branch models [49,50,74], the feature 
+fusion from different branches is often based on element-wise multipli­
+cation or addition, which are highly efficient methods. However, such 
+simple fusion techniques may not fully capture the complex relation­
+ships between different branches. To better utilize the features extracted 
+by each branch, several recent works have proposed more complex 
+fusion methods. For instance, attention-based fusion methods dynami­
+cally assign weights to different features, allowing for a better emphasis 
+on key features and the suppression of irrelevant information [75,76]. 
+Attention-based feature enhancement methods are particularly advan­
+tageous in vision-language multi-modal tasks [77,78], as these models 
+need to handle different types of features. Cross-attention can facilitate 
+interactive modeling between different modalities, capturing correla­
+tions across modalities and improving performance [9]. The motivation 
+for the proposed BDCRFE in this work stems from this idea, leverag­
+ing the well-established cross-attention mechanism that has been proven 
+effective in multi-modal learning and multi-scale vision transformers.
+Specifically, the proposed method considers the HR and LR branches 
+as two different modalities and uses bidirectional cross-resolution cross-
+attention to enhance feature fusion. The work most similar to the 
+Applied Soft Computing 189 (2026) 114513 
+7 
+
+=== Page 8 ===
+Y. Li, Z. Ma and R. Ma
+Fig. 6. Mapping function 𝑓𝑝 on 𝑄∕𝐾.
+Fig. 7. Bidirectional cross-resolution feature enhancer.
+proposed method is CrossViT [75], where the authors divide the same 
+image into two groups of patches with different sizes and apply self-
+attention within each group before using cross-attention to fuse features. 
+However, the design of CrossViT is aimed at image classification, and the 
+authors only used the CLS token as a Query during the cross-attention 
+fusion stage to exchange information between the two branches. While 
+this design is sufficient for image classification, it is inadequate for dense 
+prediction tasks.
+The BDCRFE proposed in this work is more generalized, fully ex­
+changing features from both branches. Additionally, through stacking 
+multiple ECFormer modules, the proposed feature enhancer endows 
+the model with multi-scale learning capabilities on a global level. 
+Specifically, in the three ECFormer blocks, the scale of the HR branch 
+remains constant, while the spatial resolution of the LR branch pro­
+gressively decreases, ensuring that the HR branch can learn features of 
+different scales from the LR branch.
+Fig. 7 illustrates the proposed BDCRFE. The HR features are derived 
+from the previous MSSRA module, while the LR features come from the 
+preceding ERLA module. To establish an effective connection between 
+the HR and LR features, the BDCRFE module achieves feature fusion in 
+two steps. First, the proposed method utilizes high-to-low cross atten­
+tion (H2LCA), where the HR features are used as the Query, and the LR 
+Algorithm 1 Bidirectional cross-resolution feature enhancer.
+1: Input: High-res feature 𝐹HR, Low-res feature 𝐹LR
+2: Output: Enhanced features 𝐹′
+HR, 𝐹′
+LR
+3: #— High-to-Low Cross-Attention (H2LCA) —
+4: 𝑄HR ←𝐹HR
+5: 𝐾LR, 𝑉LR ←𝐹LR, 𝐹LR
+6: 𝐾′
+LR ←ConvLR→HR
+1×1
+(𝐾LR)
+⊳ Align K channels to HR
+7: 𝑉′
+LR ←ConvLR→HR
+1×1
+(𝑉LR)
+⊳ Align V channels to HR
+8: 𝐹′
+HR ←MSSRA(𝑄HR, 𝐾′
+LR, 𝑉′
+LR) + 𝐹HR
+⊳ Residual connection
+9: #— Low-to-High Cross-Attention (L2HCA) —
+10: 𝑄LR ←𝐹LR
+11: 𝐾HR, 𝑉HR ←𝐹HR, 𝐹HR
+12: 𝐾′
+HR ←ConvHR→LR
+1×1
+(𝐾HR)
+⊳ Align K channels to LR
+13: 𝑉′
+HR ←ConvHR→LR
+1×1
+(𝑉HR)
+⊳ Align V channels to LR
+14: 𝐹′
+LR ←ERLA(𝑄LR, 𝐾′
+HR, 𝑉′
+HR) + 𝐹LR
+⊳ Residual connection
+15: return 𝐹′
+HR, 𝐹′
+LR
+features serve as the Key and Value, facilitating feature interaction and 
+fusion. This design builds connections between features of different reso­
+lutions, allowing the HR features to capture the global information from 
+the LR features, thereby enhancing the HR representational capacity. 
+Next, through low-to-high cross-attention (L2HCA), the LR features are 
+used as the Query, and the HR features as the Key and Value, perform­
+ing feature interaction and fusion once again. This step complements the 
+previous H2LCA, enabling the LR features to absorb detailed information 
+from the HR branch.
+Notably, for the bidirectional cross-attention in Fig. 7, the channel 
+numbers of the Key and Value differ from those of the Query, so a 1 × 1
+convolution is used to align the channel dimensions. Additionally, the 
+MSSRA and ERLA proposed in the Sections 4.2.1 and 4.2.2 are used to 
+replace the original cross-attention in H2LCA and L2HCA, and a detailed 
+comparison is provided in the ablation analysis. The detailed steps of the 
+BDCRFE are presented in Algorithm 1.
+4.3 . Model instantiation
+Following HRNet [49] and HRSegNet [50], the channel dimension 
+in the HR branch of ECFormer is fixed at a constant value. In this study, 
+three variants of ECFormer, namely ECFormer-B16, ECFormer-B32, and 
+ECFormer-B48, are employed for experiments, where 16, 32, and 48 
+represent the channel dimensions of the HR branch.
+Table 1 provides details of the ECFormer configuration. ECFormer 
+consists of two branches, where the HR branch remains throughout the 
+entire model, while the LR branch only exists within the ECFormer block. 
+Applied Soft Computing 189 (2026) 114513 
+8 
+
+=== Page 9 ===
+Y. Li, Z. Ma and R. Ma
+Table 1 
+Detailed configuration of ECFormer. 𝑠 denotes convolution stride, 
+𝑡 represents the intermediate expansion rate of MBConv, 𝑝 refers to 
+the maximum adaptive pooling size of MSSRA, and ℎ indicates the 
+number of heads for all self-attention.
+Stage
+Module
+HR Branch
+LR Branch
+1
+Input Stem
+Conv-BN-ReLU, 𝑠= 1
+–
+Conv-BN-ReLU, 𝑠= 2
+2
+MBConv
+MBConv, 𝑠= 1, 𝑡= 4
+–
+MBConv, 𝑠= 2, 𝑡= 4
+3
+ECFormer Block
+MSSRA, 𝑝= 7, ℎ= 4
+ERLA, ℎ= 4
+BDCRFE, ℎ= 4
+BDCRFE, ℎ= 4
+4
+ECFormer Block
+MSSRA, 𝑝= 7, ℎ= 4
+ERLA, ℎ= 4
+BDCRFE, ℎ= 4
+BDCRFE, ℎ= 4
+5
+ECFormer Block
+MSSRA, 𝑝= 7, ℎ= 4
+ERLA, ℎ= 4
+BDCRFE, ℎ= 4
+BDCRFE, ℎ= 4
+Table 2 
+Details of datasets.
+Dataset
+Size
+Training Set
+Validation Set
+Test Set
+CrackSeg9k
+400 × 400
+6951
+900
+900
+Concrete3k
+500 × 500
+1800
+300
+900
+Asphalt3k
+500 × 500
+1800
+300
+900
+The channel dimension of the LR branch doubles as the spatial reso­
+lution is halved, following the design of ResNet [79]. For the model’s 
+segmentation head, a dual-step segmentation head from HRSegNet is 
+used [50].
+In recent Transformer-based segmentation models, the FFN has grad­
+ually shifted from a two-layer MLP [10] to depth-wise convolution 
+[73,76]. This is because convolution has been shown to complement 
+positional information and locality, thereby eliminating the need for po­
+sitional encoding. This paper follows the design of RTFormer [76], using 
+two 3 × 3 depth-wise convolution layers without dimensional expansion 
+in the attention modules of MSSRA, ERLA, and BDCRFE. This setup uses 
+fewer parameters.
+5 . Experiments
+5.1 . Datasets and evaluation metrics
+In this study, three datasets, CrackSeg9k [80], Concrete3k [50], and 
+Asphalt3k [50] are used to validate the proposed model. CrackSeg9k 
+is currently a relatively large publicly available evaluation benchmark 
+in the field of crack segmentation, which incorporates ten public crack 
+datasets containing four different materials, namely asphalt, concrete, 
+masonry, and ceramic. CrackSeg9k contains a total of 8751 images with 
+a resolution of 400 × 400 and their corresponding labels, which are as­
+signed to the categories of crack and background. It should be noted that 
+since the original dataset suffers from data and label mismatches, the 
+version in the literature HrSegNet [50] is used in this work. This paper 
+randomly selects 900 images as the validation and test sets, respectively, 
+and the rest are used as the training set. Concrete3k and Asphalt3k are 
+scenario-specific crack datasets focusing on the task of detecting cracks 
+in concrete and asphalt structures respectively, and both of them have 
+a resolution of 500 × 500. Both datasets are divided into training, valida­
+tion, and test sets according to the ratio of 6:1:3. The details of the three 
+datasets are in Table 2 and some samples are shown in Fig. 8.
+Four metrics are used in this work to evaluate the segmentation per­
+formance of all models, Precision (Pr), Recall (Re), F1-score and mean 
+Intersection over Union (mIoU). These metrics are defined as follows: 
+Pr =
+𝑇𝑃
+𝑇𝑃+ 𝐹𝑃
+(16)
+Re =
+𝑇𝑃
+𝑇𝑃+ 𝐹𝑁
+(17)
+F1 = 2 × Pr × Re
+Pr + Re
+(18)
+IoU =
+𝑇𝑃
+𝑇𝑃+ 𝐹𝑃+ 𝐹𝑁
+(19)
+mIoU = 1
+𝑁
+𝑁
+∑
+𝑖=1
+IoU𝑖
+(20)
+Where True Positive (TP) means that crack pixels are correctly classi­
+fied, False Positive (FP) means that background pixels are incorrectly 
+classified as cracks, and False Negative (FN) means that crack pixels are 
+incorrectly recognized as background.
+In addition, Frames Per Second (FPS) is used to evaluate the inference 
+speed, and Giga Floating-Point Operations (GFLOPs) and Parameters 
+(Params) are used as metrics to evaluate the computational complexity 
+and the model size.
+5.2 . Implementation details
+The proposed ECFormer instances are implemented using PyTorch 
+[81], with all training, evaluation, and testing conducted within the 
+MMSegmentation framework [82]. During training, data augmenta­
+tion including random resizing, random horizontal flipping, random 
+cropping, and random photometric distortion are applied. The random 
+resizing scale ranges from 0.5 to 2.0, with a crop size of 400 × 400 for 
+CrackSeg9k, and 500 × 500 for both Concrete3k and Asphalt3k. The 
+ECFormer instances are trained using the AdamW [83], with 100,000 
+iterations on CrackSeg9k and 20,000 iterations on Concrete3k and 
+Asphalt3k. Notably, for the ablation studies on CrackSeg9k, the random 
+crop size is 200 × 200, with 20,000 iterations per experiment to quickly 
+validate the impact of each module on model performance. The initial 
+learning rate is set to 0.00006, with a default polynomial learning rate 
+scheduler using a factor of 1.0, and weight decay set to 0.01. All training 
+experiments for ECFormer, including the measurements for training time 
+and GPU memory, are conducted on a single NVIDIA RTX 4090 with a 
+batch size of 16. The inference-speed evaluations are performed on an 
+RTX 4060 with a batch size of 1. All models use a binary cross-entropy 
+loss.
+5.3 . Comparative study and results
+In evaluating ECFormer models, their performance is compared with 
+commonly used and state-of-the-art deep learning methods. The com­
+parison models are broadly divided into two categories: CNN-based 
+and Transformer-based models. The CNN models include FCN [36], 
+UNet [40], BiSeNetV2 [84], OCRNet [85], and DMA-Net [47], while 
+the Transformer-based models are SegFormer [86], RTFormer [76], 
+CrackFormer [54], CT [87], and SegCrack [88]. Among them, DMA-
+Net, CrackFormer, CT, and SegCrack represent leading models in crack 
+segmentation since 2022. Table 3 presents the quantitative evaluation 
+results of all models on CrackSeg9k.
+5.3.1 . Quantitative analysis
+Results from Table 3 indicate that ECFormer excels across multi­
+ple key performance metrics. Specifically, ECFormer-B48 leads with 
+the highest mIoU at 81.85 %, indicating it provides the most accu­
+rate segmentation results compared to all other models. Additionally, 
+ECFormer-B48 exhibits exceptional performance in Pr and Re, with 
+scores of 89.04 % and 87.54 % respectively, and an F1 score of 88.28 %. 
+Compared to CNN-based models like FCN, UNet, and DMA-Net, the 
+ECFormer series show a clear advantage. Although OCRNet achieves 
+an mIoU of 80.90 %, ranking second to ECFormer-B48, its parameters 
+(12.11 M) and computational complexity (32.40 GFLOPs) are signifi­
+cantly higher than those of ECFormer-B48 (6.08 M and 6.54 GFLOPs), 
+indicating that ECFormer maintains high performance while being more 
+computationally and parameter efficient. Among Transformer-based 
+models, ECFormer variants also demonstrate significant superiority. 
+For instance, SegFormer’s mIoU of 78.80 % is considerably lower 
+Applied Soft Computing 189 (2026) 114513 
+9 
+
+=== Page 10 ===
+Y. Li, Z. Ma and R. Ma
+Fig. 8. Samples of CrackSeg9k, Concrete3k, Asphalt3k.
+Table 3 
+Quantitative evaluation on CrackSeg9k.
+Model
+mIoU (%)
+Pr (%)
+Re (%)
+F1 (%)
+FPS
+Params (M)
+GFLOPs
+Memory(GB)
+Train Time(h)
+FCN (MobileNetV2)
+77.84
+87.22
+81.25
+84.13
+66.2
+9.80
+29.60
+6.3
+6.1
+UNet
+79.15
+89.82
+84.75
+87.21
+45.7
+13.40
+75.87
+19.4
+15.7
+BiSeNetV2
+75.09
+87.07
+81.17
+84.38
+85.3
+2.33
+4.93
+5.8
+2.1
+OCRNet (HRNet-W18)
+80.90
+88.26
+88.58
+88.41
+45.2
+12.11
+32.40
+14.6
+6.7
+DMA-Net (ResNet18)
+80.67
+88.95
+87.23
+88.08
+58.8
+13.80
+44.26
+10.4
+9.2
+SegFormer (MiT-B0)
+78.80
+88.99
+83.56
+86.19
+95.5
+3.81
+6.65
+6.7
+2.9
+RTFormer-Slim
+79.96
+89.05
+86.34
+87.67
+75.1
+4.80
+3.94
+5.5
+2.3
+CrackFormer
+80.25
+88.04
+86.61
+87.32
+27.9
+4.96
+59.21
+19.6
+12.3
+CT
+79.27
+90.21
+85.33
+87.70
+68.2
+6.62
+17.62
+11.9
+4.0
+SegCrack
+79.59
+88.10
+85.27
+86.66
+35.5
+28.44
+42.83
+20.5
+9.8
+ECFormer-B16
+80.84
+88.74
+87.12
+87.92
+156.2
+0.82
+0.98
+3.6
+1.1
+ECFormer-B32
+81.28
+88.91
+87.03
+87.96
+132.3
+2.89
+2.83
+4.9
+1.9
+ECFormer-B48
+81.85
+89.04
+87.54
+88.28
+102.9
+6.08
+6.54
+6.1
+2.6
+than that of ECFormer-B48. Furthermore, although RTFormer-Slim and 
+CrackFormer have advantages in terms of parameters, their overall per­
+formance still falls short of ECFormer. Particularly, CrackFormer, with 
+an mIoU of 80.25 %, remains below ECFormer-B48’s 81.85 %.
+Importantly, ECFormer demonstrates a significant advantage in in­
+ference speed. ECFormer-B16 achieves an inference speed of 156.2 
+FPS, substantially higher than other models. Even with increased pa­
+rameters and computational demand, ECFormer-B32 and ECFormer-
+B48 maintain high real-time performance, with 132.3 and 102.9 FPS,
+respectively.
+ECFormer demonstrates excellent scalability through its variants 
+B16, B32, and B48, enabling efficient performance across diverse com­
+putational resources. A model’s scalability is primarily characterized 
+by its consistent performance and efficiency optimization at different 
+scales. The B16, B32, and B48 variants represent different configurations 
+of channel dimensions in the HR branch. Specifically, ECFormer-B16 has 
+the smallest parameters (0.82 M) and computational complexity (0.98 
+GFLOPs), while ECFormer-B48 has the largest (6.08 M parameters, 6.54 
+GFLOPs). This design allows ECFormer to adapt flexibly to a range of 
+computational devices and application scenarios, from low-end to high-
+end. Table 3 indicates that despite significant differences in parameters 
+and computational complexity, ECFormer variants maintain high consis­
+tency in performance metrics. For instance, ECFormer-B16 achieves an 
+mIoU of 80.84 %, Pr of 88.74 %, Re of 87.12 %, and F1 score of 87.92 %. 
+As model size increases, ECFormer-B32 and ECFormer-B48 show im­
+provements in these metrics, with B48 reaching the highest mIoU of 
+81.85 %, Pr of 89.04 %, Re of 87.54 %, and F1 score of 88.28 %. The 
+observed steady improvement in model performance as scale increases 
+demonstrates ECFormer’s scalability advantage.
+5.3.2 . Qualitative analysis
+Figs. 9 and 10 visually present some results of ECFormer and other 
+methods on the CrackSeg9k test set. Overall, Transformer-based models 
+outperform some CNN-based models, particularly FCN and BiSeNetV2, 
+which consistently produce weaker results compared to Transformer-
+based models. This highlights the advantage of Transformer models in 
+capturing long-range dependencies and complex structures in crack im­
+ages, leading to more accurate segmentation and validating the method 
+selection in this work. While OCRNet is also a CNN-based model, its per­
+formance surpasses the other four CNN models, largely due to its HRNet 
+backbone [49], further supporting the rationale for designing high-
+resolution models in our paper. For ECFormer specifically, as the model 
+scale increases from B16 to B48, segmentation performance steadily 
+improves, demonstrating the stable scalability of the proposed approach.
+The qualitative results presented in Figs. 9 and 10 not only highlight 
+ECFormer’s superior segmentation accuracy but also provide compelling 
+evidence of its robustness across various challenging real-world scenar­
+ios. For instance, in the case of thin, evenly distributed cracks (first 
+row), Transformer-based models like ECFormer accurately capture these 
+fine details, whereas traditional CNN models exhibit significant missed 
+detections. For cracks captured from an oblique viewpoint with com­
+plex morphology (second row), ECFormer achieves the most accurate 
+and complete segmentation compared to the rough results from other 
+models. When faced with low-light and low-contrast images (rows three 
+and five), ECFormer-B48 successfully identifies the entire crack outline, 
+a task where other models, including FCN, UNet, and SegCrack, sub­
+stantially fail. Furthermore, for images featuring complex background 
+textures and noise (last row), ECFormer demonstrates strong noise re­
+silience by accurately segmenting the cracks and avoiding false positives. 
+Applied Soft Computing 189 (2026) 114513 
+10 
+
+=== Page 11 ===
+Y. Li, Z. Ma and R. Ma
+Fig. 9. Qualitative results of ECFormer, FCN, UNet, and BiSeNetV2 on CrackSeg9k.
+Fig. 10. Qualitative results of OCRNet, DMA-Net, SegFormer, RTFormer, CrackFormer, CT and SegCrack on CrackSeg9k.
+In summary, ECFormer excels in diverse and challenging conditions—
+from tiny cracks and complex viewpoints to low contrast and noisy 
+backgrounds. This consistent outperformance against both CNN and 
+other Transformer models validates its superiority and confirms the 
+robust design of the proposed architecture for crack segmentation tasks.
+5.3.3 . Results in specific scenarios
+In practical applications, crack detection tasks typically involve spe­
+cific scenarios rather than a comprehensive dataset like CrackSeg9k. 
+Therefore, the performance of ECFormer on Concrete3k and Asphalt3k 
+is analyzed to assess its effectiveness in specific contexts. Table 4 com­
+pares the crack segmentation performance of models that performed 
+well on CrackSeg9k with their results on Concrete3k and Asphalt3k, 
+while Figs. 11 and 12 provide visual representations.
+Table 4 shows that ECFormer performs best on Asphalt3k and 
+Concrete3k. On Asphalt3k, ECFormer-B48 achieves the highest mIoU of 
+81.29 % and an F1 score of 88.65 %, outperforming all comparison mod­
+els. On Concrete3k, ECFormer-B48 leads with an mIoU of 86.36 % and 
+an F1 score of 93.83 %, again the highest among the models compared. 
+Applied Soft Computing 189 (2026) 114513 
+11 
+
+=== Page 12 ===
+Y. Li, Z. Ma and R. Ma
+Table 4 
+Performance comparisons on Asphalt3k and Concrete3k.
+Model
+Asphalt3k
+Concrete3k
+mIoU (%)
+F1 (%)
+mIoU (%)
+F1 (%)
+UNet
+78.52
+86.93
+84.20
+91.05
+OCRNet
+79.84
+87.05
+85.61
+92.11
+DMA-Net
+80.23
+87.22
+84.46
+91.37
+CrackFormer
+80.43
+87.63
+85.67
+92.82
+SegCrack
+80.32
+88.09
+85.59
+92.66
+ECFormer-B48
+81.29
+88.65
+86.36
+93.83
+In contrast, OCRNet’s performance on Concrete3k, with an mIoU of 
+85.61 % and an F1 score of 92.11 %, while commendable, still falls short 
+of ECFormer-B48’s performance. Other advanced models specifically 
+designed for crack segmentation, such as DMA-Net, CrackFormer, and 
+SegCrack, also perform inferiorly to ECFormer-B48 across both datasets.
+Fig. 11 displays some visual results of compared models on 
+Asphalt3k, including ECFormer-B48, UNet, OCRNet, DMA-Net, 
+CrackFormer, and SegCrack. In the first row, which shows global 
+asphalt cracks, ECFormer-B48 accurately captures the overall structure 
+and details of the cracks, outperforming UNet and DMA-Net, which 
+exhibit significant omissions. In the second row, depicting low-contrast 
+discontinuous cracks, ECFormer-B48, despite some false detections, 
+still surpasses other models. In the third row’s complex scenes with 
+tiny cracks, ECFormer-B48 precisely identifies cracks that are diffi­
+cult to capture, whereas UNet, CrackFormer, and SegCrack severely 
+miss such features. The fourth row, featuring cracks on white lane 
+markings, shows ECFormer-B48’s robustness despite some omissions, 
+outperforming other models that misidentify features.
+Fig. 12 illustrates some visual results on Concrete3k. In the first row, 
+images fraught with severe impact noise typically induce false positives 
+in compared models; however, ECFormer-B48 demonstrates superior 
+performance by accurately delineating cracks without succumbing to 
+these errors. The cracks in the second row have different scales, one thick 
+and one thin. Here, ECFormer-B48 stands out by successfully detecting 
+the finer cracks, an ability that eludes other models, thus showcasing its 
+acute sensitivity to minute structural details. In the third row, the fo­
+cus shifts to intermittent cracks, which pose significant difficulties. Both 
+ECFormer-B48 and OCRNet, leveraging their high-resolution strengths, 
+adeptly identify these elusive features, unlike DMA-Net, which largely 
+fails in this regard. The fourth row tests the models’ ability to dis­
+tinguish between genuine cracks and similar-looking linear patterns. 
+While OCRNet, DMA-Net, and SegCrack misclassify these patterns as 
+cracks, our proposed method effectively resists such misidentifications, 
+highlighting its exceptional specificity and robustness against false 
+positives.
+Fig. 11. Qualitative results of ECFormer-B48, UNet, OCRNet, DMA-Net, CrackFormer and SegCrack on Asphalt3k.
+Fig. 12. Qualitative results of ECFormer-B48, UNet, OCRNet, DMA-Net, CrackFormer and SegCrack on Concrete3k.
+Applied Soft Computing 189 (2026) 114513 
+12 
+
+=== Page 13 ===
+Y. Li, Z. Ma and R. Ma
+Table 5 
+Robustness on CrackSeg9k (400 × 400). Moderate severity (𝑠=3) mIoU per 
+corruption and aggregate robustness score RS.
+Model
+Clean
+Noise
+Motion
+Brightness
+JPEG
+RS
+OCRNet (HRNet-W18)
+80.9
+75.2
+72.8
+77.1
+76.0
+91.8
+DMA-Net (ResNet18)
+80.7
+74.7
+71.2
+76.7
+75.7
+90.9
+CrackFormer
+80.2
+74.5
+71.2
+76.8
+74.8
+91.2
+SegCrack
+79.6
+73.6
+71.5
+75.6
+74.1
+91.2
+ECFormer-B48
+81.8
+76.8
+73.8
+78.5
+76.6
+92.2
+Overall, ECFormer exhibits exceptional performance across vari­
+ous crack scenarios, precisely capturing the boundaries and shapes 
+of tiny cracks, demonstrating its potential and superiority in crack 
+segmentation tasks.
+5.4 . Robustness to common corruptions
+Following the corruption taxonomy and severity design popularized 
+by ImageNet-C [89], four common corruptions are adapted to seman­
+tic segmentation in the crack domain: Gaussian noise, motion blur, 
+brightness (illumination) shift, and JPEG compression. Each corruption 
+is evaluated at five severities (𝑠=1–5). Unless stated, tables report the 
+moderate level (𝑠=3), and figures present full severity curves. All eval­
+uations are conducted on CrackSeg9k with batch= 1, input 400 × 400, 
+and no test-time augmentation. Formal operator definitions are provided 
+in Appendix A.
+Let 𝑚clean denote the mIoU on clean images and 𝑚𝑝,𝑠 the mIoU under 
+corruption family 𝑝 at severity 𝑠. The relative drop is defined as 
+Δ𝑝,𝑠=
+𝑚clean −𝑚𝑝,𝑠
+𝑚clean
+× 100 %.
+(21)
+Robustness is summarized by the aggregate score 
+RS = 100 −
+1
+∑
+𝑝|𝑆𝑝|
+∑
+𝑝
+∑
+𝑠∈𝑆𝑝
+Δ𝑝,𝑠,
+(22)
+where higher RS indicates a smaller average relative drop across families 
+and severities.
+Severity levels for the four corruptions are listed in Table A.1. All op­
+erators act on per-channel normalized images in [0, 1]; formal definitions 
+appear in Eqs. (A.1) to (A.4).
+ECFormer-B48 achieves the best overall robustness (RS=92.2), 
+ahead of OCRNet (91.8) and DMA-Net (90.9) in Table 5. At the moder­
+ate level (𝑠=3), ECFormer-B48 consistently tops all four families (Noise 
+76.8, Motion 73.8, Brightness 78.5, JPEG 76.6), with margins typi­
+cally +0.6–2.0 mIoU over strong CNN and Transformer baselines. The 
+sensitivity ordering is stable across models—JPEG and motion blur 
+incur the largest losses, whereas brightness is comparatively benign. 
+Curves over 𝑠=0–5 in Fig. 13 confirm near-monotonic degradation with 
+ECFormer-B48 retaining the leading trajectory up to 𝑠=5.
+5.5 . Ablation study
+To rigorously evaluate the individual contribution of each proposed 
+module (MSSRA, ERLA, and BDCRFE) to the overall performance and 
+efficiency gains, we conduct a series of detailed ablation studies in this 
+section. The ablation experiments are performed on CrackSeg9k, where 
+the model is trained from scratch using Kaiming Normal initialization 
+[90]. To evaluate the performance of the proposed modules, convolution 
+block with similar parameters is used to replace each proposed atten­
+tion module, with the results of this model serving as the baseline for 
+comparative experiments. Subsequent comparative models using convo­
+lution are referred to as baseline models. For efficient ablation analysis, 
+only ECFormer-B16 is used, with image cropping set to 200 × 200 and 
+iterations limited to 20,000.
+Initially, the convolutional blocks in the baseline are sequentially re­
+placed with MSSRA, ERLA, and BDCRFE. It is important to note that 
+MSSRA replaces the convolution block only in the HR branch, while 
+ERLA is exclusively used in the LR branch. The results are shown 
+in Table 6. By substituting the convolution with MSSRA, the model’s 
+mIoU increased to 77.60 %, showing an improvement of 0.56 %. 
+Although MSSRA introduces additional computational costs, increasing 
+Fig. 13. Robustness on CrackSeg9k: mIoU vs. severity (𝑠=0–5) across four corruption families (Gaussian noise, Motion blur, Brightness, JPEG) for five models (OCRNet, 
+DMA-Net, CrackFormer, SegCrack, ECFormer-B48).
+Applied Soft Computing 189 (2026) 114513 
+13 
+
+=== Page 14 ===
+Y. Li, Z. Ma and R. Ma
+Table 6 
+Ablation experiments on CrackSeg9k.
+Model
+mIoU (%)
+Params (M)
+GFLOPs
+FPS
+Baseline
+77.04
+0.78
+0.144
+212.2
++MSSRA
+77.60
+0.79
+0.147
+185.1
++ERLA
+77.83
+0.80
+0.162
+163.8
++BDCRFE
+78.05
+0.82
+0.185
+143.7
+Table 7 
+Performance comparison of different attention mechanisms in the HR 
+branch.
+Module
+mIoU (%)
+Params (M)
+GFLOPs
+FPS
+Conv
+77.04
+0.78
+0.144
+212.2
+MSA
+77.65
+0.79
+0.742
+62.5
+SRA (𝑝= 7)
+77.48
+0.79
+0.154
+160.7
+ERLA
+77.45
+0.79
+0.144
+192.0
+MSSRA (𝑝= 1, 3, 5, 7)
+77.60
+0.79
+0.147
+185.1
+the GFLOPs to 0.147 and slightly decreasing the FPS to 185.1, it im­
+proves the performance by adding very few parameters. After replacing 
+the convolution with ERLA, the mIoU reached 77.83 %, a rise of 0.79 % 
+over the baseline. ERLA increased the computational costs to 0.162 
+GFLOPs and decreased the FPS to 163.8. Replacing the convolution with 
+BDCRFE further improved the mIoU to 78.05 %. The introduction of 
+BDCRFE slightly increased the parameters to 0.82 M and the computa­
+tional costs to 0.185 GFLOPs, with a frame rate of 143.7 FPS. BDCRFE’s 
+bidirectional attention enhanced feature representation across different 
+branches, significantly boosting the model’s performance. It is worth 
+noting that the introduction of the proposed efficient attention module 
+only slightly increases the model’s parameters and adds only a control­
+lable computational overhead. This is because the attention mechanism 
+involves only two learnable linear projections.
+5.5.1 . Impact of MSSRA
+To validate the effectiveness of MSSRA, the original MSA [9], SRA 
+[73], and the proposed MSSRA are each used to replace the convolu­
+tion in the HR branch of the baseline model. The results are shown 
+in Table 7, where Conv represents the baseline. In SRA and MSSRA, 
+𝑝 represents the adaptive pooling size in the spatial reduction module. 
+In all configurations, the number of heads in multi-head attention is
+set to 4.
+From Table 7, it can be observed that, compared to the baseline 
+model using only convolution, the introduction of MSA improved the 
+model’s mIoU, increasing from 77.04 % to 77.65 %. However, this 
+improvement comes at the cost of significantly higher computational 
+complexity. Specifically, the baseline model requires only 0.144 
+GFLOPs, while replacing it with MSA increases the computation by 
+five times, reaching 0.742 GFLOPs. Given the modest performance 
+improvement, this trade-off is inefficient.
+The improvement made by SRA to MSA is immediate, as it signif­
+icantly reduces computational cost from 0.742 to 0.154 GFLOPs with 
+the introduction of very few additional parameters. However, compared 
+to MSA, SRA does not significantly improve the performance over the 
+baseline model, indicating that SRA cannot fully exploit the potential 
+advantages of multi-head attention. This paper argues that the main 
+difference between SRA and MSA lies in SRA’s reduction of the spatial 
+resolution of the Key and Value, which is set to a fixed scale as 7 × 7 in 
+PVTv2 [73]. This setup reduces the model’s ability to capture multi-scale 
+information. Therefore, this paper compares SRA with different scales to 
+observe the impact of spatial reduction on the self-attention mechanism. 
+Specifically, the model’s performance is compared with reduction factors 
+𝑝 set to 1, 3, 5, 7, 11, 23, and 45, as shown in Fig. 14.
+In Fig. 14(a), it can be observed that the performance of the SRA 
+gradually approaches that of the MSA as 𝑝 continues to increase, but 
+the magnitude of the increase gradually tapers off. In addition, compar­
+ing in Fig. 14(b), it is further observed that the increase in 𝑝 leads to a 
+much larger increase in computational overhead than the performance 
+gain it brings. Based on the above observations, this paper follows the 
+setup of PVTv2 [73], but limits the maximum adaptive pooling size to 
+7×7, while setting three smaller scales of 1, 3, and 5. Each spatial reduc­
+tion operation is applied to a different attention head, with the results 
+shown in the last row of Table 7. To further validate our choice of the 
+multi-scale pooling configuration for MSSRA, we also conducted a sen­
+sitivity study. Based on our findings in Fig. 14(b), which indicate that 
+pooling sizes larger than 7 offer diminishing performance returns at a 
+significantly higher computational cost, our analysis of different config­
+urations focused on a range of more efficient pooling sizes. The results 
+in Table 8 demonstrate the superiority of our balanced {1,3,5,7} config­
+uration. We found that alternative setups, which either lacked sufficient 
+global context (e.g., {4,5,6,7}) or failed to preserve fine-grained spa­
+tial details (e.g., {1,2,3,4}), both resulted in a drop in performance. 
+This confirms that an effective multi-scale approach must capture a 
+wide spectrum of features, from global context to local details, and our 
+proposed configuration strikes the optimal trade-off.
+Compared to SRA, MSSRA further reduces computational costs while 
+maintaining the same level of inference efficiency, but its performance 
+is closer to MSA. Taking the convolution-based baseline model and an 
+MSA-based model as the upper and lower bounds for comparison, it 
+can be concluded that SRA significantly improves computational effi­
+ciency by reducing computational costs, while the proposed MSSRA, by 
+Fig. 14. Effect of pooling size 𝑝 on IoU and FLOPs.
+Applied Soft Computing 189 (2026) 114513 
+14 
+
+=== Page 15 ===
+Y. Li, Z. Ma and R. Ma
+Table 8 
+Sensitivity analysis of different pooling 
+configurations for MSSRA.
+Configuration
+mIoU(%)
+GFLOPs
+𝑝=1, 2, 3, 4
+77.25
+0.145
+𝑝=4, 5, 6, 7
+77.18
+0.152
+𝑝=1, 5, 9, 13
+77.51
+0.192
+𝑝=1, 3, 5, 7
+77.60
+0.147
+Table 9 
+Performance comparison of different attention mechanisms in the LR 
+branch.
+Module
+mIoU (%)
+Params (M)
+GFLOPs
+FPS
+Conv
+77.04
+0.78
+0.144
+212.2
+MSA
+77.60
+0.79
+0.516
+105.3
+RLA
+77.47
+0.79
+0.148
+195.8
+MSSRA(𝑝= 1, 3, 5, 7)
+77.36
+0.79
+0.145
+201.6
+ERLA
+77.58
+0.79
+0.158
+189.1
+introducing multi-scale learning capability, achieves a better balance 
+between performance and efficiency compared to SRA.
+Additionally, the performance of ERLA in the HR branch is com­
+pared. ERLA’s performance is close to SRA but inferior to the proposed 
+MSSRA, and such results are related to the different roles of the branches. 
+The HR branch maintains a fixed resolution throughout, mainly fo­
+cusing on capturing intricate edges and texture information in crack 
+images. The proposed MSSRA, through multi-scale pooling operations, 
+enables the model to simultaneously focus on features at different 
+scales. By applying spatial reduction operations at various scales across 
+multiple self-attention heads, it preserves key information at different 
+scales. Consequently, the model can capture both large-scale global 
+structures and small-scale crack details. In contrast, ERLA is primar­
+ily designed to enhance global modeling capability in a large receptive 
+field, which explains its weaker performance in the HR path compared 
+to MSSRA. This validates the rationale for using MSSRA in the HR
+branch.
+5.5.2 . Impact of ERLA
+The original MSA [9], the original RLA [68], and the proposed ERLA 
+are replaced with the convolution of the LR branch in ECFormer to ex­
+plore their effects on the model performance, and the results are shown 
+in Table 9.
+From the experiment, a phenomenon similar to the HR branch 
+can be observed. The introduction of MSA effectively improves per­
+formance, but the computational cost is 3.6 times higher than the 
+baseline model, increasing from 0.144 to 0.516 GFLOPs. In contrast, 
+RLA improves performance over the baseline model, while the compu­
+tational overhead is drastically reduced from 0.516 GFLOPs to 0.148 
+GFLOPs compared to the MSA, suggesting that RLA can control the con­
+sumption of computational resources more effectively. However, the 
+performance improvement of RLA relative to the baseline is not as 
+substantial as that of MSA. The introduction of ERLA achieves a bet­
+ter balance between performance and computational cost. Specifically, 
+ERLA improves mIoU from 77.47 % to 77.58 %, surpassing RLA but 
+slightly lower than MSA. In terms of computational cost, ERLA remains 
+at the same level as the baseline model and is far lower than MSA, reduc­
+ing from 0.516 to 0.158 GFLOPs. Such results show that ERLA is a more 
+practical and efficient choice, as it maintains high performance while 
+avoiding the excessive computational resource consumption associated
+with MSA.
+The result of applying MSSRA to the LR branch is also compared. The 
+main role of MSSRA is to enhance the model’s ability to learn at multi 
+scales, whereas the LR branch is designed to learn global features as a 
+complement to the HR branch. As observed in Table 9, ERLA achieves 
+Table 10 
+Performance comparison of different fusion methods.
+Module
+mIoU(%)
+Params(M)
+GFLOPs
+FPS
+Conv
+77.04
+0.78
+0.144
+212.2
+H2LCA (MSA)
+77.53
+0.79
+0.545
+92.7
+H2LCA (MSSRA)
+77.49
+0.79
+0.147
+183.8
+L2HCA (MSA)
+77.28
+0.79
+0.544
+95.5
+L2HCA (ERLA)
+77.20
+0.79
+0.158
+187.2
+BDCRFE (MSA)
+77.68
+0.81
+0.982
+43.6
+BDCRFE (MSSRA, ERLA)
+77.62
+0.81
+0.165
+170.1
+better performance than MSSRA, which confirms the earlier analysis that 
+a specific branch serves distinct capability.
+5.5.3 . Impact of BDCRFE
+Global and detailed features are two key attributes for representing 
+crack images and are crucial for achieving high-performance seman­
+tic segmentation. Relying solely on one type of feature for prediction 
+leads to suboptimal results. The proposed BDCRFE treats the HR and 
+LR branches as features from different modalities and establishes an 
+effective communication channel between the branches using cross-
+attention.
+Table 10 presents the results of different feature fusion methods, 
+where Conv indicates the use of element-wise addition in the baseline 
+model [50], H2LCA indicates that Query in cross-attention is from the 
+HR branch and Key and Value are from the LR branch, and L2HCA is 
+the opposite. It can be observed that all attention-based fusion meth­
+ods outperform the baseline, demonstrating that element-wise addition 
+fusion is insufficient. When comparing the fusion methods of H2LCA 
+and L2HCA, H2LCA consistently outperforms L2HCA, indicating that the 
+HR branch has a greater impact on the model’s performance. BDCRFE 
+surpasses both H2LCA and L2HCA, suggesting that the bidirectional 
+use of cross-attention more effectively leverages the feature information 
+from different branches during HR and LR feature fusion. Specifically, 
+BDCRFE with MSA improves mIoU performance by 0.15 % and 0.4 % 
+compared to H2LCA and L2HCA, respectively.
+In addition to the original MSA, the proposed MSSRA and ERLA 
+are also compared here. Specifically, MSSRA and ERLA are substituted 
+for the MSA in H2LCA and L2HCA. As observed in Table 10, the re­
+sults are consistent with the previous Sections 5.5.1 and 5.5.2. The 
+proposed efficient attention modules effectively reduce computational 
+costs, but the model’s mIoU only shows a slight decrease, from 77.68 % 
+to 77.62 %. Considering the significant improvement in model infer­
+ence speed, from 43.6 FPS to 170.1 FPS, such trade-off offers a highly 
+cost-effective balance.
+6 . Limitations and future work
+Although the proposed ECFormer performs well across multiple 
+datasets, it is important to acknowledge its limitations and outline 
+directions for future research.
+First, concerning computational efficiency and deployment scenar­
+ios, while ECFormer demonstrates a superior trade-off between per­
+formance and efficiency compared to other state-of-the-art models, its 
+Transformer-based architecture is inherently more complex than spe­
+cialized lightweight CNNs. This may pose challenges for deployment in 
+extremely resource-constrained environments, such as on embedded or 
+edge devices. Therefore, a direct comparative study against architec­
+tures specifically designed for mobile platforms (e.g., MobileNet-based 
+segmentation models) would be a valuable future investigation to fully 
+characterize the performance-versus-resource trade-offs. Furthermore, 
+exploring model compression techniques, such as quantization and 
+pruning, is another promising direction to adapt ECFormer for edge 
+computing applications.
+Second, regarding model robustness and specific failure modes, we 
+observed that ECFormer’s performance can deteriorate when facing 
+Applied Soft Computing 189 (2026) 114513 
+15 
+
+=== Page 16 ===
+Y. Li, Z. Ma and R. Ma
+significant image quality degradation, such as severe noise and light­
+ing changes found in the Asphalt3k and Concrete3k datasets. More 
+specifically, our qualitative analysis indicates that the model may
+occasionally fail to detect extremely fine or discontinuous cracks, or mis­
+classify complex background textures that mimic crack patterns. While 
+ECFormer generally shows strong resilience, future work should include 
+more systematic robustness testing against controlled noise, lighting 
+variations, and other corruptions. Developing mechanisms to specif­
+ically enhance the detection of these challenging, fine-grained crack 
+features is another critical research avenue.
+Finally, in terms of generalization and data dependency, the model’s 
+performance was validated on three comprehensive datasets, but its gen­
+eralizability to unseen crack morphologies or different material types 
+remains to be further explored. This limitation is tied to a broader chal­
+lenge in the field: the scarcity of large-scale, high-quality annotated 
+crack datasets. To this end, a promising future direction is to leverage 
+parameter-efficient fine-tuning methods, such as Adapters [91], to trans­
+fer knowledge from large-scale pre-trained vision models (e.g., SAM [92] 
+and CLIP [93]) to the crack segmentation task. This could significantly 
+enhance model generalization and robustness without requiring massive 
+task-specific datasets.
+7 . Conclusions
+Research on Transformer-based crack recognition is gaining increas­
+ing attention, as its self-attention mechanism, when applied to images, 
+naturally possesses long-range modeling capability and a global re­
+ceptive field. However, its quadratic complexity with respect to the 
+input sequence results in computational costs that are difficult to accept 
+when processing high-resolution images. To address this issue, our pa­
+per introduces three efficient attention modules and designs an efficient 
+crack segmentation model, ECFormer. For the HR branch, which pri­
+marily learns the local features of cracks, a multi-scale spatial-reduction 
+attention module is designed. This module significantly reduces compu­
+tational complexity by performing spatial reduction on feature maps at 
+multiple scales while adapting to the feature extraction needs of targets 
+at different scales, allowing the model to excel in capturing multi-scale 
+features. For the LR branch, which primarily learns global semantic 
+features, an enhanced ReLU-based linear attention module is designed. 
+While maintaining a global receptive field, this module reduces the com­
+putational complexity to a linear level. The enhanced linear attention 
+module improves feature discrimination and model expressiveness by 
+adjusting the direction of each Query and Key, bringing similar features 
+closer together and pushing dissimilar features further apart. To achieve 
+efficient fusion of HR and LR features, a bidirectional cross-resolution 
+feature enhancer is designed. This module establishes an effective fea­
+ture exchange channel between the HR and LR branches through a 
+bidirectional cross-attention mechanism, enhancing the model’s fea­
+ture fusion and overall performance. Comprehensive evaluations on 
+general crack datasets and specific scenario crack datasets show that 
+ECFormer consistently outperforms other comparison models. To pro­
+mote advancements in the field of crack recognition, the data and code 
+from this paper will be made publicly available at https://github.com/
+CHDyshli/efficient_crack_transformer.
+CRediT authorship contribution statement
+Yongshang Li: Writing – original draft, Validation, Methodology, 
+Investigation, Data curation, Conceptualization. Zihan Ma: Visua­
+lization, Validation. Ronggui Ma: Supervision, Resources, Project ad­
+ministration.
+Declaration of competing interest
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper.
+Table A.1 
+Severity parameterization for four corruptions on CrackSeg9k. All operators 
+act on per-channel normalized images in [0, 1]; formal definitions are given in 
+Eqs. (A.1)–(A.4).
+Corruption
+𝑠=1
+𝑠=2
+𝑠=3
+𝑠=4
+𝑠=5
+Gaussian noise 𝜎 ( × 1/255)
+5
+10
+15
+20
+25
+Motion blur length 𝐿 (pixels; random angle)
+3
+5
+7
+9
+11
+Brightness shift (additive, %)
+±10
+±20
+±30
+±40
+±50
+JPEG quality 𝑄
+90
+70
+50
+30
+10
+Appendix A . Robustness corruptions for CrackSeg9k: definitions 
+and parameters
+This appendix formalizes the four corruption operators used in 
+Section 5.4: Gaussian noise, motion blur, brightness shift, and JPEG 
+compression. Parameter values follow the five severity levels (𝑠=1–5) 
+in Table A.1. The operators correspond one-to-one to the columns used 
+in the results of Section 5.4.
+Let 𝑥∈[0, 1]𝐻×𝑊×𝐶 be the input image. Unless stated, evaluation 
+uses batch= 1, input 400×400, no test-time augmentation. Randomness 
+arises from Gaussian noise and the motion-blur angle; results are aver­
+aged over 𝑁 repeats with fixed seeds. All operators act in the [0, 1] do­
+main and end with clipping to [0, 1]. Convolution uses bilinear sampling 
+for subpixel offsets and reflect padding at borders.
+Gaussian noise (additive). The operator adds i.i.d. Gaussian noise to 
+each channel: 
+𝑥′ = clip(𝑥+ (𝜎∕255)𝜖, 0, 1),
+𝜖∼N (0, 𝐼).
+(A.1)
+Applied independently per channel. Severity mapping: 𝜎
+∈
+{5, 10, 15, 20, 25} corresponds to {5, 10, 15, 20, 25}∕255.
+Motion blur. The operator convolves the image with a normalized line 
+kernel: 
+𝑥′ = 𝑥∗𝑘𝐿,𝜃,
+(A.2)
+where ∗ denotes channel-wise 2D convolution and 𝑘𝐿,𝜃 is a line point-
+spread function of length 𝐿 at angle 𝜃. The angle 𝜃 is drawn uniformly 
+from [0, 𝜋) once per image. Convolution uses bilinear sampling for sub­
+pixel offsets and reflect padding at borders. Severity mapping: 𝐿∈
+{3, 5, 7, 9, 11} (pixels).
+Brightness shift. The operator adds a constant offset to all channels: 
+𝑥′ = clip(𝑥+ 𝛽, 0, 1).
+(A.3)
+The per-image constant 𝛽 is applied uniformly to all channels. Severity 
+mapping: 𝛽∈{±0.10, ±0.20, ±0.30, ±0.40, ±0.50}.
+JPEG compression. The operator applies a codec round trip in the 8-bit 
+domain: 
+𝑥′ = JPEG−1(JPEG(round(255𝑥), 𝑄))∕255,
+(A.4)
+using a standard JPEG implementation with YCbCr 4:2:0 subsampling. 
+Severity mapping: 𝑄
+∈
+{90, 70, 50, 30, 10} (quality factor; lower is 
+stronger).
+Data availability
+Data will be made available on request.
+References
+[1] D. Ai, G. Jiang, S.-K. Lam, P. He, C. Li, Computer vision framework for crack detec­
+tion of civil infrastructure: a review, Eng. Appl. Artif. Intell. 117 (2023) 105478, 
+https://doi.org/10.1016/j.engappai.2022.105478
+[2] N.S.P. Peraka, K.P. Biligiri, Pavement asset management systems and technologies: 
+a review, Autom. Constr. 119 (2020) 103336, https://doi.org/10.1016/j.autcon.
+2020.103336
+Applied Soft Computing 189 (2026) 114513 
+16 
+
+=== Page 17 ===
+Y. Li, Z. Ma and R. Ma
+[3] J. Guo, P. Liu, B. Xiao, L. Deng, Q. Wang, Surface defect detection of civil structures 
+using images: review from data perspective, Autom. Constr. 158 (2024) 105186, 
+https://doi.org/10.1016/j.autcon.2023.105186
+[4] Y.-A. Hsieh, Y.J. Tsai, Machine learning for crack detection: review and model 
+performance comparison, J. Comput. Civ. Eng. 34 (5) (2020) 04020038, https:
+//doi.org/10.1061/(ASCE)CP.1943-5487.0000918
+[5] N. Kheradmandi, V. Mehranfar, A critical review and comparative study on image 
+segmentation-based techniques for pavement crack detection, Constr. Build. Mater. 
+321 (2022) 126162, https://doi.org/10.1016/j.conbuildmat.2021.126162
+[6] K. Simonyan, A. Zisserman, Very deep convolutional networks for large-scale image 
+recognition, arXiv preprint (2014), https://doi.org/10.48550/arXiv.1409.1556
+[7] I.J. Goodfellow, J. Shlens, C. Szegedy, Explaining and harnessing adversarial 
+examples, arXiv preprint (2014), https://doi.org/10.48550/arXiv.1412.6572
+[8] I. Vasiljevic, A. Chakrabarti, G. Shakhnarovich, Examining the impact of blur on 
+recognition by convolutional networks, arXiv preprint (2016), https://doi.org/10.
+48550/arXiv.1611.05760
+[9] A. Vaswani, N.M. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A.N. Gomez, L. Kaiser, 
+I. Polosukhin, Attention is all you need, in: Proceedings of the 31st International 
+Conference on Neural Information Processing Systems, 2017, pp. 6000–6010, 
+https://doi.org/10.48550/arXiv.1706.03762
+[10] A. Dosovitskiy, L. Beyer, A. Kolesnikov, D. Weissenborn, X. Zhai, T. Unterthiner, M. 
+Dehghani, M. Minderer, G. Heigold, S. Gelly, J. Uszkoreit, N. Houlsby, An image is 
+worth 16x16 words: transformers for image recognition at scale, in: International 
+Conference on Learning Representations, 2021, https://doi.org/10.48550/arXiv.
+2010.11929
+[11] S. Khan, M. Naseer, M. Hayat, S.W. Zamir, F.S. Khan, M. Shah, Transformers in 
+Vision: a survey, ACM Comput. Surv. 54 (10s) (2022) 1–41, https://doi.org/10.
+1145/3505244
+[12] Y. Liu, Y. Zhang, Y. Wang, F. Hou, J. Yuan, J. Tian, Y. Zhang, Z. Shi, J. Fan, Z. 
+He, A survey of visual transformers, IEEE Trans. Neural Netw. Learn. Syst. (2023), 
+https://doi.org/10.1109/TNNLS.2022.3227717
+[13] H.D. Cheng, X.J. Shi, C. Glazier, Real-time image thresholding based on sample 
+space reduction and interpolation approach, J. Comput. Civ. Eng. 17 (4) (2003) 
+264–272, https://doi.org/10.1061/(ASCE)0887-3801(2003)17:4(264)
+[14] Y.-C. Tsai, V. Kaul, R.M. Mersereau, Critical assessment of pavement distress seg­
+mentation methods, J. Transp. Eng. 136 (1) (2010) 11–19, https://doi.org/10.
+1061/(ASCE)TE.1943-5436.0000051
+[15] J. Tang, Y. Gu, Automatic crack detection and segmentation using a hybrid algo­
+rithm for road distress analysis, in: 2013 IEEE International Conference on Systems, 
+Man, and Cybernetics, IEEE, 2013, pp. 3026–3030, https://doi.org/10.1109/SMC.
+2013.516
+[16] N.-D. Hoang, Detection of surface crack in building structures using image process­
+ing technique with an improved otsu method for image thresholding, Adv. Civ. Eng. 
+2018 (1) (2018) 3924120, https://doi.org/10.1155/2018/3924120
+[17] S. Liang, X. Jianchun, Z. Xun, An algorithm for concrete crack extraction and iden­
+tification based on machine vision, IEEE Access 6 (2018) 28993–29002, https:
+//doi.org/10.1109/ACCESS.2018.2844100
+[18] Q. Li, X. Liu, Novel approach to pavement image segmentation based on neigh­
+boring difference histogram method, in: 2008 Congress on Image and Signal 
+Processing, vol. 2, IEEE, 2008, pp. 792–796, https://doi.org/10.1109/CISP.2008.
+13
+[19] Y. Fujita, Y. Hamamoto, A robust automatic crack detection method from noisy 
+concrete surfaces, Mach. Vis. Appl. 22 (2011) 245–254, https://doi.org/10.1007/
+s00138-009-0244-5
+[20] A. Cubero-Fernandez, F.J. Rodriguez-Lozano, R. Villatoro, J. Olivares, J.M. 
+Palomares, Efficient pavement crack detection and classification, EURASIP J. 
+Image Video Process. 2017 (2017) 1–11, https://doi.org/10.1186/s13640-017-
+0187-0
+[21] Q. Wang, N. Zhang, K. Jiang, C. Ma, Z. Zhou, C. Dai, Tunnel lining crack recognition 
+based on improved multiscale retinex and Sobel edge detection, Math. Probl. Eng. 
+2021 (1) (2021) 9969464, https://doi.org/10.1155/2021/9969464
+[22] H. Han, H. Deng, Q. Dong, X. Gu, T. Zhang, Y. Wang, An advanced otsu method 
+integrated with edge detection and decision tree for crack detection in highway 
+transportation infrastructure, Adv. Mater. Sci. Eng. 2021 (1) (2021) 9205509, 
+https://doi.org/10.1155/2021/9205509
+[23] S.G. Monicka, D. Manimegalai, M. Karthikeyan, Detection of microcracks in sili­
+con solar cells using otsu-canny edge detection algorithm, Renew. Energ. Focus 43 
+(2022) 183–190, https://doi.org/10.1016/j.ref.2022.09.002
+[24] J. Canny, A computational approach to edge detection, IEEE Trans. Pattern Anal. 
+Mach. Intell. (6) (1986) 679–698, https://doi.org/10.1109/TPAMI.1986.4767851
+[25] N. Kanopoulos, N. Vasanthavada, R.L. Baker, Design of an image edge detection 
+filter using the Sobel operator, IEEE J. Solid-State Circuit 23 (2) (1988) 358–367, 
+https://doi.org/10.1109/4.996
+[26] R. Nigam, S.K. Singh, Crack detection in a beam using wavelet transform and 
+photographic measurements, in: Structures, vol. 25, Elsevier, 2020, pp. 436–447, 
+https://doi.org/10.1016/j.istruc.2020.03.010
+[27] S. Lang, F. Zheng, P. Li, C. Meng, A Gabor filter based weak crack detection method 
+for glassivation passivation parts wafer, Meas. Sci. Technol. 35 (2) (2023) 025013, 
+https://doi.org/10.1088/1361-6501/ad080e
+[28] H. Zoubir, M. Rguig, M. El Aroussi, R. Saadane, A. Chehri, Pixel-level concrete 
+bridge crack detection using convolutional neural networks, gabor filters, and at­
+tention mechanisms, Eng. Struct. 314 (2024) 118343, https://doi.org/10.1016/j.
+engstruct.2024.118343
+[29] E.A. Martinez-Ríos, R. Bustamante-Bello, S.A. Navarro-Tuch, Generalized Morse 
+wavelets parameter selection and transfer learning for pavement transverse
+cracking detection, Eng. Appl. Artif. Intell. 123 (2023) 106355, https://doi.org/
+10.1016/j.engappai.2023.106355
+[30] N. Gehri, J. Mata-Falcón, W. Kaufmann, Automated crack detection and measure­
+ment based on digital image correlation, Constr. Build. Mater. 256 (2020) 119383, 
+https://doi.org/10.1016/j.conbuildmat.2020.119383
+[31] M. Wu, W. Wang, D. Zhang, B. Deng, S. Liu, J. Lu, Y. Luo, W. Zhao, The pixel crack 
+reconstruction method: from fracture image to crack geological model for fracture 
+evolution simulation, Constr. Build. Mater. 273 (2021) 121733, https://doi.org/
+10.1016/j.conbuildmat.2020.121733
+[32] S.-Y. Kong, J.-S. Fan, Y.-F. Liu, X.-C. Wei, X.-W. Ma, Automated crack assessment 
+and quantitative growth monitoring, Comput.-Aided Civ. Infrastruct. Eng. 36 (5) 
+(2021) 656–674, https://doi.org/10.1111/mice.12626
+[33] U.A. Nnolim, Automated crack segmentation via saturation channel thresholding, 
+area classification and fusion of modified level set segmentation with canny edge 
+detection, Heliyon 6 (12) (2020), https://doi.org/10.1016/j.heliyon.2020.e05748
+[34] S. Das, S. Dutta, D. Adak, S. Majumdar, On the crack characterization of reinforced 
+concrete structures: experimental and data-driven numerical study, Structures 30 
+(2021) 134–145, https://doi.org/10.1016/j.istruc.2020.12.069
+[35] Y. Liu, J.K.W. Yeoh, Robust pixel-wise concrete crack segmentation and properties 
+retrieval using image patches, Autom. Constr. 123 (2021) 103535, https://doi.org/
+10.1016/j.autcon.2020.103535
+[36] J. Long, E. Shelhamer, T. Darrell, Fully convolutional networks for semantic seg­
+mentation, in: Proceedings of the IEEE/CVF Conference on Computer Vision and 
+Pattern Recognition, 2015, pp. 3431–3440.
+[37] S. Wang, Y. Pan, M. Chen, Y. Zhang, X. Wu, Fcn-Sfw: steel structure crack segmen­
+tation using a fully convolutional network and structured forests, IEEE Access 8 
+(2020) 214358–214373, https://doi.org/10.1109/ACCESS.2020.3040939
+[38] K. Chaiyasarn, A. Buatik, H. Mohamad, M. Zhou, S. Kongsilp, N. Poovarodom, 
+Integrated pixel-level Cnn-fcn crack detection via photogrammetric 3d texture 
+mapping of concrete structures, Autom. Constr. 140 (2022) 104388, https://doi.
+org/10.1016/j.autcon.2022.104388
+[39] F.-C. Chen, M.R. Jahanshahi, Arf-crack: rotation invariant deep fully convolutional 
+network for pixel-level crack detection, Mach. Vis. Appl. 31 (6) (2020) 47, https:
+//doi.org/10.1007/s00138-020-01098-x
+[40] O. Ronneberger, P. Fischer, T. Brox, U-net: convolutional networks for biomed­
+ical image segmentation, in: Medical Image Computing and Computer-Assisted 
+Intervention–MICCAI 2015: 18th International Conference, Munich, Germany, 
+October 5-9, 2015, Proceedings, Part III 18, Springer, 2015, pp. 234–241, https:
+//doi.org/10.1007/978-3-319-24574-4_28
+[41] X. Gao, B. Tong, Mra-unet: balancing speed and accuracy in road crack segmen­
+tation network, Signal Image Video Process. 17 (5) (2023) 2093–2100, https:
+//doi.org/10.1007/s11760-022-02423-9
+[42] F. Liu, L. Wang, Unet-based model for crack detection integrating visual ex­
+planations, Constr. Build. Mater. 322 (2022) 126265, https://doi.org/10.1016/j.
+conbuildmat.2021.126265
+[43] F. Panella, A. Lipani, J. Boehm, Semantic segmentation of cracks: data challenges 
+and architecture, Autom. Constr. 135 (2022) 104110, https://doi.org/10.1016/j.
+autcon.2021.104110
+[44] L.-C. Chen, G. Papandreou, I. Kokkinos, K. Murphy, A.L. Yuille, Deeplab: semantic 
+image segmentation with Deep convolutional nets, atrous convolution, and fully 
+connected CRFS, IEEE Trans. Pattern Anal. Mach. Intell. 40 (4) (2017) 834–848, 
+https://doi.org/10.1109/TPAMI.2017.2699184
+[45] L.-C. Chen, Y. Zhu, G. Papandreou, F. Schroff, H. Adam, Encoder-decoder with 
+atrous separable convolution for semantic image segmentation, in: Proceedings of 
+the European Conference on Computer Vision (ECCV), 2018, pp. 801–818, https:
+//doi.org/10.1007/978-3-030-01234-2_49
+[46] Z. Qu, C. Cao, L. Liu, D.-Y. Zhou, A deeply supervised convolutional neural net­
+work for pavement crack detection with multiscale feature fusion, IEEE Trans. 
+Neural Netw. Learn. Syst. 33 (9) (2021) 4890–4899, https://doi.org/10.1109/
+TNNLS.2021.3062070
+[47] X. Sun, Y. Xie, L. Jiang, Y. Cao, B. Liu, Dma-net: deeplab with multi-scale attention 
+for pavement crack segmentation, IEEE Trans. Intell. Transp. Syst. 23 (10) (2022) 
+18392–18403, https://doi.org/10.1109/TITS.2022.3158670
+[48] Z. Al-Huda, B. Peng, R.N.A. Algburi, M.A. Al-Antari, A.-J. Rabea, D. Zhai, A hybrid 
+deep learning pavement crack semantic segmentation, Eng. Appl. Artif. Intell. 122 
+(2023) 106142, https://doi.org/10.1016/j.engappai.2023.106142
+[49] J. Wang, K. Sun, T. Cheng, B. Jiang, C. Deng, Y. Zhao, D. Liu, Y. Mu, M. Tan, X. 
+Wang, et al., Deep high-resolution representation learning for visual recognition, 
+IEEE Trans. Pattern Anal. Mach. Intell. 43 (10) (2020) 3349–3364, https://doi.org/
+10.1109/TPAMI.2020.2983686
+[50] Y. Li, R. Ma, H. Liu, G. Cheng, Real-time high-resolution neural network with 
+semantic guidance for crack segmentation, Autom. Constr. 156 (2023) 105112, 
+https://doi.org/10.1016/j.autcon.2023.105112
+[51] H. Chu, W. Chen, L. Deng, Cascade operation-enhanced high-resolution represen­
+tation learning for meticulous segmentation of bridge cracks, Adv. Eng. Inform. 61 
+(2024) 102508, https://doi.org/10.1016/j.aei.2024.102508
+[52] A.A. Zhang, K.C.P. Wang, Y. Liu, Y. Zhan, G. Yang, G. Wang, E. Yang, H. Zhang, 
+Z. Dong, A. He, et al., Intelligent pixel-level detection of multiple distresses and 
+surface design features on asphalt pavements, Comput.-Aided Civ. Infrastruct. Eng. 
+37 (13) (2022) 1654–1673, https://doi.org/10.1111/mice.12909
+[53] B. Chen, H. Zhang, G. Wang, J. Huo, Y. Li, L. Li, Automatic concrete infrastruc­
+ture crack semantic segmentation using deep learning, Autom. Constr. 152 (2023) 
+104950, https://doi.org/10.1016/j.autcon.2023.104950
+[54] H. Liu, J. Yang, X. Miao, C. Mertz, H. Kong, Crackformer network for pavement 
+crack segmentation, IEEE Trans. Intell. Transp. Syst. 24 (9) (2023) 9240–9252, 
+https://doi.org/10.1109/TITS.2023.3266776
+Applied Soft Computing 189 (2026) 114513 
+17 
+
+=== Page 18 ===
+Y. Li, Z. Ma and R. Ma
+[55] Y. Zhang, L. Zhang, Detection of pavement cracks by deep learning models of 
+transformer and UNET, IEEE Trans. Intell. Transp. Syst. (2024), https://doi.org/
+10.1109/TITS.2024.3420763
+[56] C. Xiang, J. Guo, R. Cao, L. Deng, A crack-segmentation algorithm fusing transform­
+ers and convolutional neural networks for complex detection scenarios, Autom. 
+Constr. 152 (2023) 104894, https://doi.org/10.1016/j.autcon.2023.104894
+[57] E.A. Shamsabadi, C. Xu, A.S. Rao, T. Nguyen, T. Ngo, D. Dias-da Costa, Vision 
+transformer-based autonomous crack detection on asphalt and concrete sur­
+faces, Autom. Constr. 140 (2022) 104316, https://doi.org/10.1016/j.autcon.2022.
+104316
+[58] S. Xiao, K. Shang, K. Lin, Q. Wu, H. Gu, Z. Zhang, Pavement crack detection with 
+hybrid-window attentive vision transformers, Int. J. Appl. Earth Obs. Geoinf. 116 
+(2023) 103172, https://doi.org/10.1016/j.jag.2022.103172
+[59] Z. Zhang, W. Wang, X. Tian, Semantic segmentation of metal surface defects and 
+corresponding strategies, IEEE Trans. Instrum. Meas. 72 (2023) 1–13, https://doi.
+org/10.1109/TIM.2023.3282301
+[60] Y. Huang, Y. Liu, F. Liu, W. Liu, A lightweight feature attention fusion network 
+for pavement crack segmentation, Comput.-Aided Civ. Infrastruct. Eng. (2024), 
+https://doi.org/10.1111/mice.13225
+[61] H. Cai, J. Li, M. Hu, C. Gan, S. Han, Efficientvit: lightweight multi-scale at­
+tention for high-resolution dense prediction, in: Proceedings of the IEEE/CVF 
+International Conference on Computer Vision, 2023, pp. 17302–17313, https:
+//doi.org/10.1109/ICCV51070.2023.01587
+[62] Z. Liu, Y. Lin, Y. Cao, H. Hu, Y. Wei, Z. Zhang, S. Lin, B. Guo, Swin transformer: 
+hierarchical vision transformer using shifted windows, in: Proceedings of the 
+IEEE/CVF International Conference on Computer Vision, 2021, pp. 10012–10022, 
+https://doi.org/10.1109/ICCV48922.2021.00986
+[63] R. Child, S. Gray, A. Radford, I. Sutskever, Generating long sequences with sparse 
+transformers, arXiv preprint (2019), https://doi.org/10.48550/arXiv.1904.10509
+[64] A. Vyas, A. Katharopoulos, F. Fleuret, Fast transformers with clustered attention, 
+arXiv preprint (2020), https://doi.org/10.48550/arXiv.2007.04825
+[65] S. Wang, L. Zhou, Z. Gan, Y.-C. Chen, Y. Fang, S. Sun, Y. Cheng, J. Liu, Cluster-
+former: clustering-based sparse transformer for long-range dependency encoding, 
+arXiv preprint (2020), https://doi.org/10.48550/arXiv.2009.06097
+[66] S. Wang, B.Z. Li, M. Khabsa, H. Fang, H. Ma, Linformer: self-attention with linear 
+complexity, arXiv preprint (2020), https://doi.org/10.48550/arXiv.2006.04768
+[67] K.M. Choromanski, V. Likhosherstov, D. Dohan, X. Song, A. Gane, T. Sarlos, P. 
+Hawkins, J.Q. Davis, A. Mohiuddin, L. Kaiser, D.B. Belanger, L.J. Colwell, A. Weller, 
+Rethinking attention with performers, in: International Conference on Learning 
+Representations, 2021, https://doi.org/10.48550/arXiv.2009.14794
+[68] A. Katharopoulos, A. Vyas, N. Pappas, F. Fleuret, Transformers are RNNS: fast au­
+toregressive transformers with linear attention, in: International Conference on 
+Machine Learning, PMLR, 2020, pp. 5156–5165, https://doi.org/10.48550/arXiv.
+2006.16236
+[69] A. Jaegle, F. Gimeno, A. Brock, O. Vinyals, A. Zisserman, J. Carreira, Perceiver: gen­
+eral perception with iterative attention, in: International Conference on Machine 
+Learning, PMLR, 2021, pp. 4651–4664, https://doi.org/10.48550/arXiv.2103.
+03206
+[70] Z. Dai, G. Lai, Y. Yang, Q. Le, Funnel-transformer: filtering out sequential re­
+dundancy for efficient language processing, in: Advances in Neural Information 
+Processing Systems, vol. 33, 2020, pp. 4271–4282, https://doi.org/10.48550/
+arXiv.2006.03236
+[71] M. Sandler, A. Howard, M. Zhu, A. Zhmoginov, L.-C. Chen, Mobilenetv2: inverted 
+residuals and linear bottlenecks, in: Proceedings of the IEEE/CVF Conference on 
+Computer Vision and Pattern Recognition, 2018, pp. 4510–4520, https://doi.org/
+10.1109/CVPR.2018.00474
+[72] W. Wang, E. Xie, X. Li, D.-P. Fan, K. Song, D. Liang, T. Lu, P. Luo, L. Shao, Pyramid 
+vision transformer: a versatile backbone for dense prediction without convolutions, 
+in: Proceedings of the IEEE/CVF International Conference on Computer Vision, 
+2021, pp. 568–578, https://doi.org/10.1109/ICCV48922.2021.00061
+[73] W. Wang, E. Xie, X. Li, D.-P. Fan, K. Song, D. Liang, T. Lu, P. Luo, L. Shao, Pvt 
+v2: improved baselines with pyramid vision transformer, Comput. Vis. Media 8 (3) 
+(2022) 415–424, https://doi.org/10.1007/s41095-022-0274-8
+[74] H. Pan, Y. Hong, W. Sun, Y. Jia, Deep dual-resolution networks for real-time and 
+accurate semantic segmentation of traffic scenes, IEEE Trans. Intell. Transp. Syst. 
+24 (3) (2022) 3448–3460, https://doi.org/10.1109/TITS.2022.3228042
+[75] C.-F.R. Chen, Q. Fan, R. Panda, Crossvit: cross-attention multi-scale vision trans­
+former for image classification, in: Proceedings of the IEEE/CVF International 
+Conference on Computer Vision, 2021, pp. 357–366, https://doi.org/10.1109/
+ICCV48922.2021.00041
+[76] J. Wang, C. Gou, Q. Wu, H. Feng, J. Han, E. Ding, J. Wang, Rtformer: effi­
+cient design for real-time semantic segmentation with transformer, in: Advances 
+in Neural Information Processing Systems, vol. 35, 2022, pp. 7423–7436, https:
+//doi.org/10.48550/arXiv.2210.07124
+[77] L.H. Li, P. Zhang, H. Zhang, J. Yang, C. Li, Y. Zhong, L. Wang, L. Yuan, L. Zhang, 
+J.-N. Hwang, et al., Grounded language-image pre-training, in: Proceedings of the 
+IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022, pp. 
+10965–10975, https://doi.org/10.1109/CVPR52688.2022.01069
+[78] S. Liu, Z. Zeng, T. Ren, F. Li, H. Zhang, J. Yang, C. Li, J. Yang, H. Su, J. Zhu, 
+et al., Grounding DINO: marrying DINO with grounded pre-training for open-set
+object detection, arXiv preprint (2023), https://doi.org/10.48550/arXiv.2303.
+05499
+[79] K. He, X. Zhang, S. Ren, J. Sun, Deep residual learning for image recognition, 
+in: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern 
+Recognition, 2016, pp. 770–778, https://doi.org/10.1109/CVPR.2016.90
+[80] S. Kulkarni, S. Singh, D. Balakrishnan, S. Sharma, S. Devunuri, S.C.R. Korlapati, 
+Crackseg9k: a collection and benchmark for crack segmentation datasets and 
+frameworks, in: European Conference on Computer Vision, Springer, 2022, pp. 
+179–195, https://doi.org/10.1007/978-3-031-25082-8_12
+[81] A. Paszke, S. Gross, F. Massa, A. Lerer, J. Bradbury, G. Chanan, T. Killeen, Z. Lin, 
+N. Gimelshein, L. Antiga, A. Desmaison, A. Kopf, E. Yang, Z. DeVito, M. Raison, 
+A. Tejani, S. Chilamkurthy, B. Steiner, L. Fang, J. Bai, S. Chintala, Pytorch: an 
+imperative style, high-performance deep learning library, in: Advances in Neural 
+Information Processing Systems, vol. 32, 2019, pp. 8026–8037, https://doi.org/
+10.48550/arXiv.1912.01703
+[82] M. Contributors, Mmsegmentation: openmmlab semantic segmentation toolbox 
+and benchmark, 2020, https://github.com/open-mmlab/mmsegmentation. 
+[83] I. Loshchilov, F. Hutter, Decoupled weight decay regularization, in: International 
+Conference on Learning Representations, 2019, https://doi.org/10.48550/arXiv.
+1711.05101
+[84] C. Yu, C. Gao, J. Wang, G. Yu, C. Shen, N. Sang, Bisenet v2: bilateral network with 
+guided aggregation for real-time semantic segmentation, Int. J. Comput. Vis. 129 
+(2021) 3051–3068, https://doi.org/10.1007/s11263-021-01515-2
+[85] Y. Yuan, X. Chen, J. Wang, Object-contextual representations for semantic seg­
+mentation, in: Computer Vision–ECCV 2020: 16th European Conference, Glasgow, 
+UK, August 23–28, 2020, Proceedings, Part VI 16, Springer, 2020, pp. 173–190, 
+https://doi.org/10.1007/978-3-030-58539-6_11
+[86] E. Xie, W. Wang, Z. Yu, A. Anandkumar, J.M. Alvarez, P. Luo, Segformer: simple 
+and efficient design for semantic segmentation with transformers, in: Advances in 
+Neural Information Processing Systems, vol. 34, 2021, pp. 12077–12090, https:
+//doi.org/10.48550/arXiv.2105.15203
+[87] F. Guo, Y. Qian, J. Liu, H. Yu, Pavement crack detection based on transformer 
+network, Autom. Constr. 145 (2023) 104646, https://doi.org/10.1016/j.autcon.
+2022.104646
+[88] W. Wang, C. Su, Automatic concrete crack segmentation model based on trans­
+former, Autom. Constr. 139 (2022) 104275, https://doi.org/10.1016/j.autcon.
+2022.104275
+[89] D. Hendrycks, T. Dietterich, Benchmarking neural network robustness to com­
+mon corruptions and perturbations, 2019, https://doi.org/10.48550/arXiv.1903.
+12261
+[90] K. He, X. Zhang, S. Ren, J. Sun, Delving deep into rectifiers: surpassing human-level 
+performance on Imagenet classification, in: Proceedings of the IEEE International 
+Conference on Computer Vision, 2015, pp. 1026–1034, https://doi.org/10.1016/
+j.autcon.2022.104275
+[91] Z. Chen, Y. Duan, W. Wang, J. He, T. Lu, J. Dai, Y. Qiao, Vision transformer adapter 
+for dense predictions, in: The Eleventh International Conference on Learning 
+Representations, 2022, https://doi.org/10.48550/arXiv.2205.08534
+[92] A. Kirillov, E. Mintun, N. Ravi, H. Mao, C. Rolland, L. Gustafson, T. Xiao, S. 
+Whitehead, A.C. Berg, W.-Y. Lo, et al., Segment anything, in: Proceedings of the 
+IEEE/CVF International Conference on Computer Vision, 2023, pp. 4015–4026, 
+https://doi.org/10.1109/ICCV51070.2023.00371
+[93] A. Radford, J.W. Kim, C. Hallacy, A. Ramesh, G. Goh, S. Agarwal, G. Sastry, A. 
+Askell, P. Mishkin, J. Clark, et al., Learning transferable visual models from natural 
+language supervision, in: International Conference on Machine Learning, PMLR, 
+2021, pp. 8748–8763, https://doi.org/10.48550/arXiv.2103.00020
+Applied Soft Computing 189 (2026) 114513 
+18 

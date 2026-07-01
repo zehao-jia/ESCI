@@ -1,0 +1,10 @@
+{
+  "status": "ok",
+  "script": "fetch_pdf.py",
+  "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+  "title": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb",
+  "pdf_path": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+  "pdf_source": "local_pdf",
+  "source_url": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+  "pdf_url": ""
+}

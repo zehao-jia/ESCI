@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "source_type": "local_pdf",
+  "source_url": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+  "local_pdf_path": "E:\\ESCI\\1_日期\\五月\\5_14_PINN用于液体\\PINN用于流体.pdf",
+  "title": "Acta Mechanica Sinica (2021) vol(issue):ppb–ppb",
+  "metadata_sources": [
+    "local_pdf",
+    "arxiv",
+    "crossref"
+  ],
+  "doi": "10.1007/s10409-021-0xxxx-x",
+  "arxiv_id": "2105.09506",
+  "paper_id": "doi:10.1007/s10409-021-0xxxx-x",
+  "source": "arxiv",
+  "url": "http://arxiv.org/abs/2105.09506v1",
+  "abstract": "Despite the significant progress over the last 50 years in simulating flow problems using numerical discretization of the Navier-Stokes equations (NSE), we still cannot incorporate seamlessly noisy data into existing algorithms, mesh-generation is complex, and we cannot tackle high-dimensional problems governed by parametrized NSE. Moreover, solving inverse flow problems is often prohibitively expensive and requires complex and expensive formulations and new computer codes. Here, we review flow physics-informed learning, integrating seamlessly data and mathematical models, and implementing them using physics-informed neural networks (PINNs). We demonstrate the effectiveness of PINNs for inverse problems related to three-dimensional wake flows, supersonic flows, and biomedical flows.",
+  "authors": [
+    "Shengze Cai",
+    "Zhiping Mao",
+    "Zhicheng Wang",
+    "Minglang Yin",
+    "George Em Karniadakis"
+  ],
+  "published": "2021-05-20T04:14:55Z",
+  "year": "2021",
+  "pdf_url": "https://arxiv.org/pdf/2105.09506v1",
+  "script": "collect_metadata.py"
+}
