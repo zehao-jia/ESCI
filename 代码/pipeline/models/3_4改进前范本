@@ -1,0 +1,1325 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import numpy as np
+import math
+from einops import rearrange, repeat
+from functools import partial
+from typing import Optional, Callable
+from mamba_ssm.ops.selective_scan_interface import selective_scan_fn
+
+# ==================== DWT/IWT 模块（从Wave-Mamba提取）====================
+
+def dwt_init(x):
+    """小波变换：将输入分解为4个子带"""
+    x01 = x[:, :, 0::2, :] / 2
+    x02 = x[:, :, 1::2, :] / 2
+    x1 = x01[:, :, :, 0::2]
+    x2 = x02[:, :, :, 0::2]
+    x3 = x01[:, :, :, 1::2]
+    x4 = x02[:, :, :, 1::2]
+    x_LL = x1 + x2 + x3 + x4
+    x_HL = -x1 - x2 + x3 + x4
+    x_LH = -x1 + x2 - x3 + x4
+    x_HH = x1 - x2 - x3 + x4
+    return x_LL, x_HL, x_LH, x_HH
+
+
+def iwt_init(x):
+    """逆小波变换：将4个子带合并为原图"""
+    r = 2
+    in_batch, in_channel, in_height, in_width = x.size()
+    out_batch, out_channel, out_height, out_width = in_batch, int(in_channel/(r**2)), r * in_height, r * in_width
+    x1 = x[:, :out_channel, :, :] / 2
+    x2 = x[:,out_channel:out_channel * 2, :, :] / 2
+    x3 = x[:,out_channel * 2:out_channel * 3, :, :] / 2
+    x4 = x[:,out_channel * 3:out_channel * 4, :, :] / 2
+
+    h = torch.zeros([out_batch, out_channel, out_height, out_width]).float().to(x.device)
+    h[:, :, 0::2, 0::2] = x1 - x2 - x3 + x4
+    h[:, :, 1::2, 0::2] = x1 - x2 + x3 - x4
+    h[:, :, 0::2, 1::2] = x1 + x2 - x3 - x4
+    h[:, :, 1::2, 1::2] = x1 + x2 + x3 + x4
+    return h
+
+
+class DWT(nn.Module):
+    """离散小波变换模块"""
+    def __init__(self):
+        super(DWT, self).__init__()
+        self.requires_grad = False  
+
+    def forward(self, x):
+        return dwt_init(x)
+
+
+class IWT(nn.Module):
+    """逆小波变换模块"""
+    def __init__(self):
+        super(IWT, self).__init__()
+        self.requires_grad = False
+
+    def forward(self, x):
+        return iwt_init(x)
+
+
+# ==================== A处理模块：空间Mamba + 光谱Mamba ====================
+
+class SS1D(nn.Module):
+    """
+    1D Selective Scan State Space Model (Mamba)
+    适用于1D序列数据的Mamba实现
+    """
+    def __init__(
+            self,
+            d_model,
+            d_state=16,
+            d_conv=3,
+            expand=2,
+            dt_rank="auto",
+            dt_min=0.001,
+            dt_max=0.1,
+            dt_init="random",
+            dt_scale=1.0,
+            dt_init_floor=1e-4,
+            dropout=0.,
+            conv_bias=True,
+            bias=False,
+            device=None,
+            dtype=None,
+            **kwargs,
+    ):
+        factory_kwargs = {"device": device, "dtype": dtype}
+        super().__init__()
+        self.d_model = d_model
+        self.d_state = d_state
+        self.d_conv = d_conv
+        self.expand = expand
+        self.d_inner = int(self.expand * self.d_model)
+        self.dt_rank = math.ceil(self.d_model / 16) if dt_rank == "auto" else dt_rank
+
+        self.in_proj = nn.Linear(self.d_model, self.d_inner * 2, bias=bias, **factory_kwargs)
+        # 1D卷积（用于序列数据）
+        self.conv1d = nn.Conv1d(
+            in_channels=self.d_inner,
+            out_channels=self.d_inner,
+            groups=self.d_inner,
+            bias=conv_bias,
+            kernel_size=d_conv,
+            padding=(d_conv - 1) // 2,
+            **factory_kwargs,
+        )
+        self.act = nn.SiLU()
+
+        # 1D只需要一个方向的投影（而不是2D的4个方向）
+        self.x_proj = nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs)
+
+        self.dt_proj = self.dt_init(self.dt_rank, self.d_inner, dt_scale, dt_init, dt_min, dt_max, dt_init_floor,
+                                     **factory_kwargs)
+        self.dt_projs_weight = nn.Parameter(self.dt_proj.weight)
+        self.dt_projs_bias = nn.Parameter(self.dt_proj.bias)
+        del self.dt_proj
+
+        self.A_logs = self.A_log_init(self.d_state, self.d_inner, copies=1, merge=True)  # (D, N)
+        self.Ds = self.D_init(self.d_inner, copies=1, merge=True)  # (D, N)
+
+        self.selective_scan = selective_scan_fn
+
+        self.out_norm = nn.LayerNorm(self.d_inner)
+        self.out_proj = nn.Linear(self.d_inner, self.d_model, bias=bias, **factory_kwargs)
+        self.dropout = nn.Dropout(dropout) if dropout > 0. else None
+
+    @staticmethod
+    def dt_init(dt_rank, d_inner, dt_scale=1.0, dt_init="random", dt_min=0.001, dt_max=0.1, dt_init_floor=1e-4,
+                **factory_kwargs):
+        dt_proj = nn.Linear(dt_rank, d_inner, bias=True, **factory_kwargs)
+
+        # Initialize special dt projection to preserve variance at initialization
+        dt_init_std = dt_rank ** -0.5 * dt_scale
+        if dt_init == "constant":
+            nn.init.constant_(dt_proj.weight, dt_init_std)
+        elif dt_init == "random":
+            nn.init.uniform_(dt_proj.weight, -dt_init_std, dt_init_std)
+        else:
+            raise NotImplementedError
+
+        # Initialize dt bias so that F.softplus(dt_bias) is between dt_min and dt_max
+        dt = torch.exp(
+            torch.rand(d_inner, **factory_kwargs) * (math.log(dt_max) - math.log(dt_min))
+            + math.log(dt_min)
+        ).clamp(min=dt_init_floor)
+        # Inverse of softplus: https://github.com/pytorch/pytorch/issues/72759
+        inv_dt = dt + torch.log(-torch.expm1(-dt))
+        with torch.no_grad():
+            dt_proj.bias.copy_(inv_dt)
+        # Our initialization would set all Linear.bias to zero, need to mark this one as _no_reinit
+        dt_proj.bias._no_reinit = True
+
+        return dt_proj
+
+    @staticmethod
+    def A_log_init(d_state, d_inner, copies=1, device=None, merge=True):
+        # S4D real initialization
+        A = repeat(
+            torch.arange(1, d_state + 1, dtype=torch.float32, device=device),
+            "n -> d n",
+            d=d_inner,
+        ).contiguous()
+        A_log = torch.log(A)  # Keep A_log in fp32
+        if copies > 1:
+            A_log = repeat(A_log, "d n -> r d n", r=copies)
+            if merge:
+                A_log = A_log.flatten(0, 1)
+        A_log = nn.Parameter(A_log)
+        A_log._no_weight_decay = True
+        return A_log
+
+    @staticmethod
+    def D_init(d_inner, copies=1, device=None, merge=True):
+        # D "skip" parameter
+        D = torch.ones(d_inner, device=device)
+        if copies > 1:
+            D = repeat(D, "n1 -> r n1", r=copies)
+            if merge:
+                D = D.flatten(0, 1)
+        D = nn.Parameter(D)  # Keep in fp32
+        D._no_weight_decay = True
+        return D
+
+    def forward(self, x: torch.Tensor, **kwargs):
+        """
+        Args:
+            x: (B, L, C) - 输入序列，L是序列长度，C是特征维度
+        Returns:
+            out: (B, L, C) - 输出序列
+        """
+        B, L, C = x.shape
+
+        # 输入投影
+        xz = self.in_proj(x)  # (B, L, d_inner * 2)
+        x, z = xz.chunk(2, dim=-1)  # 每个都是 (B, L, d_inner)
+
+        # 转换为 (B, d_inner, L) 用于1D卷积
+        x = x.permute(0, 2, 1).contiguous()  # (B, d_inner, L)
+        x = self.act(self.conv1d(x))  # (B, d_inner, L)
+        
+        # 转换回 (B, L, d_inner) 用于selective scan
+        x = x.permute(0, 2, 1).contiguous()  # (B, L, d_inner)
+
+        # 投影得到 dt, B, C
+        x_dbl = self.x_proj(x)  # (B, L, dt_rank + d_state * 2)
+        dts, Bs, Cs = torch.split(x_dbl, [self.dt_rank, self.d_state, self.d_state], dim=-1)
+        
+        # 计算dt
+        dts = F.linear(dts, self.dt_projs_weight, self.dt_projs_bias)  # (B, L, d_inner)
+
+        # 准备selective scan的输入
+        # 需要将 (B, L, d_inner) 转换为 (B, d_inner, L) 用于selective_scan
+        xs = x.float().transpose(1, 2)  # (B, d_inner, L)
+        dts = dts.float().transpose(1, 2)  # (B, d_inner, L)
+        Bs = Bs.float().transpose(1, 2)  # (B, d_state, L)
+        Cs = Cs.float().transpose(1, 2)  # (B, d_state, L)
+        
+        # 扩展维度以匹配selective_scan的输入格式
+        # selective_scan期望: (batch, dim, seqlen) 或 (batch, dim, seqlen) 格式
+        # 对于1D，我们需要添加一个K维度（K=1）
+        xs = xs.unsqueeze(1)  # (B, 1, d_inner, L)
+        dts = dts.unsqueeze(1)  # (B, 1, d_inner, L)
+        Bs = Bs.unsqueeze(1)  # (B, 1, d_state, L)
+        Cs = Cs.unsqueeze(1)  # (B, 1, d_state, L)
+        
+        # 重塑为selective_scan期望的格式
+        xs = xs.view(B, -1, L)  # (B, d_inner, L)
+        dts = dts.view(B, -1, L)  # (B, d_inner, L)
+        Bs = Bs.view(B, 1, -1, L)  # (B, 1, d_state, L)
+        Cs = Cs.view(B, 1, -1, L)  # (B, 1, d_state, L)
+        
+        Ds = self.Ds.float().view(-1)  # (d_inner,)
+        As = -torch.exp(self.A_logs.float()).view(-1, self.d_state)  # (d_inner, d_state)
+        dt_projs_bias = self.dt_projs_bias.float().view(-1)  # (d_inner,)
+
+        # 调用selective_scan
+        # 注意：selective_scan期望的格式可能需要调整
+        # 我们需要将Bs和Cs重塑为正确的格式
+        out_y = self.selective_scan(
+            xs, dts,
+            As, Bs, Cs, Ds, z=None,
+            delta_bias=dt_projs_bias,
+            delta_softplus=True,
+            return_last_state=False,
+        )  # (B, d_inner, L)
+        
+        assert out_y.dtype == torch.float
+
+        # 转换回 (B, L, d_inner)
+        y = out_y.transpose(1, 2).contiguous()  # (B, L, d_inner)
+        
+        # 归一化
+        y = self.out_norm(y)
+        
+        # 门控机制
+        y = y * F.silu(z)
+        
+        # 输出投影
+        out = self.out_proj(y)  # (B, L, C)
+        
+        if self.dropout is not None:
+            out = self.dropout(out)
+        
+        return out
+
+
+class SS2D(nn.Module):
+    """
+    完整的2D SSM实现（使用mamba_ssm库）
+    从Wave-Mamba中提取的完整SS2D实现
+    """
+    def __init__(
+            self,
+            d_model,
+            d_state=16,
+            d_conv=3,
+            expand=2,
+            dt_rank="auto",
+            dt_min=0.001,
+            dt_max=0.1,
+            dt_init="random",
+            dt_scale=1.0,
+            dt_init_floor=1e-4,
+            dropout=0.,
+            conv_bias=True,
+            bias=False,
+            device=None,
+            dtype=None,
+            **kwargs,
+    ):
+        factory_kwargs = {"device": device, "dtype": dtype}
+        super().__init__()
+        self.d_model = d_model
+        self.d_state = d_state
+        self.d_conv = d_conv
+        self.expand = expand
+        self.d_inner = int(self.expand * self.d_model)
+        self.dt_rank = math.ceil(self.d_model / 16) if dt_rank == "auto" else dt_rank
+
+        self.in_proj = nn.Linear(self.d_model, self.d_inner * 2, bias=bias, **factory_kwargs)
+        self.conv2d = nn.Conv2d(
+            in_channels=self.d_inner,
+            out_channels=self.d_inner,
+            groups=self.d_inner,
+            bias=conv_bias,
+            kernel_size=d_conv,
+            padding=(d_conv - 1) // 2,
+            **factory_kwargs,
+        )
+        self.act = nn.SiLU()
+
+        self.x_proj = (
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+        )
+        self.x_proj_weight = nn.Parameter(torch.stack([t.weight for t in self.x_proj], dim=0))  # (K=4, N, inner)
+        del self.x_proj
+
+        self.dt_projs = (
+            self.dt_init(self.dt_rank, self.d_inner, dt_scale, dt_init, dt_min, dt_max, dt_init_floor,
+                         **factory_kwargs),
+            self.dt_init(self.dt_rank, self.d_inner, dt_scale, dt_init, dt_min, dt_max, dt_init_floor,
+                         **factory_kwargs),
+            self.dt_init(self.dt_rank, self.d_inner, dt_scale, dt_init, dt_min, dt_max, dt_init_floor,
+                         **factory_kwargs),
+            self.dt_init(self.dt_rank, self.d_inner, dt_scale, dt_init, dt_min, dt_max, dt_init_floor,
+                         **factory_kwargs),
+        )
+        self.dt_projs_weight = nn.Parameter(torch.stack([t.weight for t in self.dt_projs], dim=0))  # (K=4, inner, rank)
+        self.dt_projs_bias = nn.Parameter(torch.stack([t.bias for t in self.dt_projs], dim=0))  # (K=4, inner)
+        del self.dt_projs
+
+        self.A_logs = self.A_log_init(self.d_state, self.d_inner, copies=4, merge=True)  # (K=4, D, N)
+        self.Ds = self.D_init(self.d_inner, copies=4, merge=True)  # (K=4, D, N)
+
+        self.selective_scan = selective_scan_fn
+
+        self.out_norm = nn.LayerNorm(self.d_inner)
+        self.out_proj = nn.Linear(self.d_inner, self.d_model, bias=bias, **factory_kwargs)
+        self.dropout = nn.Dropout(dropout) if dropout > 0. else None
+
+    @staticmethod
+    def dt_init(dt_rank, d_inner, dt_scale=1.0, dt_init="random", dt_min=0.001, dt_max=0.1, dt_init_floor=1e-4,
+                **factory_kwargs):
+        dt_proj = nn.Linear(dt_rank, d_inner, bias=True, **factory_kwargs)
+
+        # Initialize special dt projection to preserve variance at initialization
+        dt_init_std = dt_rank ** -0.5 * dt_scale
+        if dt_init == "constant":
+            nn.init.constant_(dt_proj.weight, dt_init_std)
+        elif dt_init == "random":
+            nn.init.uniform_(dt_proj.weight, -dt_init_std, dt_init_std)
+        else:
+            raise NotImplementedError
+
+        # Initialize dt bias so that F.softplus(dt_bias) is between dt_min and dt_max
+        dt = torch.exp(
+            torch.rand(d_inner, **factory_kwargs) * (math.log(dt_max) - math.log(dt_min))
+            + math.log(dt_min)
+        ).clamp(min=dt_init_floor)
+        # Inverse of softplus: https://github.com/pytorch/pytorch/issues/72759
+        inv_dt = dt + torch.log(-torch.expm1(-dt))
+        with torch.no_grad():
+            dt_proj.bias.copy_(inv_dt)
+        # Our initialization would set all Linear.bias to zero, need to mark this one as _no_reinit
+        dt_proj.bias._no_reinit = True
+
+        return dt_proj
+
+    @staticmethod
+    def A_log_init(d_state, d_inner, copies=1, device=None, merge=True):
+        # S4D real initialization
+        A = repeat(
+            torch.arange(1, d_state + 1, dtype=torch.float32, device=device),
+            "n -> d n",
+            d=d_inner,
+        ).contiguous()
+        A_log = torch.log(A)  # Keep A_log in fp32
+        if copies > 1:
+            A_log = repeat(A_log, "d n -> r d n", r=copies)
+            if merge:
+                A_log = A_log.flatten(0, 1)
+        A_log = nn.Parameter(A_log)
+        A_log._no_weight_decay = True
+        return A_log
+
+    @staticmethod
+    def D_init(d_inner, copies=1, device=None, merge=True):
+        # D "skip" parameter
+        D = torch.ones(d_inner, device=device)
+        if copies > 1:
+            D = repeat(D, "n1 -> r n1", r=copies)
+            if merge:
+                D = D.flatten(0, 1)
+        D = nn.Parameter(D)  # Keep in fp32
+        D._no_weight_decay = True
+        return D
+
+    def forward_core(self, x: torch.Tensor):
+        B, C, H, W = x.shape
+        L = H * W
+        K = 4
+
+        x_hwwh = torch.stack([x.view(B, -1, L), torch.transpose(x, dim0=2, dim1=3).contiguous().view(B, -1, L)], dim=1).view(B, 2, -1, L)
+        xs = torch.cat([x_hwwh, torch.flip(x_hwwh, dims=[-1])], dim=1) # (B, 4, d_inner, L)
+        x_dbl = torch.einsum("b k d l, k c d -> b k c l", xs.view(B, K, -1, L), self.x_proj_weight)
+        dts, Bs, Cs = torch.split(x_dbl, [self.dt_rank, self.d_state, self.d_state], dim=2)
+        dts = torch.einsum("b k r l, k d r -> b k d l", dts.view(B, K, -1, L), self.dt_projs_weight)
+
+        xs = xs.float().view(B, -1, L)
+        dts = dts.contiguous().float().view(B, -1, L) # (b, k * d, l)
+        Bs = Bs.float().view(B, K, -1, L)
+        Cs = Cs.float().view(B, K, -1, L) # (b, k, d_state, l)
+        Ds = self.Ds.float().view(-1)
+        As = -torch.exp(self.A_logs.float()).view(-1, self.d_state)
+        dt_projs_bias = self.dt_projs_bias.float().view(-1) # (k * d)
+
+        out_y = self.selective_scan(
+            xs, dts,
+            As, Bs, Cs, Ds, z=None,
+            delta_bias=dt_projs_bias,
+            delta_softplus=True,
+            return_last_state=False,
+        ).view(B, K, -1, L)
+        assert out_y.dtype == torch.float
+
+        inv_y = torch.flip(out_y[:, 2:4], dims=[-1]).view(B, 2, -1, L)
+        wh_y = torch.transpose(out_y[:, 1].view(B, -1, W, H), dim0=2, dim1=3).contiguous().view(B, -1, L)
+        invwh_y = torch.transpose(inv_y[:, 1].view(B, -1, W, H), dim0=2, dim1=3).contiguous().view(B, -1, L)
+
+        return out_y[:, 0], inv_y[:, 0], wh_y, invwh_y
+
+    def forward(self, x: torch.Tensor, **kwargs):
+        """
+        Args:
+            x: (B, H, W, C) - 输入特征图
+        Returns:
+            out: (B, H, W, C) - 输出特征图
+        """
+        B, H, W, C = x.shape
+
+        xz = self.in_proj(x)
+        x, z = xz.chunk(2, dim=-1)
+
+        x = x.permute(0, 3, 1, 2).contiguous()
+        x = self.act(self.conv2d(x))
+        y1, y2, y3, y4 = self.forward_core(x)
+        assert y1.dtype == torch.float32
+        y = y1 + y2 + y3 + y4
+        y = torch.transpose(y, dim0=1, dim1=2).contiguous().view(B, H, W, -1)
+        y = self.out_norm(y)
+        y = y * F.silu(z)
+        out = self.out_proj(y)
+        if self.dropout is not None:
+            out = self.dropout(out)
+        return out
+
+
+class SpatialMamba2D(nn.Module):
+    """
+    空间Mamba（2D SSM）完整实现
+    结构：input → linear → LN → 2dSSM → GN → Relu → output
+    残差：input → Linear → output
+    """
+    def __init__(self, dim, d_state=16, d_conv=3, expand=2):
+        super().__init__()
+        self.dim = dim
+        self.d_inner = int(expand * dim)
+        
+        # Linear projection
+        self.linear = nn.Linear(dim, self.d_inner)
+        
+        # LayerNorm
+        self.ln = nn.LayerNorm(self.d_inner)
+        
+        # 完整的2D SSM（使用mamba_ssm）
+        self.ss2d = SS2D(
+            d_model=self.d_inner,
+            d_state=d_state,
+            d_conv=d_conv,
+            expand=1,  # SS2D内部已经expand了，这里保持为1
+            dropout=0.
+        )
+        
+        # GroupNorm
+        self.gn = nn.GroupNorm(num_groups=min(32, self.d_inner), num_channels=self.d_inner)
+        
+        # ReLU
+        self.relu = nn.ReLU(inplace=True)
+        
+        # 残差连接的Linear
+        self.residual_linear = nn.Linear(dim, self.d_inner)
+        
+        # 输出投影
+        self.out_proj = nn.Linear(self.d_inner, dim)
+    
+    def forward(self, x):
+        """
+        Args:
+            x: (B, H, W, C) - 输入应该是 (B, H, W, C) 格式（由AProcess保证）
+        Returns:
+            out: (B, C, H, W)
+        """
+        # 检查并确保输入格式为 (B, H, W, C)
+        if len(x.shape) == 4:
+            # 检查最后一个维度是否是通道数
+            if x.shape[-1] == self.dim:
+                # 最后一个维度是通道数，已经是 (B, H, W, C) 格式
+                pass
+            elif x.shape[1] == self.dim:
+                # 第一个非batch维度是通道数，是 (B, C, H, W) 格式，需要转换
+                x = x.permute(0, 2, 3, 1)
+            else:
+                # 无法确定格式，抛出错误
+                raise ValueError(
+                    f"[SpatialMamba2D] 无法确定输入格式: {x.shape}, "
+                    f"期望通道数: {self.dim}, "
+                    f"但最后一个维度是: {x.shape[-1]}, 第一个非batch维度是: {x.shape[1]}"
+                )
+        
+        B, H, W, C = x.shape
+        
+        # 验证通道数是否正确
+        if C != self.dim:
+            raise ValueError(
+                f"[SpatialMamba2D] 通道数不匹配: 期望 {self.dim}, 但得到 {C}. "
+                f"输入形状: {x.shape}. "
+                f"请检查输入数据的通道数是否正确。"
+            )
+        
+        residual = x
+        
+        # Linear projection
+        x = self.linear(x)  # (B, H, W, d_inner)
+        
+        # LayerNorm
+        x = self.ln(x)
+        
+        # 完整的2D SSM处理
+        x = self.ss2d(x)  # (B, H, W, d_inner)
+        
+        # GroupNorm (需要转换为 (B, C, H, W))
+        x = x.permute(0, 3, 1, 2)  # (B, d_inner, H, W)
+        x = self.gn(x)
+        x = x.permute(0, 2, 3, 1)  # (B, H, W, d_inner)
+        
+        # ReLU
+        x = self.relu(x)
+        
+        # 残差连接
+        residual_proj = self.residual_linear(residual)  # (B, H, W, d_inner)
+        x = x + residual_proj
+        
+        # 输出投影
+        x = self.out_proj(x)  # (B, H, W, C)
+        
+        # 转换为 (B, C, H, W)
+        x = x.permute(0, 3, 1, 2)
+        
+        return x
+
+
+class SpectralMamba(nn.Module):
+    """
+    光谱Mamba：输入高频子带的混合结果，作为权重与空间mamba做乘法
+    完善版本：对全局池化后的结果接入Mamba块，然后再对输出进行处理
+    """
+    def __init__(self, dim, d_state=16, d_conv=3, expand=2):
+        super().__init__()
+        self.dim = dim
+        self.d_inner = int(expand * dim)
+        
+        # 输入投影：将 (B, C) 投影到 (B, C, dim) 以匹配SS1D的输入格式
+        # 将每个通道作为一个时间步，序列长度L=C，特征维度为dim
+        self.input_proj = nn.Linear(1, dim)  # 将标量特征投影到dim维
+        
+        # 全局池化后的1D Mamba块
+        # 使用SS1D处理1D序列数据（光谱维度）
+        # 输入格式：(B, C, dim)，其中C是序列长度（通道数），dim是特征维度
+        self.mamba_block = SS1D(
+            d_model=dim,
+            d_state=d_state,
+            d_conv=d_conv,
+            expand=1,  # SS1D内部已经expand了
+            dropout=0.
+        )
+        
+        # Mamba块后的归一化和激活
+        self.mamba_norm = nn.LayerNorm(dim)
+        self.mamba_act = nn.GELU()
+        
+        # 线性门控单元（GLU - Gated Linear Unit）
+        # 将输入投影到2倍维度，然后分成两部分：一部分作为值，一部分作为门控
+        self.gate_proj = nn.Linear(dim, dim * 2)
+        self.gate_act = nn.Sigmoid()  # 门控激活函数
+        
+        # 输出投影：将SS1D的输出 (B, C, dim) 投影回 (B, C)
+        self.output_proj = nn.Linear(dim, 1)
+    
+    def forward(self, x):
+        """
+        Args:
+            x: (B, C, H, W) - 高频子带的混合结果
+        Returns:
+            weights: (B, C, H, W) - 权重矩阵
+        """
+        B, C, H, W = x.shape
+        
+        # 全局平均池化得到通道特征
+        x_global = F.adaptive_avg_pool2d(x, 1)  # (B, C, 1, 1)
+        x_global = x_global.squeeze(-1).squeeze(-1)  # (B, C)
+        
+        # 将 (B, C) 转换为 (B, C, dim) 格式以使用SS1D Mamba块
+        # 将每个通道作为一个时间步，序列长度L=C，特征维度为dim
+        # 首先将 (B, C) -> (B, C, 1)，然后投影到 (B, C, dim)
+        x_global_expanded = x_global.unsqueeze(-1)  # (B, C, 1)
+        x_mamba_input = self.input_proj(x_global_expanded)  # (B, C, dim)
+        # SS1D期望 (B, L, C) 格式，其中L是序列长度，C是特征维度d_model
+        # 当前x_mamba_input是 (B, C_channels, dim)，需要转换为 (B, C_channels, dim)
+        # 这正好符合SS1D的输入格式要求（L=C_channels, C=dim）
+        
+        # 通过1D Mamba块处理
+        x_mamba = self.mamba_block(x_mamba_input)  # (B, C, dim)
+        
+        # 归一化和激活
+        x_mamba = self.mamba_norm(x_mamba)
+        x_mamba = self.mamba_act(x_mamba)
+        
+        # 线性门控单元（GLU）
+        # 投影到2倍维度
+        gate_output = self.gate_proj(x_mamba)  # (B, C, dim * 2)
+        # 分成两部分：值和门控
+        value, gate = gate_output.chunk(2, dim=-1)  # 每个都是 (B, C, dim)
+        # 门控信号经过sigmoid激活
+        gate = self.gate_act(gate)  # (B, C, dim)
+        # 门控机制：值 * 门控
+        x_mamba = value * gate  # (B, C, dim)
+        
+        # 输出投影：将 (B, C, dim) 投影回 (B, C, 1)，然后squeeze得到 (B, C)
+        x_mamba = self.output_proj(x_mamba)  # (B, C, 1)
+        x_mamba = x_mamba.squeeze(-1)  # (B, C)
+        
+        # 应用sigmoid生成权重
+        weights = torch.sigmoid(x_mamba)  # (B, C)
+        weights = weights.unsqueeze(-1).unsqueeze(-1)  # (B, C, 1, 1)
+        
+        # 广播到空间维度
+        weights = weights.expand(-1, -1, H, W)
+        
+        return weights
+
+
+class MultiScaleConvWithResidual(nn.Module):
+    """
+    多尺度卷积模块（仅卷积部分，带残差连接）
+    从MultiScaleConvModule中提取的多尺度卷积部分，不包括LayerNorm和MLP
+    """
+    def __init__(self, in_channels):
+        super(MultiScaleConvWithResidual, self).__init__()
+        
+        # Token Mixer: 多尺度卷积模块
+        # 初始空洞卷积
+        self.dilated_conv = nn.Conv2d(in_channels, in_channels, 3, padding=2, dilation=2, bias=False)
+        self.relu = nn.ReLU(inplace=True)
+
+        # 三个不同尺度的带状深度分离卷积（不同膨胀率）
+        self.scale1 = nn.Sequential(
+            nn.Conv2d(in_channels, in_channels, 3, padding=1, groups=in_channels, bias=False),  # 膨胀率1
+            nn.Conv2d(in_channels, in_channels, 1, bias=False),
+            nn.ReLU(inplace=True)
+        )
+
+        self.scale2 = nn.Sequential(
+            nn.Conv2d(in_channels, in_channels, 3, padding=3, groups=in_channels, dilation=3, bias=False),  # 膨胀率3
+            nn.Conv2d(in_channels, in_channels, 1, bias=False),
+            nn.ReLU(inplace=True)
+        )
+
+        self.scale3 = nn.Sequential(
+            nn.Conv2d(in_channels, in_channels, 3, padding=5, groups=in_channels, dilation=5, bias=False),  # 膨胀率5
+            nn.Conv2d(in_channels, in_channels, 1, bias=False),
+            nn.ReLU(inplace=True)
+        )
+
+        # 输出卷积
+        self.output_conv = nn.Conv2d(in_channels * 3, in_channels, 1, bias=False)
+        
+        # BatchNorm和ReLU（替代原来的CBR中的BN和ReLU）
+        self.bn = nn.BatchNorm2d(in_channels)
+        self.final_relu = nn.ReLU(inplace=True)
+
+    def forward(self, x):
+        # 残差连接的起点
+        residual = x
+        
+        # 多尺度卷积
+        # 初始空洞卷积
+        out = self.dilated_conv(x)
+        out = self.relu(out)
+
+        # 三个不同尺度的带状深度分离卷积并联
+        out1 = self.scale1(out)
+        out2 = self.scale2(out)
+        out3 = self.scale3(out)
+
+        # 拼接三个尺度的输出
+        combined = torch.cat([out1, out2, out3], dim=1)
+
+        # 输出卷积降维
+        out = self.output_conv(combined)
+        
+        # BatchNorm和ReLU
+        out = self.bn(out)
+        out = self.final_relu(out)
+        
+        # 残差连接
+        out = out + residual
+        
+        return out
+
+
+class AProcess(nn.Module):
+    """
+    A处理模块：
+    input → CBR（使用多尺度卷积替代） → 空间mamba → concat + 卷积融合 ← 光谱mamba(CBR输出结果)
+    input → output (残差)
+    """
+    def __init__(self, dim, d_state=16, d_conv=3, expand=2):
+        super().__init__()
+        self.dim = dim
+        
+        # CBR: 使用多尺度卷积模块（仅卷积部分，带残差）替代原来的卷积
+        self.cbr = MultiScaleConvWithResidual(dim)
+        
+        # 空间Mamba
+        self.spatial_mamba = SpatialMamba2D(dim, d_state=d_state, d_conv=d_conv, expand=expand)
+        
+        # 光谱Mamba
+        self.spectral_mamba = SpectralMamba(dim, d_state=d_state, d_conv=d_conv, expand=expand)
+        
+        # 融合卷积：将concat后的特征（2*dim通道）融合回dim通道
+        self.fusion_conv = nn.Sequential(
+            nn.Conv2d(dim * 2, dim, kernel_size=1, bias=False),
+            nn.BatchNorm2d(dim),
+            nn.ReLU(inplace=True)
+        )
+    
+    def forward(self, x, high_freq_feat):
+        """
+        Args:
+            x: (B, C, H, W) - 低频子带
+            high_freq_feat: (B, C, H, W) - B处理的高频子带混合结果（不再使用）
+        Returns:
+            out: (B, C, H, W)
+        """
+        residual = x
+        
+        # CBR（使用多尺度卷积）
+        cbr_output = self.cbr(x)  # (B, C, H, W)
+        
+        # 转换为 (B, H, W, C) 用于空间Mamba
+        x = cbr_output.permute(0, 2, 3, 1)  # (B, H, W, C)
+        
+        # 空间Mamba
+        spatial_output = self.spatial_mamba(x)  # 返回 (B, C, H, W)
+        
+        # 光谱Mamba生成权重（使用CBR的输出结果，而不是high_freq_feat）
+        spectral_output = self.spectral_mamba(cbr_output)  # (B, C, H, W)
+        
+        # Concat + 卷积融合（替代原来的直接相乘）
+        x = torch.cat([spatial_output, spectral_output], dim=1)  # (B, 2*C, H, W)
+        x = self.fusion_conv(x)  # (B, C, H, W)
+        
+        # 残差连接
+        out = x + residual
+        
+        return out
+        residual = x
+        
+        # CBR
+        x = self.cbr(x)
+        
+        # 转换为 (B, H, W, C) 用于空间Mamba
+        x = x.permute(0, 2, 3, 1)  # (B, H, W, C)
+        
+        # 空间Mamba
+        x = self.spatial_mamba(x)  # 返回 (B, C, H, W)
+        
+        # 光谱Mamba生成权重
+        spectral_weights = self.spectral_mamba(high_freq_feat)  # (B, C, H, W)
+        
+        # 广播机制哈达玛积（逐元素相乘）
+        x = x * spectral_weights
+        
+        # 残差连接
+        out = x + residual
+        
+        return out
+
+
+class BProcess(nn.Module):
+    """
+    B处理模块：对三个高频子带进行concat并使用一个1×1卷积得到输出的特征图
+    完善版本：卷积后加入LayerNorm和ReLU，并加入残差连接
+    """
+    def __init__(self, dim):
+        super().__init__()
+        self.dim = dim
+        # 三个高频子带concat后通道数为3*dim，用1x1卷积降维到dim
+        self.conv1x1 = nn.Conv2d(3 * dim, dim, kernel_size=1, bias=False)
+        
+        # LayerNorm（需要转换为(B, H, W, C)格式）
+        self.ln = nn.LayerNorm(dim)
+        
+        # ReLU激活函数
+        self.relu = nn.ReLU(inplace=True)
+        
+        # 残差连接的投影层（用于将输入投影到相同维度）
+        # 由于输入是三个子带的平均值或其中一个，我们需要一个投影层
+        self.residual_proj = nn.Conv2d(dim, dim, kernel_size=1, bias=False)
+    
+    def forward(self, x_HL, x_LH, x_HH):
+        """
+        Args:
+            x_HL: (B, C, H, W) - 高频子带HL
+            x_LH: (B, C, H, W) - 高频子带LH
+            x_HH: (B, C, H, W) - 高频子带HH
+        Returns:
+            out: (B, C, H, W) - 融合后的高频特征
+        """
+        # 保存残差连接的输入（使用三个子带的平均值）
+        residual = (x_HL + x_LH + x_HH) / 3.0  # (B, C, H, W)
+        
+        # Concat三个高频子带
+        x_concat = torch.cat([x_HL, x_LH, x_HH], dim=1)  # (B, 3*C, H, W)
+        
+        # 1x1卷积降维
+        out = self.conv1x1(x_concat)  # (B, C, H, W)
+        
+        # LayerNorm（需要转换为(B, H, W, C)格式）
+        out = out.permute(0, 2, 3, 1)  # (B, H, W, C)
+        out = self.ln(out)
+        out = out.permute(0, 3, 1, 2)  # (B, C, H, W)
+        
+        # ReLU激活
+        out = self.relu(out)
+        
+        # 残差连接：投影残差输入并相加
+        residual_proj = self.residual_proj(residual)  # (B, C, H, W)
+        out = out + residual_proj
+        
+        return out
+
+
+
+
+class MultiScaleConvModule(nn.Module):
+    """
+    多尺度卷积模块 (MetaFormer结构)：
+    输入特征图 → LayerNorm → TopK Attention Token Mixer → 残差连接 → 
+    LayerNorm → Channel Mixer (MLP) → 残差连接
+    改进：将多尺度卷积部分替换为TopK Attention
+    """
+
+    def __init__(self, in_channels, input_resolution=32):
+        super(MultiScaleConvModule, self).__init__()
+        
+        # LayerNorm 1 (用于Token Mixer前)
+        self.norm1 = nn.LayerNorm(in_channels)
+        
+        # Token Mixer: TopK Attention（替代原来的多尺度卷积）
+        self.topk_attention = TransformerAttention(
+            in_channels=in_channels,
+            input_resolution=input_resolution,
+            num_heads=max(1, in_channels // 32),  # 每个head 32维，至少1个头
+            win_size=8,
+            shift_size=0,
+            mlp_ratio=4.,
+            token_mlp='leff'
+        )
+        self.topk_norm = nn.InstanceNorm2d(in_channels, affine=True)
+        self.topk_relu = nn.ReLU(inplace=True)
+        
+        # LayerNorm 2 (用于Channel Mixer前)
+        self.norm2 = nn.LayerNorm(in_channels)
+        
+        # Channel Mixer: MLP结构
+        self.mlp = nn.Sequential(
+            nn.Conv2d(in_channels, in_channels * 4, 1, bias=False),  # 扩展通道数
+            nn.ReLU(inplace=True),
+            nn.Conv2d(in_channels * 4, in_channels, 1, bias=False)  # 压缩回原始通道数
+        )
+
+    def forward(self, x):
+        # 残差连接1的起点
+        residual1 = x
+        
+        # LayerNorm 1
+        out = x.permute(0, 2, 3, 1)  # (B, H, W, C) for LayerNorm
+        out = self.norm1(out)
+        out = out.permute(0, 3, 1, 2)  # (B, C, H, W)
+        
+        # Token Mixer: TopK Attention（替代原来的多尺度卷积）
+        attention_weights = self.topk_attention(out)  # (B, C, H, W)
+        attention_weights = torch.sigmoid(attention_weights)  # 归一化到0-1
+        out = out * attention_weights  # 应用注意力权重
+        
+        # 归一化和激活
+        if out.shape[2] > 1 and out.shape[3] > 1:
+            out = self.topk_norm(out)
+        out = self.topk_relu(out)
+        
+        # 残差连接1
+        out = out + residual1
+        
+        # 残差连接2的起点
+        residual2 = out
+        
+        # LayerNorm 2
+        out = out.permute(0, 2, 3, 1)  # (B, H, W, C) for LayerNorm
+        out = self.norm2(out)
+        out = out.permute(0, 3, 1, 2)  # (B, C, H, W)
+        
+        # Channel Mixer: MLP
+        out = self.mlp(out)
+        
+        # 残差连接2
+        out = out + residual2
+
+        return out
+
+
+from attention import TransformerBlock
+
+class TransformerAttention(nn.Module):
+    """
+    Transformer注意力包装器，用于适配TransformerBlock到CNN的输入输出格式
+    输入：(B, C, H, W)
+    输出：(B, C, H, W)
+    """
+    
+    def __init__(self, in_channels, input_resolution=32, num_heads=8, win_size=8, shift_size=0,
+                 mlp_ratio=4., qkv_bias=True, qk_scale=None, drop=0., attn_drop=0., drop_path=0.,
+                 act_layer=nn.GELU, norm_layer=nn.LayerNorm, token_projection='linear', token_mlp='leff',
+                 att=True, sparseAtt=False):
+        super(TransformerAttention, self).__init__()
+        
+        # 将input_resolution转换为元组格式
+        if isinstance(input_resolution, int):
+            input_resolution = (input_resolution, input_resolution)
+        
+        # 创建TransformerBlock实例
+        self.transformer = TransformerBlock(
+            dim=in_channels,
+            input_resolution=input_resolution,
+            num_heads=num_heads,
+            win_size=win_size,
+            shift_size=shift_size,
+            mlp_ratio=mlp_ratio,
+            qkv_bias=qkv_bias,
+            qk_scale=qk_scale,
+            drop=drop,
+            attn_drop=attn_drop,
+            drop_path=drop_path,
+            act_layer=act_layer,
+            norm_layer=norm_layer,
+            token_projection=token_projection,
+            token_mlp=token_mlp,
+            att=att,
+            sparseAtt=sparseAtt
+        )
+    
+    def forward(self, x):
+        # 输入格式转换：(B, C, H, W) → (B, H*W, C)
+        B, C, H, W = x.shape
+        x = x.view(B, C, H*W).permute(0, 2, 1)  # (B, H*W, C)
+        
+        # TransformerBlock前向传播
+        x = self.transformer(x)
+        
+        # 输出格式转换：(B, H*W, C) → (B, C, H, W)
+        x = x.permute(0, 2, 1).view(B, C, H, W)
+        
+        return x
+
+
+class DoubleConv(nn.Module):
+    """
+    新的DoubleConv模块：按照用户描述的架构设计
+    - 输入 → 第一个残差加法节点（起点）
+    - 路径1：LN + MultiScaleConvModule（内部包含TopK Attention） → 回到第一个残差加法节点
+    - 路径2：LN + MLP → 第二个残差加法节点
+    - 最终残差连接 → 输出
+    注意：TopK Attention已经移动到MultiScaleConvModule内部作为Token Mixer
+    """
+
+    def __init__(self, in_channels, out_channels):
+        super(DoubleConv, self).__init__()
+
+        # 保存通道数信息
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+
+        # 如果输入输出通道不同，先调整通道数
+        self.channel_adjust = nn.Conv2d(in_channels, out_channels, 1,
+                                        bias=False) if in_channels != out_channels else None
+
+        # 第一个残差路径：LN + 多尺度CNN（基于输出通道数）
+        self.norm1 = nn.LayerNorm(out_channels)
+        self.multi_scale = MultiScaleConvModule(out_channels)
+
+        # 第二个残差路径：LN + MLP（基于输出通道数）
+        self.norm2 = nn.LayerNorm(out_channels)
+        # MLP：两个线性层，中间有激活函数
+        self.mlp = nn.Sequential(
+            nn.Conv2d(out_channels, out_channels * 4, 1, bias=False),  # 扩展通道数
+            nn.ReLU(inplace=True),
+            nn.Conv2d(out_channels * 4, out_channels, 1, bias=False)  # 压缩回原始通道数
+        )
+        
+        # 注意：TopK Attention已经移动到MultiScaleConvModule内部，这里不再需要
+
+    def forward(self, x, high_freq_feat=None):
+        """
+        Args:
+            x: (B, C, H, W) - 输入特征
+            high_freq_feat: (B, C, H, W) - 高频特征（可选，用于上采样过程中的topk部分）
+        """
+        # 如果输入输出通道不同，先调整通道数
+        if self.channel_adjust is not None:
+            x = self.channel_adjust(x)
+
+        # 保存调整后的输入用于最终的残差连接
+        residual_input = x
+
+        # 第一个残差连接路径：LN + 多尺度CNN
+        # 第一个残差加法节点（起点）
+        residual1 = x
+
+        # LN + 多尺度CNN路径
+        out1 = x.permute(0, 2, 3, 1)  # (B, H, W, C) for LayerNorm
+        out1 = self.norm1(out1)
+        out1 = out1.permute(0, 3, 1, 2)  # (B, C, H, W)
+        out1 = self.multi_scale(out1)
+
+        # 回到第一个残差加法节点
+        x = residual1 + out1
+
+        # 第二个残差连接路径：LN + MLP
+        residual2 = x
+
+        # LN + MLP路径
+        out2 = x.permute(0, 2, 3, 1)  # (B, H, W, C) for LayerNorm
+        out2 = self.norm2(out2)
+        out2 = out2.permute(0, 3, 1, 2)  # (B, C, H, W)
+        out2 = self.mlp(out2)
+
+        # 回到第二个残差加法节点
+        x = residual2 + out2
+
+        # 注意：TopK Attention已经在MultiScaleConvModule内部处理，这里不再需要
+        # MultiScaleConvModule已经包含了TopK Attention作为Token Mixer
+
+        # 最终的残差连接
+        x = x + residual_input
+
+        return x
+
+
+class SimpleSkipConnection(nn.Module):
+    """
+    简单跳跃连接：拼接 + 1DCNN
+    输入：编码器特征和解码器特征
+    输出：融合后的特征
+    """
+    def __init__(self, in_channels):
+        super(SimpleSkipConnection, self).__init__()
+        # 拼接后通道数翻倍，使用1x1卷积降维
+        self.conv1x1 = nn.Conv2d(in_channels * 2, in_channels, 1, bias=False)
+        # 1DCNN：使用1x3和3x1卷积模拟1D卷积
+        self.conv1d_1 = nn.Conv2d(in_channels, in_channels, (1, 3), padding=(0, 1), bias=False)
+        self.conv1d_2 = nn.Conv2d(in_channels, in_channels, (3, 1), padding=(1, 0), bias=False)
+        self.relu = nn.ReLU(inplace=True)
+        
+    def forward(self, enc_feat, dec_feat):
+        # 拼接编码器和解码器特征
+        combined = torch.cat([enc_feat, dec_feat], dim=1)
+        # 1x1卷积降维
+        out = self.conv1x1(combined)
+        # 1DCNN处理
+        out1 = self.conv1d_1(out)
+        out2 = self.conv1d_2(out)
+        out = out1 + out2
+        out = self.relu(out)
+        return out
+
+
+class UNet_Deep(nn.Module):
+    """
+    改进的3层UNet：
+    - 下采样：池化后DWT → A处理（低频）+ B处理（高频）
+    - 上采样：DoubleConv处理 + topk使用高频处理结果
+    """
+
+    def __init__(self, in_channels=25, out_channels=25, num_filters=64):
+        super(UNet_Deep, self).__init__()
+
+        # 编码器（3层）
+        self.enc1 = DoubleConv(in_channels, num_filters)
+        # 删除池化下采样操作
+        # 下采样后的DWT + A/B处理
+        self.dwt1 = DWT()
+        self.a_process1 = AProcess(num_filters)
+        self.b_process1 = BProcess(num_filters)
+        
+        self.enc2 = DoubleConv(num_filters, num_filters * 2)
+        # 删除池化下采样操作
+        # 下采样后的DWT + A/B处理
+        self.dwt2 = DWT()
+        self.a_process2 = AProcess(num_filters * 2)
+        self.b_process2 = BProcess(num_filters * 2)
+        
+        self.enc3 = DoubleConv(num_filters * 2, num_filters * 4)
+        # 删除池化下采样操作
+        # 下采样后的DWT + A/B处理
+        self.dwt3 = DWT()
+        self.a_process3 = AProcess(num_filters * 4)
+        self.b_process3 = BProcess(num_filters * 4)
+
+        # 瓶颈层
+        self.bottleneck = DoubleConv(num_filters * 4, num_filters * 8)
+
+        # 解码器（3层）- DoubleConv移到上采样过程
+        self.up3 = nn.ConvTranspose2d(num_filters * 8, num_filters * 4, 2, stride=2)
+        self.dec3 = DoubleConv(num_filters * 4, num_filters * 4)  # 移到上采样
+
+        self.up2 = nn.ConvTranspose2d(num_filters * 4, num_filters * 2, 2, stride=2)
+        self.dec2 = DoubleConv(num_filters * 2, num_filters * 2)  # 移到上采样
+
+        self.up1 = nn.ConvTranspose2d(num_filters * 2, num_filters, 2, stride=2)
+        self.dec1 = DoubleConv(num_filters, num_filters)  # 移到上采样
+
+        # 输出层
+        self.final_conv = nn.Conv2d(num_filters, out_channels, 1)
+
+        # 跳跃连接模块（简单拼接 + 1DCNN）
+        self.skip3 = SimpleSkipConnection(num_filters * 4)
+        self.skip2 = SimpleSkipConnection(num_filters * 2)
+        self.skip1 = SimpleSkipConnection(num_filters)
+        
+        # 存储高频特征用于上采样
+        self.high_freq_features = {}
+
+    def forward(self, x):
+        # 初始化高频特征存储字典
+        self.high_freq_features = {}
+        
+        # 编码器路径（3层）- 改进的下采样流程（删除池化操作）
+        enc1 = self.enc1(x)
+        
+        # 直接使用enc1进行DWT + A/B处理（不再进行池化）
+        x_LL1, x_HL1, x_LH1, x_HH1 = self.dwt1(enc1)
+        high_freq1 = self.b_process1(x_HL1, x_LH1, x_HH1)  # B处理：高频融合
+        low_freq1 = self.a_process1(x_LL1, high_freq1)  # A处理：低频处理（使用高频作为权重）
+        # 存储高频特征用于上采样
+        self.high_freq_features['level1'] = high_freq1
+        
+        enc2 = self.enc2(low_freq1)
+        
+        # 直接使用enc2进行DWT + A/B处理（不再进行池化）
+        x_LL2, x_HL2, x_LH2, x_HH2 = self.dwt2(enc2)
+        high_freq2 = self.b_process2(x_HL2, x_LH2, x_HH2)  # B处理
+        low_freq2 = self.a_process2(x_LL2, high_freq2)  # A处理
+        self.high_freq_features['level2'] = high_freq2
+        
+        enc3 = self.enc3(low_freq2)
+        
+        # 直接使用enc3进行DWT + A/B处理（不再进行池化）
+        x_LL3, x_HL3, x_LH3, x_HH3 = self.dwt3(enc3)
+        high_freq3 = self.b_process3(x_HL3, x_LH3, x_HH3)  # B处理
+        low_freq3 = self.a_process3(x_LL3, high_freq3)  # A处理
+        self.high_freq_features['level3'] = high_freq3
+
+        # 瓶颈层
+        bottleneck = self.bottleneck(low_freq3)
+
+        # 解码器路径（3层）- 改进的上采样流程
+        dec3 = self.up3(bottleneck)
+        if dec3.shape[2:] != low_freq3.shape[2:]:
+            dec3 = F.interpolate(dec3, size=low_freq3.shape[2:], mode='bilinear', align_corners=False)
+        # 使用简单跳跃连接融合编码器和解码器特征
+        fused3 = self.skip3(low_freq3, dec3)
+        # DoubleConv移到上采样过程，并在topk部分使用高频处理结果
+        dec3 = self.dec3(fused3, high_freq_feat=self.high_freq_features['level3'])
+
+        dec2 = self.up2(dec3)
+        if dec2.shape[2:] != low_freq2.shape[2:]:
+            dec2 = F.interpolate(dec2, size=low_freq2.shape[2:], mode='bilinear', align_corners=False)
+        # 使用简单跳跃连接融合编码器和解码器特征
+        fused2 = self.skip2(low_freq2, dec2)
+        dec2 = self.dec2(fused2, high_freq_feat=self.high_freq_features['level2'])
+
+        dec1 = self.up1(dec2)
+        if dec1.shape[2:] != low_freq1.shape[2:]:
+            dec1 = F.interpolate(dec1, size=low_freq1.shape[2:], mode='bilinear', align_corners=False)
+        # 使用简单跳跃连接融合编码器和解码器特征
+        fused1 = self.skip1(low_freq1, dec1)
+        dec1 = self.dec1(fused1, high_freq_feat=self.high_freq_features['level1'])
+
+        # 输出层
+        out = self.final_conv(dec1)
+
+        # 如果输出尺寸与输入不匹配，进行插值
+        if out.shape[2:] != x.shape[2:]:
+            out = F.interpolate(out, size=x.shape[2:], mode='bilinear', align_corners=False)
+
+        return out
+
+
+def create_gaussian_weight_matrix(size=13, sigma=None):
+    """
+    创建二维高斯权重矩阵
+
+    Args:
+        size: 矩阵大小（默认13×13）
+        sigma: 高斯函数的标准差，如果为None则使用size/6作为默认值
+
+    Returns:
+        gaussian_matrix: (size, size)的numpy数组，中心值最大，边缘值最小
+    """
+    if sigma is None:
+        sigma = size / 6.0  # 默认sigma，使得边缘值约为中心的1%
+
+    # 创建坐标网格
+    center = (size - 1) / 2.0
+    x = np.arange(size) - center
+    y = np.arange(size) - center
+    X, Y = np.meshgrid(x, y)
+
+    # 计算二维高斯函数
+    gaussian_matrix = np.exp(-(X ** 2 + Y ** 2) / (2 * sigma ** 2))
+
+    # 归一化，使得中心值为1
+    gaussian_matrix = gaussian_matrix / gaussian_matrix.max()
+
+    return gaussian_matrix
+
+
+class UNet(nn.Module):
+    """
+    3层UNet
+    在输入前应用高斯权重
+    """
+
+    def __init__(self, in_channels=30, out_channels=30, num_filters=64, patch_size=16):
+        super(UNet, self).__init__()
+
+        # 深层UNet（3层）
+        self.deep_unet = UNet_Deep(
+            in_channels=in_channels,
+            out_channels=out_channels,
+            num_filters=num_filters
+        )
+
+        # 创建高斯权重矩阵（注册为buffer，不参与训练但会随模型保存）
+        gaussian_weight = create_gaussian_weight_matrix(size=patch_size)
+        # 转换为torch tensor并注册为buffer
+        self.register_buffer('gaussian_weight', torch.FloatTensor(gaussian_weight))
+
+        # 保存输出通道数用于兼容性
+        self.out_channels = out_channels
+
+        # 为了兼容性，保留stage_out属性
+        class StageOutWrapper(nn.Module):
+            def __init__(self, out_channels):
+                super().__init__()
+                self.out_channels = out_channels
+
+            def forward(self, x):
+                return x
+
+        self.stage_out = StageOutWrapper(out_channels)
+
+    def forward(self, x):
+        """
+        Args:
+            x: 输入特征图 (B, C, H, W)
+        Returns:
+            out: 输出特征图 (B, out_channels, H, W)
+        """
+        # 应用高斯权重：对每个通道都乘以高斯权重矩阵
+        # x形状: (B, C, H, W)
+        # gaussian_weight形状: (H, W) 或 (patch_size, patch_size)
+        # 使用广播机制：(B, C, H, W) * (1, 1, H, W) -> (B, C, H, W)
+        gaussian_weight = self.gaussian_weight.unsqueeze(0).unsqueeze(0)  # (1, 1, H, W)
+        x_weighted = x * gaussian_weight
+
+        # 深层UNet特征提取
+        out = self.deep_unet(x_weighted)
+
+        return out
+
+if __name__ == "__main__":
+    # 设置设备：优先使用CUDA，如果不可用则使用CPU
+    device = torch.device("cuda:7" if torch.cuda.is_available() else "cpu")
+    
+    # 创建模型并移动到设备
+    model = UNet(in_channels=30, out_channels=30, num_filters=64, patch_size=16).to(device)
+    
+    # 创建测试输入并移动到设备
+    x = torch.randn(16, 30, 16, 16).to(device)
+    
+    # 设置为评估模式
+    model.eval()
+    
+    # 前向传播
+    with torch.no_grad():
+        out = model(x)

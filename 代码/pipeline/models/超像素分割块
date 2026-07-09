@@ -1,0 +1,71 @@
+# HMOSDN中的islic
+class ISLICProcessor:
+    """
+    改进的SLIC超像素分割算法，包含：
+    1. 高斯滤波(GF)平滑去噪
+    2. SLIC超像素分割
+    3. 像素强度平滑技术(PIST)超像素内均值平滑
+    """
+
+    def __init__(
+            self,
+            n_segments: int = 100,  # 论文参数：超像素分割数100
+            gaussian_sigma: float = 5,  # 论文参数：高斯滤波标准差5
+            slic_compactness: float = 10,
+            slic_max_iter: int = 10
+    ):
+        self.n_segments = n_segments
+        self.gaussian_sigma = gaussian_sigma
+        self.slic_compactness = slic_compactness
+        self.slic_max_iter = slic_max_iter
+
+    def gaussian_filtering(self, hsi_data: np.ndarray) -> np.ndarray:
+        """高斯滤波平滑，对应论文公式(7)(8)"""
+        # 输入形状：(H, W, Bands)，对每个波段单独做高斯滤波
+        smoothed_data = np.zeros_like(hsi_data)
+        for band in range(hsi_data.shape[-1]):
+            smoothed_data[..., band] = gaussian_filter(
+                hsi_data[..., band], sigma=self.gaussian_sigma
+            )
+        return smoothed_data
+
+    def pist_smoothing(self, hsi_data: np.ndarray, segments: np.ndarray) -> np.ndarray:
+        """像素强度平滑技术PIST，对应论文公式(9)(10)(11)"""
+        # 输入形状：(H, W, Bands)，segments：(H, W)超像素标签
+        n_segments = segments.max() + 1
+        smoothed_data = np.zeros_like(hsi_data)
+
+        # 对每个超像素，用均值替换内部所有像素值
+        for seg_id in range(n_segments):
+            mask = segments == seg_id
+            if mask.sum() == 0:
+                continue
+            # 计算超像素内每个波段的均值
+            seg_mean = hsi_data[mask].mean(axis=0)
+            smoothed_data[mask] = seg_mean
+        return smoothed_data
+
+    def __call__(self, hsi_pca_data: np.ndarray) -> np.ndarray:
+        """
+        ISLIC完整流程
+        :param hsi_pca_data: PCA降维后的高光谱数据，形状(H, W, Bands)
+        :return: ISLIC处理后的空间特征，形状(H, W, Bands)
+        """
+        # 步骤1：高斯滤波平滑
+        smoothed_hsi = self.gaussian_filtering(hsi_pca_data)
+
+        # 步骤2：SLIC超像素分割
+        # 归一化到0-1，适配SLIC输入要求
+        norm_hsi = (smoothed_hsi - smoothed_hsi.min()) / (smoothed_hsi.max() - smoothed_hsi.min() + 1e-8)
+        segments = slic(
+            norm_hsi,
+            n_segments=self.n_segments,
+            compactness=self.slic_compactness,
+            max_num_iter=self.slic_max_iter,
+            channel_axis=-1,
+            start_label=0
+        )
+
+        # 步骤3：PIST像素强度平滑
+        pist_smoothed = self.pist_smoothing(hsi_pca_data, segments)
+        return pist_smoothed

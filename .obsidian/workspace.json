@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md",
+                "file": "研究课题/04_物理融合/RingMoE/ringmoe遥感大模型零标注泛化.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ECFormer_crack_segmentation"
+              "title": "ringmoe遥感大模型零标注泛化"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Params",
+                "query": "moe",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -184,8 +185,14 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "4c5c7e55610cde7a",
+  "active": "1e9ee5e4ddd43211",
   "lastOpenFiles": [
+    "研究课题/04_物理融合/PINN_流体/PINNs_fluid_mechanics_review/PINNs_fluid_mechanics_review.md",
+    "研究课题/01_高光谱分类/Transformer系/DiffFormer/DiffFormer.pdf",
+    "研究课题/01_高光谱分类/Transformer系/Attention_U-Net/Attention_U-Net_笔记.md",
+    "研究课题/01_高光谱分类/CNN混合系/CAAENet/CAAENet.md",
+    "研究课题/01_高光谱分类/CNN混合系/CAAENet/笔记.md",
+    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md",
     "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.cfe6e922b27a",
     "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.e6a25913907e",
     "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.6a65cd9eb6e4",
@@ -205,10 +212,7 @@
     "研究课题/03_裂缝分割/ECFormer/images/Fig10_定性结果2.png",
     "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation/images",
     "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation",
-    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table9_attention_compare/images",
-    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table9_attention_compare",
     "研究课题/02_溢油检测/坐标注意力/坐标注意力.md",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md",
     "总览.canvas",
     "研究课题/05_基础架构/RWKV/rwkv.md",
     "研究课题/05_基础架构/Byte_Latent_Mamba/师生模型.md",
@@ -223,16 +227,12 @@
     "研究课题/03_裂缝分割/纵向裂缝检测/纵向裂缝检测_纹理重建与深度分割笔记.md",
     "研究课题/03_裂缝分割/LMA-Net/LMA-Net_土壤裂缝分割笔记.md",
     "研究课题/03_裂缝分割/LMA-Net/full.md",
-    "研究课题/04_物理融合/PINN_流体/PINNs_fluid_mechanics_review/PINNs_fluid_mechanics_review.md",
     "研究课题/04_物理融合/PINN_物理先验/论文总结.md",
     "研究课题/04_物理融合/PINN_物理先验/PINN_快速阅读摘要报告.md",
     "研究课题/01_高光谱分类/CNN混合系/CTCFNet/论文总结.md",
     "研究课题/01_高光谱分类/UNet系/MKUnet/MKUnet.md",
     "研究课题/03_裂缝分割/LCGA/LCGA.md",
     "研究课题/02_溢油检测/HDFNet/HDFNet.md",
-    "研究课题/01_高光谱分类/CNN混合系/PDmatch/PDMatch框架.md",
-    "研究课题/01_高光谱分类/UNet系/CM-UNet/CM-UNet_快速阅读摘要报告.md",
-    "研究课题/01_高光谱分类/UNet系/CM-UNet/cmunet.md",
     "组.canvas"
   ]
 }

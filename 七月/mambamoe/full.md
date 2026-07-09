@@ -1,0 +1,457 @@
+# MambaMoE: Mixture-of-spectral-spatial-experts state space model for hyperspectral image classification
+
+![](images/f02bb97a9968f5f60d29a611987617a05d914e27be451e543121ce5fc6e2e81f.jpg)
+
+Yichu Xu <sup>a</sup>, Di Wang <sup>a</sup>, Hongzan Jiao<sup>b</sup>, Lefei Zhang<sup>a,</sup>∗, Liangpei Zhang<sup>c</sup>
+
+<sup>a</sup> School of Computer Science, Wuhan University, 430072, Wuhan, PR China
+
+<sup>b</sup> School of Urban Design, Wuhan University, 430072, Wuhan, PR China
+
+<sup>c</sup> Aerospace Information Research Institute, Henan Academy of Sciences, 450046, Zhengzhou, PR China
+
+## a r t i c l e i n f o
+
+Keywords: Hyperspectral image classification Mixture-of-experts Mamba Spectral-spatial Uncertainty
+
+## a b s t r a c t
+
+Mamba-based models have recently demonstrated significant potential in hyperspectral image (HSI) classifi cation, primarily due to their ability to perform contextual modeling with linear computational complexity. However, existing Mamba-based approaches often overlook the directional modeling heterogeneity across dif ferent land-cover types, leading to limited classification performance. To address these limitations, we propose MambaMoE, a novel spectral-spatial Mixture-of-Experts (MoE) framework, which represents the first MoE-based approach in the HSI classification domain. Specifically, we design a Mixture of Mamba Expert Block (MoMEB) that performs adaptive spectral-spatial feature modeling via a sparse expert activation mechanism. Additionally, we introduce an uncertainty-guided corrective learning (UGCL) strategy that encourages the model to focus on complex regions prone to prediction ambiguity. This strategy dynamically samples supervision signals from regions with high predictive uncertainty, guiding the model to adaptively refine feature representations and thereby enhancing its focus on challenging areas. Extensive experiments conducted on multiple public HSI benchmark datasets show that MambaMoE achieves state-of-the-art performance in both classification accuracy and computational eficiency compared to existing advanced methods, particularly Mamba-based ones. The code will be available online at https://github.com/YichuXu/MambaMoE.
+
+## 1. Introduction
+
+Hyperspectral images (HSIs) contain hundreds of contiguous spectral bands, enabling the capture of rich spectral-spatial information that supports accurate analysis for Earth observation tasks [1–5]. HSI classification, which involves assigning a semantic label to each pixel in the image, has emerged as a fundamental task in the remote sensing community [6–8].
+
+With the rise of deep learning, HSI classification has transitioned from handcrafted feature engineering methods, such as tensor singular spectrum analysis [9–11], to fully automated neural networkbased approaches. Early methods, such as CNNs [12,13], demonstrated strong local feature extraction capabilities but were limited in capturing global context due to their constrained receptive fields. To address this, Transformer-based models [14–16] introduced long-range dependency modeling. However, their reliance on the self-attention mechanism [17,18] incurs quadratic computational complexity, making them less eficient for modeling spatial and spectral contexts simultaneously.
+
+Recently, Mamba-based architectures have garnered increasing attention in HSI classification due to their context modeling capability while maintaining linear complexity [19,20]. However, existing approaches exhibit several limitations. Firstly, most existing methods adopt patch-level designs [21,22], where an image patch is fed into the network to predict the category of the central pixel. This approach restricts the receptive field and fails to capture the holistic spatial context of remote sensing scenes. In addition, although multi-directional spectral-spatial scanning [23] is commonly employed to enhance feature diversity, existing methods typically treat all directions equally, overlooking the directional variations inherent in heterogeneous landcover types (see Section 4.5). Furthermore, the inherently sequential modeling [24] paradigm of Mamba disrupts the original spatial structure of hyperspectral data, resulting in a loss of spatial coherence. This degradation limits the model’s ability to preserve and exploit critical spatial information, ultimately hindering the extraction of finegranularity and context-aware features that are essential for accurate classification.
+
+To address these limitations, inspired by the Mixture-of-Experts (MoE) paradigm [25,26], we propose MambaMoE-a spectral-spatial mixture-of-mamba-expert framework for HSI classification. This framework is composed of specialized network blocks based on Mamba structures, which leverage state space models oriented along distinct spatial and spectral directions. Within these blocks, multiple Mamba modules serve as diverse experts, collectively forming the proposed Mixture of Mamba Expert Block (MoMEB). Given that remote sensing images are captured from a bird’s-eye view-where objects can appear in arbitrary orientations-and hyperspectral data channels follow a fixed wavelength order, i.e., exhibiting directional spectral dependencies, MoMEB is designed to reflect these spatial-spectral characteristics. Specifically, it treats each spatial-directional Mamba branch as a routed expert and employs two spectral-directional branches as shared experts. Furthermore, a lightweight router network is integrated within MoMEB to dynamically activate a subset of experts for each input, enabling the model to adaptively extract informative spectral-spatial directional features. This design significantly enhances classification performance while maintaining computational eficiency.
+
+Diferent from existing patch-level Mamba classification networks [23,27], MambaMoE is an end-to-end image-level segmentation network built upon a classical encoder-decoder architecture. As described above, MoMEBs are employed in the encoder to extract representative spectral-spatial features. However, due to the limited directional diversity in Mamba’s sequential modeling, these features may not fully capture the varied object orientations present in complex HSI scenes, potentially leading to classification ambiguity. To mitigate this, we introduce uncertainty-guided corrective learning (UGCL) in the decoder. Specifically, UGCL encourages the model to focus on challenging regions by dynamically sampling supervisory labels from areas of high prediction uncertainty, guiding MoMEB outputs to adaptively refine their representations. This strategy enables the network to better handle dificult cases and enhances its generalization capability. Thanks to this design, MambaMoE achieves state-of-the-art performance across multiple public HSI benchmarks, surpassing existing advanced methods, including those based on Mamba architectures.
+
+The main contributions of this work can be summarized as follows:
+
+1) We propose MambaMoE, a novel Mamba-based spectral-spatial mixture-of-experts framework for HSI classification. To the best of our knowledge, this is the first MoE-based deep network introduced in the HSI classification domain, enabling adaptive extraction of spectral-spatial joint features tailored to the diverse characteristics of land covers.
+
+2) We design the Mixture of Mamba Expert Block (MoMEB), which integrates spatially routed experts and spectrally shared experts based on Mamba. Leveraging sparse expert activation, MoMEB facilitates dynamic learning of directional spectral-spatial features.
+
+3) We introduce an uncertainty-guided corrective learning (UGCL) strategy to guide the model’s focus toward challenging regions. This approach mitigates prediction confusion arising from the directional modeling limitations of Mamba by adaptively refining feature representations in uncertain areas.
+
+4) Experiments on multiple HSI classification benchmarks demonstrate that our proposed method consistently outperforms existing state-ofthe-art approaches in both accuracy and computational eficiency, thanks to the synergy of our architecture and training strategy.
+
+The remaining section of this paper is organized as follows. Section 2 reviews the related work. Section 3 provides a comprehensive description of the proposed MambaMoE model. Section 4 provides a comprehensive presentation and analysis of the experimental results. Finally, Section 5 concludes the paper.
+
+## 2. Related work
+
+## 2.1. Mamba-based HSI classification
+
+Recently, Mamba has attracted increasing attention in the field of HSI classification due to its ability to achieve context modeling with linear computational complexity. Yao et al [28] proposed SpectralMamba, which simplifies sequence learning in the state space and enhances spectral correction within the spectral-spatial domain. SS-Mamba [27] further extends this idea by introducing multiple spectral-spatial Mamba modules. In addition, Li et al [29] proposed MambaHSI, which models long-range dependencies across the entire image and adaptively fuses spatial and spectral information. HyperMamba [23] introduces a spectral-spatial adaptive architecture that jointly performs spatial neighborhood scanning and spectral feature enhancement. He et al [30] explored the application of Mamba from a 3D perspective, focusing on 3D cubes. MambaLG [22] employs a dual-branch architecture that integrates local-global spatial modeling and dynamic short- and long-range spectral feature perception, fully leveraging Mamba’s sequence modeling capabilities. Wang et al [21] proposed S2Mamba, a spectral-spatial scanning-based model that employs a learnable mixture gate to efectively fuse spatial and spectral representations. Building upon this line of work, our method also adopts image-level input, as used in MambaHSI [29], but further enhances modeling capacity by integrating a sparsely activated MoE in the encoder, enabling dynamic and adaptive spectral-spatial representation. Additionally, we design the UGCL strategy to dynamically guide the model to learn from labels sampled in complex regions, efectively mitigating classification ambiguities in challenging areas.
+
+## 2.2. Mixture-of-experts
+
+Mixture-of-Experts (MoE) have emerged as a promising paradigm for enhancing model eficiency and scalability by enabling dynamic, datadependent routing through specialized sub-networks (experts). MoE has been widely adopted in the NLP community to scale large language models, as exemplified by MoA [31], DeepseekMoE [32] and others [33]. Beyond NLP, MoE has also gained traction in the computer vision domain. For instance, Mod-Squad [34] utilizes MoE for eficient multi-task learning, while RingMoE [26] adopts a sparse MoE design to build a unified multi-modal foundation model for remote sensing. Despite its success in both NLP and vision tasks, its application to HSI classification remains largely unexplored. In this work, we introduce the MoE into HSI classification for the first time, enabling adaptive spectral-spatial joint feature learning through the proposed spatially routed experts and spectrally shared experts.
+
+## 3. Methodology
+
+## 3.1. Overview
+
+As illustrated in Fig. 1, the entire HSI $\mathbf { X } \in \mathbb { R } ^ { B \times H \times W }$ is processed by the encoder-decoder segmentation network, MambaMoE. Here, <sub>??</sub> and <sub>??</sub> represent the height and width, respectively, and <sub>??</sub> denotes the number of spectral bands in the HSI. The encoder comprises a feature extraction module followed by multiple MoMEB blocks. Initially, hierarchical features $\mathbf { F } _ { i } \in \mathbb { R } ^ { C \times H _ { i } \times W _ { i } } { } _ { i } = 1 , 2 , 3$ are extracted via the feature extraction module, formulated as:
+
+$$
+\begin{array}{l} \mathbf {F} _ {1} = A v g (R e L U (C o n v (\mathbf {X}))) \\ \mathbf {F} _ {i} = A v g \big (R e L U \big (C o n v \big (\mathbf {F} _ {i - 1} \big) \big) \big), i = 2, 3. \end{array}\tag{1}
+$$
+
+<sup>Here,</sup> ????????(⋅)<sup>,</sup> ????(⋅)<sup>,</sup> ????????(⋅)<sup>, and</sup> ??????(⋅) <sup>denote a</sup> 3 × 3 <sup>convolution</sup> operation, a ReLU activation function, and an average pooling layer, respectively. Subsequently, these features are fed into the proposed Mo-MEB modules to adaptively capture spectral-spatial contexts, defined as: $\mathbf { M } _ { i } = \mathbf { M o M E B } ( \mathbf { F } _ { i } ) , \mathbf { M } _ { i } \in \mathbb { R } ^ { C \times H _ { i } \times W _ { i } } , i = 1 , 2 , 3$ . In the decoder, a group of Feature Fusion Blocks (FFBs) are applied to integrate inter-scale features from diferent stages, which can be formulated as:
+
+![](images/82fea90379c23d99c79cb6fa00534eab9a466d3af2265b171f430f0e194e1919.jpg)  
+<sub>Fig. 1.</sub> An illustration of the proposed MambaMoE. The core component, MoMEB incorporates DSSEM, which leverages SRE and SSE to dynamically capture spectralspatial features. The Decoder is composed of FFBs and UARBs. After feature extraction and refinement, we adopt the fully connected layer as the classification head to generate the final predictions.
+
+$$
+\mathbf {L} _ {i} = \left\{ \begin{array}{l l} \operatorname{FFB} \big (\mathbf {M} _ {i}, \mathbf {L} _ {i + 1} \big), & i = 1, 2 \\ \operatorname{FFB} \big (\mathbf {M} _ {i} \big), & i = 3 \end{array} \right.\tag{2}
+$$
+
+Here, $\mathbf { L } _ { i } \in \mathbb { R } ^ { C \times H _ { i } \times W _ { i } } , i = 1 , 2 , 3 .$ . Then, we apply the UGCL, in which the feature $\mathbf { L } _ { i }$ and the ground-truth labels are passed through the Uncertainty-Aware Refinement Block (UARB) to generate sampled supervision labels for complex regions. This process is formally expressed as: $\mathbf { Q } _ { i } = \mathbf { U A R B } ( \mathbf { L } _ { i } ) \in \mathbb { R } ^ { H \times W }$ . Notably, UARB is applied only during training to enhance learning on uncertain regions, and is omitted during in ference.
+
+<sub>Feature fusion block</sub> In the Feature Fusion Block (FFB), the feature map $\mathbf { M } _ { 3 } ,$ obtained from the MoMEB module, is first processed through a residual structure to produce $\mathbf { L } _ { 3 } \colon \mathbf { L } _ { 3 } = \mathbf { R e s } ( \mathbf { M } _ { 3 } )$ , where the residual function is defined as:
+
+$$
+\operatorname{Res} (x) = x + \operatorname{Conv2} _ {3 \times 3} \left(\operatorname{ReLU} \left(\operatorname{Conv1} _ {3 \times 3} (\operatorname{ReLU} (x))\right)\right)\tag{3}
+$$
+
+with two sequential $3 \times 3$ convolution layers. In the following stages, multi-scale feature fusion is achieved by combining the upsampled output from the previous FFB block, $\mathbf { L } _ { i + 1 } ,$ , with the current feature map $\mathbf { M } _ { i }$ . This is formulated as: $\mathbf L _ { i } = \mathbf M _ { i } + \mathrm { R e s } ( \mathbf U \mathbf p ( \mathbf L _ { i + 1 } ) ) .$ , where Up<sub>(⋅)</sub> denotes bilinear interpolation-based upsampling.
+
+## 3.2. Mixture of mamba expert block
+
+The MoMEB module comprises two key sub-components: the Spatial Routed Expert (SRE) and the Spectral Shared Expert (SSE). The SRE leverages spatial Mamba structures with distinct scanning directions to dynamically capture essential spatial context. In contrast, the SSE is designed using spectral Mamba structures with both forward and backward scanning directions, enabling the extraction of shared spectral representations from the HSI.
+
+Given an input feature map <sub>??</sub> (the stage index is omitted in later texts for convenience), it is first normalized by a LayerNorm (LN) layer, obtaining a new feature <sub>??</sub>. Next, this feature is processed by the Dynamic Spectral-Spatial Expert Mamba (DSSEM) module. Specifically, the input feature is split along the channel dimension into two equal parts, forming a spatial view $\mathbf { F } _ { s p a } \in \mathbb { R } ^ { ( C / 2 ) \times h \times w }$ and a spectral view $\mathbf { F } _ { s p e } \in \mathbb { R } ^ { ( C / 2 ) \times h \times w }$ , where <sub>ℎ</sub> and <sub>??</sub> are height and width of the feature in corresponding stages. These two views are separately fed into the SRE and SSE modules to extract spatial and spectral contextual features, respectively. The resulting outputs, ${ \mathrm { S R E } } ( \mathbf { F } _ { s p a } )$ and ${ \cal S S E } ( { \bf F } _ { s p e } ) ,$ are concatenated and then passed through a $1 \times 1$ convolution to integrate the information, producing a dynamically modulated spectral-spatial fusion feature <sub>??</sub>̂ . The overall procedure of DSSEM is
+
+$$
+\begin{array}{l} \mathbf {F} _ {s p a}, \mathbf {F} _ {s p e} = \text {ChannelSplit} \Big (\overline {{\mathbf {F}}} \Big) \\ \hat {\mathbf {F}} = C o n v _ {1 \times 1} \big (\text {Concat} \big (\text {SRE} \big (\mathbf {F} _ {s p a} \big), \text {SSE} \big (\mathbf {F} _ {s p e} \big) \big) \big) \end{array}\tag{4}
+$$
+
+This fused feature $\hat { \mathbf { F } }$ is then combined with the original input <sub>??</sub> via a residual connection. Subsequently, the output is further refined through a Layer Normalization (LN) layer followed by a Multi-Layer Perceptron (MLP) layer, and again enhanced by residual addition. Overall, this process within MoMEB resembles the structure of a standard Transformer block, where the attention mechanism is replaced by the DSSEM module, with additional split-and-merge operations on the input and output features of DSSEM.
+
+<sub>Spatial routed expert.</sub> The SRE module consists of multiple Mamba experts, each configured with a distinct spatial scanning direction. Each expert employs a dedicated state space model (SSM) to capture directional structural information from the input. In this work, we specifically adopt four canonical scanning directions: top-left to bottom-right, bottom-right to top-left, top-right to bottom-left, and bottom-left to topright, allowing the model to capture spatial dependencies from diferent perspectives. Specifically, for each expert, the spatial feature $\mathbf { F } _ { s p a }$ is first flattened into a one-dimensional sequence according to a predefined scanning path. The resulting sequence for the <sub>??</sub>-th expert is denoted as:
+
+$$
+F _ {s p a} ^ {j} = \left\{[ f _ {j} ^ {1}, f _ {j} ^ {2}, \dots , f _ {j} ^ {h \times w} ] | f _ {j} \in \mathbb {R} ^ {1 \times (C / 2)}, j \in \{1, 2, 3, 4 \} \right\}\tag{5}
+$$
+
+which is then processed by a SSM as follows:
+
+$$
+\begin{array}{r l} & {\mathbf {h} _ {j} ^ {t} = \overline {{\mathbf {A}}} ^ {s p a} \mathbf {h} _ {j} ^ {t - 1} + \overline {{\mathbf {B}}} ^ {s p a} f _ {j} ^ {t},} \\ & {\mathbf {y} _ {j} ^ {t} = \mathbf {C} ^ {s p a} \mathbf {h} _ {j} ^ {t} + f _ {j} ^ {t},} \end{array}\tag{6}
+$$
+
+where $\mathbf { y } _ { i } ^ { t } \in \mathbb { R } ^ { 1 \times ( C / 2 ) } , t = 1 , \cdots , h \cdot w$ is the output of each pixel location, $\overline { { \mathbf { A } } } ^ { s p a } \in \mathbb { R } ^ { D \times D }$ is the state transition matrix, $\overline { { \mathbf { B } } } _ { i , k } ^ { s p a } \in \mathbb { R } ^ { D \times ( C / 2 ) }$ and $\mathbf { C } ^ { s p a } \in \mathbb { R } ^ { ( C / 2 ) \times D }$ are projection matrices, all matrics are trainable. <sub>??</sub> denotes the dimensionality of the latent state space. The index <sub>??</sub> identifies the specific expert corresponding to one of the four canonical scanning directions. It can be seen that, each expert is able to capture unique spatial structural patterns according to its designated scanning direction. The whole output of expert $\mathcal { E } _ { j } , j = 1 , 2 , 3 , 4 \mathrm { i } s \left[ \mathbf { y } _ { j } ^ { 1 } , \mathbf { y } _ { j } ^ { 2 } , \dots , \mathbf { y } _ { j } ^ { h \times w } \right] \in$ $\mathbb { R } ^ { ( C / 2 ) \times h \times w }$
+
+To adaptively capture directional context for heterogeneous objects in the HSI scene, we introduce a router network for dynamic expert routing, denoted as $\mathcal { G } .$ This network comprises two MLP layers and is designed to select the most suitable experts based on the input features by generating a set of weighting coeficients:
+
+$$
+\mathbf {w} = \operatorname{softmax} \left(\mathcal {G} \left(\mathbf {F} _ {s p a}\right)\right)\tag{7}
+$$
+
+where the softmax function ensures that the weights assigned to each expert sum to one. Using these weights, the final output of the SRE module, denoted as $\hat { \mathbf { F } } _ { s p a } ,$ , is computed as a weighted combination of the expert outputs:
+
+$$
+\hat {\mathbf {F}} _ {s p a} = \sum_ {j = 1} ^ {4} \mathbf {w} _ {j} \cdot \mathcal {E} _ {j} (\mathbf {F} _ {s p a}).\tag{8}
+$$
+
+This dynamic routing mechanism enables the model to emphasize the most relevant directional features for each objects, enhancing its ability to model complex spatial structures in HSIs.
+
+During training, all experts participate in learning to ensure diverse directional representations are captured. However, to improve computational eficiency during inference, we leverage the sparsity of the routing function <sub>(⋅)</sub>. Specifically, for each input, only the top-<sub>??</sub> experts with the highest routing weights are selected, and their outputs are used to compute the final result. This selective inference strategy balances model performance with eficiency by focusing computation on the most relevant experts.
+
+<sub>Spectral shared expert.</sub> The SSE module performs essential spectral context modeling and functions as a shared spectral feature extractor, enabling the model to capture consistent spectral patterns across diferent spatial locations. In the SSE module, forward and backward spectral sequences are constructed along the spectral dimension and processed using SSMs to extract bi-directional spectral features. As illustrated in Fig. 1, the input feature $\mathbf { F } _ { s p e }$ is first flattened along the spatial dimensions to form spectral sequences:
+
+$$
+F _ {s p e} ^ {l} = \Big \{[ \tilde {f} _ {l} ^ {0}, \tilde {f} _ {l} ^ {1}, \dots , \tilde {f} _ {l} ^ {(C / 2)} ] | \tilde {f} _ {l} \in \mathbb {R} ^ {1 \times (h \cdot w)}, l \in \{1, 2 \} \Big \}.\tag{9}
+$$
+
+where $l = 1$ and $l = 2$ correspond to the forward and backward scanning directions, respectively. Each sequence is then passed through an SSM to obtain the corresponding spectral outputs, formulated as:
+
+$$
+\begin{array}{r l} & {\tilde {\mathbf {h}} _ {l} ^ {t} = \overline {{\mathbf {A}}} ^ {s p e} \tilde {\mathbf {h}} _ {l} ^ {t - 1} + \overline {{\mathbf {B}}} ^ {s p e} \tilde {f} _ {l} ^ {t},} \\ & {\tilde {\mathbf {y}} _ {l} ^ {t} = \mathbf {C} ^ {s p e} \tilde {\mathbf {h}} _ {l} ^ {t} + \tilde {f} _ {l} ^ {t},} \end{array}\tag{10}
+$$
+
+Here, $\tilde { \mathbf { y } } _ { l } ^ { t } \in \mathbb { R } ^ { 1 \times ( h \cdot w ) }$ represents the <sub>??</sub>-th output in the <sub>??</sub>-th directional sequence. The matrices $\overline { { \mathbf { A } } } ^ { s p e } \in \mathbb { R } ^ { D \times D } , \overline { { \mathbf { B } } } ^ { s p e } \in \mathbb { R } ^ { D \times ( h \cdot w ) }$ , and $\mathbf { C } ^ { s p e } \in$ <sub>ℝ</sub>(ℎ⋅??)×(ℎ⋅??) are trainable parameters, and <sub>??</sub> denotes the dimensionality of the latent state, which is the same as SRE.
+
+![](images/d4f8bf6adb2fc575212b2fb7cea74e0e75f4ec6f7f8a79029c36b88782505ae9.jpg)  
+<sub>Fig.</sub> <sub>2.</sub> The overview of the UARB.
+
+Finally, the outputs from the forward and backward directions are additively fused to form the final bi-directional spectral representation $\hat { \mathbf { F } } _ { s p e } \overset { \cdot } { \in } \mathbb { R } ^ { ( C / 2 ) \times h \times w }$ . This fusion incorporates contextual information from adjacent spectral bands in both directions, thereby enhancing the model’s spectral modeling capability.
+
+## 3.3. Uncertainty-guided corrective learning
+
+In addition to the MoMEBs and inspired by [35], we further enhance predictive performance in challenging regions by encouraging the model to learn from dynamically identified dificult areas, as determined by uncertainty estimation. To this end, we propose the UARB, as illustrated in Fig. 2. The UARB processes intermediate features $\mathbf { L } \in \mathbb { R } ^ { C \times h \times w }$ from various decoder stages.
+
+Specifically, <sub>??</sub> is passed through a classification head to produce raw prediction scores $\mathbf { S } \in \mathbb { R } ^ { n _ { c l a s s } \times h \times w }$ , where $n _ { c l a s s }$ denotes the number of semantic categories. These scores are normalized via the softmax function to generate a class-wise probability matrix:
+
+$$
+\mathbf {A} _ {k} = \frac {\exp \left(\mathbf {S} _ {k}\right)}{\sum_ {j = 1} ^ {n _ {c l a s s}} \exp \left(\mathbf {S} _ {j}\right)},\tag{11}
+$$
+
+where $\mathbf { S } _ { k } \in \mathbb { R } ^ { h \times w }$ represents the score map for the <sub>??</sub>-th class, and $\mathbf { A } _ { k }$ is its corresponding probability map.
+
+Intuitively, the uncertainty of a pixel is inversely correlated with the model’s confidence in its prediction. To quantify this, we compute the maximum class probability for each pixel by taking the maximum value across the class dimension:
+
+$$
+\mathbf {P} _ {r, c} = \max _ {k \in \{1, \dots , n _ {\text { class }} \}} \mathbf {A} _ {k, r, c}, \quad \mathbf {P} _ {r, c} \in [ 0, 1 ].\tag{12}
+$$
+
+where $r \in [ 0 , h - 1 ]$ and $c \in [ 0 , w - 1 ]$ denote spatial coordinates.
+
+To derive a pixel-wise uncertainty map <sub>??</sub>, we apply an uncertainty estimation function $\boldsymbol { \mathcal { V } } ( \cdot )$ on <sub>??</sub>:
+
+$$
+\mathbf {U} _ {r, c} = - \log (\mathbf {P} _ {r, c} + \epsilon) \cdot \mathbf {P} _ {r, c},\tag{13}
+$$
+
+where $\epsilon = 1 0 ^ { - 6 }$ is a small constant to prevent numerical instability. The resulting uncertainty map $\mathbf { U } \in [ 0 , 1$ <sub>1]</sub> reflects the confidence distribution of the model across spatial positions. Notably, regions with higher uncertainty, typically associated with complex or ambiguous features, are emphasized for refinement.
+
+To guide the model’s attention toward uncertain regions, we aim to obtain and leverage the labels of these areas during training. Intuitively, diverse and informative labels from these regions can enhance
+
+![](images/1461140a2a551daa82db86b6e724850e3ea2a79e63b1d841335bd61f9683a08f.jpg)  
+(a)
+
+![](images/2beb0b1c1e1351abc0cd2ad89cf60522827446b79968bd3d398d5df2c74be533.jpg)  
+(b)
+
+![](images/1299757b3d575aa4cb3c4d4e684579faaea767e3e733c1df4930f37bc90b51e1.jpg)  
+(g)
+
+![](images/b4527e2f722dc8ab3876323a3f69212e679ea7194b93a9b57eb998aa6b379942.jpg)  
+(h)
+
+![](images/64cc3254d593a1e2f4e69f258ae56b5c4a9798071a0e8854479ebe1898c161cf.jpg)
+
+(c)  
+![](images/7c8ce0b837dc0e58810cb2fdc79335b34a4bc3205297d16cc55241b7b18bcafa.jpg)
+
+![](images/ab76800155c1d8c7a3d04e184f3db6c83126994553da346c6d26b35da77d65d9.jpg)  
+(i)  
+(d)
+
+![](images/64bf0c6ab1cbbdd342eb9daca606e3fcba8f4d43bd1662fe661277345feac3a9.jpg)  
+(e)
+
+![](images/40fb8a0982d6c59e3083bd4e67599b94cedbecb60e160720a4e6c8038a06dba0.jpg)  
+(j)
+
+(f)  
+![](images/a5c88e9eec32473ac3d466bc258eea4ba64f3c4d7ad3ca8ddb99d3ecc0ce90c3.jpg)
+
+![](images/e9bdd262833a80caf4e56743537820e1576205c046cba0956f5d62d5f03d1238.jpg)  
+(k)
+
+Asphalt Meadows Gravel Trees Metal sheets Bare soil Bitumen Bricks Shadows
+
+![](images/91cec9e84df2f87ea87350932106ca2c095cffe0aab876808e82d5d3fc3ebb9c.jpg)  
+(1)  
+<sub>Fig. 3.</sub> Visualization of the classification maps on Pavia University dataset. (a) False-color image. (b) Ground truth. (c) GAHT. (d) CSIL. (e) MASSFormer. (f) DSFormer. (g) SS-Mamba. (h) HyperMamba. (i) S2Mamba. (j) MambaLG. (k) MambaHSI. (l) MambaMoE.
+
+![](images/46988623e117b861eaa82a0b82628d4ac55627e3d1c2934132e1dddc73f4e7aa.jpg)  
+(k)
+
+![](images/8eba3a7e28bf645eaf7f9082749444d37de941a50462f7d0c2a889f8f7406170.jpg)  
+(1)
+
+![](images/d9d2fd55a7d9d0f6299a2367a583bd9d02245fbe6e725457a2d359e93752a5c3.jpg)  
+<sub>Fig. 4.</sub> Visualization of the classification maps on Houston dataset. (a) False-color image. (b) Ground truth. (c) GAHT. (d) CSIL. (e) MASSFormer. (f) DSFormer. (g) SS-Mamba. (h) HyperMamba. (i) S2Mamba. (j) MambaLG. (k) MambaHSI. (l) MambaMoE.
+
+the model’s robustness. To this end, we employ probabilistic sampling to select pixel locations for supervision, ensuring that regions with higher uncertainty are more likely to be sampled.
+
+Specifically, we adopt Bernoulli sampling at each pixel location of the uncertainty map <sub>??</sub>. The sampling process is defined as:
+
+$$
+M _ {r, c} = \left\{ \begin{array}{l l} 1 & \text { if } r _ {r, c} <   \mathbf {U} _ {r, c} \\ 0 & \text { if } r _ {r, c} \geq \mathbf {U} _ {r, c}, \end{array} \right.\tag{14}
+$$
+
+where $M \in 0 , 1 ^ { h \times w }$ is a binary mask map indicating which spatial locations are selected for label supervision, and $r _ { r , c }$ denotes a random value drawn from a uniform distribution <sub>?? (0, 1)</sub> at pixel <sub>(??,</sub> <sub>??)</sub>.
+
+In practice, this sampling is conducted dynamically at each training iteration, allowing the model to adaptively focus on diferent uncertain regions as learning progresses. The final sampled label map $\mathbf { Q } _ { i } , i = 1 , 2 , 3$ is obtained by applying an element-wise product between the binary mask <sub>??</sub> and the ground-truth label map $\mathbf { Y } _ { t r n } .$ Notably, for each stage, $\mathbf { L } _ { i }$ is accordingly upsampled to match the spatial size of $\mathbf { Q } _ { i }$
+
+## 3.4. Training loss
+
+In this study, since image-level HSI classification is formulated as a multi-class segmentation task, we adopt the cross-entropy loss function as the objective criterion. The total training loss comprises two components: (1) the losses computed at each intermediate stage using the sampled supervision labels, and (2) the loss from the final prediction, which is computed against the original ground-truth labels. All loss terms are weighted equally, with a coeficient of 1. Therefore the overall loss function of this work  is defined as follows:
+
+![](images/cf4f7f456abc5e9149de3faf12792e33118844f9674e9055c611222c6fa6d3dd.jpg)  
+<sub>Fig. 5.</sub> Visualization of the classification maps on Whu-HanChuan dataset. (a) False-color image. (b) Ground truth. (c) GAHT. (d) CSIL. (e) MASSFormer. (f) DSFormer. (g) SS-Mamba. (h) HyperMamba. (i) S2Mamba. (j) MambaLG. (k) MambaHSI. (l) MambaMoE.
+
+![](images/d33162923e97674769f942867e5a100008bc0891b44a331ca22cb74956d29db2.jpg)  
+(a)
+
+![](images/64a6bda3ad0ed9b9c8858b09ea6af837586dc7c0a4f5941e86d2bb1f57baca0e.jpg)  
+(b)
+
+![](images/1794c7f8515b8962f8036c399b21d0198c122f573ecb11e218c0f61ea9898d28.jpg)  
+(c)
+
+![](images/92372ab52e689b1c91130e552dcafce38602f47e1b707f821a0d77da451d213d.jpg)  
+<sub>Fig. 6.</sub> Comparison of classification performance with fewer training samples: (a) Pavia University dataset. (b) Houston dataset. (c) Whu-HanChuan dataset.
+
+$$
+\mathcal {L} = \sum_ {i = 1} ^ {3} \mathcal {L} _ {c e} \left(\mathbf {Q} _ {i}, \mathbf {A} _ {i}\right) + \mathcal {L} _ {c e} \left(\mathbf {G T}, \mathbf {A} _ {3}\right),\tag{15}
+$$
+
+where $\mathcal { L } _ { c e }$ denotes the cross-entropy loss function, $\mathbf { Q } _ { i } , \mathbf { A } _ { i } ,$ and GT correspond to the sampled labels, the predicted probability, and the training labels, respectively.
+
+## 4. Experiment
+
+## 4.1. Dataset
+
+We employ three benchmark hyperspectral datasets to evaluate the efectiveness of the proposed method. A detailed description is provided below.
+
+(1) <sub>Pavia university dataset.</sub> This dataset is captured by the Reflective Optics System Imaging Spectrometer (ROSIS) in 2001, this dataset covers the University of Pavia in northern Italy. It includes 103 spectral bands and a spatial resolution of $6 1 0 \times 3 4 0$ pixels, encompassing nine land-cover classes.
+
+(2) <sub>Houston dataset.</sub> This dataset is acquired in 2012 over the University of Houston and its surrounding urban areas, this dataset consists of 144 spectral bands within the 400-1000 nm wavelength range. It has a spatial resolution of 2.5 m, an image size of 349 × 1905 pixels, and includes 15 semantic categories [36].
+
+(3) <sub>Whu-HanChuan dataset.</sub> This dataset is introduced by Zhong et al. [37], this dataset was obtained via UAV-borne imaging, ofering rich spatial detail with centimeter-level resolution. It features 274 spectral bands within the 400-1000 nm range and a spatial size of 1217 × 303 pixels.
+
+![](images/18caf054c5e157f8ade3d79574aa27f41e2216065c0cc82ccfa9a9f5fa3fe110.jpg)
+
+(a)  
+![](images/a775ebe19c1dd61aca91f98150533cc57be2c1345a697c1a9469d7aee7def842.jpg)  
+(b)  
+<sub>Fig. 7.</sub> Visualization of directional expert weights for diferent land-cover types on the Houston dataset.
+
+Table 1  
+Performance contribution of diferent module on three benchmark datasets (reported in OA (%). Best results are highlighted in <sub>Bold</sub>).
+
+<table><tr><td>MoMEB</td><td>UARB</td><td>Pavia University</td><td>Houston</td><td>Whu-HanChuan</td></tr><tr><td>✕</td><td>✕</td><td>91.53</td><td>89.47</td><td>89.17</td></tr><tr><td>√</td><td>✕</td><td>93.86 (↑ 2.33)</td><td>90.49 (↑ 1.02)</td><td>90.86 (↑ 1.69)</td></tr><tr><td>✕</td><td>√</td><td>92.78 (↑ 1.25)</td><td>90.25 (↑ 0.78)</td><td>89.55 (↑ 0.38)</td></tr><tr><td>√</td><td>√</td><td>95.20 (↑ 3.67)</td><td>91.18 (↑ 1.71)</td><td>92.67 (↑ 3.50)</td></tr></table>
+
+Table 2
+
+The performance of spectral-spatial expert mechanism on three benchmark datasets (reported in OA (%)). The best results are highlighted in <sub>Bold</sub>. “w/o SRE/SSE” represents the absence of the routed spatial expert or shared spectral expert, while “w/ SRE & SSE” indicates that dynamic spectral-spatial experts are employed.
+
+<table><tr><td>MambaMoE</td><td>Pavia University</td><td>Houston</td><td>Whu-HanChuan</td></tr><tr><td>w/o SRE</td><td>93.17</td><td>90.56</td><td>91.44</td></tr><tr><td>w/o SSE</td><td>94.24</td><td>90.31</td><td>91.78</td></tr><tr><td>w/ SRE &amp; SSE</td><td>95.20</td><td>91.18</td><td>92.67</td></tr></table>
+
+## 4.2. Experimental settings
+
+The experiments in this study were performed using the PyTorch framework, with an NVIDIA GeForce RTX 3090 GPU for computation. For the first two datasets, <sub>only</sub> <sub>15</sub> <sub>samples</sub> <sub>per</sub> <sub>class</sub> were randomly chosen for the training set, while <sub>30 samples per class</sub> were selected for the Whu-HanChuan dataset. The remaining labeled samples were used exclusively as the test set. The training process employed the Adam optimizer with a learning rate of $5 \times 1 0 ^ { - 4 }$ and was conducted for 200 epochs across all datasets. To quantitatively evaluate classification performance, three widely recognized metrics were employed: overall accuracy (OA), average accuracy (AA), and the kappa coeficient (<sub>??</sub>). Each experiment was repeated 10 times with diferent random seeds, and the results are reported as the mean and standard deviation.
+
+## 4.3. Ablation study
+
+<sub>(1) Network blocks.</sub> To validate the efectiveness of the proposed Mo-MEB and UGCL, we conduct ablation studies on three HSI datasets. The baseline model includes only multi-scale feature extraction and stagewise fusion, without the incorporation of either MoMEB or UARB. We evaluate the impact of integrating MoMEB and UARB individually and jointly. As shown in Table 1, both modules contribute significantly to performance improvement. On the Pavia University dataset, incorporating MoMEB improves the baseline OA by 2.33 %, while UARB yields a 1.25 % increase. When both modules are applied together, the model achieves the highest OA of 95.20 %, representing an overall improvement of 3.67 % over the baseline. These findings highlight the individual merits of MoMEB and UARB, as well as their complementary synergy when combined.
+
+<sub>(2) Internal design of DSSEM.</sub> To further investigate the internal architecture of the DSSEM in the proposed MoMEB module, we conduct an ablation study by isolating the contributions of the SRE and SSE.
+
+Table 3  
+Efects of number of top-k experts on the three benchmark datasets (reported in OA (%)). The best results are high lighted in .
+
+<table><tr><td>Number</td><td>Pavia University</td><td>Houston</td><td>Whu-HanChuan</td></tr><tr><td>k=1</td><td>94.86</td><td>89.67</td><td>91.60</td></tr><tr><td>k=2</td><td>95.03</td><td>90.54</td><td>91.71</td></tr><tr><td>k=3</td><td>95.20</td><td>91.18</td><td>92.67</td></tr><tr><td>k=4</td><td>94.97</td><td>90.79</td><td>92.28</td></tr></table>
+
+Table 4  
+Quantitative classification results of the Pavia University dataset. Best results are shown in <sub>bold</sub>.
+
+<table><tr><td>Class</td><td>GAHT</td><td>CSIL</td><td>MASSFormer</td><td>DSFormer</td><td>SS-Mamba</td><td>HyperMamba</td><td>S2Mamba</td><td>MambaLG</td><td>MambaHSI</td><td>MambaMoE</td></tr><tr><td>1</td><td>90.05±3.83</td><td>71.00±4.99</td><td>93.69±1.77</td><td>92.53±4.43</td><td>96.03±2.05</td><td>78.35±6.03</td><td>74.12±5.73</td><td>69.39±4.98</td><td>87.02±1.95</td><td>92.80±1.90</td></tr><tr><td>2</td><td>87.42±5.40</td><td>87.48±4.65</td><td>87.48±8.38</td><td>90.23±4.15</td><td>85.95±5.47</td><td>77.73±2.97</td><td>59.82±15.46</td><td>79.31±3.20</td><td>94.55±1.37</td><td>93.39±2.05</td></tr><tr><td>3</td><td>86.02±5.19</td><td>81.45±5.04</td><td>90.77±4.21</td><td>92.50±3.55</td><td>95.54±2.53</td><td>72.57±10.50</td><td>56.90±22.26</td><td>80.23±5.91</td><td>89.32±3.70</td><td>93.64±4.87</td></tr><tr><td>4</td><td>95.64±0.76</td><td>84.81±4.17</td><td>95.79±1.45</td><td>96.71±0.96</td><td>97.70±0.84</td><td>93.97±2.03</td><td>94.95±1.43</td><td>94.28±1.27</td><td>79.36±1.35</td><td>96.94±0.82</td></tr><tr><td>5</td><td>99.60±0.52</td><td>98.96±1.01</td><td>99.62±0.51</td><td>99.89±0.31</td><td>100</td><td>99.92±0.15</td><td>99.90±0.01</td><td>99.91±0.11</td><td>99.67±0.20</td><td>100</td></tr><tr><td>6</td><td>93.31±4.76</td><td>95.91±2.75</td><td>94.38±5.17</td><td>96.52±3.13</td><td>94.17±7.47</td><td>73.92±3.66</td><td>58.70±11.57</td><td>81.98±7.43</td><td>98.52±0.87</td><td>99.82±0.43</td></tr><tr><td>7</td><td>98.18±1.20</td><td>87.81±7.69</td><td>98.43±1.79</td><td>99.05±0.71</td><td>99.55±0.73</td><td>92.81±3.65</td><td>90.32±4.22</td><td>95.91±1.18</td><td>87.73±0.90</td><td>98.53±0.68</td></tr><tr><td>8</td><td>93.62±3.86</td><td>75.50±9.07</td><td>91.65±4.01</td><td>91.90±4.41</td><td>93.26±4.44</td><td>77.65±9.09</td><td>79.00±18.31</td><td>88.12±5.43</td><td>90.51±3.36</td><td>98.13±1.28</td></tr><tr><td>9</td><td>95.34±2.48</td><td>91.28±6.14</td><td>98.26±0.91</td><td>99.12±0.83</td><td>99.67±0.39</td><td>99.54±0.22</td><td>97.50±1.01</td><td>98.70±1.67</td><td>93.31±0.45</td><td>98.53±1.44</td></tr><tr><td>OA (%)</td><td>90.46±2.66</td><td>84.85±2.79</td><td>91.32±3.96</td><td>92.81±2.20</td><td>91.58±2.35</td><td>79.89±1.76</td><td>68.98±5.99</td><td>81.53±1.68</td><td>92.08±0.70</td><td>95.20±1.31</td></tr><tr><td>κ (%)</td><td>87.67±3.29</td><td>80.40±3.41</td><td>88.81±4.84</td><td>90.66±2.78</td><td>89.13±2.92</td><td>74.21±2.05</td><td>61.57±6.31</td><td>76.41±2.06</td><td>89.57±0.90</td><td>93.73±1.32</td></tr><tr><td>AA (%)</td><td>93.24±1.11</td><td>86.02±1.78</td><td>94.45±1.58</td><td>95.38±1.15</td><td>95.76±1.27</td><td>85.09±0.83</td><td>79.02±2.23</td><td>87.54±1.38</td><td>91.11±0.55</td><td>96.87±0.57</td></tr></table>
+
+This analysis aims to evaluate the individual and combined impact of these components on classification performance. As shown in Table 2, the removal of either SRE or SSE results in a consistent decline in accuracy across all three HSI datasets, highlighting the importance of jointly leveraging spatial and spectral contextual modeling. For example, on the Pavia University dataset, the full DSSEM achieves an OA of 95.20 %. In contrast, employing only SRE or only SSE leads to OAs of 94.24 % and 93.17 %, corresponding to performance drops of 0.96 % and 2.03 %, respectively. These findings afirm that the complementary interaction between SRE and SSE is crucial for efective spectral-spatial representation learning, thereby validating the design rationale of the DSSEM.
+
+by enforcing stage-wise supervision, thereby mitigating the limitations of Mamba’s inherently sequential modeling architecture. As a result, MambaMoE consistently outperforms all competing methods, including most Mamba-based approaches that rely on patch-level classification, which typically generate representations with limited receptive fields and struggle to capture the holistic semantics of remote sensing scenes. Even compared with MambaHSI, which also utilizes image-level input and achieves an OA of 92.08 % on the Pavia University dataset.
+
+(3) Number of selected experts in SRE. <sup>After MoMEB and DSSEM, we</sup> further investigate the optimal configuration of the SRE, specifically focusing on the impact of varying the number of top-<sub>??</sub> selected experts during inference. To this end, experiments were conducted on all three benchmark datasets to evaluate classification performance under different <sub>??</sub> values. As reported in Table 3, the OA consistently improves as <sub>??</sub> increases, with the best performance achieved at $k = 3$ across all datasets. This performance gain is attributed to the enhanced spatial context modeling facilitated by incorporating a broader set of directional experts, which proves beneficial for handling the complexity and heterogeneity of ground objects in hyperspectral scenes. However, a noticeable decline in OA is observed when $k = 4 ,$ , suggesting a diminishing return beyond a certain level of expert aggregation. This drop can be explained by the introduction of redundant or less relevant features, which potentially dilute the discriminative capacity of the learned representations. Moreover, when $k = 4 ,$ the model efectively reduces to a fully weighted combination of all experts, thereby losing the sparsity and dynamic routing characteristics fundamental to the MoE paradigm. These results underscore that selecting the top-3 experts during inference offers the most efective trade-of between spatial diversity and feature relevance, thereby yielding the highest classification accuracy.
+
+## 4.4. Performance comparison and analysis
+
+In this subsection, we conduct a comprehensive comparison between the proposed MambaMoE and existing state-of-the-art (SOTA) HSI classification methods from both quantitative and qualitative perspectives. The compared methods fall into two main types: (1) Transformerbased methods, including GAHT [38], CSIL [39], MASSFormer [40], and DSFormer [16]; and (2) Mamba-based architectures, including SS-Mamba [27], MambaHSI [29], HyperMamba [23], S2Mamba [21], and MambaLG [22].
+
+<sub>(2) Qualitative results.</sub> We further present the classification maps in $\mathrm { F i g s . ~ } 3 \mathrm { - } 5$ to visually evaluate the performance of various methods. As illustrated, the proposed MambaMoE delivers superior classification results, characterized by smooth and coherent land-cover structures, welldefined boundaries, and minimal salt-and-pepper noise, closely aligning with the ground truth. Notably, the areas highlighted by the black boxes reveal that methods such as SSFCN, SpectralFormer, HyperMamba, and MambaLG sufer from considerable salt-and-pepper artifacts. Additionally, models like SACNet, FcontNet, DSFormer, and MambaHSI exhibit issues such as misclassification and blurred boundaries. In contrast, MambaMoE accurately delineates the contours of the “Bitumen” class and achieves precise classification of categories like “Bricks” and “As-$\mathrm { \ p h a l t { \Sigma } } ^ { \prime \prime }$ , preserving both spatial consistency and semantic clarity.
+
+(3) Robustness with fewer training samples. <sup>To rigorously evaluate</sup> the stability of the proposed MambaMoE architecture, we conducted additional experiments under more challenging conditions using fewer training samples. Specifically, in addition to the standard experimental setup, we created training subsets containing only 5 and 10 samples per class for each of the three benchmark datasets. Subsequently, we compared the OA of MambaMoE with several strong baselines: DS-Former, S2Mamba and MambaHSI, which were selected based on their competitive performance.As shown in Fig. 6,the experimental results reveal that MambaMoE consistently outperforms all competitors, even with severely limited supervision. Notably, the drop in performance remains minimal, demonstrating that MambaMoE retains efectiveness despite reduced training data. These findings underscore the robustness, generalization capability, and practicality of MambaMoE in real-world scenarios where labeled hyperspectral data is often scarce.
+
+<sub>(1) Quantitative results.</sub> The quantitative results are presented in Tables $^ { 4 - 6 , }$ highlighting the comparative performance of various state-ofthe-art methods. Since MambaMoE integrates image-level feature extraction with dynamic spectral-spatial context modeling through adaptive directional feature extraction and sparse expert activation. Moreover, the UGCL strategy enhances model learning on challenging regions (4) Computational cost analysis. <sup>We conducted a comprehensive</sup> evaluation of the proposed MambaMoE against several Transformerand Mamba-based baselines, focusing on four critical metrics: model parameters, floating-point operations (FLOPs), training time, and inference time. The comparison results are summarized in Table 7. It can be seen that, although MambaMoE is not lightweight in terms of model parameters, it still achieves the second-lowest FLOPs and inference time among all compared methods, demonstrating a well-balanced trade-of between classification accuracy and computational eficiency. For instance, on the Pavia University dataset, MambaMoE achieves an OA of 95.20 % (see Table 4) with an inference time of only 0.21 seconds. This advantage primarily stems from the sparse activation mechanism of the MoE architecture, where only a subset of expert modules is engaged dur-
+
+Quantitative classification results of the Houston dataset. Best results are shown in <sub>bold</sub>.
+
+<table><tr><td>Class</td><td>GAHT</td><td>CSIL</td><td>MASSFormer</td><td>DSFormer</td><td>SS-Mamba</td><td>HyperMamba</td><td>S2Mamba</td><td>MambaLG</td><td>MambaHSI</td><td>MambaMoE</td></tr><tr><td>1</td><td>89.64±7.55</td><td>79.21±5.17</td><td>92.43±5.00</td><td>90.79±6.35</td><td>91.25±5.78</td><td>98.10±1.09</td><td>86.93±5.26</td><td>85.63±0.12</td><td>95.28±1.53</td><td>97.57±0.48</td></tr><tr><td>2</td><td>91.46±5.55</td><td>63.42±11.16</td><td>93.96±4.91</td><td>94.55±5.38</td><td>93.81±5.35</td><td>93.37±8.91</td><td>56.59±15.70</td><td>97.30±1.79</td><td>92.81±0.88</td><td>96.06±1.38</td></tr><tr><td>3</td><td>99.52±0.32</td><td>95.01±4.76</td><td>99.79±0.20</td><td>96.55±1.66</td><td>99.30±0.24</td><td>99.06±1.04</td><td>99.72±0.23</td><td>99.56±0.45</td><td>93.43±0.86</td><td>99.18±0.42</td></tr><tr><td>4</td><td>90.81±2.74</td><td>52.59±8.56</td><td>92.94±3.99</td><td>94.75±2.52</td><td>94.24±2.56</td><td>92.02±2.60</td><td>92.96±3.35</td><td>93.98±0.40</td><td>96.95±0.95</td><td>97.30±0.30</td></tr><tr><td>5</td><td>99.23±1.44</td><td>88.87±8.39</td><td>99.26±0.80</td><td>99.84±0.27</td><td>99.47±1.54</td><td>97.44±2.50</td><td>99.30±0.15</td><td>98.12±1.13</td><td>99.80±0.15</td><td>100</td></tr><tr><td>6</td><td>89.74±3.97</td><td>91.64±4.52</td><td>93.68±6.33</td><td>91.74±5.45</td><td>92.29±6.36</td><td>92.66±4.95</td><td>88.68±4.88</td><td>86.41±0.95</td><td>96.61±0.82</td><td>97.94±0.88</td></tr><tr><td>7</td><td>90.05±3.78</td><td>57.78±6.51</td><td>87.06±7.71</td><td>87.29±4.57</td><td>89.66±5.32</td><td>77.86±9.59</td><td>90.54±3.54</td><td>76.56±18.36</td><td>83.85±2.13</td><td>84.33±1.29</td></tr><tr><td>8</td><td>78.45±4.94</td><td>56.16±7.42</td><td>75.45±5.67</td><td>73.60±6.80</td><td>78.78±6.42</td><td>67.69±5.26</td><td>42.07±16.66</td><td>78.36±3.49</td><td>54.52±3.06</td><td>70.07±3.25</td></tr><tr><td>9</td><td>87.30±2.75</td><td>53.96±9.29</td><td>86.69±3.90</td><td>82.45±3.24</td><td>86.55±3.92</td><td>76.55±6.80</td><td>80.41±5.78</td><td>70.87±4.32</td><td>78.46±1.86</td><td>87.49±2.40</td></tr><tr><td>10</td><td>84.19±11.10</td><td>76.25±7.80</td><td>87.38±9.77</td><td>82.02±11.61</td><td>87.82±12.74</td><td>77.22±1.94</td><td>41.37±18.91</td><td>89.10±3.61</td><td>94.83±2.10</td><td>92.15±2.96</td></tr><tr><td>11</td><td>83.76±6.43</td><td>74.37±5.02</td><td>82.11±7.35</td><td>81.30±4.56</td><td>83.98±7.39</td><td>74.20±2.07</td><td>68.34±11.31</td><td>87.73±3.12</td><td>77.32±1.62</td><td>86.11±1.59</td></tr><tr><td>12</td><td>81.89±5.96</td><td>65.18±6.23</td><td>83.82±6.02</td><td>83.99±8.83</td><td>75.80±10.90</td><td>72.93±8.88</td><td>48.14±19.35</td><td>83.84±4.68</td><td>78.89±3.93</td><td>85.73±4.84</td></tr><tr><td>13</td><td>96.70±2.20</td><td>79.42±6.82</td><td>95.04±1.46</td><td>96.21±1.65</td><td>95.62±3.70</td><td>88.10±3.41</td><td>94.12±1.22</td><td>60.17±5.87</td><td>91.87±4.58</td><td>94.54±2.39</td></tr><tr><td>14</td><td>99.90±0.29</td><td>98.37±3.19</td><td>99.90±0.19</td><td>99.64±0.38</td><td>99.98±0.07</td><td>99.59±0.37</td><td>99.98±0.01</td><td>99.17±0.57</td><td>99.95±0.15</td><td>100</td></tr><tr><td>15</td><td>99.83±0.36</td><td>90.17±7.09</td><td>100</td><td>100</td><td>99.88±0.22</td><td>98.59±1.32</td><td>100</td><td>99.44±0.71</td><td>95.89±0.76</td><td>100</td></tr><tr><td>OA (%)</td><td>89.43±1.16</td><td>70.94±1.83</td><td>89.83±1.59</td><td>88.80±1.72</td><td>89.83±2.22</td><td>85.04±0.80</td><td>75.28±2.92</td><td>86.89±2.10</td><td>86.96±0.52</td><td>91.18±0.61</td></tr><tr><td>κ (%)</td><td>88.58±1.25</td><td>68.66±1.96</td><td>89.01±1.72</td><td>87.90±1.86</td><td>89.01±2.38</td><td>83.86±0.87</td><td>73.33±3.15</td><td>85.83±2.26</td><td>85.91±0.56</td><td>92.56±0.54</td></tr><tr><td>AA (%)</td><td>90.83±0.87</td><td>74.89±1.64</td><td>91.30±1.50</td><td>90.32±1.53</td><td>91.23±1.68</td><td>87.03±0.97</td><td>79.28±2.22</td><td>87.08±1.71</td><td>88.70±0.38</td><td>92.24±0.83</td></tr></table>
+
+<table><tr><td>Class</td><td>GAHT</td><td>CSIL</td><td>MASSFormer</td><td>DSFormer</td><td>SS-Mamba</td><td>HyperMamba</td><td>S2Mamba</td><td>MambaLG</td><td>MambaHSI</td><td>MambaMoE</td></tr><tr><td>1</td><td>86.95±3.58</td><td>84.56±3.39</td><td>89.98±3.19</td><td>90.38±3.52</td><td>86.00±7.62</td><td>85.21±5.95</td><td>96.05±4.16</td><td>72.16±6.66</td><td>96.04±0.58</td><td>95.20±1.57</td></tr><tr><td>2</td><td>81.29±5.54</td><td>78.12±3.79</td><td>88.11±4.91</td><td>86.97±6.76</td><td>68.30±6.88</td><td>82.75±3.16</td><td>77.65±3.09</td><td>61.13±6.90</td><td>80.63±2.06</td><td>91.60±1.74</td></tr><tr><td>3</td><td>80.61±8.70</td><td>90.72±5.37</td><td>90.87±5.04</td><td>89.83±5.12</td><td>79.03±9.94</td><td>84.37±3.52</td><td>77.72±8.44</td><td>86.08±4.95</td><td>97.69±0.36</td><td>89.54±10.56</td></tr><tr><td>4</td><td>96.91±1.20</td><td>96.67±2.22</td><td>98.92±0.85</td><td>97.86±1.32</td><td>96.56±2.20</td><td>93.69±3.53</td><td>97.23±0.86</td><td>97.49±0.65</td><td>97.48±0.58</td><td>91.92±4.10</td></tr><tr><td>5</td><td>97.85±1.26</td><td>99.98±0.05</td><td>98.52±2.32</td><td>98.26±1.53</td><td>92.88±7.25</td><td>97.58±2.28</td><td>99.69±0.21</td><td>93.04±0.64</td><td>98.66±0.52</td><td>98.72±0.55</td></tr><tr><td>6</td><td>72.05±4.04</td><td>88.65±3.19</td><td>83.51±4.09</td><td>84.76±3.65</td><td>65.29±10.69</td><td>56.61±6.74</td><td>38.38±7.84</td><td>58.79±5.65</td><td>82.04±5.97</td><td>60.35±7.13</td></tr><tr><td>7</td><td>87.55±7.02</td><td>87.87±4.09</td><td>91.00±4.40</td><td>92.19±3.94</td><td>89.62±6.16</td><td>92.30±2.10</td><td>95.10±1.08</td><td>87.55±4.25</td><td>96.70±0.97</td><td>81.84±11.65</td></tr><tr><td>8</td><td>69.58±7.82</td><td>85.32±4.79</td><td>80.16±4.08</td><td>79.05±4.55</td><td>68.28±8.89</td><td>69.68±4.50</td><td>45.73±12.90</td><td>58.52±7.24</td><td>71.27±2.27</td><td>85.80±0.81</td></tr><tr><td>9</td><td>80.58±5.22</td><td>78.62±4.56</td><td>83.51±5.22</td><td>89.74±3.92</td><td>71.88±8.46</td><td>75.74±7.67</td><td>29.82±12.24</td><td>58.71±8.31</td><td>92.33±1.55</td><td>89.38±6.40</td></tr><tr><td>10</td><td>97.39±1.65</td><td>87.98±5.09</td><td>97.33±2.41</td><td>98.38±1.18</td><td>94.06±7.36</td><td>94.06±4.06</td><td>96.05±0.54</td><td>91.73±3.71</td><td>90.78±1.41</td><td>92.85±1.04</td></tr><tr><td>11</td><td>90.56±5.54</td><td>76.54±5.78</td><td>92.17±9.12</td><td>94.84±1.57</td><td>76.54±24.24</td><td>91.09±4.21</td><td>92.89±2.89</td><td>88.33±5.41</td><td>96.79±1.26</td><td>95.63±1.66</td></tr><tr><td>12</td><td>86.04±7.56</td><td>99.67±0.41</td><td>95.27±2.82</td><td>92.09±3.56</td><td>80.65±10.13</td><td>91.26±2.37</td><td>62.88±5.77</td><td>69.30±8.50</td><td>87.97±0.88</td><td>85.44±3.43</td></tr><tr><td>13</td><td>77.79±5.89</td><td>81.94±4.11</td><td>79.00±6.55</td><td>82.49±5.01</td><td>65.82±10.77</td><td>75.93±4.70</td><td>57.79±3.78</td><td>50.16±6.65</td><td>89.36±0.41</td><td>75.22±3.21</td></tr><tr><td>14</td><td>77.11±7.76</td><td>74.62±5.84</td><td>81.43±5.97</td><td>86.42±4.94</td><td>75.37±10.70</td><td>83.41±5.21</td><td>64.22±6.72</td><td>73.96±5.48</td><td>87.51±1.05</td><td>92.94±2.36</td></tr><tr><td>15</td><td>96.65±3.16</td><td>94.24±2.33</td><td>96.48±2.12</td><td>98.37±2.12</td><td>94.18±5.36</td><td>92.74±2.90</td><td>98.86±0.62</td><td>91.62±2.79</td><td>93.88±0.44</td><td>99.94±0.04</td></tr><tr><td>16</td><td>96.18±4.31</td><td>82.15±2.30</td><td>97.30±3.97</td><td>97.86±1.83</td><td>94.80±6.49</td><td>92.37±0.71</td><td>92.27±5.76</td><td>98.60±1.20</td><td>95.08±0.51</td><td>99.05±0.20</td></tr><tr><td>OA (%)</td><td>87.12±1.69</td><td>82.89±1.45</td><td>90.75±1.98</td><td>91.68±1.28</td><td>83.14±4.48</td><td>87.58±0.70</td><td>79.83±2.39</td><td>79.45±1.26</td><td>91.27±0.25</td><td>92.67±1.22</td></tr><tr><td>κ (%)</td><td>85.05±1.89</td><td>80.29±1.65</td><td>89.23±2.27</td><td>90.31±1.47</td><td>80.44±5.16</td><td>85.55±0.79</td><td>76.66±2.66</td><td>76.23±1.40</td><td>89.84±0.30</td><td>91.68±1.16</td></tr><tr><td>AA (%)</td><td>85.94±1.24</td><td>86.73±1.22</td><td>90.22±1.61</td><td>91.22±0.84</td><td>81.21±4.47</td><td>85.21±0.18</td><td>75.86±1.79</td><td>77.23±1.30</td><td>90.89±0.65</td><td>89.09±1.68</td></tr></table>
+
+Comparison of computational eficiency among diferent methods on the Pavia University dataset. The number of model parameters and FLOPs are measured with an input size of $1 0 3 \times 1 3 \times 1 3 .$ The best and second-best results are highlighted in <sub>bold</sub> and underlined, respectively
+
+<table><tr><td>Metrics</td><td>GAHT</td><td>MASSFormer</td><td>DSFormer</td><td>S2Mamba</td><td>MambaLG</td><td>MambaHSI</td><td>MambaMoE</td></tr><tr><td>Parameters (M)</td><td>0.93</td><td>0.30</td><td>0.59</td><td>0.14</td><td> $\underline{0.13}$ </td><td>0.03</td><td>0.28</td></tr><tr><td>FLOPs (M)</td><td>156.62</td><td>51.02</td><td>60.25</td><td>24.79</td><td>30.96</td><td>5.35</td><td> $\underline{12.13}$ </td></tr><tr><td>Training time (s)</td><td>40.23</td><td> $\underline{19.29}$ </td><td>57.93</td><td>42.06</td><td>955.01</td><td>95.86</td><td> $\underline{34.97}$ </td></tr><tr><td>Inference time (s)</td><td>44.11</td><td>6.88</td><td>62.17</td><td>3.67</td><td>4.32</td><td>0.13</td><td> $\underline{0.21}$ </td></tr></table>
+
+## 4.5. Visualization
+
+ing each forward pass, substantially reducing redundant computation. Furthermore, the use of image-level inputs allows for parallel inference across a large number of samples, further boosting eficiency. In summary, MambaMoE ofers high performance with relatively low computational overhead, making it particularly suitable for resource-constrained or real-time hyperspectral remote sensing applications.
+
+patterns influence expert activation. Fig. 7(b) shows the expert weight distributions across four directional scanning paths: vertical forward, vertical backward, horizontal forward, and horizontal backward. It can be observed that the highway class exhibits a clearly vertical structure, with vertically oriented experts contributing a combined weight of 0.83, while horizontally oriented experts account for only 0.17. In contrast, the commercial building class displays a strong horizontal layout, with horizontal experts contributing 0.65 and vertical experts the remaining 0.35. For land-cover types with more complex or ambiguous spatial structures, efective contextual modeling relies on the collaborative contribution of all four directional experts, highlighting the model’s ability to adaptively integrate diverse directional cues.
+
+(1) Validation of direction modeling. <sup>To further validate the ne-</sup> cessity of heterogeneous directional modeling for diferent land-cover types, we selected two representative categories in the Houston dataset with distinct orientation characteristics: commercial buildings and highways (see Fig. 7(a)), for detailed analysis. We examined the spatial expert weights in the proposed MambaMoE to investigate how directional
+
+(2) Specific analysis of UGCL component. <sup>To further validate the</sup> necessity of the UGCL component within the proposed MambaMoE framework, we conducted a series of visualization analyses using the
+
+![](images/7a3143a55b5f2409eb3f9bf662e7a66fdd6d6a23a8bb126933a4de6220323fd8.jpg)  
+<sub>Fig. 8.</sub> Comparative visualization of MambaMoE and its variant without UGCL on the Houston dataset.
+
+Houston dataset. As depicted in Fig. 8, two representative regions with difering classification complexities were selected for comparative evaluation.
+
+Region (a) represents a playground area comprising primarily roads and synthetic grass, characterized by clear boundaries and a homogeneous composition. In this relatively simple context, the MoMEB module alone proves suficient to dynamically extract efective spectral-spatial features, resulting in accurate classification. This highlights MoMEB’s strong discriminative ability for land-cover types with distinct spatial regularity and minimal ambiguity.
+
+In contrast, Region (b) encompasses both the relatively easy-todistinguish railway class and the more challenging residential class, which exhibits complex, heterogeneous patterns. The classification results show that, similar to Region (a), MoMEB can accurately classify well-defined structures such as railways. However, in the intricate residential area, the absence of the UARB module often results in residential samples being misclassified as stressed grass. When UARB is incorporated, the classification accuracy within this complex region improves substantially. This observation underscores the efectiveness of UARB in enhancing the model’s capacity to diferentiate complex and ambiguous land-cover types.
+
+In summary, while MoMEB excels in handling straightforward cate gories with clear spatial features, its modeling capacity is limited in the presence of intricate or semantically diverse land-cover structures. To overcome this limitation, the UGCL strategy integrates the UARB module into the decoder, guiding MoMEB outputs through dynamic label refinement based on predictive uncertainty. This targeted supervision significantly boosts the model’s ability to capture nuanced semantic patterns in challenging HSI scenes.
+
+## 5. Conclusion
+
+In this paper, we propose MambaMoE, a novel spectral-spatial mixture-of-experts framework for HSI classification. MambaMoE adaptively extracts joint spectral-spatial features that are tailored to the diverse characteristics of land covers in challenging HSI scenes. Specifically, the proposed MoMEB consists of spatially routed experts and spectrally shared experts, enabling dynamic learning of directional spectralspatial features through a sparsely MoE mechanism. Additionally, we introduce an uncertainty-guided corrective learning (UGCL) strategy at the decoder stage. This strategy explicitly encourages the model to focus more on complex regions, alleviating classification confusion caused by the inherent limitations of directional modeling in Mamba. Comprehensive evaluations on three HSI benchmark datasets demonstrate that MambaMoE achieves superior performance in both classification accuracy and computational eficiency, validating the efectiveness of the proposed modules and training strategy.
+
+## CRediT authorship contribution statement
+
+<sub>Yichu Xu:</sub> Writing – review & editing, Writing – original draft, Visualization, Validation, Software, Methodology, Formal analysis, Data curation, Conceptualization; <sub>Di Wang:</sub> Writing – review & editing, Writing – original draft, Resources, Methodology, Data curation, Conceptualization; <sub>Hongzan Jiao:</sub> Writing – review & editing, Writing – original draft, Resources; <sub>Lefei Zhang:</sub> Writing – review & editing, Writing – original draft, Supervision, Project administration, Funding acquisition, Conceptualization; <sub>Liangpei Zhang:</sub> Writing – review & editing, Supervision, Project administration, Funding acquisition, Conceptualization.
+
+## Data availability
+
+Data will be made available on request.
+
+## Declaration of competing interest
+
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+## Funding
+
+This work was supported by the National Natural Science Foundation of China Major Program (Nos. 42192580 and 42192583).
+
+## References
+
+[1] Y. Song, J. Zhang, Z. Liu, Y. Xu, S. Quan, L. Sun, J. Bi, X. Wang, Deep learning for hyperspectral image classification: a comprehensive review and future predictions Inf. Fusion 123 (2025) 103285.
+
+[2] H. Fu, Z. Ling, G. Sun, J. Ren, A. Zhang, L. Zhang, X. Jia, Hyper dehazing: a hyperspectral image dehazing benchmark dataset and a deep learning model for haze removal, ISPRS J. Photogram. Remote Sens. 218 (2024) 663–677.
+
+[3] X. Wu, J. Feng, R. Shang, J. Wu, X. Zhang, L. Jiao, P. Gamba, Multi-task multiobjective evolutionary network for hyperspectral image classification and pansharpening, Inf. Fusion 108 (2024) 102383.
+
+[4] B. Tu, Q. Ren, J. Li, Z. Cao, Y. Chen, A. Plaza, NCGLF2: network combining global and local features for fusion of multisource remote sensing data, Inf. Fusion 104 (2024) 102192.
+
+[5] D. Wang, M. Hu, Y. Jin, Y. Miao, J. Yang, Y. Xu, X. Qin, J. Ma, L. Sun, C. Li, C. Fu, H Chen, C. Han, N. Yokoya, J. Zhang, M. Xu, L. Liu, L. Zhang, C. Wu, B. Du, D. Tao, L. Zhang, HyperSIGMA: hyperspectral intelligence comprehension foundation model IEEE Trans. Pattern Anal. Mach. Intell. 47 (8) (2025) 6427–6444. https://doi.org 10.1109/TPAMI.2025.3557581
+
+[6] X. Kang, Y. Hong, P. Duan, S. Li, Fusion of hierarchical class graphs for remote sensing semantic segmentation, Inf. Fusion 109 (2024) 102409.
+
+[7] T. Lu, K. Ding, W. Fu, S. Li, A. Guo, Coupled adversarial learning for fusion classification of hyperspectral and liDAR data, Inf. Fusion 93 (2023) 118–131.
+
+[8] H. Fu, G. Sun, L. Zhang, A. Zhang, J. Ren, X. Jia, F. Li, Three-dimensional singular spectrum analysis for precise land cover classification from UAV-borne hyperspectral benchmark datasets, ISPRS J. Photogram. Remote Sens. 203 (2023) 115–134.
+
+[9] B. Guo, S.R. Gunn, R.I. Damper, J.D.B. Nelson, Customizing kernel functions for SVM-Based hyperspectral image classification, IEEE Trans. Image Process. 17 (4) (2008) 622–629. https://doi.org/10.1109/TIP.2008.918955
+
+[10] K. Bernard, Y. Tarabalka, J. Angulo, J. Chanussot, J.A. Benediktsson, Spectral-spatial classification of hyperspectral data based on a stochastic minimum spanning forest approach, IEEE Trans. Image Process. 21 (4) (2012) 2008–2021. https://doi.org 10.1109/TIP.2011.2175741
+
+[11] H. Fu, G. Sun, A. Zhang, B. Shao, J. Ren, X. Jia, Tensor singular spectrum analysis for 3-D feature extraction in hyperspectral images, IEEE Trans. Geosci. Remote Sens. 61 (2023) 1–14.
+
+[12] W. Hu, Y. Huang, L. Wei, F. Zhang, H. Li, Deep convolutional neural networks for hyperspectral image classification, J. Sens. 2015 (1) (2015) 258619.
+
+[13] W. Zhao, S. Du, Spectral-spatial feature extraction for hyperspectral image classification: a dimension reduction and deep learning approach, IEEE Trans. Geosci. Remote Sens. 54 (8) (2016) 4544–4554. https://doi.org/10.1109/TGRS.2016.2543748
+
+[14] D. Hong, Z. Han, J. Yao, L. Gao, B. Zhang, A. Plaza, J. Chanussot, Spectral former: rethinking hyperspectral image classification with transformers, IEEE Trans. Geosci Remote Sens. 60 (2022) 1–15. https://doi.org/10.1109/TGRS.2021.3130716
+
+[15] C. Li, B. Zhang, D. Hong, J. Zhou, G. Vivone, S. Li, J. Chanussot, Cas former: cascaded transformers for fusion-aware computational hyperspectral imaging, Inf. Fusion 108 (2024) 102408.
+
+[16] Y. Xu, D. Wang, L. Zhang, L. Zhang, Dual selective fusion transformer network for hyperspectral image classification, Neural Netw. 187 (2025) 107311.
+
+[17] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A.N. Gomez, L.u. Kaiser, I. Polosukhin, Attention is all you need, in: NeurIPS, 30, 2017.
+
+[18] Y. Xu, Y. Xu, H. Jiao, Z. Gao, L. Zhang, S³ANet: spatial-spectral self-attention learning network for defending against adversarial attacks in hyperspectral image classification, IEEE Trans. Geosci. Remote Sens. 62 (2024) 1–13. https://doi.org/10.1109 TGRS.2024.3381824
+
+[19] A. Gu, K. Goel, C. Ré, Eficiently modeling long sequences with structured state spaces, arXiv:2111.00396 (2021).
+
+[20] A. Gu, T. Dao, Mamba: linear-time sequence modeling with selective state spaces, arXiv:2312.00752 (2023)
+
+[21] G. Wang, X. Zhang, Z. Peng, T. Zhang, L. Jiao, S2Mamba: a spatial-spectral state space model for hyperspectral image classification, IEEE Trans. Geosci. Remote Sens. 63 (2025) 1–13. https://doi.org/10.1109/TGRS.2025.3530993
+
+[22] Z. Pan, C. Li, A. Plaza, J. Chanussot, D. Hong, Hyperspectra image classification with mamba, IEEE Trans. Geosci. Remote Sens. 63 (2025) 1–14. https://doi.org/10. 1109/TGRS.2024.3521411
+
+[23] Q. Liu, J. Yue, Y. Fang, S. Xia, L. Fang, Hypermamba: a spectral-spatial adaptive mamba for hyperspectral image classification, IEEE Trans. Geosci. Remote Sens. 62 (2024) 1–14. https://doi.org/10.1109/TGRS.2024.3482473
+
+[24] Y. Xiao, Q. Yuan, K. Jiang, Y. Chen, Q. Zhang, C.-W. Lin, Frequency-assisted mamba for remote sensing image super-resolution, IEEE Trans. Multimedia. 26 (2024) 1–14.
+
+[25] X. Zhang, H. Zhang, G. Wang, Q. Zhang, L. Zhang, B. Du, UniUIR: considering underwater image restoration as an all-in-one learner, arXiv:2501.12981 (2025).
+
+[26] H. Bi, Y. Feng, B. Tong, M. Wang, H. Yu, Y. Mao, H. Chang, W. Diao, P. Wang, Y. Yu, et al., RingMoE: mixture-of-modality-experts multi-modal foundation models for universal remote sensing image interpretation, arXiv:2504.03166 (2025).
+
+[27] L. Huang, Y. Chen, X. He, Spectral-spatial mamba for hyperspectral image classification, Remote Sens. 16 (13) (2024). https://www.mdpi.com/2072- 4292/16/13/2449. https://doi.org/10.3390/rs16132449
+
+[28] J. Yao, D. Hong, C. Li, J. Chanussot, Spectralmamba: eficient mamba for hyperspectral image classification, arXiv:2404.08489 (2024).
+
+[29] Y. Li, Y. Luo, L. Zhang, Z. Wang, B. Du, MambaHSI: spatial-spectral mamba for hyperspectral image classification, IEEE Trans. Geosci. Remote Sens. 62 (2024) 1–16. https://doi.org/10.1109/TGRS.2024.3430985
+
+[30] Y. He, B. Tu, B. Liu, J. Li, A. Plaza, 3DSS-Mamba: 3D-spectral-spatial mamba for hyperspectral image classification, IEEE Trans. Geosci. Remote Sens. 62 (2024) 1–16. https://doi.org/10.1109/TGRS.2024.347209
+
+[31] X. Zhang, Y. Shen, Z. Huang, J. Zhou, W. Rong, Z. Xiong, Mixture of attention heads: selecting attention heads per token, arXiv:2210.05144 (2022).
+
+[32] D. Dai, C. Deng, C. Zhao, R.X. Xu, H. Gao, D. Chen, J. Li, W. Zeng, X. Yu, Y. Wu, et al., Deepseekmoe: towards ultimate expert specialization in mixture-of-experts language models, arXiv:2401.06066 (2024).
+
+[33] Y. Zhou, T. Lei, H. Liu, N. Du, Y. Huang, V. Zhao, A.M. Dai, Q.V. Le, J. Laudon, et al., Mixture-of-experts with expert choice routing, NIPS 35 (2022) 7103–7114.
+
+[34] Z. Chen, Y. Shen, M. Ding, Z. Chen, H. Zhao, E. Learned-Miller, C. Gan, Mod-squad: designing mixtures of experts as modular multi-Task learners, in: CVPR, 2023, pp. 11828–11837. https://doi.org/10.1109/CVPR52729.2023.01138
+
+[35] J. Li, W. He, Z. Li, Y. Guo, H. Zhang, Overcoming the uncertainty challenges in detecting building changes from remote sensing images, ISPRS J. Photogram. Remote Sens. 220 (2025) 1–17.
+
+[36] C. Debes, A. Merentitis, R. Heremans, J. Hahn, N. Frangiadakis, T. van Kasteren, W. Liao, R. Bellens, A. Pižurica, S. Gautama, W. Philips, S. Prasad, Q. Du, F. Pacifici, Hyperspectral and liDAR data fusion: outcome of the 2013 GRSS data fusion contest, IEEE J. Sel. Top. Appl. Earth Observ. Remote Sens. 7 (6) (2014) 2405–2418. https: //doi.org/10.1109/JSTARS.2014.2305441
+
+[37] Y. Zhong, X. Hu, C. Luo, X. Wang, J. Zhao, L. Zhang, WHU-Hi: UAV-borne hyperspectral with high spatial resolution (H2) benchmark datasets and classifier for precise crop identification based on deep convolutional neural network with CRF, Remote Sens. Environ. 250 (2020) 112012.
+
+[38] S. Mei, C. Song, M. Ma, F. Xu, Hyperspectral image classification using group-aware hierarchical transformer, IEEE Trans. Geosci. Remote Sens. 60 (2022) 1–14. https: //doi.org/10.1109/TGRS.2022.3207933
+
+[39] J. Yang, B. Du, L. Zhang, From center to surrounding: an interactive learning framework for hyperspectral image classification, ISPRS J. Photogram. Remote Sens. 197 (2023) 145–166.
+
+[40] L. Sun, H. Zhang, Y. Zheng, Z. Wu, Z. Ye, H. Zhao, MASSFormer: memoryaugmented spectral-spatial transformer for hyperspectral image classification, IEEE Trans. Geosci. Remote Sens. 62 (2024) 1–15. https://doi.org/10.1109/TGRS.2024. 3392264
