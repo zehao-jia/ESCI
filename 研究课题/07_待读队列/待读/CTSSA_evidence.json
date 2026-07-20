@@ -1,0 +1,559 @@
+{
+  "status": "ok",
+  "script": "extract_evidence.py",
+  "paper_id": "doi:10.1109/tgrs.2025.3584668",
+  "title": "Dual-Branch Convolution&#x2013;Transformer Network With Spectral&#x2013;Spatial Attention for Hyperspectral Image Classification",
+  "evidence_pack": {
+    "paper_id": "doi:10.1109/tgrs.2025.3584668",
+    "problem_evidence": [],
+    "task_evidence": [
+      {
+        "claim": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification.",
+        "evidence": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "claim": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism.",
+        "evidence": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "claim": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance.",
+        "evidence": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "claim": "Coarse-scale grouping is more robust to noise and better suited for capturing stable trends, whereas fine-scale grouping is capable of detecting subtle spectral variations.",
+        "evidence": "Coarse-scale grouping is more robust to noise and better suited for capturing stable trends, whereas fine-scale grouping is capable of detecting subtle spectral variations.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "claim": "3, to dynamically compute the importance weights of spectral bands, thereby identifying informative bands and suppressing noise and redundancy.",
+        "evidence": "3, to dynamically compute the importance weights of spectral bands, thereby identifying informative bands and suppressing noise and redundancy.",
+        "source_section": "task",
+        "page_hint": ""
+      }
+    ],
+    "data_evidence": [
+      {
+        "claim": "EXPERIMENTAL RESULTS In this section, we conduct experiments on four public HSI datasets to validate the effectiveness of the proposed CTSSA.",
+        "evidence": "EXPERIMENTAL RESULTS In this section, we conduct experiments on four public HSI datasets to validate the effectiveness of the proposed CTSSA.",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "claim": "Datasets Description We utilized the following four open HSI datasets for our experiments: Salinas (SA), Pavia University (PU), Houston 2013(HS), and the WHUHi-LongKou dataset (LK).",
+        "evidence": "Datasets Description We utilized the following four open HSI datasets for our experiments: Salinas (SA), Pavia University (PU), Houston 2013(HS), and the WHUHi-LongKou dataset (LK).",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "claim": "1) SA: The SA dataset was acquired by the AVIRIS sensor over Salinas Valley, California, covering 400-2500 nm with 224 spectral bands.",
+        "evidence": "1) SA: The SA dataset was acquired by the AVIRIS sensor over Salinas Valley, California, covering 400-2500 nm with 224 spectral bands.",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "claim": "2) PU: The PU dataset was acquired by the ROSIS sen- sor over the University of Pavia, Italy.",
+        "evidence": "2) PU: The PU dataset was acquired by the ROSIS sen- sor over the University of Pavia, Italy.",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "claim": "The dataset includes nine classes and 42 776 labeled pixels.",
+        "evidence": "The dataset includes nine classes and 42 776 labeled pixels.",
+        "source_section": "data",
+        "page_hint": ""
+      }
+    ],
+    "method_evidence": [
+      {
+        "claim": "The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+        "evidence": "The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules.",
+        "evidence": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "In Section III, we present and analyze the experimental results.",
+        "evidence": "In Section III, we present and analyze the experimental results.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism.",
+        "evidence": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+        "evidence": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+        "evidence": "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "mechanism_evidence": [
+      {
+        "claim": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+        "evidence": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+        "evidence": "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations.",
+        "evidence": "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting.",
+        "evidence": "Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "In the implementation, for each spectral subgroup Xn i , the Key K and Value V representations are obtained via 1 × 1 convolutional kernels WK and WV , respectively, i.e., K n = WK ∗Xn and V n = WV ∗Xn i .",
+        "evidence": "In the implementation, for each spectral subgroup Xn i , the Key K and Value V representations are obtained via 1 × 1 convolutional kernels WK and WV , respectively, i.e., K n = WK ∗Xn and V n = WV ∗Xn i .",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "claim": "Notably, the Query Q is directly assigned as the original input, i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations.",
+        "evidence": "Notably, the Query Q is directly assigned as the original input, i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "results_evidence": [],
+    "ablation_evidence": [],
+    "limitations_evidence": [],
+    "equation_candidates": [
+      {
+        "equation": "Lfocal = −αy \u00001 −py \u0001γ log \u0000py \u0001 (12) where y is the true class, py is the predicted probability of class y, and αy and γ are the",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "H = {1, 2, 3, 6}, which is empirically validated as the optimal setting in subsequent ablation studies",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = WK ∗Xn i and V n i = WV ∗Xn i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Softmax \u0000Wθ ∗Concat \u0000K n i , Qn i \u0001\u0001 (1) where Concat(K n i , Qn i ) denotes the concatenation of K",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = An i ⊗V n i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Pn i ⊕Xn i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "Ei = Conv2D1×1 \u0000Concat \u0000E1 i ,",
+        "source_section": "method",
+        "kind_hint": "equation"
+      }
+    ],
+    "figure_captions": [
+      {
+        "id": "Fig. 1",
+        "caption": "Comparison of pixel contribution assumptions within a patch (taking"
+      },
+      {
+        "id": "Fig. 2",
+        "caption": "Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation function."
+      },
+      {
+        "id": "Fig. 3",
+        "caption": "Architecture of the proposed SAB module."
+      },
+      {
+        "id": "Fig. 4",
+        "caption": "Overall architecture of the proposed CAM module."
+      },
+      {
+        "id": "Fig. 5",
+        "caption": "Quantitative results with different numbers of training samples per"
+      },
+      {
+        "id": "Fig. 6",
+        "caption": "Classification maps obtained by the different tested methods for the Salinas dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN."
+      },
+      {
+        "id": "Fig. 7",
+        "caption": "Classification maps obtained by the different tested methods for the Pavia University dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN."
+      },
+      {
+        "id": "Fig. 8",
+        "caption": "Classification maps obtained by the different tested methods for the Houston 2013 dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN."
+      },
+      {
+        "id": "Fig. 9",
+        "caption": "Classification maps obtained by the different tested methods for the WHU-Hi-LongKou dataset. (a) Pseudocolor image. (b) Ground truth label."
+      },
+      {
+        "id": "Fig. 10",
+        "caption": "Ablation study on the accuracy metrics for the PSAM module. (a) OA. (b) AA. (c) Kappa."
+      },
+      {
+        "id": "Fig. 11",
+        "caption": "Ablation study on the choice of similarity function in the CenterTE module. (a) OA. (b) AA. (c) Kappa."
+      },
+      {
+        "id": "Fig. 12",
+        "caption": "Ablation study on the accuracy metrics for the dual branch. (a) OA. (b) AA. (c) Kappa."
+      }
+    ],
+    "table_captions": [],
+    "sections": [
+      {
+        "name": "preamble",
+        "length": 15919,
+        "preview": "IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Dual-Branch Convolution–Transformer Network With Spectral–Spatial Attention for Hyperspectral Image Classification Yao Lu , Yongshan Zhang , Senior Member, IEEE, Xinwei Jiang"
+      },
+      {
+        "name": "method",
+        "length": 41284,
+        "preview": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial"
+      }
+    ],
+    "section_texts": {
+      "preamble": "IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Dual-Branch Convolution–Transformer Network With Spectral–Spatial Attention for Hyperspectral Image Classification Yao Lu , Yongshan Zhang , Senior Member, IEEE, Xinwei Jiang , Xiaobo Liu , Senior Member, IEEE, and Zhihua Cai Abstract— Hyperspectral image (HSI) classification is a key task in the field of remote sensing, aiming to assign category labels to each pixel by leveraging the spectral and spatial information in HSIs. Recently, many deep learning (DL) methods, such as con- volutional neural networks (CNNs) and transformers, have been applied to this task, achieving significant results. However, most existing patch-based DL methods often overlook the potential relationships between the central pixel and its surrounding pixels. Additionally, the unique spectral characteristics of HSIs, such as the high correlation between adjacent spectral bands and low dependence between distant bands, also require special attention. Based on this, we propose a novel dual-branch convolution– transformer network with spectral–spatial attention (CTSSA), which can effectively aggregate both local and global spectral– spatial features. Specifically, CTSSA comprises two core modules: the pyramid spectral attention module (PSAM) and the center transformer encoder (CenterTE). The former extracts highly discriminative spectral features through a hierarchical multiscale attention mechanism, capturing subtle differences between adja- cent spectral bands. The latter improves the original transformer encoder (TE) by introducing a center-attention mechanism to model the global relationship between the central pixel and its surrounding pixels, thereby enhancing classification accuracy while reducing computational complexity. Experimental results on four public datasets (Salinas, Pavia University, Houston, and WHUHi-LongKou) demonstrate that, compared with nine other networks, CTSSA achieves satisfactory performance with fewer parameters and relatively high efficiency. Index Terms— Convolutional neural networks (CNNs), hyper- spectral image (HSI) classification, pyramid spectral attention, transformer. Received 20 April 2025; revised 25 May 2025; accepted 25 June 2025. Date of publication 30 June 2025; date of current version 15 July 2025. This work was supported in part by China National Key R&D Program under Grant 2023YFF0807000; and in part by the Joint Open Fund of the Research Platforms of School of Computer Science, China University of Geosciences, Wuhan, under Grant PTLH2024-B-06. (Corresponding authors: Yongshan Zhang; Zhihua Cai.) Yao Lu, Yongshan Zhang, and Xinwei Jiang are with the School of Computer Science and Hubei Key Laboratory of Intelligent Geo-Information Processing, China University of Geosciences, Wuhan 430074, China (e-mail: cugerluyao@cug.edu.cn; yszhang.cug@gmail.com; ysjxw@hotmail.com). Xiaobo Liu is with the School of Automation and Hubei Key Laboratory of Advanced Control and Intelligent Automation for Complex Systems, China University of Geosciences, Wuhan 430074, China (e-mail: xbliu@cug.edu.cn). Zhihua Cai is with the School of Computer Science, China University of Geosciences, Wuhan 430074, China, and also with the School of Computer Science and Artificial Intelligence, Wuhan University of Engineering Science, Wuhan 430200, China (e-mail: zhcai@cug.edu.cn). Digital Object Identifier 10.1109/TGRS.2025.3584668 I. INTRODUCTION YPERSPECTRAL images (HSIs) contain hundreds of contiguous spectral bands, spanning the visible to the infrared regions of the spectrum. These bands record detailed spectral features, enabling high-precision identification and distinction of objects. Due to its rich spectral and spatial information, HSI has found widespread applications in various fields in recent years, such as geological mapping [1], [2], [3], environmental monitoring [4], [5], mineral exploration [6], precision agriculture [7], and military reconnaissance [8]. A critical task in hyperspectral image analysis is classi- fication, which involves assigning a unique category label to each pixel. Traditional hyperspectral image classification methods mainly rely on handcrafted feature extraction and conventional machine learning algorithms, such as support vector machines (SVMs) [9], [10], k-nearest neighbors (k-NN) [11], morphological profiles (MPs) [12], sparse representation (SR) [13], and low-rank models [14]. However, these methods often struggle to capture the high-level abstract features of HSIs, resulting in suboptimal classification accuracy [15]. In recent years, deep learning (DL) methods have been extensively applied to HSI classification due to their ability to automatically learn complex feature representations from data. Various DL-based methods have been successfully employed for HSI classification [16], [17], [18], including generative adversarial networks (GANs) [19], recurrent neural networks (RNNs) [20], [21], stacked autoencoders (SAEs) [22], deep belief networks (DBNs) [23], [24], graph convolutional net- works (GCNs) [25], [26], [27], and convolutional neural networks (CNNs). Among these architectures, CNNs have emerged as the dominant DL method for HSI classification due to their powerful ability to model local features [28], [29], [30]. Hu et al. [31] were the first to propose stacking multiple 1-D convolutional layers to extract deep spectral features for HSI classification. To further learn spatial information, Zhao and Du [32] proposed a spatial-based 2-D CNN to extract spatial and spectral features of the principal components. With the introduction of 3-D CNN by Hamida et al. [28] for HSI classification, the model became capable of better integrating the 3-D structural information of images. Roy et al. [33] combined the strengths of 3-D CNN and 2-D CNN to propose a hybrid CNN (HybridSN) model for HSI clas- 1558-0644 © 2025 IEEE. All rights reserved, including rights for text and data mining, and training of artificial intelligence and similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information. Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 sification, which extracts spatial-spectral features hierar- chically, achieving better classification performance with lower computational complexity than stand-alone 3-D CNNs. Zhong et al. [34] integrated 3-D CNN with residual blocks to design an end-to-end spectral–spatial residual network (SSRN), continuously learning discriminative features from spectral and spatial information while using batch normaliza- tion (BN) to enhance model performance. Zhou et al. [35] combined 3-D CNN with a feature pyramid structure to design a spectral–spatial pyramid network (SSPN), which uses the fusion of 3-D convolutions and multiscale convolutions to extract comprehensive spatial-spectral features. Although 3-D convolutional kernels reduce the parameter requirements compared to 2-D convolutions, methods based on 3-D CNN still involve a substantial number of parameters. Cui et al. [36] recently proposed LiteDepthwiseNet, which decomposes stan- dard convolutions into depthwise and pointwise convolutions, significantly reducing parameters while maintaining high clas- sification performance. Although CNNs dominate the field of computer vision due to their strong local feature extraction capabilities, they struggle to capture the global features or long-range dependencies in HSIs due to the limited receptive field of convolutional kernels. Recently, transformer networks based on the multihead self-attention (MHSA) mechanism have achieved significant success in the field of natural language processing (NLP). Dosovitskiy et al. [37] were the first to demonstrate the potential of vision transformer (ViT) for image classifica- tion tasks, achieving better performance than CNNs. ViT segments the input image into fixed-size patches (16 × 16) and treats each patch as a sequence input to the transformer encoder (TE), thereby capturing global features and generating high-level representations. Due to its capability to model long- range dependencies, Transformer networks have also been applied to HSI [38], [39], [40]. However, transformer-based approaches often overlook the details of local features [41] and are associated with a large number of parameters and increased training complexity [42], [43]. Relying solely on the transformer architecture makes it challenging to achieve satisfactory results. Therefore, some researchers have introduced the integra- tion of CNN and transformers to efficiently extract both local and global dependencies [44]. Sun et al. [45] proposed a spectral–spatial feature tokenization transformer (SSFTT) that effectively extracts local features using a hybrid CNN, transforms them into high-level semantic features using Gaussian-weighted tokenization, and captures deep relation- ships through a TE. Zhang et al. [46] developed a convolution transformer mixer (CTMixer), which integrates the advantages of ViT and CNN, utilizing a local-global MHSA mechanism to enhance classification accuracy. Li et al. [51] introduced HybridFormer, which uses a multigranularity token genera- tor to embed semantic tokens and replaces the traditional MHSA with a spatial-spectral attention (SSA) mechanism, effectively capturing global spatial and spectral dependencies in hyperspectral images. Yang et al. [47] proposed HiT, which embeds convolutional operations within the TE to extract spectral features and local spatial details. Xu et al. [48] proposed a double branch convolution–transformer network (DBCTNet) that combines a 3-D CNN with a convolution- enhanced TE. Through multiscale spectral feature extraction and a dual-branch structure, it effectively captures both local and global spatial and spectral information in hyperspectral images, significantly improving classification accuracy while reducing computational complexity. The aforementioned HSI classification methods each have their own characteristics. However, based on the char- acteristics of HSI, there is still room for further opti- mization and improvement, which can be summarized as follows. 1) Currently, most models extract spectral features from HSI in a relatively simplistic manner, without paying attention to the subtle differences between adjacent spectral bands, resulting in insufficient feature extrac- tion. Additionally, many attention-based models tend to process all spectral bands at once to extract globally representative features, which overlooks the distribution characteristics of spectral data. Specifically, adjacent spectral bands usually have high correlations, while the correlation between distant spectral bands is lower. At the same time, the spectral reflectance characteristics of different bands may be highly sensitive to the classi- fication of different materials. Although global attention mechanisms allow for the comprehensive learning of global significant features, some important local sig- nificant features may be diminished. This can lead to the loss of crucial discriminative information when the model fails to adequately focus on local features during classification. 2) In HSI classification, the patch-based methods typically extract a patch centered on each pixel as an input to the model, with the objective of predicting the class label of the center pixel. Since adjacent pixels contribute unequally to the classification of the center pixel, it is crucial to explore the potential correlations between the center pixel and its neighbors from a global perspective. As shown in Fig. 1, most existing mainstream HSI classification methods, whether based on CNNs or trans- formers, have overlooked the distinct importance of the center pixel in this task. CNNs generally assume that all pixels within the patch contribute equally to the center pixel’s classification, while transformers encode interac- tions uniformly among all pixels (i.e., queries, keys, and values), without considering their semantic relevance to the center pixel. However, in practical scenarios, only the pixels that are spatially and semantically related to the center pixel should exert significant influence on its classification, while heterogeneous pixels, such as those in noisy regions or along class boundaries, should be appropriately downweighted. This limitation becomes especially critical when classifying edge pix- els or regions with complex spatial layouts, where the absence of differentiated weighting in patch-based frameworks makes the model more susceptible to inter- ference from neighboring pixels of other categories, ultimately degrading classification accuracy. Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA Fig. 1. Comparison of pixel contribution assumptions within a patch (taking a 5 × 5 patch as an example, with the central pixel indicated by the red box): CNN/transformer-based methods versus the real situation. 3) In addition, most of the current networks that combine CNN and transformer [45], [46], [47] only perform limited integration. While this can improve the model’s performance to some extent, it does not fully harness the potential of CNNs in enhancing transformers. To overcome these challenges, we propose a novel dual- branch convolution–transformer network with spectral–spatial attention (CTSSA). CTSSA integrates the strengths of convo- lutional networks and transformer architectures to effectively capture both local details and global contextual features. Specifically, we design a pyramid spectral attention module (PSAM) that employs a multiscale hierarchical grouping strat- egy combined with dynamic attention to adaptively extract both global and local spectral features. In addition, we intro- duce a center transformer encoder (CenterTE), specifically optimized for HSI classification, which explicitly models the global relationships between the center pixel and its sur- rounding neighbors using a center-guided sparse attention mechanism, while also reducing computational complexity. To compensate for the limitations of the CenterTE branch in capturing fine spatial-spectral details, we further design a dedicated 3D-CNN branch, enabling effective fusion of global contextual information and localized fine-grained features. The main contributions of this work are summarized as follows. 1) To enhance the network’s capacity for extracting rich spectral information, we propose a novel PSAM. Unlike conventional approaches that process all spectral bands in a single pass, PSAM constructs a hierarchical grouped spectral feature processing framework, which leverages dynamic attention mechanisms to adaptively capture both global and local spectral features at multiple scales. This design ensures the diversity and effectiveness of the learned spectral representations. 2) To meet the specific demands of HSI classification, we design a new center-guided TE. This module utilizes a parameter-free center attention module (CAM) as the token mixer to selectively capture global contextual dependencies centered on the target pixel. Additionally, a convolutional multilayer perceptron (ConvMLP) is introduced as a channelwise MLP to further enhance local feature aggregation. This architecture significantly reduces model complexity while improving the model’s ability to selectively attend to relevant neighborhood information around the center pixel and suppress back- ground noise and class interference. 3) The proposed CTSSA",
+      "method": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context. This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows. Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results. Finally, Section IV concludes our work. II. PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig. 2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism. While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A. PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated. Moreover, the discriminative spectral characteristics of different land-cover categories may span various spectral scales. For instance, some classes rely on fine-grained narrowband features, such as the absorption peaks of minerals, whereas others require coarse-grained broadband features, like the overall low-reflectance profile of water bod- ies. Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations. Specifically, global self-attention treats all band relations equally, which not only leads to high computational overhead but also risks over- whelming subtle local features. On the other hand, convolution operations with fixed spectral groupings fail to adapt to Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 2. Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation function. the scale diversity of different land-cover features. Although some recent methods have attempted spectral grouping, they typically adopt a single grouping scale, which may be insuf- ficient to capture multi-scale characteristics across categories. Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting. To address these challenges, we propose a PSAM, whose core innovation lies in constructing a multilevel grouped spec- tral feature processing framework. By introducing a tunable hierarchical parameter H, PSAM enables multiresolution spec- tral analysis from global to local scales, allowing the model to capture discriminative features at varying granularities. As an illustrative example, we adopt a four-level pyramid configuration with H = {1, 2, 3, 6}, which is empirically validated as the optimal setting in subsequent ablation studies. HSI data can be represented as a 3-D tensor Rh×w×b, where h and w denote the spatial height and width of the image, respectively, and b represents the number of spectral bands. For each pixel, a 3-D local data cube X ∈Rp×p×b centered on that pixel is extracted, where p denotes the spatial patch size. This local cube is used as the input to the PSAM module, as shown in Fig. 2. After being input to the ith layer, X is divided along the spectral dimension into n subgroups, denoted as {X1 i , X2 i , . . . , Xn i }. The first level treats all spectral bands as a single group and employs global attention to capture the complete spectral curve structure. The second, third, and fourth levels divide the bands evenly into two, three, and six, groups, respectively. This hierarchical design enables the network to simultaneously model spectral correlations across different scales. Coarse-scale grouping is more robust to noise and better suited for capturing stable trends, whereas fine-scale grouping is capable of detecting subtle spectral variations. Within each subgroup, we design lightweight spectral attention block (SAB), as shown in Fig. 3, to dynamically compute the importance weights of spectral bands, thereby identifying informative bands and suppressing noise and redundancy. Fig. 3. Architecture of the proposed SAB module. In the implementation, for each spectral subgroup Xn i , the Key K and Value V representations are obtained via 1 × 1 convolutional kernels WK and WV , respectively, i.e., K n = WK ∗Xn and V n = WV ∗Xn i . This use of 1 × 1 convolution preserves the spatial locality of the feature maps while enabling efficient cross-band feature interaction. Notably, the Query Q is directly assigned as the original input, i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations. This design ensures that the attention mechanism operates on the original observed spectral signals, allowing for more accurate band discrimination and preserving complete spectral information for the subsequent dual-branch architecture. The spectral attention map An i for the nth group is then jointly computed using K n i and Qn i as follows: i = Softmax \u0000Wθ ∗Concat \u0000K n i , Qn (1) where Concat(K n i , Qn i ) denotes the concatenation of K n i and i along the spectral dimension. Wθ is a lightweight convo- lutional layer consisting of a 1 × 1 convolution kernel, BN, and a rectified linear unit (ReLU) activation function, which projects the concatenated features into the attention space. After applying the softmax operation, the resulting attention Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA map is elementwise multiplied with the value feature V n emphasize the spectral bands that are most informative for feature learning and final classification as follows: i = An i ⊗V n i . (2) Inspired by residual networks, we incorporate a skip con- nection to preserve more useful information, thereby obtaining the spectral attention feature for the nth group En i as follows: i = Pn i ⊕Xn i . (3) Multiple parallel SABs are applied to spectral subgroups at different scales. The strong correlations among adjacent spectral bands are effectively reinforced within each group, while the weak correlations between distant bands are isolated across different groups. The spectral features extracted from all subgroups at each pyramid level are concatenated along the spectral dimension and subsequently fused and enhanced through a Conv2D layer, BN, and ReLU activation Ei = Conv2D1×1 \u0000Concat \u0000E1 i , . . . , En (4) Finally, cross-level feature fusion is performed along the channel dimension, enabling PSAM to effectively integrate multiscale discriminative spectral features, thereby providing a rich spectral representation foundation YPSAM for the subse- quent dual-branch feature extraction module. This process can be expressed as YPSAM = Stack(E1, E2, E3, E4) (5) where YPSAM ∈Rc×p×p×b, where c denotes the number of channels. In the case of a four-level pyramid, we have c = 4. Each Ei (i = 1, . . . , 4) represents the spectral features extracted at a different scale. B. CenterTE Branch Existing transformer-based methods for HSI classification, such as ViT and SpectralFormer, have demonstrated strong capabilities in modeling global dependencies. However, these approaches do not explicitly account for the unique role of the center pixel during attention computation. Moreover, traditional self-attention mechanisms incur high computational complexity and are prone to incorporating redundant informa- tion, such as background noise. In addition, in current hybrid transformer-CNN architectures, the transformer branch still relies on standard MHSA, which has not been specifically optimized for the characteristics of HSI classification tasks. To address the aforementioned issues, we design a novel TE tailored for HSI classification, named CenterTE. In this architecture, a CAM is introduced to replace the standard MHSA, enabling center-guided sparse attention. Additionally, a ConvMLP is employed to enhance local feature aggregation, compensating for potential detail loss due to the global nature of CAM. As shown in the CenterTE branch in Fig. 2, the multiscale spectral features YPSAM are first processed by a single-channel 1 × 1 × 7 convolution, which integrates chan- nel information and reduces spectral dimensionality, resulting in the intermediate representation F ∈R1×p×p×b′, which is then fed into CenterTE. After applying a layer normalization Fig. 4. Overall architecture of the proposed CAM module. (LN), CAM treats the center pixel as the query and computes attention only between the center pixel and its surrounding pixels (used as keys), instead of computing all pairwise inter- actions among pixels. Compared with traditional MHSA, this approach significantly reduces computational overhead while explicitly enhancing the central pixel’s dominance in feature learning. The internal structure of CAM is illustrated in Fig. 4. Let Fh ∈Rp×p×b′ denote the hth subfeature obtained by applying a multihead strategy to F, where h = 1, 2, . . . , H. Each subfeature is reshaped into a 2-D matrix U h ∈Rn×b′, where n = p × p denotes the number of spatial positions (pixels). To better model the relationship between the center pixel and its surrounding context, each feature vector in U h is L2-normalized along the spectral dimension. The center pixel in the hth head is denoted as U h mid ∈R1×b′, while the surrounding pixel features are represented as U h i (i = 1, 2, . . . , n). The cosine similarity between the center pixel and each surrounding pixel is then computed as ρh i = \u0000U h \u0001\u0000U h mid ∥U h i ∥∥U h mid∥, i = 1, 2, . . . , n. (6) When the value of ρh i approaches 1, it indicates a higher similarity between the center pixel and the ith surrounding pixel; conversely, as the value approaches 0, the similar- ity decreases accordingly. The cosine similarity scores are then passed through a softmax function to compute the similarity-based attention map Ch ∈Rp×p Ch = softmax \u0000ρh exp \u0000ρh i=1 exp \u0000ρh i = 1, 2, . . . , n. (7) The attention weights are then applied to the input feature Fh via elementwise multiplication, enabling selective empha- sis of relevant features Y h = Fh ⊗Ch. (8) The outputs from all attention heads are fused through a 1 × 1 convolution, and a residual connection is incorporated to prevent gradient vanishing and network degradation. This process is formulated as follows: Z′ = Conv2D1×1 \u0000Concat \u0000Y 1, Y 2, . . . , Y H\u0001\u0001 ⊕F. (9) Finally, the output of the CenterTE branch is obtained by applying LN followed by a ConvMLP, implemented using a Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 3 × 3 × 3 3-D convolution, to aggregate the features ZCenterTE = ConvMLP \u0000LN \u0000Z′\u0001\u0001 ⊕Z′. (10) C. CNN Branch To compensate for the limitations of the CenterTE branch in capturing fine-grained local spatial-spectral details, we further design a dedicated 3D-CNN branch. Specifically, the CenterTE branch, guided by the center attention mechanism, primarily focuses on modeling global contextual dependencies, making it well-suited for perceiving and reasoning over the entire image region. However, it may underrepresent subtle spectral variations, textural patterns, and detailed structures present in localized regions. To address this issue, the 3D-CNN branch is introduced to leverage the high sensitivity of 3-D convolutions across both spatial and spectral dimensions, along with their strong capability in local feature extraction. This enables the precise modeling of localized spatial structures and spectral variations, providing critical support in scenes with blurred boundaries, intricate class interleaving, and rich local details. The inherent complementarity between the local (3D-CNN) and global (CenterTE) branches, in terms of scale and dimensional focus, is the fundamental motivation for integrating the 3D-CNN branch. By fusing the outputs of both branches, the network achieves effective coordination between local detail and global context, thereby significantly enhancing the performance of hyperspectral image classification. As illustrated in Fig. 2, the structure of this branch is straightforward and efficient. It consists of a Conv3D layer with a kernel size of 1 × 1 × 7, a depthwise 3-D convo- lution (DWConv3D) layers with kernel sizes of 3 × 3 × 3, an additional Conv3D layer, and residual connections. This combination of depthwise and standard convolutions allows for more effective extraction of local spatial-spectral features. Specifically, the multiscale spectral features YPSAM produced by the PSAM module are first passed through a 16-channel Conv3D layer for channel adjustment and spectral dimension- ality reduction. Then, grouped convolutions via DWConv3D layers are applied to extract refined local features across both spatial and spectral domains. Finally, another Conv3D layer integrates the localized spatial-spectral information to produce the final output of this branch. Residual connections are incorporated within the branch to alleviate gradient vanishing and improve training stability. The process can be formulated Ycnn = Conv3D1×1×7(YPSAM) Zcnn = Conv3D(DWConv3D(Ycnn)) ⊕Ycnn. (11) The outputs from the center TE branch and the 3D-CNN branch are concatenated along the channel dimension, fol- lowed by a Conv3D layer with a kernel size of 1 × 1 × 1 to perform feature fusion. Finally, global average pooling (GAP) is applied to flatten the fused feature map into a vector, which is then passed through a fully connected layer to produce the final classification result. Table I presents the detailed architectural parameters of the proposed CTSSA network. During the dual-branch feature fusion stage, the outputs from the two branches, ZCenterTE and TABLE I DETAILED STRUCTURE AND PARAMETERS OF THE PROPOSED CTSSA Zcnn, are, respectively, processed by 16-channel 3 × 3 × 132 DWConv3D layers, resulting in feature maps with a shape of (16, p × p × 1). After concatenation along the channel dimension, these features are further fused via a pointwise convolution, resulting in a final feature map with dimensions (16, p × p × 1). In the classification stage, GAP flattens the fused feature map into a feature vector of size (16×1), which is then mapped to target categories through a fully connected layer, producing a final output of dimension (d × 1), where d corresponds to the number of classification categories. III. EXPERIMENTAL RESULTS In this section, we conduct experiments on four public HSI datasets to validate the effectiveness of the proposed CTSSA. Nine DL models were selected for comparison, including three models purely based on CNN (SSRN [34], FDSSC [50], and DBDA [51]), two models based on trans- formers (SpectralFormer [52] and morphFormer [53]), and four models combining CNN and transformer architectures (SSFTT [45], GSC-ViT [54], DCTN [55], and DBCTNet [48]). Three quantitative metrics [overall accuracy (OA), average accuracy (AA), and kappa coefficient] were employed to evaluate the performance of each method. Additionally, three metrics (number of parameters, FLOPs, and inference time) were used to assess the computational efficiency of the models. A. Datasets Description We utilized the following four open HSI datasets for our experiments: Salinas (SA), Pavia University (PU), Houston 2013(HS), and the WHUHi-LongKou dataset (LK). 1) SA: The SA dataset was acquired by the AVIRIS sensor over Salinas Valley, California, covering 400-2500 nm with 224 spectral bands. After removing 20 water absorption bands, 204 valid bands remain. The image size is 512 × 217 with a spatial resolution 3.7 includes land cover types and 54 129 labeled pixels. 2) PU: The PU dataset was acquired by the ROSIS sen- sor over the University of Pavia, Italy. It contains 610 × 340 pixels with 103 spectral bands (after remov- ing 12 noisy bands), covering 430-860 nm at a spatial resolution of 1.3 m. The dataset includes nine classes and 42 776 labeled pixels. Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 3) HS: The HS dataset was captured by the CASI sensor on June 23, 2012, comprising 144 spectral bands covering 380-1050 nm. The image has a size of 349 × 1905 pixels with a spatial resolution of 2.5 m. It includes 15 land cover types and 15 029 labeled pixels. 4) LK: The dataset was acquired July 17, 2018, in Longkou, Hubei, China, using a Headwall Nano-Hyperspec sensor with an 8-mm focal length. It contains 550 × 400 pixels and 270 spectral bands covering 400-1000 nm. The dataset includes nine classes and 204 542 labeled pixels. The SA, PU, HS, and LK datasets were split into training, validation, and test sets. Approximately 1%, 0.7%, 5%, and 0.1% of the samples were used for training, with an equal portion for validation. The remaining data formed the test set. Details for each dataset are listed in Table II. B. Experimental Setup First, the experiments were conducted on a machine equipped with an NVIDIA GTX 1660Ti GPU, utilizing the PyTorch [56] DL framework. Second, focal loss [57] was used during the network training, a method that has been proven to be effective in HSI classification, especially for addressing class imbalance issues [58], [59]. The formula for focal loss is as follows: Lfocal = −αy \u00001 −py \u0001γ log \u0000py (12) where y is the true class, py is the predicted probability of class y, and αy and γ are the tunable hyperparameters. Specifically, αy adjusts class weights to reduce bias, while γ focuses learning on hard samples. For the SA, PU, HS, and LK datasets, γ was set to 4.2, 0.5, 1.9, and 5.0, respectively, and α was set as the inverse of each class’s sample proportion. Finally, in the experiments, Adam was used as the optimizer, and the warmup strategy from [48] was referenced to ensure stable convergence of the model. The warmup strategy follows the following formula: lr(t) = 2 × η × 1 + cos π × t −ω T −ω if t ∈(ω, T ] η × max 0, t if t ∈[0, ω] otherwise (13) where η represents the preset maximum learning rate, t is the current training step, T is the total number of training steps, and ω is the number of warmup steps. The learning rate gradually increases from zero to the maximum value of η and then decreases back to zero. In the experiments, the warmup steps accounted for one-tenth of the total training steps. The learning rates for the SA, PU, HS, and LK datasets were set to 0.001, 0.001, 0.003, and 0.001, respectively. The weight decay for Adam was set to 0.001. All models were trained for 400, 400, 600, and 400 epochs on the SA, PU, HS, and LK datasets, respectively, with patch sizes of 13 × 13, 13 × 13, 15 × 15, and 9 × 9. The batch size was set to 128, and the number of hierarchical scales H = {1, 2, 3, 6}. C. Comparison Experiments 1) Quantitative Comparisons: Tables III-VI present the quantitative classification performance (OA, AA, and kappa) of various algorithms across four datasets, with the best results highlighted in bold and the second-best results underlined. Overall, the proposed method outperforms all other meth- ods in terms of OA, AA, and kappa and achieves better performance in class accuracy in most cases. Notably, CNN- based methods (such as SSRN, FDSSC, and DBDA) exhibit similar performance, with one exception: on the PU dataset, DBDA performs 5.37% lower than SSRN in accuracy. SSRN achieves better results on the SA, PU, and LK datasets, while FDSSC shows the best performance on the HS dataset. For transformer-based methods, SpectralFormer shows the worst classification results across the four datasets, significantly lagging behind CNN-based methods. This suggests that train- ing ViTs directly on small labeled samples is suboptimal due to the lack of inductive bias, possibly stemming from inadequate utilization of spatial information and insufficient training samples. As a solution, using hybrid methods that integrate CNNs to enhance Transformers (such as SSFTT, GSCViT, DCTN, and DBCTNet) can improve performance. Among these, SSFTT achieves the second-best performance on the SA dataset, while DBCTNet ranks second on the PU, HS, and LK datasets. Specifically, as shown in Table III, CTSSA achieves an OA of 98.93% on the SA dataset, significantly outperforming transformer-based models, such as SpectralFormer (87.48%) and morphFormer (91.35%), as well as other hybrid archi- tectures, such as SSFTT (97.96%) and GSC-ViT (93.58%). Additionally, CTSSA also achieves outstanding results in terms of AA and kappa coefficient, reaching 99.41% and 98.80%, respectively, demonstrating its consistent performance across multiple categories. The classification results for the PU dataset are shown in Table IV. Using only 0.7% of the training samples, CTSSA attains OA, AA, and kappa scores of 99.25%, 99.07%, and 99.00%, respectively, surpassing the second-best model, DBCTNet, by 0.58%, 0.97%, and 0.77%. Particularly, CTSSA exhibits superior classification accuracy in challenging cate- gories, such as class 3 and class 8, compared to traditional CNN and pure transformer models, indicating its advantages in handling complex scenarios. Table V presents the classification results on the HS dataset. CTSSA achieves the state-of-the-art performance with OA, AA, and kappa values of 98.85%, 98.63%, and 98.76%, respectively. It can be observed that morphFormer and GSC-ViT outperform SpectralFormer, but there remains a noticeable gap compared to other algorithms. DBCTNet shows performance close to CTSSA, but falls short by 0.82%, 0.43%, and 0.89% in terms of OA, AA, and kappa, respectively. The classification results on the LK dataset are presented in Table VI. Factors, such as imbalanced category distribu- tion and limited training samples, hinder the effectiveness of models like SpectralFormer. Nonetheless, CTSSA consis- tently exhibits strong performance in terms of OA, AA, and kappa, achieving the scores of 98.88%, 97.59%, and 98.53%, respectively. Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE II CATEGORY INFORMATION OF FOUR CLASSIFICATION DATASETS TABLE III QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE SALINAS DATASET WITH 1% TRAINING SAMPLES TABLE IV QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE PAVIA UNIVERSITY WITH 0.7% TRAINING SAMPLES We further evaluated the performance of different methods under varying training sample sizes. For the SA dataset, the training proportions were 0.5%, 1%, 2%, and 5%; for PU: 0.5%, 0.7%, 1.5%, and 3%; for HS: 2%, 5%, 10%, and 15%; Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA TABLE V QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE HOUSTON 2013 WITH 5% TRAINING SAMPLES TABLE VI QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE WHU-HI-LONGKOU WITH 0.1% TRAINING SAMPLES and for LK: 0.1%, 0.2%, 0.5%, and 1%. Fig. 5 reports the OA of ten methods across different training ratios. Overall, the proposed CTSSA consistently outperforms other methods on all four datasets. DBDA and SpectralFormer generally show poor performance, especially with smaller training sizes, where their OA is significantly lower than other deep models. With more training samples, CNN-based methods, such as SSRN and FDSSC, gradually improve, approaching CTSSA on PU and LK but still fall behind in OA. DCTN and DBCTNet perform comparably to CTSSA when sufficient training samples are available; however, under low-sample conditions, their accuracy drops noticeably, particularly on the SA and HS datasets, where CTSSA achieves significantly higher OA even with limited data. In summary, CTSSA shows strong robustness across datasets and training ratios, and its spectral-SA mechanism enables more discriminative feature learning, delivering superior accuracy even with scarce labeled samples. 2) Qualitative Comparisons: Figs. 6-9 illustrate the visual classification maps generated using different methods for the SA, PU, HS, and LK datasets. These qualitative visualization results reveal a preliminary finding that all methods pro- duce relatively smooth classification maps. Additionally, the Fig. 5. Quantitative results with different numbers of training samples per class. (a) SA. (b) PU. (c) HS. (d) LK. CTSSA method demonstrates outstanding performance across all four datasets, showing the least noise and achieving the highest classification accuracy overall. This is attributed to our CTSSA method’s ability to effectively integrate convolution and transformer components, which enables robust extraction of both local and global features. In contrast, SpectralFormer Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 6. Classification maps obtained by the different tested methods for the Salinas dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA. Fig. 7. Classification maps obtained by the different tested methods for the Pavia University dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA. produces numerous noisy regions due to its lower classification accuracy, possibly because of insufficient utilization of spatial information and limited training samples. Despite achieving high classification accuracy, CNN-based classification maps lack regional continuity due to their limited receptive field. Due to their ability to model long-range spectral information and global spatial-spectral features, hybrid CNN-transformer methods generally produce smoother classification results with reduced regional discontinuities. Nevertheless, they still gener- ate some misclassified areas. DBCTNet generates more noise on the Salinas and LK datasets, with inaccurate recognition of some edge pixels, likely due to its DBCTNet being dominated by local features, and insufficient emphasis on the central pixel. In comparison to other methods, the proposed CTSSA method accurately identifies nearly all land-cover categories, with minimal noise, clear boundaries, and the best overall visualization performance. 3) Complexity and Efficiency Analysis: To further evaluate the effectiveness of the proposed method, Table VII com- pares the parameter counts, floating point operations (FLOPs), and inference times across all models. CTSSA demonstrates a strong balance between model size, computational cost, and inference efficiency. Specifically, it achieves FLOPs of 96.993M, 27.139M, 50.199M, and 165.980M on the SA, PU, HS, and LK datasets, respectively, indicating moderate complexity. Notably, compared to higher complexity hybrid models like DCTN, CTSSA achieves a better balance between efficiency and accuracy. Although CTSSA has slightly higher Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA Fig. 8. Classification maps obtained by the different tested methods for the Houston 2013 dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA. Fig. 9. Classification maps obtained by the different tested methods for the WHU-Hi-LongKou dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA. parameters and FLOPs than DBCTNet in some cases, the performance improvements justify this increase. For instance, on the LK dataset, CTSSA improves OA by 1.36% over the second-best model (DBCTNet), indicating that the additional computational cost is well justified. In terms of inference time, the spectral-SA mechanisms in CTSSA introduce additional overhead, resulting in slightly longer runtimes compared to some CNN-based models. Nev- ertheless, CTSSA remains relatively efficient among hybrid approaches, effectively balancing complexity and inference speed. Although less efficient than some lightweight models, CTSSA consistently achieves the highest accuracy across all datasets, as shown in Tables III-VI. D. Ablation Study 1) Ablation Study on the PSAM Module: In this section, we investigate the effect of the PSAM module in the CTSSA model. To verify the contribution of the PSAM module, we removed it and compared the experimental results with the original CTSSA. The experimental setup remains consistent with that described in Section III-B. As shown in Fig. 10, on all four datasets, the removal of the PSAM module from CTSSA leads to varying degrees of decrease in OA, AA, and kappa coefficient. On average, the removal of the PSAM module caused decreases of 1.61%, 2.16%, and 1.48% in OA, AA, and kappa coefficient, respectively. This demonstrates the effectiveness of the PSAM module, which adopts a strategy of grouped spectral band processing and extracts spectral features hierarchically, retaining global features while ensuring the effective extraction of local significant features, thereby enhancing the model’s performance. 2) Ablation Study on the CenterTE: To validate the effec- tiveness of the CenterTE module, we conducted ablation experiments by replacing its CAM module with spatial pooling, SA, and MHSA modules for comparison. The experi- mental results, as shown in Table VIII, indicate that CenterTE achieved the highest classification accuracy among all alter- native methods. Compared to the second-best SA mechanism, CenterTE improved the OA by 4.01%, 1.86%, 3.25%, and 4.23% on the SA, PU, HS, and LK datasets, respectively. In addition, the CenterTE module not only excels in clas- sification accuracy but also significantly reduces the model Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE VII COMPLEXITY ANALYSIS RESULTS BETWEEN CTSSA AND THE COMPARATIVE METHODS Fig. 10. Ablation study on the accuracy metrics for the PSAM module. (a) OA. (b) AA. (c) Kappa. parameter count compared to traditional convolution layers, SA mechanisms, and MHSA methods, demonstrating higher computational efficiency. To further validate the effectiveness of the similarity metric used in the CAM, we conducted a comparative experiment by replacing the original cosine similarity with Euclidean distance in the CenterTE module. The results on four benchmark datasets are shown in Fig. 11. We observed a consistent performance drop across all evaluation metrics when using Euclidean distance. Specifically, on the SA dataset, the OA decreased from 98.22% to 97.85%; on the PU, Houston 2013, and LK datasets, the OA dropped by 0.73%, 0.56%, and 1.16%, respectively. Notably, on the LK dataset, the AA declined significantly from 97.59% to 93.72%, indicating that cosine similarity provides greater robustness in complex scenes. These results confirm the rationality of adopting cosine similarity in our model. On the one hand, compared with Euclidean distance, cosine similarity is more effective at capturing the shape similarity of spectral curves and is inherently invariant to scale changes caused by illumination and other factors. This aligns well with the design objective of the PSAM module, which is to highly extract discriminative spectral features. On the other hand, cosine similarity exhibits greater stability and discriminative power in high-dimensional sparse feature spaces, making it more suitable for modeling the semantic relationships between the center pixel and its neighboring pixels. 3) Ablation Study on the Dual Branch: To validate the effectiveness of the dual-branch structure, we tested different configurations of CTSSA, including single-branch setups using only the CenterTE branch or the CNN branch, as well as dual-branch setups with two CNN branches or two CenterTE branches, and compared them with the original CTSSA. The experimental results, shown in Fig. 12, indicate that removing either the CNN or the CenterTE branch leads to a decrease in classification accuracy compared to the original model. Specifically, compared to the variant without the CNN branch, the original CTSSA model achieved an average improvement of 2.358% in OA across the four datasets. When compared to the model without the CenterTE branch, CTSSA also exhibited a 1.833% average gain in OA. In terms of AA, CTSSA outper- formed the models without the CenterTE and CNN branches by 1.57% and 2.24% on average, respectively. Regarding the kappa coefficient, CTSSA demonstrated stronger consistency and robustness, with an average increase of approximately 2.05% compared to the single-branch counterparts. It is worth noting that even when compared to alternative dual-branch configurations, namely, models with either two CNN branches or two CenterTE branches, the original CTSSA still main- tained a performance advantage. Specifically, it achieved an average OA improvement of 0.983% and 1.533%, respectively, along with slight gains in AA and kappa scores. These results highlight the effectiveness of the dual-branch fusion design in achieving a complementary balance between local detail and global contextual features, thereby significantly enhancing classification accuracy as well as improving the stability and generalization ability of the model. E. Parameter Sensitivity Analysis To conduct a comprehensive study of the proposed CTSSA model, we analyzed the number of hierarchical scales H in the PSAM module and different patch sizes. These hyper- parameters not only affect the accuracy of CTSSA but also impact its computational complexity. To fairly evaluate the Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA TABLE VIII ABLATION STUDY ON THE CENTERTE IN FOUR DATASETS Fig. 11. Ablation study on the choice of similarity function in the CenterTE module. (a) OA. (b) AA. (c) Kappa. Fig. 12. Ablation study on the accuracy metrics for the dual branch. (a) OA. (b) AA. (c) Kappa. impact of these parameters on the model’s performance, we kept other settings fixed and configured them as described in Section III-B. 1) Effects of the Number of Hierarchical Scales: In the PSAM module, the hierarchical structure parameter H, which determines the number of pyramid levels and the number of spectral groups at each level, plays a critical role in enhancing model performance. Therefore, it is essential to conduct an in-depth discussion and analysis of its configura- tion. By configuring different group settings, we evaluate the classification performance of the model on four benchmark datasets: SA, PU, HS, and LK. The tested configurations include: a single-level structure (H {1}), a two-level structure (H = {1, 2}), a three-level structure (H = {1, 3, 6}), a four-level structure (H = {1, 2, 3, 6}), a five-level structure (H = {1, 2, 3, 6, 10}), and an eight-level structure (H = {1, 2, 3, 6, 9, 10, 11, 12}). These configurations represent dif- ferent pyramid structures, with each level containing a varying number of spectral groups to capture multiscale features in the spectral dimension. The results are shown in Table IX. It is evident that as the number of hierarchical levels increases, the accuracy improves, but when the levels increase from 4 to 8, the accuracy drops. We attribute this to the reduction in the number of feature channels at different scales as the number of levels increases, which weakens the representation capability of features at varying scales, leading to decreased accuracy. Thus, we selected a four-level structure (H = {1, 2, 3, 6}) to achieve the best classification performance. Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE IX PERFORMANCE COMPARISON UNDER DIFFERENT SCALE SIZES ON FOUR DATASETS Fig. 13. Accuracy metrics of CTSSA with different patch sizes on four datasets. (a) OA. (b) AA. (c) Kappa. 2) Effects of Different Patch Sizes: To evaluate the impact of different patch sizes on model classification results, a series of controlled experiments were conducted on four datasets, with results shown in Fig. 13. Specifically, we examined a range of patch sizes from 7 × 7 to 15 × 15, increasing by 2 units each time. The results indicate that the optimal patch size varies across datasets, likely due to differences in dataset characteristics, noise levels, and land cover types. For the SA dataset, the optimal patch size was found to be 13 × 13, achieving an OA of 98.93. Similarly, the PU dataset also performed best with a patch size of 13 × 13, reaching an OA of 99.54. In contrast, the best performance on the HS dataset was achieved with a patch size of 15 × 15, resulting in an OA of 98.97; whereas, for the LK dataset, the optimal size was 9 × 9, with an OA of 98.85. These results highlight the necessity of flexibly adjusting patch sizes based on dataset characteristics to improve classification performance. IV. CONCLUSION In this article, we propose a novel dual-branch convolution– transformer method based on spectral-SA, named CTSSA, for HSI classification. CTSSA effectively addresses the limitations of the existing models in spectral detail extraction and center pixel attention by integrating a PSAM module and a CenterTE module. Unlike processing all spectral bands simultaneously, our proposed PSAM module employs a hierarchical, mul- tiscale attention mechanism to segment and group spectral information, selectively focusing on critical features across different bands. This approach allows for finer extraction of high-discriminative spectral details, particularly capturing subtle differences between adjacent spectral bands. Addition- ally, we designed a novel CenterTE module to model the global relationships between the central pixel and its surround- ing pixels, thereby improving classification accuracy while reducing computational complexity. We further introduced a 3-D CNN branch to effectively extract and integrate local spatial information into the network. Finally, we conducted comparative experiments against nine existing algorithms. The results demonstrate that the proposed CTSSA achieves superior performance on four public HSI datasets with fewer parameters and FLOPs. In future work, we aim to explore self-supervised and transfer learning approaches to enhance feature learning under limited sample conditions. Meanwhile, we will focus on optimizing the network structure, particularly improving the interaction mechanisms between the dual branches to promote deeper feature fusion, thereby boosting training efficiency and classification accuracy."
+    },
+    "candidate_chunks": {
+      "abstract": [],
+      "introduction": [],
+      "method": [
+        {
+          "text": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "Finally, Section IV concludes our work. II.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch...",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "Moreover, the discriminative spectral characteristics of different land-cover categories may span various spectral scales. For instance, some classes rely on fine-grained narrowband features, such as the absorption peaks of minerals, whereas others require coarse-grained broadband features, like the overall low-reflectance profile of water bod- ies.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations. Specifically, global self-attention treats all band relations equally, which not only leads to high computational overhead but also risks over- whelming subtle local features.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "On the other hand, convolution operations with fixed spectral groupings fail to adapt to Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        },
+        {
+          "text": "Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL.",
+          "source_section": "method",
+          "page_hint": "",
+          "kind_hint": "method"
+        }
+      ],
+      "experiment": [],
+      "conclusion": [],
+      "data": [
+        {
+          "text": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Finally, Section IV concludes our work. II.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch...",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Moreover, the discriminative spectral characteristics of different land-cover categories may span various spectral scales. For instance, some classes rely on fine-grained narrowband features, such as the absorption peaks of minerals, whereas others require coarse-grained broadband features, like the overall low-reflectance profile of water bod- ies.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations. Specifically, global self-attention treats all band relations equally, which not only leads to high computational overhead but also risks over- whelming subtle local features.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "On the other hand, convolution operations with fixed spectral groupings fail to adapt to Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        },
+        {
+          "text": "Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL.",
+          "source_section": "data",
+          "page_hint": "",
+          "kind_hint": "data"
+        }
+      ],
+      "general": [
+        {
+          "text": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Finally, Section IV concludes our work. II.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch...",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Moreover, the discriminative spectral characteristics of different land-cover categories may span various spectral scales. For instance, some classes rely on fine-grained narrowband features, such as the absorption peaks of minerals, whereas others require coarse-grained broadband features, like the overall low-reflectance profile of water bod- ies.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations. Specifically, global self-attention treats all band relations equally, which not only leads to high computational overhead but also risks over- whelming subtle local features.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "On the other hand, convolution operations with fixed spectral groupings fail to adapt to Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        },
+        {
+          "text": "Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL.",
+          "source_section": "general",
+          "page_hint": "",
+          "kind_hint": "general"
+        }
+      ]
+    },
+    "quotes": [],
+    "extraction_failures": [],
+    "evidence_quality": "medium"
+  },
+  "summary": {
+    "paper_type": "AI_method",
+    "paper_type_rationale": "The paper is best treated as a method-focused technical paper.",
+    "datasets": [
+      "EXPERIMENTAL RESULTS",
+      "HSI",
+      "CTSSA",
+      "Datasets Description",
+      "Salinas",
+      "Pavia University",
+      "Houston",
+      "WHUHi-LongKou"
+    ],
+    "metrics": [],
+    "mechanism_signals": [
+      "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+      "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+      "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations.",
+      "Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting.",
+      "In the implementation, for each spectral subgroup Xn i , the Key K and Value V representations are obtained via 1 × 1 convolutional kernels WK and WV , respectively, i.e., K n = WK ∗Xn and V n = WV ∗Xn i .",
+      "Notably, the Query Q is directly assigned as the original input, i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations."
+    ],
+    "ablation_signals": [],
+    "equation_candidates": [
+      {
+        "equation": "Lfocal = −αy \u00001 −py \u0001γ log \u0000py \u0001 (12) where y is the true class, py is the predicted probability of class y, and αy and γ are the",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "H = {1, 2, 3, 6}, which is empirically validated as the optimal setting in subsequent ablation studies",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = WK ∗Xn i and V n i = WV ∗Xn i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Softmax \u0000Wθ ∗Concat \u0000K n i , Qn i \u0001\u0001 (1) where Concat(K n i , Qn i ) denotes the concatenation of K",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = An i ⊗V n i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      }
+    ],
+    "section_keys": [
+      "preamble",
+      "method"
+    ],
+    "pdf_used": true,
+    "candidate_chunk_sections": [
+      "data",
+      "general",
+      "method"
+    ]
+  }
+}

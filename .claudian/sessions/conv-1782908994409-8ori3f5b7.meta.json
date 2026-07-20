@@ -4,8 +4,8 @@
   "title": "Greet the assistant",
   "titleGenerationStatus": "success",
   "createdAt": 1782908994415,
-  "updatedAt": 1782913621789,
-  "lastResponseAt": 1782913621789,
+  "updatedAt": 1784006992059,
+  "lastResponseAt": 1783574496502,
   "sessionId": "8ccb0e99-f98e-4f87-85ff-f9717722da8a",
   "providerState": {
     "providerSessionId": "8ccb0e99-f98e-4f87-85ff-f9717722da8a",
@@ -402,12 +402,12 @@
   },
   "usage": {
     "model": "haiku",
-    "inputTokens": 1066,
+    "inputTokens": 896,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 130432,
+    "cacheReadInputTokens": 167936,
     "contextWindow": 200000,
-    "contextTokens": 131498,
-    "percentage": 66,
+    "contextTokens": 168832,
+    "percentage": 84,
     "contextWindowIsAuthoritative": true
   }
 }

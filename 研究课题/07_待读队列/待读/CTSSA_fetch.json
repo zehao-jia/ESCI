@@ -1,0 +1,10 @@
+{
+  "status": "ok",
+  "script": "fetch_pdf.py",
+  "paper_id": "doi:10.1109/tgrs.2025.3584668",
+  "title": "Dual-Branch Convolution&#x2013;Transformer Network With Spectral&#x2013;Spatial Attention for Hyperspectral Image Classification",
+  "pdf_path": "E:\\ESCI\\研究课题\\07_待读队列\\待读\\CTSSA.pdf",
+  "pdf_source": "local_pdf",
+  "source_url": "E:\\ESCI\\研究课题\\07_待读队列\\待读\\CTSSA.pdf",
+  "pdf_url": ""
+}

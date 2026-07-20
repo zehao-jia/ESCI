@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "source_type": "local_pdf",
+  "source_url": "E:\\ESCI\\研究课题\\07_待读队列\\待读\\CTSSA.pdf",
+  "local_pdf_path": "E:\\ESCI\\研究课题\\07_待读队列\\待读\\CTSSA.pdf",
+  "title": "Dual-Branch Convolution&#x2013;Transformer Network With Spectral&#x2013;Spatial Attention for Hyperspectral Image Classification",
+  "metadata_sources": [
+    "local_pdf",
+    "crossref",
+    "openalex"
+  ],
+  "doi": "10.1109/TGRS.2025.3584668",
+  "paper_id": "doi:10.1109/tgrs.2025.3584668",
+  "authors": [
+    "Yao Lu",
+    "Yongshan Zhang",
+    "Xinwei Jiang",
+    "Xiaobo Liu",
+    "Zhihua Cai"
+  ],
+  "affiliations": [
+    "School of Computer Science and Hubei Key Laboratory of Intelligent Geo-Information Processing, China University of Geosciences, Wuhan, China",
+    "School of Automation and Hubei Key Laboratory of Advanced Control and Intelligent Automation for Complex Systems, China University of Geosciences, Wuhan, China",
+    "School of Computer Science, China University of Geosciences, Wuhan, China",
+    "China University of Geosciences",
+    "Shahid Bahonar University of Kerman",
+    "Shahid Rajaee Teacher Training University",
+    "Wuhan University",
+    "State Key Laboratory of Information Engineering in Surveying Mapping and Remote Sensing",
+    "Mississippi State University"
+  ],
+  "venue": "IEEE Transactions on Geoscience and Remote Sensing",
+  "source": "crossref",
+  "year": "2025",
+  "published": "2025",
+  "pdf_url": "https://ieeexplore.ieee.org/ielx7/4609443/9656571/09815590.pdf",
+  "script": "collect_metadata.py"
+}

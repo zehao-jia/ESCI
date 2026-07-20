@@ -1,0 +1,4096 @@
+{
+  "status": "ok",
+  "script": "build_synthesis_bundle.py",
+  "paper_id": "doi:10.1109/tgrs.2025.3584668",
+  "title": "Dual-Branch Convolution&#x2013;Transformer Network With Spectral&#x2013;Spatial Attention for Hyperspectral Image Classification",
+  "metadata": {
+    "title": "Dual-Branch Convolution&#x2013;Transformer Network With Spectral&#x2013;Spatial Attention for Hyperspectral Image Classification",
+    "translated_title": "",
+    "authors": [
+      "Yao Lu",
+      "Yongshan Zhang",
+      "Xinwei Jiang",
+      "Xiaobo Liu",
+      "Zhihua Cai"
+    ],
+    "affiliations": [
+      "School of Computer Science and Hubei Key Laboratory of Intelligent Geo-Information Processing, China University of Geosciences, Wuhan, China",
+      "School of Automation and Hubei Key Laboratory of Advanced Control and Intelligent Automation for Complex Systems, China University of Geosciences, Wuhan, China",
+      "School of Computer Science, China University of Geosciences, Wuhan, China",
+      "China University of Geosciences",
+      "Shahid Bahonar University of Kerman",
+      "Shahid Rajaee Teacher Training University",
+      "Wuhan University",
+      "State Key Laboratory of Information Engineering in Surveying Mapping and Remote Sensing",
+      "Mississippi State University"
+    ],
+    "year": "2025",
+    "venue": "IEEE Transactions on Geoscience and Remote Sensing",
+    "doi": "10.1109/TGRS.2025.3584668",
+    "source_url": "E:\\ESCI\\研究课题\\07_待读队列\\待读\\CTSSA.pdf",
+    "abstract": "",
+    "arxiv_id": "",
+    "zotero_key": "",
+    "metadata_sources": [
+      "local_pdf",
+      "crossref",
+      "openalex"
+    ]
+  },
+  "evidence_quality": "medium",
+  "evidence": {
+    "problem": [],
+    "task": [
+      {
+        "evidence": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "evidence": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "evidence": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Coarse-scale grouping is more robust to noise and better suited for capturing stable trends, whereas fine-scale grouping is capable of detecting subtle spectral variations.",
+        "source_section": "task",
+        "page_hint": ""
+      },
+      {
+        "evidence": "3, to dynamically compute the importance weights of spectral bands, thereby identifying informative bands and suppressing noise and redundancy.",
+        "source_section": "task",
+        "page_hint": ""
+      }
+    ],
+    "data": [
+      {
+        "evidence": "EXPERIMENTAL RESULTS In this section, we conduct experiments on four public HSI datasets to validate the effectiveness of the proposed CTSSA.",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Datasets Description We utilized the following four open HSI datasets for our experiments: Salinas (SA), Pavia University (PU), Houston 2013(HS), and the WHUHi-LongKou dataset (LK).",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "evidence": "1) SA: The SA dataset was acquired by the AVIRIS sensor over Salinas Valley, California, covering 400-2500 nm with 224 spectral bands.",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "evidence": "2) PU: The PU dataset was acquired by the ROSIS sen- sor over the University of Pavia, Italy.",
+        "source_section": "data",
+        "page_hint": ""
+      },
+      {
+        "evidence": "The dataset includes nine classes and 42 776 labeled pixels.",
+        "source_section": "data",
+        "page_hint": ""
+      }
+    ],
+    "method": [
+      {
+        "evidence": "The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "In Section III, we present and analyze the experimental results.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "mechanism": [
+      {
+        "evidence": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting.",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "In the implementation, for each spectral subgroup Xn i , the Key K and Value V representations are obtained via 1 × 1 convolutional kernels WK and WV , respectively, i.e., K n = WK ∗Xn and V n = WV ∗Xn i .",
+        "source_section": "method",
+        "page_hint": ""
+      },
+      {
+        "evidence": "Notably, the Query Q is directly assigned as the original input, i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations.",
+        "source_section": "method",
+        "page_hint": ""
+      }
+    ],
+    "results": [],
+    "ablation": [],
+    "limitations": []
+  },
+  "equation_candidates": [
+    {
+      "equation": "Lfocal = −αy \u00001 −py \u0001γ log \u0000py \u0001 (12) where y is the true class, py is the predicted probability of class y, and αy and γ are the",
+      "source_section": "experiment",
+      "kind_hint": "metric_equation"
+    },
+    {
+      "equation": "H = {1, 2, 3, 6}, which is empirically validated as the optimal setting in subsequent ablation studies",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "i = WK ∗Xn i and V n i = WV ∗Xn i",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "i = Softmax \u0000Wθ ∗Concat \u0000K n i , Qn i \u0001\u0001 (1) where Concat(K n i , Qn i ) denotes the concatenation of K",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "i = An i ⊗V n i",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "i = Pn i ⊕Xn i",
+      "source_section": "method",
+      "kind_hint": "equation"
+    },
+    {
+      "equation": "Ei = Conv2D1×1 \u0000Concat \u0000E1 i ,",
+      "source_section": "method",
+      "kind_hint": "equation"
+    }
+  ],
+  "candidate_chunks": {
+    "method": [
+      {
+        "text": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "Finally, Section IV concludes our work. II.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch...",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      },
+      {
+        "text": "PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated.",
+        "source_section": "method",
+        "page_hint": "",
+        "kind_hint": "method"
+      }
+    ],
+    "data": [
+      {
+        "text": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "Finally, Section IV concludes our work. II.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch...",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      },
+      {
+        "text": "PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated.",
+        "source_section": "data",
+        "page_hint": "",
+        "kind_hint": "data"
+      }
+    ],
+    "general": [
+      {
+        "text": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "Finally, Section IV concludes our work. II.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch...",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      },
+      {
+        "text": "PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated.",
+        "source_section": "general",
+        "page_hint": "",
+        "kind_hint": "general"
+      }
+    ]
+  },
+  "section_texts": {
+    "preamble": "IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Dual-Branch Convolution–Transformer Network With Spectral–Spatial Attention for Hyperspectral Image Classification Yao Lu , Yongshan Zhang , Senior Member, IEEE, Xinwei Jiang , Xiaobo Liu , Senior Member, IEEE, and Zhihua Cai Abstract— Hyperspectral image (HSI) classification is a key task in the field of remote sensing, aiming to assign category labels to each pixel by leveraging the spectral and spatial information in HSIs. Recently, many deep learning (DL) methods, such as con- volutional neural networks (CNNs) and transformers, have been applied to this task, achieving significant results. However, most existing patch-based DL methods often overlook the potential relationships between the central pixel and its surrounding pixels. Additionally, the unique spectral characteristics of HSIs, such as the high correlation between adjacent spectral bands and low dependence between distant bands, also require special attention. Based on this, we propose a novel dual-branch convolution– transformer network with spectral–spatial attention (CTSSA), which can effectively aggregate both local and global spectral– spatial features. Specifically, CTSSA comprises two core modules: the pyramid spectral attention module (PSAM) and the center transformer encoder (CenterTE). The former extracts highly discriminative spectral features through a hierarchical multiscale attention mechanism, capturing subtle differences between adja- cent spectral bands. The latter improves the original transformer encoder (TE) by introducing a center-attention mechanism to model the global relationship between the central pixel and its surrounding pixels, thereby enhancing classification accuracy while reducing computational complexity. Experimental results on four public datasets (Salinas, Pavia University, Houston, and WHUHi-LongKou) demonstrate that, compared with nine other networks, CTSSA achieves satisfactory performance with fewer parameters and relatively high efficiency. Index Terms— Convolutional neural networks (CNNs), hyper- spectral image (HSI) classification, pyramid spectral attention, transformer. Received 20 April 2025; revised 25 May 2025; accepted 25 June 2025. Date of publication 30 June 2025; date of current version 15 July 2025. This work was supported in part by China National Key R&D Program under Grant 2023YFF0807000; and in part by the Joint Open Fund of the Research Platforms of School of Computer Science, China University of Geosciences, Wuhan, under Grant PTLH2024-B-06. (Corresponding authors: Yongshan Zhang; Zhihua Cai.) Yao Lu, Yongshan Zhang, and Xinwei Jiang are with the School of Computer Science and Hubei Key Laboratory of Intelligent Geo-Information Processing, China University of Geosciences, Wuhan 430074, China (e-mail: cugerluyao@cug.edu.cn; yszhang.cug@gmail.com; ysjxw@hotmail.com). Xiaobo Liu is with the School of Automation and Hubei Key Laboratory of Advanced Control and Intelligent Automation for Complex Systems, China University of Geosciences, Wuhan 430074, China (e-mail: xbliu@cug.edu.cn). Zhihua Cai is with the School of Computer Science, China University of Geosciences, Wuhan 430074, China, and also with the School of Computer Science and Artificial Intelligence, Wuhan University of Engineering Science, Wuhan 430200, China (e-mail: zhcai@cug.edu.cn). Digital Object Identifier 10.1109/TGRS.2025.3584668 I. INTRODUCTION YPERSPECTRAL images (HSIs) contain hundreds of contiguous spectral bands, spanning the visible to the infrared regions of the spectrum. These bands record detailed spectral features, enabling high-precision identification and distinction of objects. Due to its rich spectral and spatial information, HSI has found widespread applications in various fields in recent years, such as geological mapping [1], [2], [3], environmental monitoring [4], [5], mineral exploration [6], precision agriculture [7], and military reconnaissance [8]. A criti",
+    "method": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial context. This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as follows. Section II provides a detailed introduction to the proposed method, followed by a more in-depth description of the PSAM and CenterTE modules. In Section III, we present and analyze the experimental results. Finally, Section IV concludes our work. II. PROPOSED NETWORK We propose a novel dual-branch convolution–transformer network, termed CTSSA, specifically designed to address the unique challenges HSI classification through spectral–spatial attention mechanism. As illustrated in Fig. 2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features. This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism. While maintain- ing a lightweight design with significantly fewer parameters, CTSSA consistently outperforms conventional methods in classification performance. A. PSAM Module HSIs typically contain hundreds of contiguous spectral bands, with each band capturing specific spectral informa- tion of materials within a scene [49]. These bands encode abundant compositional information but exhibit highly nonuni- form interband correlations, with strong correlations typically occurring between adjacent bands, while distant bands are often only weakly correlated. Moreover, the discriminative spectral characteristics of different land-cover categories may span various spectral scales. For instance, some classes rely on fine-grained narrowband features, such as the absorption peaks of minerals, whereas others require coarse-grained broadband features, like the overall low-reflectance profile of water bod- ies. Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations. Specifically, global self-attention treats all band relations equally, which not only leads to high computational overhead but also risks over- whelming subtle local features. On the other hand, convolution operations with fixed spectral groupings fail to adapt to Authorized licensed use limited to: CHONGQING UNIVERSITY. Downloaded on July 15,2026 at 07:25:22 UTC from IEEE Xplore. Restrictions apply. IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 2. Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation function. the scale diversity of different land-cover features. Although some recent methods have attempted spectral grouping, they typically adopt a single grouping scale, which may be insuf- ficient to capture multi-scale characteristics across categories. Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting. To address these challenges, we propose a PSAM, whose core innovation lies in constructing a multilevel grouped spec- tral feature processing framework. By introducing a tunable hierarchical parameter H, PSAM enables multiresolution spec- tral analysis from "
+  },
+  "section_previews": [
+    {
+      "name": "preamble",
+      "preview": "IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Dual-Branch Convolution–Transformer Network With Spectral–Spatial Attention for Hyperspectral Image Classification Yao Lu , Yongshan Zhang , Senior Member, IEEE, Xinwei Jiang",
+      "length": 15919
+    },
+    {
+      "name": "method",
+      "preview": "integrates convolu- tional and transformer architectures through a dual- branch design. The CNN branch focuses on capturing fine-grained local spatial-spectral details, while the transformer branch is responsible for modeling global spatial",
+      "length": 41284
+    }
+  ],
+  "figure_plan": {
+    "paper_id": "doi:10.1109/tgrs.2025.3584668",
+    "figures": [
+      {
+        "id": "Fig. 2",
+        "caption": "Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation function.",
+        "kind": "method_overview",
+        "section": "机制流程",
+        "reason": "这张图概括了整体方法或系统流程；如果匹配置信度足够高，最适合放在 `### 机制流程` 帮助快速建立执行链理解。",
+        "priority": 1,
+        "anchor_text": "机制流程",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_004_fig_fig_2.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+          "width": 1450,
+          "height": 666,
+          "size_bytes": 480408,
+          "label": "Fig. 2",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.258429,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.882586,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 112,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 3,
+            "score": 8,
+            "matched_terms": [
+              "fig. 2",
+              "overall",
+              "architecture",
+              "ctssa"
+            ],
+            "snippet": "s of HSI classification through a spectral–spatial attention mechanism. As illustrated in Fig. 2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminati",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+                "width": 1643,
+                "height": 518,
+                "size_bytes": 91580
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+                "width": 716,
+                "height": 343,
+                "size_bytes": 77731,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.065802,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.617816,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 211,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 8,
+            "matched_terms": [
+              "fig. 2",
+              "overall",
+              "architecture",
+              "ctssa",
+              "batch",
+              "normalization"
+            ],
+            "snippet": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 2. Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit acti",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "fig. 2",
+              "overall",
+              "architecture",
+              "normalization"
+            ],
+            "snippet": "potential detail loss due to the global nature of CAM. As shown in the CenterTE branch in Fig. 2, the multiscale spectral features YPSAM are first processed by a single-channel 1 × 1 × 7",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 3",
+        "caption": "Architecture of the proposed SAB module.",
+        "kind": "method_overview",
+        "section": "机制流程",
+        "reason": "这张图概括了整体方法或系统流程；如果匹配置信度足够高，最适合放在 `### 机制流程` 帮助快速建立执行链理解。",
+        "priority": 1,
+        "anchor_text": "机制流程",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_004_fig_fig_3.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+          "width": 716,
+          "height": 440,
+          "size_bytes": 99977,
+          "label": "Fig. 3",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.084428,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.786588,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 48,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 4,
+            "score": 8,
+            "matched_terms": [
+              "fig. 3",
+              "architecture",
+              "proposed",
+              "module"
+            ],
+            "snippet": ". Within each subgroup, we design lightweight spectral attention block (SAB), as shown in Fig. 3, to dynamically compute the importance weights of spectral bands, thereby identifying inf",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 3,
+            "score": 3,
+            "matched_terms": [
+              "architecture",
+              "proposed",
+              "module"
+            ],
+            "snippet": "ntion (CTSSA). CTSSA integrates the strengths of convo- lutional networks and transformer architectures to effectively capture both local details and global contextual features. Specifically,",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+                "width": 1643,
+                "height": 518,
+                "size_bytes": 91580
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+                "width": 716,
+                "height": 343,
+                "size_bytes": 77731,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.065802,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.617816,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 211,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 3,
+            "matched_terms": [
+              "architecture",
+              "proposed",
+              "module"
+            ],
+            "snippet": "t informa- tion, such as background noise. In addition, in current hybrid transformer-CNN architectures, the transformer branch still relies on standard MHSA, which has not been specifically o",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 4",
+        "caption": "Overall architecture of the proposed CAM module.",
+        "kind": "method_overview",
+        "section": "机制流程",
+        "reason": "这张图概括了整体方法或系统流程；如果匹配置信度足够高，最适合放在 `### 机制流程` 帮助快速建立执行链理解。",
+        "priority": 1,
+        "anchor_text": "机制流程",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_005_fig_fig_4.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+          "width": 716,
+          "height": 378,
+          "size_bytes": 67404,
+          "label": "Fig. 4",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.072458,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.756456,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 56,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 5,
+            "score": 8,
+            "matched_terms": [
+              "fig. 4",
+              "overall",
+              "architecture",
+              "proposed",
+              "module"
+            ],
+            "snippet": "ation F ∈R1×p×p×b′, which is then fed into CenterTE. After applying a layer normalization Fig. 4. Overall architecture of the proposed CAM module. (LN), CAM treats the center pixel as th",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 3,
+            "score": 3,
+            "matched_terms": [
+              "overall",
+              "architecture",
+              "proposed",
+              "module"
+            ],
+            "snippet": "ion peaks of minerals, whereas others require coarse-grained broadband features, like the overall low-reflectance profile of water bod- ies. Existing mainstream spectral feature extractio",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+                "width": 1643,
+                "height": 518,
+                "size_bytes": 91580
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+                "width": 716,
+                "height": 343,
+                "size_bytes": 77731,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.065802,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.617816,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 211,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "overall",
+              "architecture",
+              "proposed",
+              "module"
+            ],
+            "snippet": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 2. Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation fu",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 1",
+        "caption": "Comparison of pixel contribution assumptions within a patch (taking",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_003_fig_fig_1.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+          "width": 716,
+          "height": 343,
+          "size_bytes": 77731,
+          "label": "Fig. 1",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.065802,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.617816,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 211,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 3,
+            "score": 8,
+            "matched_terms": [
+              "fig. 1",
+              "comparison",
+              "pixel",
+              "contribution",
+              "assumptions",
+              "within"
+            ],
+            "snippet": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 Fig. 1. Comparison of pixel contribution assumptions within a patch (taking a 5 × 5 patch as an",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+                "width": 1643,
+                "height": 518,
+                "size_bytes": 91580
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+                "width": 716,
+                "height": 343,
+                "size_bytes": 77731,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.065802,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.617816,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 211,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 11,
+            "score": 7,
+            "matched_terms": [
+              "fig. 1",
+              "comparison",
+              "contribution"
+            ],
+            "snippet": "e experimental setup remains consistent with that described in Section III-B. As shown in Fig. 10, on all four datasets, the removal of the PSAM module from CTSSA leads to varying degree",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_01.jpeg",
+                "width": 1204,
+                "height": 466,
+                "size_bytes": 61389
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_02.jpeg",
+                "width": 1170,
+                "height": 541,
+                "size_bytes": 118149
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_8.png",
+                "width": 1166,
+                "height": 542,
+                "size_bytes": 328200,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.169189,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.800934,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 271,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_9.png",
+                "width": 1166,
+                "height": 628,
+                "size_bytes": 528164,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.196091,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.825623,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 273,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 14,
+            "score": 7,
+            "matched_terms": [
+              "fig. 1",
+              "comparison",
+              "pixel"
+            ],
+            "snippet": "OL. 63, 2025 TABLE IX PERFORMANCE COMPARISON UNDER DIFFERENT SCALE SIZES ON FOUR DATASETS Fig. 13. Accuracy metrics of CTSSA with different patch sizes on four datasets. (a) OA. (b) AA.",
+            "images": [
+              {
+                "filename": "page_014_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_01.png",
+                "width": 612,
+                "height": 914,
+                "size_bytes": 17399
+              },
+              {
+                "filename": "page_014_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_02.png",
+                "width": 612,
+                "height": 914,
+                "size_bytes": 16307
+              },
+              {
+                "filename": "page_014_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_03.png",
+                "width": 918,
+                "height": 914,
+                "size_bytes": 28349
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_014_fig_fig_13.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_fig_fig_13.png",
+                "width": 1431,
+                "height": 379,
+                "size_bytes": 54683,
+                "label": "Fig. 13",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.145302,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.61006,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 106,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 10",
+        "caption": "Ablation study on the accuracy metrics for the PSAM module. (a) OA. (b) AA. (c) Kappa.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_012_fig_fig_10.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_fig_fig_10.png",
+          "width": 1347,
+          "height": 406,
+          "size_bytes": 50854,
+          "label": "Fig. 10",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.146345,
+            "visual_rect_count": 6,
+            "visual_body_ratio": 0.668885,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 95,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 11,
+            "score": 8,
+            "matched_terms": [
+              "fig. 10",
+              "ablation",
+              "accuracy",
+              "psam",
+              "module"
+            ],
+            "snippet": "e experimental setup remains consistent with that described in Section III-B. As shown in Fig. 10, on all four datasets, the removal of the PSAM module from CTSSA leads to varying degrees",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_01.jpeg",
+                "width": 1204,
+                "height": 466,
+                "size_bytes": 61389
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_02.jpeg",
+                "width": 1170,
+                "height": 541,
+                "size_bytes": 118149
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_8.png",
+                "width": 1166,
+                "height": 542,
+                "size_bytes": 328200,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.169189,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.800934,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 271,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_9.png",
+                "width": 1166,
+                "height": 628,
+                "size_bytes": 528164,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.196091,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.825623,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 273,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 12,
+            "score": 8,
+            "matched_terms": [
+              "fig. 10",
+              "ablation",
+              "accuracy",
+              "metrics",
+              "psam",
+              "module"
+            ],
+            "snippet": "63, 2025 TABLE VII COMPLEXITY ANALYSIS RESULTS BETWEEN CTSSA AND THE COMPARATIVE METHODS Fig. 10. Ablation study on the accuracy metrics for the PSAM module. (a) OA. (b) AA. (c) Kappa. p",
+            "images": [
+              {
+                "filename": "page_012_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_01.png",
+                "width": 583,
+                "height": 961,
+                "size_bytes": 15937
+              },
+              {
+                "filename": "page_012_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_02.png",
+                "width": 583,
+                "height": 961,
+                "size_bytes": 16328
+              },
+              {
+                "filename": "page_012_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_03.png",
+                "width": 874,
+                "height": 961,
+                "size_bytes": 24766
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_012_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_fig_fig_10.png",
+                "width": 1347,
+                "height": 406,
+                "size_bytes": 50854,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.146345,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.668885,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 95,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 3,
+            "score": 3,
+            "matched_terms": [
+              "accuracy",
+              "psam",
+              "module"
+            ],
+            "snippet": "obal spatial context. This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as fol",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+                "width": 1643,
+                "height": 518,
+                "size_bytes": 91580
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+                "width": 716,
+                "height": 343,
+                "size_bytes": 77731,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.065802,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.617816,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 211,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 12",
+        "caption": "Ablation study on the accuracy metrics for the dual branch. (a) OA. (b) AA. (c) Kappa.",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_013_fig_fig_12.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_12.png",
+          "width": 1347,
+          "height": 401,
+          "size_bytes": 51327,
+          "label": "Fig. 12",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.144562,
+            "visual_rect_count": 3,
+            "visual_body_ratio": 0.664467,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 95,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 12,
+            "score": 8,
+            "matched_terms": [
+              "fig. 12",
+              "ablation",
+              "accuracy",
+              "metrics",
+              "dual",
+              "branch"
+            ],
+            "snippet": "E branches, and compared them with the original CTSSA. The experimental results, shown in Fig. 12, indicate that removing either the CNN or the CenterTE branch leads to a decrease in clas",
+            "images": [
+              {
+                "filename": "page_012_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_01.png",
+                "width": 583,
+                "height": 961,
+                "size_bytes": 15937
+              },
+              {
+                "filename": "page_012_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_02.png",
+                "width": 583,
+                "height": 961,
+                "size_bytes": 16328
+              },
+              {
+                "filename": "page_012_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_03.png",
+                "width": 874,
+                "height": 961,
+                "size_bytes": 24766
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_012_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_fig_fig_10.png",
+                "width": 1347,
+                "height": 406,
+                "size_bytes": 50854,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.146345,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.668885,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 95,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 13,
+            "score": 8,
+            "matched_terms": [
+              "fig. 12",
+              "ablation",
+              "accuracy",
+              "metrics",
+              "dual",
+              "branch"
+            ],
+            "snippet": "y on the choice of similarity function in the CenterTE module. (a) OA. (b) AA. (c) Kappa. Fig. 12. Ablation study on the accuracy metrics for the dual branch. (a) OA. (b) AA. (c) Kappa. i",
+            "images": [
+              {
+                "filename": "page_013_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_01.png",
+                "width": 712,
+                "height": 462,
+                "size_bytes": 14522
+              },
+              {
+                "filename": "page_013_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_02.png",
+                "width": 712,
+                "height": 462,
+                "size_bytes": 14471
+              },
+              {
+                "filename": "page_013_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_03.png",
+                "width": 712,
+                "height": 462,
+                "size_bytes": 14657
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_013_fig_fig_11.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_11.png",
+                "width": 1347,
+                "height": 403,
+                "size_bytes": 50904,
+                "label": "Fig. 11",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.145251,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.666771,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 111,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_013_fig_fig_12.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_12.png",
+                "width": 1347,
+                "height": 401,
+                "size_bytes": 51327,
+                "label": "Fig. 12",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.144562,
+                  "visual_rect_count": 3,
+                  "visual_body_ratio": 0.664467,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 95,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 3,
+            "score": 3,
+            "matched_terms": [
+              "accuracy",
+              "dual",
+              "branch"
+            ],
+            "snippet": "obal spatial context. This complementary design significantly improves the robustness and accuracy of hyperspectral image classification. The remainder of this article is structured as fol",
+            "images": [
+              {
+                "filename": "page_003_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+                "width": 1643,
+                "height": 518,
+                "size_bytes": 91580
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_003_fig_fig_1.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+                "width": 716,
+                "height": 343,
+                "size_bytes": 77731,
+                "label": "Fig. 1",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.065802,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.617816,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 211,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 5",
+        "caption": "Quantitative results with different numbers of training samples per",
+        "kind": "main_result",
+        "section": "关键结果",
+        "reason": "这张图或表直接承载主结果，适合放在关键结果部分。",
+        "priority": 2,
+        "anchor_text": "关键结果",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_009_fig_fig_5.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_009_fig_fig_5.png",
+          "width": 716,
+          "height": 550,
+          "size_bytes": 143635,
+          "label": "Fig. 5",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.105531,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.793849,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 114,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 9,
+            "score": 8,
+            "matched_terms": [
+              "fig. 5",
+              "quantitative",
+              "different",
+              "numbers",
+              "training",
+              "samples"
+            ],
+            "snippet": "DS ON THE WHU-HI-LONGKOU WITH 0.1% TRAINING SAMPLES and for LK: 0.1%, 0.2%, 0.5%, and 1%. Fig. 5 reports the OA of ten methods across different training ratios. Overall, the proposed CTS",
+            "images": [
+              {
+                "filename": "page_009_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_009_img_01.jpeg",
+                "width": 2084,
+                "height": 1354,
+                "size_bytes": 281530
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_009_fig_fig_5.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_009_fig_fig_5.png",
+                "width": 716,
+                "height": 550,
+                "size_bytes": 143635,
+                "label": "Fig. 5",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.105531,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.793849,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 114,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 10,
+            "score": 3,
+            "matched_terms": [
+              "different",
+              "training",
+              "samples"
+            ],
+            "snippet": "GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 6. Classification maps obtained by the different tested methods for the Salinas dataset. (a) Pseudocolor image. (b) Ground truth label. (c",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_01.jpeg",
+                "width": 952,
+                "height": 553,
+                "size_bytes": 110456
+              },
+              {
+                "filename": "page_010_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_02.jpeg",
+                "width": 1116,
+                "height": 554,
+                "size_bytes": 140935
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_6.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_6.png",
+                "width": 1167,
+                "height": 764,
+                "size_bytes": 697144,
+                "label": "Fig. 6",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.238557,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853233,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 266,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_fig_7.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_7.png",
+                "width": 1166,
+                "height": 667,
+                "size_bytes": 643404,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.208267,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.834698,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 275,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 14,
+            "score": 2,
+            "matched_terms": [
+              "different",
+              "training"
+            ],
+            "snippet": "ONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE IX PERFORMANCE COMPARISON UNDER DIFFERENT SCALE SIZES ON FOUR DATASETS Fig. 13. Accuracy metrics of CTSSA with different patch size",
+            "images": [
+              {
+                "filename": "page_014_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_01.png",
+                "width": 612,
+                "height": 914,
+                "size_bytes": 17399
+              },
+              {
+                "filename": "page_014_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_02.png",
+                "width": 612,
+                "height": 914,
+                "size_bytes": 16307
+              },
+              {
+                "filename": "page_014_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_03.png",
+                "width": 918,
+                "height": 914,
+                "size_bytes": 28349
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_014_fig_fig_13.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_fig_fig_13.png",
+                "width": 1431,
+                "height": 379,
+                "size_bytes": 54683,
+                "label": "Fig. 13",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.145302,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.61006,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 106,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 11",
+        "caption": "Ablation study on the choice of similarity function in the CenterTE module. (a) OA. (b) AA. (c) Kappa.",
+        "kind": "supporting_figure",
+        "section": "深度分析",
+        "reason": "这张图更适合作为补充图，放在深度分析部分帮助解释作者论点。",
+        "priority": 3,
+        "anchor_text": "深度分析",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_013_fig_fig_11.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_11.png",
+          "width": 1347,
+          "height": 403,
+          "size_bytes": 50904,
+          "label": "Fig. 11",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.145251,
+            "visual_rect_count": 6,
+            "visual_body_ratio": 0.666771,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 111,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 12,
+            "score": 8,
+            "matched_terms": [
+              "fig. 11",
+              "ablation",
+              "similarity",
+              "centerte"
+            ],
+            "snippet": "dean distance in the CenterTE module. The results on four benchmark datasets are shown in Fig. 11. We observed a consistent performance drop across all evaluation metrics when using Eucli",
+            "images": [
+              {
+                "filename": "page_012_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_01.png",
+                "width": 583,
+                "height": 961,
+                "size_bytes": 15937
+              },
+              {
+                "filename": "page_012_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_02.png",
+                "width": 583,
+                "height": 961,
+                "size_bytes": 16328
+              },
+              {
+                "filename": "page_012_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_03.png",
+                "width": 874,
+                "height": 961,
+                "size_bytes": 24766
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_012_fig_fig_10.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_fig_fig_10.png",
+                "width": 1347,
+                "height": 406,
+                "size_bytes": 50854,
+                "label": "Fig. 10",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.146345,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.668885,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 95,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 13,
+            "score": 8,
+            "matched_terms": [
+              "fig. 11",
+              "ablation",
+              "choice",
+              "similarity",
+              "function",
+              "centerte"
+            ],
+            "snippet": "TWORK WITH SPECTRAL–SA 5518216 TABLE VIII ABLATION STUDY ON THE CENTERTE IN FOUR DATASETS Fig. 11. Ablation study on the choice of similarity function in the CenterTE module. (a) OA. (b)",
+            "images": [
+              {
+                "filename": "page_013_img_01.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_01.png",
+                "width": 712,
+                "height": 462,
+                "size_bytes": 14522
+              },
+              {
+                "filename": "page_013_img_02.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_02.png",
+                "width": 712,
+                "height": 462,
+                "size_bytes": 14471
+              },
+              {
+                "filename": "page_013_img_03.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_03.png",
+                "width": 712,
+                "height": 462,
+                "size_bytes": 14657
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_013_fig_fig_11.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_11.png",
+                "width": 1347,
+                "height": 403,
+                "size_bytes": 50904,
+                "label": "Fig. 11",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.145251,
+                  "visual_rect_count": 6,
+                  "visual_body_ratio": 0.666771,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 111,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_013_fig_fig_12.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_12.png",
+                "width": 1347,
+                "height": 401,
+                "size_bytes": 51327,
+                "label": "Fig. 12",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.144562,
+                  "visual_rect_count": 3,
+                  "visual_body_ratio": 0.664467,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 95,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 3,
+            "matched_terms": [
+              "similarity",
+              "function",
+              "centerte"
+            ],
+            "snippet": "the surrounding pixel features are represented as U h i (i = 1, 2, . . . , n). The cosine similarity between the center pixel and each surrounding pixel is then computed as ρh i ρh i = \u0000U h",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 6",
+        "caption": "Classification maps obtained by the different tested methods for the Salinas dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN.",
+        "kind": "data_or_task",
+        "section": "数据与任务定义",
+        "reason": "这张图更像任务设定或数据说明，放在数据与任务定义最合适。",
+        "priority": 3,
+        "anchor_text": "数据与任务定义",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_010_fig_fig_6.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_6.png",
+          "width": 1167,
+          "height": 764,
+          "size_bytes": 697144,
+          "label": "Fig. 6",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.238557,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.853233,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 266,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 10,
+            "score": 8,
+            "matched_terms": [
+              "fig. 6",
+              "classification",
+              "maps",
+              "obtained",
+              "different",
+              "tested"
+            ],
+            "snippet": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 6. Classification maps obtained by the different tested methods for the Salinas dataset. (a",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_01.jpeg",
+                "width": 952,
+                "height": 553,
+                "size_bytes": 110456
+              },
+              {
+                "filename": "page_010_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_02.jpeg",
+                "width": 1116,
+                "height": 554,
+                "size_bytes": 140935
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_6.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_6.png",
+                "width": 1167,
+                "height": 764,
+                "size_bytes": 697144,
+                "label": "Fig. 6",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.238557,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853233,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 266,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_fig_7.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_7.png",
+                "width": 1166,
+                "height": 667,
+                "size_bytes": 643404,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.208267,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.834698,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 275,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "maps",
+              "obtained",
+              "different"
+            ],
+            "snippet": "= WV ∗Xn i . This use of 1 × 1 convolution preserves the spatial locality of the feature maps while enabling efficient cross-band feature interaction. Notably, the Query Q is directly",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 3,
+            "matched_terms": [
+              "classification",
+              "obtained",
+              "different"
+            ],
+            "snippet": "to emphasize the spectral bands that are most informative for feature learning and final classification as follows: Pn i = An i ⊗V n i . (2) Inspired by residual networks, we incorporate a skip",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 7",
+        "caption": "Classification maps obtained by the different tested methods for the Pavia University dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN.",
+        "kind": "data_or_task",
+        "section": "数据与任务定义",
+        "reason": "这张图更像任务设定或数据说明，放在数据与任务定义最合适。",
+        "priority": 3,
+        "anchor_text": "数据与任务定义",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_010_fig_fig_7.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_7.png",
+          "width": 1166,
+          "height": 667,
+          "size_bytes": 643404,
+          "label": "Fig. 7",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.208267,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.834698,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 275,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 10,
+            "score": 8,
+            "matched_terms": [
+              "fig. 7",
+              "classification",
+              "maps",
+              "obtained",
+              "different",
+              "tested"
+            ],
+            "snippet": "pectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA. Fig. 7. Classification maps obtained by the different tested methods for the Pavia University da",
+            "images": [
+              {
+                "filename": "page_010_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_01.jpeg",
+                "width": 952,
+                "height": 553,
+                "size_bytes": 110456
+              },
+              {
+                "filename": "page_010_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_02.jpeg",
+                "width": 1116,
+                "height": 554,
+                "size_bytes": 140935
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_010_fig_fig_6.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_6.png",
+                "width": 1167,
+                "height": 764,
+                "size_bytes": 697144,
+                "label": "Fig. 6",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.238557,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.853233,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 266,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_010_fig_fig_7.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_7.png",
+                "width": 1166,
+                "height": 667,
+                "size_bytes": 643404,
+                "label": "Fig. 7",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.208267,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.834698,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 275,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "maps",
+              "obtained",
+              "different"
+            ],
+            "snippet": "= WV ∗Xn i . This use of 1 × 1 convolution preserves the spatial locality of the feature maps while enabling efficient cross-band feature interaction. Notably, the Query Q is directly",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 3,
+            "matched_terms": [
+              "classification",
+              "obtained",
+              "different"
+            ],
+            "snippet": "to emphasize the spectral bands that are most informative for feature learning and final classification as follows: Pn i = An i ⊗V n i . (2) Inspired by residual networks, we incorporate a skip",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 8",
+        "caption": "Classification maps obtained by the different tested methods for the Houston 2013 dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN.",
+        "kind": "data_or_task",
+        "section": "数据与任务定义",
+        "reason": "这张图更像任务设定或数据说明，放在数据与任务定义最合适。",
+        "priority": 3,
+        "anchor_text": "数据与任务定义",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_011_fig_fig_8.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_8.png",
+          "width": 1166,
+          "height": 542,
+          "size_bytes": 328200,
+          "label": "Fig. 8",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.169189,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.800934,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 271,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 11,
+            "score": 8,
+            "matched_terms": [
+              "fig. 8",
+              "classification",
+              "maps",
+              "obtained",
+              "different",
+              "tested"
+            ],
+            "snippet": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 Fig. 8. Classification maps obtained by the different tested methods for the Houston 2013 datase",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_01.jpeg",
+                "width": 1204,
+                "height": 466,
+                "size_bytes": 61389
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_02.jpeg",
+                "width": 1170,
+                "height": 541,
+                "size_bytes": 118149
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_8.png",
+                "width": 1166,
+                "height": 542,
+                "size_bytes": 328200,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.169189,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.800934,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 271,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_9.png",
+                "width": 1166,
+                "height": 628,
+                "size_bytes": 528164,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.196091,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.825623,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 273,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "maps",
+              "obtained",
+              "different"
+            ],
+            "snippet": "= WV ∗Xn i . This use of 1 × 1 convolution preserves the spatial locality of the feature maps while enabling efficient cross-band feature interaction. Notably, the Query Q is directly",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 3,
+            "matched_terms": [
+              "classification",
+              "obtained",
+              "different"
+            ],
+            "snippet": "to emphasize the spectral bands that are most informative for feature learning and final classification as follows: Pn i = An i ⊗V n i . (2) Inspired by residual networks, we incorporate a skip",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      },
+      {
+        "id": "Fig. 9",
+        "caption": "Classification maps obtained by the different tested methods for the WHU-Hi-LongKou dataset. (a) Pseudocolor image. (b) Ground truth label.",
+        "kind": "data_or_task",
+        "section": "数据与任务定义",
+        "reason": "这张图更像任务设定或数据说明，放在数据与任务定义最合适。",
+        "priority": 3,
+        "anchor_text": "数据与任务定义",
+        "insert_mode": "real_image",
+        "figure_asset_candidate": {
+          "filename": "page_011_fig_fig_9.png",
+          "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_9.png",
+          "width": 1166,
+          "height": 628,
+          "size_bytes": 528164,
+          "label": "Fig. 9",
+          "extraction_level": "figure",
+          "quality_signals": {
+            "visual_quality_status": "usable",
+            "quality_reason_codes": [],
+            "page_coverage_ratio": 0.196091,
+            "visual_rect_count": 1,
+            "visual_body_ratio": 0.825623,
+            "paragraph_text_chars": 0,
+            "table_body_rows": 0,
+            "caption_text_chars": 273,
+            "other_caption_count": 0,
+            "other_caption_labels": []
+          },
+          "candidate_status": "usable_candidate"
+        },
+        "candidate_pages": [
+          {
+            "page_number": 11,
+            "score": 8,
+            "matched_terms": [
+              "fig. 9",
+              "classification",
+              "maps",
+              "obtained",
+              "different",
+              "tested"
+            ],
+            "snippet": "pectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA. Fig. 9. Classification maps obtained by the different tested methods for the WHU-Hi-LongKou data",
+            "images": [
+              {
+                "filename": "page_011_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_01.jpeg",
+                "width": 1204,
+                "height": 466,
+                "size_bytes": 61389
+              },
+              {
+                "filename": "page_011_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_02.jpeg",
+                "width": 1170,
+                "height": 541,
+                "size_bytes": 118149
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_011_fig_fig_8.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_8.png",
+                "width": 1166,
+                "height": 542,
+                "size_bytes": 328200,
+                "label": "Fig. 8",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.169189,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.800934,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 271,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_011_fig_fig_9.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_9.png",
+                "width": 1166,
+                "height": 628,
+                "size_bytes": 528164,
+                "label": "Fig. 9",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.196091,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.825623,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 273,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 4,
+            "score": 3,
+            "matched_terms": [
+              "maps",
+              "obtained",
+              "different"
+            ],
+            "snippet": "= WV ∗Xn i . This use of 1 × 1 convolution preserves the spatial locality of the feature maps while enabling efficient cross-band feature interaction. Notably, the Query Q is directly",
+            "images": [
+              {
+                "filename": "page_004_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+                "width": 4287,
+                "height": 1793,
+                "size_bytes": 760233
+              },
+              {
+                "filename": "page_004_img_02.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+                "width": 2083,
+                "height": 1073,
+                "size_bytes": 153364
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_004_fig_fig_2.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+                "width": 1450,
+                "height": 666,
+                "size_bytes": 480408,
+                "label": "Fig. 2",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.258429,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.882586,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 112,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              },
+              {
+                "filename": "page_004_fig_fig_3.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+                "width": 716,
+                "height": 440,
+                "size_bytes": 99977,
+                "label": "Fig. 3",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.084428,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.786588,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 48,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          },
+          {
+            "page_number": 5,
+            "score": 3,
+            "matched_terms": [
+              "classification",
+              "obtained",
+              "different"
+            ],
+            "snippet": "to emphasize the spectral bands that are most informative for feature learning and final classification as follows: Pn i = An i ⊗V n i . (2) Inspired by residual networks, we incorporate a skip",
+            "images": [
+              {
+                "filename": "page_005_img_01.jpeg",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+                "width": 2085,
+                "height": 886,
+                "size_bytes": 123398
+              }
+            ],
+            "figure_assets": [
+              {
+                "filename": "page_005_fig_fig_4.png",
+                "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+                "width": 716,
+                "height": 378,
+                "size_bytes": 67404,
+                "label": "Fig. 4",
+                "extraction_level": "figure",
+                "quality_signals": {
+                  "visual_quality_status": "usable",
+                  "quality_reason_codes": [],
+                  "page_coverage_ratio": 0.072458,
+                  "visual_rect_count": 1,
+                  "visual_body_ratio": 0.756456,
+                  "paragraph_text_chars": 0,
+                  "table_body_rows": 0,
+                  "caption_text_chars": 56,
+                  "other_caption_count": 0,
+                  "other_caption_labels": []
+                },
+                "candidate_status": "usable_candidate"
+              }
+            ]
+          }
+        ],
+        "matching_strategy": "figure-asset-candidate"
+      }
+    ]
+  },
+  "pdf_assets": {
+    "asset_root": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification",
+    "images_dir": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images",
+    "page_assets": [
+      {
+        "page_number": 1,
+        "searchable_text_chars": 6364,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 5518216 Dual-Branch Convolution–Transformer Network With Spectral–Spatial Attention for Hyperspectral Image Classification Yao Lu , Yongshan Zhang , Senior Member, IEEE, Xinw"
+      },
+      {
+        "page_number": 2,
+        "searchable_text_chars": 6739,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 sification, which extracts spatial-spectral features hierar- chically, achieving better classification performance with lower computational complexity than stand-alon"
+      },
+      {
+        "page_number": 3,
+        "searchable_text_chars": 5985,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 1,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 Fig. 1. Comparison of pixel contribution assumptions within a patch (taking a 5 × 5 patch as an example, with the central pixel indicated by the red box): CNN/t"
+      },
+      {
+        "page_number": 4,
+        "searchable_text_chars": 3920,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 2,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 2. Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation function. the scale diversity of different land-cover features."
+      },
+      {
+        "page_number": 5,
+        "searchable_text_chars": 5275,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 1,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 map is elementwise multiplied with the value feature V n i to emphasize the spectral bands that are most informative for feature learning and final classificati"
+      },
+      {
+        "page_number": 6,
+        "searchable_text_chars": 5564,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 3 × 3 × 3 3-D convolution, to aggregate the features ZCenterTE = ConvMLP \u0000LN \u0000Z′\u0001\u0001 ⊕Z′. (10) C. CNN Branch To compensate for the limitations of the CenterTE branch in"
+      },
+      {
+        "page_number": 7,
+        "searchable_text_chars": 6145,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 3) HS: The HS dataset was captured by the CASI sensor on June 23, 2012, comprising 144 spectral bands covering 380-1050 nm. The image has a size of 349 × 1905 p"
+      },
+      {
+        "page_number": 8,
+        "searchable_text_chars": 707,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE II CATEGORY INFORMATION OF FOUR CLASSIFICATION DATASETS TABLE III QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE SALINAS DATASET WITH 1% TRAINING SAMPLES TABL"
+      },
+      {
+        "page_number": 9,
+        "searchable_text_chars": 2198,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 1,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 TABLE V QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE HOUSTON 2013 WITH 5% TRAINING SAMPLES TABLE VI QUANTITATIVE RESULTS OF DIFFERENT METHODS ON THE WHU-HI-"
+      },
+      {
+        "page_number": 10,
+        "searchable_text_chars": 2410,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 2,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 Fig. 6. Classification maps obtained by the different tested methods for the Salinas dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) "
+      },
+      {
+        "page_number": 11,
+        "searchable_text_chars": 3052,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 2,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 Fig. 8. Classification maps obtained by the different tested methods for the Houston 2013 dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) "
+      },
+      {
+        "page_number": 12,
+        "searchable_text_chars": 3999,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 6,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE VII COMPLEXITY ANALYSIS RESULTS BETWEEN CTSSA AND THE COMPARATIVE METHODS Fig. 10. Ablation study on the accuracy metrics for the PSAM module. (a) OA. (b) AA. ("
+      },
+      {
+        "page_number": 13,
+        "searchable_text_chars": 2132,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 9,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 TABLE VIII ABLATION STUDY ON THE CENTERTE IN FOUR DATASETS Fig. 11. Ablation study on the choice of similarity function in the CenterTE module. (a) OA. (b) AA. "
+      },
+      {
+        "page_number": 14,
+        "searchable_text_chars": 4548,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 6,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 TABLE IX PERFORMANCE COMPARISON UNDER DIFFERENT SCALE SIZES ON FOUR DATASETS Fig. 13. Accuracy metrics of CTSSA with different patch sizes on four datasets. (a) OA. ("
+      },
+      {
+        "page_number": 15,
+        "searchable_text_chars": 9449,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 0,
+        "text_preview": "LU et al.: DUAL-BRANCH CONVOLUTION–TRANSFORMER NETWORK WITH SPECTRAL–SA 5518216 [7] L. Liang et al., “Estimation of crop LAI using hyperspectral vegetation indices and a hybrid inversion method,” Remote Sens. Environ., vol. 165, pp. 123–134"
+      },
+      {
+        "page_number": 16,
+        "searchable_text_chars": 3783,
+        "text_extraction_method": "text",
+        "ocr_used": false,
+        "image_count": 5,
+        "text_preview": "5518216 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 63, 2025 [52] D. Hong et al., “SpectralFormer: Rethinking hyperspectral image classi- fication with transformers,” IEEE Trans. Geosci. Remote Sens., vol. 60, 2022, Art. no. 55"
+      }
+    ],
+    "image_assets": [
+      {
+        "page_number": 3,
+        "image_index": 1,
+        "xref": 388,
+        "filename": "page_003_img_01.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_img_01.png",
+        "ext": "png",
+        "width": 1643,
+        "height": 518,
+        "colorspace": 3,
+        "size_bytes": 91580,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 1,
+        "xref": 397,
+        "filename": "page_004_img_01.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 4287,
+        "height": 1793,
+        "colorspace": 3,
+        "size_bytes": 760233,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 4,
+        "image_index": 2,
+        "xref": 400,
+        "filename": "page_004_img_02.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_img_02.jpeg",
+        "ext": "jpeg",
+        "width": 2083,
+        "height": 1073,
+        "colorspace": 3,
+        "size_bytes": 153364,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 5,
+        "image_index": 1,
+        "xref": 403,
+        "filename": "page_005_img_01.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 2085,
+        "height": 886,
+        "colorspace": 3,
+        "size_bytes": 123398,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 9,
+        "image_index": 1,
+        "xref": 416,
+        "filename": "page_009_img_01.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_009_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 2084,
+        "height": 1354,
+        "colorspace": 3,
+        "size_bytes": 281530,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 10,
+        "image_index": 1,
+        "xref": 423,
+        "filename": "page_010_img_01.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 952,
+        "height": 553,
+        "colorspace": 3,
+        "size_bytes": 110456,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 10,
+        "image_index": 2,
+        "xref": 426,
+        "filename": "page_010_img_02.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_img_02.jpeg",
+        "ext": "jpeg",
+        "width": 1116,
+        "height": 554,
+        "colorspace": 3,
+        "size_bytes": 140935,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 11,
+        "image_index": 1,
+        "xref": 429,
+        "filename": "page_011_img_01.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 1204,
+        "height": 466,
+        "colorspace": 3,
+        "size_bytes": 61389,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 11,
+        "image_index": 2,
+        "xref": 432,
+        "filename": "page_011_img_02.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_img_02.jpeg",
+        "ext": "jpeg",
+        "width": 1170,
+        "height": 541,
+        "colorspace": 3,
+        "size_bytes": 118149,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 12,
+        "image_index": 1,
+        "xref": 441,
+        "filename": "page_012_img_01.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_01.png",
+        "ext": "png",
+        "width": 583,
+        "height": 961,
+        "colorspace": 1,
+        "size_bytes": 15937,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 12,
+        "image_index": 2,
+        "xref": 442,
+        "filename": "page_012_img_02.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_02.png",
+        "ext": "png",
+        "width": 583,
+        "height": 961,
+        "colorspace": 1,
+        "size_bytes": 16328,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 12,
+        "image_index": 3,
+        "xref": 443,
+        "filename": "page_012_img_03.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_03.png",
+        "ext": "png",
+        "width": 874,
+        "height": 961,
+        "colorspace": 1,
+        "size_bytes": 24766,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 12,
+        "image_index": 4,
+        "xref": 444,
+        "filename": "page_012_img_04.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_04.png",
+        "ext": "png",
+        "width": 583,
+        "height": 961,
+        "colorspace": 1,
+        "size_bytes": 17094,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 12,
+        "image_index": 5,
+        "xref": 445,
+        "filename": "page_012_img_05.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_05.png",
+        "ext": "png",
+        "width": 874,
+        "height": 961,
+        "colorspace": 1,
+        "size_bytes": 25132,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 12,
+        "image_index": 6,
+        "xref": 446,
+        "filename": "page_012_img_06.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_img_06.png",
+        "ext": "png",
+        "width": 874,
+        "height": 961,
+        "colorspace": 1,
+        "size_bytes": 24364,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 1,
+        "xref": 452,
+        "filename": "page_013_img_01.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_01.png",
+        "ext": "png",
+        "width": 712,
+        "height": 462,
+        "colorspace": 1,
+        "size_bytes": 14522,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 2,
+        "xref": 453,
+        "filename": "page_013_img_02.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_02.png",
+        "ext": "png",
+        "width": 712,
+        "height": 462,
+        "colorspace": 1,
+        "size_bytes": 14471,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 3,
+        "xref": 454,
+        "filename": "page_013_img_03.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_03.png",
+        "ext": "png",
+        "width": 712,
+        "height": 462,
+        "colorspace": 1,
+        "size_bytes": 14657,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 4,
+        "xref": 462,
+        "filename": "page_013_img_04.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_04.png",
+        "ext": "png",
+        "width": 579,
+        "height": 944,
+        "colorspace": 1,
+        "size_bytes": 15471,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 5,
+        "xref": 463,
+        "filename": "page_013_img_05.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_05.png",
+        "ext": "png",
+        "width": 579,
+        "height": 944,
+        "colorspace": 1,
+        "size_bytes": 15778,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 6,
+        "xref": 464,
+        "filename": "page_013_img_06.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_06.png",
+        "ext": "png",
+        "width": 868,
+        "height": 944,
+        "colorspace": 1,
+        "size_bytes": 25674,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 7,
+        "xref": 465,
+        "filename": "page_013_img_07.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_07.png",
+        "ext": "png",
+        "width": 579,
+        "height": 944,
+        "colorspace": 1,
+        "size_bytes": 15589,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 8,
+        "xref": 466,
+        "filename": "page_013_img_08.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_08.png",
+        "ext": "png",
+        "width": 868,
+        "height": 944,
+        "colorspace": 1,
+        "size_bytes": 25311,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 13,
+        "image_index": 9,
+        "xref": 467,
+        "filename": "page_013_img_09.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_img_09.png",
+        "ext": "png",
+        "width": 868,
+        "height": 944,
+        "colorspace": 1,
+        "size_bytes": 24102,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 14,
+        "image_index": 1,
+        "xref": 478,
+        "filename": "page_014_img_01.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_01.png",
+        "ext": "png",
+        "width": 612,
+        "height": 914,
+        "colorspace": 1,
+        "size_bytes": 17399,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 14,
+        "image_index": 2,
+        "xref": 479,
+        "filename": "page_014_img_02.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_02.png",
+        "ext": "png",
+        "width": 612,
+        "height": 914,
+        "colorspace": 1,
+        "size_bytes": 16307,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 14,
+        "image_index": 3,
+        "xref": 480,
+        "filename": "page_014_img_03.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_03.png",
+        "ext": "png",
+        "width": 918,
+        "height": 914,
+        "colorspace": 1,
+        "size_bytes": 28349,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 14,
+        "image_index": 4,
+        "xref": 481,
+        "filename": "page_014_img_04.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_04.png",
+        "ext": "png",
+        "width": 612,
+        "height": 914,
+        "colorspace": 1,
+        "size_bytes": 17545,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 14,
+        "image_index": 5,
+        "xref": 482,
+        "filename": "page_014_img_05.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_05.png",
+        "ext": "png",
+        "width": 918,
+        "height": 914,
+        "colorspace": 1,
+        "size_bytes": 31124,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 14,
+        "image_index": 6,
+        "xref": 483,
+        "filename": "page_014_img_06.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_img_06.png",
+        "ext": "png",
+        "width": 918,
+        "height": 914,
+        "colorspace": 1,
+        "size_bytes": 26922,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 16,
+        "image_index": 1,
+        "xref": 748,
+        "filename": "page_016_img_01.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_016_img_01.jpeg",
+        "ext": "jpeg",
+        "width": 420,
+        "height": 538,
+        "colorspace": 3,
+        "size_bytes": 37663,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 16,
+        "image_index": 2,
+        "xref": 751,
+        "filename": "page_016_img_02.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_016_img_02.jpeg",
+        "ext": "jpeg",
+        "width": 420,
+        "height": 525,
+        "colorspace": 3,
+        "size_bytes": 37014,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 16,
+        "image_index": 3,
+        "xref": 754,
+        "filename": "page_016_img_03.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_016_img_03.jpeg",
+        "ext": "jpeg",
+        "width": 420,
+        "height": 543,
+        "colorspace": 3,
+        "size_bytes": 33559,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 16,
+        "image_index": 4,
+        "xref": 757,
+        "filename": "page_016_img_04.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_016_img_04.jpeg",
+        "ext": "jpeg",
+        "width": 420,
+        "height": 520,
+        "colorspace": 3,
+        "size_bytes": 30198,
+        "extraction_level": "xref"
+      },
+      {
+        "page_number": 16,
+        "image_index": 5,
+        "xref": 760,
+        "filename": "page_016_img_05.jpeg",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_016_img_05.jpeg",
+        "ext": "jpeg",
+        "width": 420,
+        "height": 548,
+        "colorspace": 3,
+        "size_bytes": 34115,
+        "extraction_level": "xref"
+      }
+    ],
+    "figure_assets": [
+      {
+        "filename": "page_003_fig_fig_1.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_003_fig_fig_1.png",
+        "page_number": 3,
+        "label": "Fig. 1",
+        "kind": "figure",
+        "caption_text": "Fig. 1. Comparison of pixel contribution assumptions within a patch (taking a 5 × 5 patch as an example, with the central pixel indicated by the red box): CNN/transformer-based methods versus the real situation.",
+        "width": 716,
+        "height": 343,
+        "size_bytes": 77731,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.065802,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.617816,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 211,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_004_fig_fig_2.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_2.png",
+        "page_number": 4,
+        "label": "Fig. 2",
+        "kind": "figure",
+        "caption_text": "Fig. 2. Overall architecture of CTSSA. BN: batch normalization. ReLU: rectified linear unit activation function.",
+        "width": 1450,
+        "height": 666,
+        "size_bytes": 480408,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.258429,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.882586,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 112,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_004_fig_fig_3.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_004_fig_fig_3.png",
+        "page_number": 4,
+        "label": "Fig. 3",
+        "kind": "figure",
+        "caption_text": "Fig. 3. Architecture of the proposed SAB module.",
+        "width": 716,
+        "height": 440,
+        "size_bytes": 99977,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.084428,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.786588,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 48,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_005_fig_fig_4.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_005_fig_fig_4.png",
+        "page_number": 5,
+        "label": "Fig. 4",
+        "kind": "figure",
+        "caption_text": "Fig. 4. Overall architecture of the proposed CAM module.",
+        "width": 716,
+        "height": 378,
+        "size_bytes": 67404,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.072458,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.756456,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 56,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_009_fig_fig_5.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_009_fig_fig_5.png",
+        "page_number": 9,
+        "label": "Fig. 5",
+        "kind": "figure",
+        "caption_text": "Fig. 5. Quantitative results with different numbers of training samples per class. (a) SA. (b) PU. (c) HS. (d) LK.",
+        "width": 716,
+        "height": 550,
+        "size_bytes": 143635,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.105531,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.793849,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 114,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_010_fig_fig_6.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_6.png",
+        "page_number": 10,
+        "label": "Fig. 6",
+        "kind": "figure",
+        "caption_text": "Fig. 6. Classification maps obtained by the different tested methods for the Salinas dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA.",
+        "width": 1167,
+        "height": 764,
+        "size_bytes": 697144,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.238557,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.853233,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 266,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_010_fig_fig_7.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_010_fig_fig_7.png",
+        "page_number": 10,
+        "label": "Fig. 7",
+        "kind": "figure",
+        "caption_text": "Fig. 7. Classification maps obtained by the different tested methods for the Pavia University dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA.",
+        "width": 1166,
+        "height": 667,
+        "size_bytes": 643404,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.208267,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.834698,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 275,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_011_fig_fig_8.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_8.png",
+        "page_number": 11,
+        "label": "Fig. 8",
+        "kind": "figure",
+        "caption_text": "Fig. 8. Classification maps obtained by the different tested methods for the Houston 2013 dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA.",
+        "width": 1166,
+        "height": 542,
+        "size_bytes": 328200,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.169189,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.800934,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 271,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_011_fig_fig_9.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_011_fig_fig_9.png",
+        "page_number": 11,
+        "label": "Fig. 9",
+        "kind": "figure",
+        "caption_text": "Fig. 9. Classification maps obtained by the different tested methods for the WHU-Hi-LongKou dataset. (a) Pseudocolor image. (b) Ground truth label. (c) SSRN. (d) FDSSC. (e) DBDA. (f) SpectralFormer. (g) morphFormer. (h) SSFTT. (i) GSC-ViT. (j) DCTN. (k) DBCTNet. (l) CTSSA.",
+        "width": 1166,
+        "height": 628,
+        "size_bytes": 528164,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.196091,
+          "visual_rect_count": 1,
+          "visual_body_ratio": 0.825623,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 273,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_012_fig_fig_10.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_012_fig_fig_10.png",
+        "page_number": 12,
+        "label": "Fig. 10",
+        "kind": "figure",
+        "caption_text": "Fig. 10. Ablation study on the accuracy metrics for the PSAM module. (a) OA. (b) AA. (c) Kappa.",
+        "width": 1347,
+        "height": 406,
+        "size_bytes": 50854,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.146345,
+          "visual_rect_count": 6,
+          "visual_body_ratio": 0.668885,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 95,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_013_fig_fig_11.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_11.png",
+        "page_number": 13,
+        "label": "Fig. 11",
+        "kind": "figure",
+        "caption_text": "Fig. 11. Ablation study on the choice of similarity function in the CenterTE module. (a) OA. (b) AA. (c) Kappa.",
+        "width": 1347,
+        "height": 403,
+        "size_bytes": 50904,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.145251,
+          "visual_rect_count": 6,
+          "visual_body_ratio": 0.666771,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 111,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_013_fig_fig_12.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_013_fig_fig_12.png",
+        "page_number": 13,
+        "label": "Fig. 12",
+        "kind": "figure",
+        "caption_text": "Fig. 12. Ablation study on the accuracy metrics for the dual branch. (a) OA. (b) AA. (c) Kappa.",
+        "width": 1347,
+        "height": 401,
+        "size_bytes": 51327,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.144562,
+          "visual_rect_count": 3,
+          "visual_body_ratio": 0.664467,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 95,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      },
+      {
+        "filename": "page_014_fig_fig_13.png",
+        "path": "E:\\ESCI\\tmp\\DeepPaperNote\\assets\\Dual_Branch_Convolutionx2013Transformer_Network_With_Spectralx2013Spatial_Attention_for_Hyperspectral_Image_Classification\\images\\page_014_fig_fig_13.png",
+        "page_number": 14,
+        "label": "Fig. 13",
+        "kind": "figure",
+        "caption_text": "Fig. 13. Accuracy metrics of CTSSA with different patch sizes on four datasets. (a) OA. (b) AA. (c) Kappa.",
+        "width": 1431,
+        "height": 379,
+        "size_bytes": 54683,
+        "extraction_level": "figure",
+        "quality_signals": {
+          "visual_quality_status": "usable",
+          "quality_reason_codes": [],
+          "page_coverage_ratio": 0.145302,
+          "visual_rect_count": 6,
+          "visual_body_ratio": 0.61006,
+          "paragraph_text_chars": 0,
+          "table_body_rows": 0,
+          "caption_text_chars": 106,
+          "other_caption_count": 0,
+          "other_caption_labels": []
+        }
+      }
+    ],
+    "ocr_available": true
+  },
+  "summary": {
+    "paper_type": "AI_method",
+    "paper_type_rationale": "The paper is best treated as a method-focused technical paper.",
+    "datasets": [
+      "EXPERIMENTAL RESULTS",
+      "HSI",
+      "CTSSA",
+      "Datasets Description",
+      "Salinas",
+      "Pavia University",
+      "Houston",
+      "WHUHi-LongKou"
+    ],
+    "metrics": [],
+    "mechanism_signals": [
+      "2, CTSSA comprises three core components: 1) a PSAM, which extracts multiscale discriminative spectral features via a hierarchical structure; 2) a CenterTE, which explicitly enhances the role of the center pixel using a center-guided sparse attention mechanism, enabling effective modeling of global dependencies; and 3) a parallel 3D-CNN branch, responsible for capturing fine-grained local spectral–spatial features.",
+      "This dual-branch architecture achieves complemen- tary feature learning, where the CenterTE branch focuses on global context, while the CNN branch preserves local detail, and ultimately performs feature fusion through an efficient cross-branch interaction mechanism.",
+      "Existing mainstream spectral feature extraction methods, including transformer-based global self-attention mechanisms and fixed-scale CNN architectures, are limited in effectively modeling such nonuniform correlations.",
+      "Furthermore, such approaches often lack the ability to model cross-group spectral relationships, leaving the extracted local features vulnerable to noise and prone to overfitting.",
+      "In the implementation, for each spectral subgroup Xn i , the Key K and Value V representations are obtained via 1 × 1 convolutional kernels WK and WV , respectively, i.e., K n = WK ∗Xn and V n = WV ∗Xn i .",
+      "Notably, the Query Q is directly assigned as the original input, i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations."
+    ],
+    "ablation_signals": [],
+    "equation_candidates": [
+      {
+        "equation": "Lfocal = −αy \u00001 −py \u0001γ log \u0000py \u0001 (12) where y is the true class, py is the predicted probability of class y, and αy and γ are the",
+        "source_section": "experiment",
+        "kind_hint": "metric_equation"
+      },
+      {
+        "equation": "H = {1, 2, 3, 6}, which is empirically validated as the optimal setting in subsequent ablation studies",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = WK ∗Xn i and V n i = WV ∗Xn i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Xn i , thereby avoiding potential information loss intro- duced by feature transformations",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = Softmax \u0000Wθ ∗Concat \u0000K n i , Qn i \u0001\u0001 (1) where Concat(K n i , Qn i ) denotes the concatenation of K",
+        "source_section": "method",
+        "kind_hint": "equation"
+      },
+      {
+        "equation": "i = An i ⊗V n i",
+        "source_section": "method",
+        "kind_hint": "equation"
+      }
+    ],
+    "section_keys": [
+      "preamble",
+      "method"
+    ],
+    "pdf_used": true,
+    "candidate_chunk_sections": [
+      "data",
+      "general",
+      "method"
+    ]
+  },
+  "writing_contract": {
+    "language": "zh-CN",
+    "must_distinguish": [
+      "研究问题 vs 任务定义",
+      "真实贡献 vs 标题包装",
+      "核心结果 vs 好看的结果",
+      "作者声称什么 vs 论文没有证明什么"
+    ],
+    "must_include_sections": [
+      "核心信息",
+      "原文摘要翻译",
+      "创新点",
+      "一句话总结",
+      "研究问题",
+      "数据与任务定义",
+      "方法主线",
+      "关键结果",
+      "深度分析",
+      "局限",
+      "我的笔记",
+      "引用"
+    ],
+    "core_info_contract": {
+      "role": "fixed_metadata_block",
+      "format": "template_style_metadata_bullets",
+      "fixed_field_behavior": [
+        "Use the predefined template fields only.",
+        "Keep each line in `- 字段名: 值` form.",
+        "Do not add ad hoc metadata fields just because they seem helpful.",
+        "If a field is unavailable, leave it blank or mark it as unavailable instead of replacing it with commentary."
+      ],
+      "forbidden_content": [
+        "analysis",
+        "judgment",
+        "takeaways",
+        "mini_summaries",
+        "my_view_sentences"
+      ],
+      "redirect_analysis_to": [
+        "一句话总结",
+        "深度分析",
+        "我的笔记"
+      ]
+    },
+    "must_not_do": [
+      "不要摘要改写",
+      "不要把英文证据原句揉进中文正文",
+      "不要把脚本 heuristics 当成论文结论",
+      "不要把方法论文写成科普式总结",
+      "不要为了通过 lint 而编造事实、失败案例、机制细节或比较结论",
+      "不要加入只是为了看起来合规却没有信息量的 filler text",
+      "不要为了通过 mixed-language 检查而把句子硬改成不自然的翻译",
+      "不要因为怕触发 lint 就删掉有价值的公式、术语或必要英文原文",
+      "不要在 `核心信息` 里加入解释性判断、总结性句子或“我对这篇论文的判断”之类的分析内容"
+    ],
+    "writer_persona": [
+      "把自己当作顶尖人工智能研究员和算法工程师",
+      "默认读者是熟悉 Python、PyTorch、训练流程和实验设计的课题组成员",
+      "目标是写一份复现级精读笔记，而不是写给大众的科普摘要"
+    ],
+    "planning_rules": [
+      "先基于证据做显式 note_plan，再写最终笔记",
+      "note_plan 应该是一个简短、结构化、可检查的工件，例如 `<note_plan>...</note_plan>` 或独立 planning file",
+      "不要只依赖隐式的隐藏规划步骤，也不要输出冗长的自由思维链",
+      "`核心信息` 是固定字段的 metadata 区，不要擅自增删字段，也不要把解释性 prose 塞进这里",
+      "在章节骨架上，`创新点` 应该作为独立 `##` 章节放在 `原文摘要翻译` 之后、`一句话总结` 之前",
+      "创新点部分不要只写抽象赞美，要列出 3 到 5 个真正的 paper-specific innovations，并分别解释它们解决了什么问题、带来了什么能力或评估增益",
+      "决定哪些部分需要更多篇幅，哪些部分需要 `###` 子标题",
+      "复杂论文不能只写扁平的 `##` 结构",
+      "优先提炼关键数字、关键比较和论文特有洞察",
+      "优先自己从 candidate_chunks 和 section_texts 判断重点，而不是盲信脚本挑出来的 top items",
+      "方法型论文默认优先展开训练目标、推理链路、关键实现细节、复杂度和消融逻辑",
+      "对于 method/system/framework 类型论文，`方法主线` 下默认包含固定小节 `### 机制流程`，不要把机制解释分散成难以扫描的散文",
+      "如果 Algorithm 伪代码框或流程框在抽取后已经损坏，不要尝试逐字还原；应基于 method 的 section_texts、candidate_chunks 与 mechanism evidence，在 `### 机制流程` 中用 3 到 4 步工程流程重建核心机制",
+      "机制流程的每一步都应尽量说清楚 Input、关键中间变换和 Output 去向，而不是只复述模块名或术语",
+      "如果论文同时存在训练主线与推理主线，`### 机制流程` 优先写最核心的主执行链，不要把它膨胀成完整训练 recipe",
+      "如果 metadata.abstract 可用，`原文摘要翻译` 部分应默认写成单一的中文翻译块，而不是英文原文加中文翻译的双子节结构",
+      "`原文摘要翻译` 的标题固定为 `## 原文摘要翻译`，不要改成 `摘要`、`原始摘要`，也不要在里面再拆出 `### 英文原文` 或 `### 中文翻译`",
+      "`原文摘要翻译` 这个 section 本身必须直接写成中文，不要在这里输出英文摘要句子、英文段落或英文原文摘录",
+      "`原文摘要翻译` 的任务很简单：把原文 abstract 翻译成中文，不要把它改写成你自己对全文的总结",
+      "`原文摘要翻译` 不要写成基于整篇论文内容重新整理后的 summary，也不要混入创新点、价值判断或后文分析",
+      "如果 abstract 较长，也应完整翻译；提炼和压缩应放到 `一句话总结`、`创新点` 或其他分析章节，而不是发生在 `原文摘要翻译` 里"
+    ],
+    "mechanism_flow_contract": {
+      "title": "机制流程",
+      "apply_when_paper_type_in": [
+        "AI_method",
+        "system",
+        "framework"
+      ],
+      "required_step_count": "3_to_4",
+      "required_step_fields": [
+        "input",
+        "operation",
+        "output_destination"
+      ],
+      "figure_policy": "If a high-confidence pipeline or architecture figure matches the core execution chain, place it in this subsection first.",
+      "fallback_policy": "If no high-confidence figure exists, keep the subsection as text-only and do not lower the figure-matching threshold."
+    },
+    "note_plan_contract": {
+      "required_fields": [
+        "paper_type",
+        "dominant_domain",
+        "must_cover",
+        "key_numbers",
+        "real_comparisons",
+        "section_plan"
+      ],
+      "format_preference": "compact_structured_plan",
+      "forbidden_style": "verbose_freeform_chain_of_thought"
+    },
+    "formula_rules": [
+      "如果公式、概率分解、优化目标或复杂度表达式是理解方法的核心，应该在笔记里保留少量关键 LaTeX 公式",
+      "优先保留 1 到 3 个真正关键的公式，不要为了显得技术化而堆砌公式",
+      "优先从 equation_candidates、candidate_chunks 和 section_texts 中重建关键公式语境",
+      "每个保留的关键公式后都要补一句工程解释，说明它在实现上对应什么操作、训练目标或状态更新；不要只解释变量名",
+      "公式解释应尽量服务于 `### 机制流程` 或其相邻方法子节，而不是让公式孤立悬空",
+      "最终 Markdown 中的公式必须按 Obsidian/MathJax 可直接渲染的 TeX 写法输出，不要把它们写成 JSON 或字符串风格的双反斜杠转义文本",
+      "避免把 `\\tau`、`\\frac`、`\\bar`、`\\begin`、`\\end` 这类命令错误地写成双反斜杠；在最终笔记里应保留单反斜杠 TeX 命令",
+      "行内公式使用 `$...$`，公式块使用 `$$ ... $$`",
+      "不要把公式写成反引号代码或 fenced code block"
+    ],
+    "self_review_rules": [
+      "在生成最终 Markdown 前，先自查这篇笔记是否包含关键数字、关键比较、必要时的公式或复杂度表达式",
+      "如果方法论文里没有训练目标、推理流程、关键维度、复杂度或核心机制解释，说明写得太浅，需要重写相关小节",
+      "如果这是 method/system/framework 类型论文，检查 `方法主线` 下是否显式包含 `### 机制流程`，并且该小节是 3 到 4 步的编号列表，而不是一段泛化散文",
+      "如果 bundle 中存在 ablation_evidence，最终笔记必须至少写出一项次优、失败或不稳定设定；如果不存在，也要明确说明论文未充分报告这类负面经验",
+      "如果正文不能让熟悉 Python 和深度学习框架的开发者看懂方法主线，说明仍停留在总结层面，需要继续下钻",
+      "如果出现句中异常换行、逗号后换行或明显继承 PDF 折行的 prose，必须整理后再输出",
+      "脚本 lint 通过后，仍必须重新通读整篇笔记做最终可读性质检；lint 只是下限，不是写作目标",
+      "最终可读性质检只能修表达：改善句子流畅度、消除生硬翻译、把普通英文短语改成自然中文、并在必要时给稳定专名补中文解释",
+      "最终可读性质检不得新增无证据支撑的信息，不得改动核心数字、结论或实验判断，也不得借润色之名把笔记写浅",
+      "如果为了满足章节要求而写出了空壳句子、合规模板话或明显写给 lint 看的表述，必须改掉再输出",
+      "如果笔记中保留了 LaTeX 公式，最终输出前要快速自查是否存在双反斜杠误转义、损坏的 math delimiter 或明显无法渲染的 TeX 命令"
+    ],
+    "readability_review_contract": {
+      "stage_name": "final_readability_review",
+      "position_in_workflow": "after_lint_before_save",
+      "role": "final_model_side_language_and_readability_review",
+      "core_rule": "Lint is a floor, not the writing objective.",
+      "allowed_kept_english": [
+        "stable model names",
+        "stable dataset names",
+        "stable metric names",
+        "method names",
+        "source-faithful technical labels",
+        "math symbols",
+        "code tokens",
+        "original paper figure/table ids"
+      ],
+      "should_be_natural_chinese": [
+        "ordinary English phrases",
+        "abstract descriptive phrases in analytical prose",
+        "English leftovers that have no clear reason to remain"
+      ],
+      "checklist": [
+        "有没有普通英文短语其实应写成自然中文",
+        "有没有术语被翻得过硬过怪",
+        "有没有为了满足章节要求而写出的空壳句子",
+        "有没有写给 lint 看而不是写给读者看的语气",
+        "有没有本可自然中文表达却仍残留英文导致阅读发涩的句子"
+      ],
+      "must_not_do": [
+        "do_not_invent_new_facts",
+        "do_not_change_core_numbers_or_conclusions",
+        "do_not_flatten_the_note_under_the_name_of_polish",
+        "do_not_translate_stable_proper_nouns_mechanically"
+      ],
+      "rerun_rule": "If the readability review edits the note, rerun lint before write_obsidian_note."
+    },
+    "figure_rules": [
+      "先规划主要图表的占位标签，再决定哪些可以替换成真实图片",
+      "label/caption match is not insertion approval; it only proves identity, and visual usability is a separate hard gate.",
+      "Reject caption-only crops, missing table body crops, table crops with paragraph or other-caption contamination, large text/title/abstract crops, and low visual body ratio crops.",
+      "If visual quality is missing, ambiguous, or marked review/reject, fail closed: keep the placeholder instead of inserting the image.",
+      "Every kept placeholder must appear directly under the most relevant analytical section named by its `建议位置`; do not collect unresolved placeholders in catch-all sections such as `剩余图表占位`, `未放置图表`, `Remaining figures`, or `Leftover figures`.",
+      "Every kept placeholder must use the standard `> [!figure]` callout with `建议位置`, `放置原因`, and `当前状态`; never use plain paragraph placeholders such as `[图表占位 | Fig. 1]`, `图表占位：Table 2`, or `Figure Placeholder | Fig. 3`.",
+      "`reject_visual_quality` means the candidate image is unsafe to insert; it does not require keeping a final-note placeholder for every rejected candidate.",
+      "For survey papers, summarize repetitive representative-work figures or appendix tables in prose when they do not materially help the reader as standalone callouts.",
+      "When inserting a real image, prefer the `obsidian_embed` returned by materialize_figure_asset.py; Markdown image syntax is a compatibility fallback, not the preferred note format.",
+      "如果没有高置信度图像匹配，不要删除占位标签",
+      "图注必须保留论文原始编号，例如 Fig. 1、Table 2",
+      "如果插入的是局部子图或不完整裁剪，必须明确说明",
+      "图可以不全，但文字覆盖必须完整"
+    ]
+  }
+}

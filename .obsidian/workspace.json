@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "73aa2131d19085d8",
+        "id": "82295634d784f7ef",
         "type": "tabs",
         "children": [
           {
-            "id": "4c5c7e55610cde7a",
+            "id": "b09ac2a5f79d401b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "研究课题/04_物理融合/RingMoE/ringmoe遥感大模型零标注泛化.md",
-                "mode": "source",
+                "file": "七月/CTSSA/CTSSA — Dual-Branch Convolution-Transformer Network With Spectral-Spatial Attention for HSI Classification.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ringmoe遥感大模型零标注泛化"
+              "title": "CTSSA — Dual-Branch Convolution-Transformer Network With Spectral-Spatial Attention for HSI Classification"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "moe",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -143,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "高光谱/MambaHSI/note1.md",
+                "file": "七月/mambamoe/full.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "note1 的大纲"
+              "title": "full 的大纲"
             }
           },
           {
@@ -185,54 +184,54 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "1e9ee5e4ddd43211",
+  "active": "b09ac2a5f79d401b",
   "lastOpenFiles": [
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/Tensor_Transformer_for_hyperspectral_image_classification.md",
+    "七月/mambamoe/MambaMoE.md",
+    "七月/mambamoe/full.md",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images/page_011_fig_table_6.png",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images/page_011_fig_table_5.png",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images/page_007_fig_table_2.png",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images/page_007_fig_table_1.png",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型/Tensor_Transformer_for_hyperspectral_image_classification/images/page_011_fig_table_6.png",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型/Tensor_Transformer_for_hyperspectral_image_classification/images/page_011_fig_table_5.png",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型/Tensor_Transformer_for_hyperspectral_image_classification/images/page_007_fig_table_2.png",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型/Tensor_Transformer_for_hyperspectral_image_classification/images/page_007_fig_table_1.png",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型/Tensor_Transformer_for_hyperspectral_image_classification/images",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型/Tensor_Transformer_for_hyperspectral_image_classification",
+    "研究课题/07_待读队列/待读/Research/Papers/大模型",
+    "研究课题/07_待读队列/待读/Research/Papers",
+    "研究课题/07_待读队列/待读/Research",
+    "研究课题/07_待读队列/待读/Tensor_transformer.md",
+    "研究课题/07_待读队列/待读/TT.pdf",
+    "基础知识/Prompt机制笔记.md",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images/page_012_fig_fig_15.png",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images/page_011_fig_fig_14.png",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification/images",
+    "七月/Tensor_Transformer_for_hyperspectral_image_classification",
+    "基础知识/Prompt机制笔记.md.tmp.23096.0d2a9218a2ba",
+    "基础知识/Prompt机制笔记.md.tmp.23096.ce1ecba11480",
+    "七月/promptir/PromptIR.md",
+    "七月/promptir/PromptIR_paper.md",
+    "七月/promptir/assets/promptir.md",
+    "七月/promptir/MinerU_markdown_202607090827185_62e9054c.md",
+    "1_日期/三月/3_17基于模态交互与窗口扩张注意力网络的高光谱与多光谱遥感图像融合/Leveraging Modal Interaction and Window Dilation in Attention Network for Hyperspectral and Multispectral Remote Sensing Image Fusion.md",
+    "1_日期/三月/3_18_Kimi的attention residual/attention residual.md",
+    "4—16.md",
+    "研究课题/04_物理融合/RingMoE/ringmoe遥感大模型零标注泛化.md",
+    "dashboard.md",
     "研究课题/04_物理融合/PINN_流体/PINNs_fluid_mechanics_review/PINNs_fluid_mechanics_review.md",
-    "研究课题/01_高光谱分类/Transformer系/DiffFormer/DiffFormer.pdf",
     "研究课题/01_高光谱分类/Transformer系/Attention_U-Net/Attention_U-Net_笔记.md",
     "研究课题/01_高光谱分类/CNN混合系/CAAENet/CAAENet.md",
     "研究课题/01_高光谱分类/CNN混合系/CAAENet/笔记.md",
     "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.cfe6e922b27a",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.e6a25913907e",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.6a65cd9eb6e4",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.d2d1ad425a1e",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.ff75891b13d3",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.7c61105602a5",
-    "研究课题/03_裂缝分割/ECFormer/ECFormer_crack_segmentation.md.tmp.5916.d44eab9e0465",
-    "研究课题/03_裂缝分割/ECFormer/images/Table10_BDCRFE消融.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Table9_注意力对比.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Table5_模块消融.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Table4_场景数据集对比.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Table3_CrackSeg9k对比.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Fig14_MSSRA消融.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Fig13_效率对比.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Fig12_混凝土定性.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Fig11_沥青定性.png",
-    "研究课题/03_裂缝分割/ECFormer/images/Fig10_定性结果2.png",
-    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation/images",
-    "Research/Papers/研究课题/03_裂缝分割/ECFormer/table10_bdcrfe_ablation",
     "研究课题/02_溢油检测/坐标注意力/坐标注意力.md",
     "总览.canvas",
     "研究课题/05_基础架构/RWKV/rwkv.md",
     "研究课题/05_基础架构/Byte_Latent_Mamba/师生模型.md",
     "研究课题/05_基础架构/Byte_Latent_Mamba/Byte_Latent_Mamba论文总结.md",
-    "研究课题/07_待读队列/待读/1-s2.0-S1568494625013821-main_笔记.md",
     "研究课题/06_实验日志/残差创新.md",
     "研究课题/06_实验日志/OpenCode_OhMyOpenCode_使用指南.md",
-    "研究课题/06_实验日志/5_20pulearning/pulearning/README.md",
-    "研究课题/06_实验日志/三月内容.md",
-    "研究课题/02_溢油检测/高光谱海面溢油检测摘要报告.md",
-    "研究课题/03_裂缝分割/纵向裂缝检测/full.md",
-    "研究课题/03_裂缝分割/纵向裂缝检测/纵向裂缝检测_纹理重建与深度分割笔记.md",
-    "研究课题/03_裂缝分割/LMA-Net/LMA-Net_土壤裂缝分割笔记.md",
-    "研究课题/03_裂缝分割/LMA-Net/full.md",
-    "研究课题/04_物理融合/PINN_物理先验/论文总结.md",
-    "研究课题/04_物理融合/PINN_物理先验/PINN_快速阅读摘要报告.md",
-    "研究课题/01_高光谱分类/CNN混合系/CTCFNet/论文总结.md",
-    "研究课题/01_高光谱分类/UNet系/MKUnet/MKUnet.md",
-    "研究课题/03_裂缝分割/LCGA/LCGA.md",
-    "研究课题/02_溢油检测/HDFNet/HDFNet.md",
     "组.canvas"
   ]
 }

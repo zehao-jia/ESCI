@@ -1,0 +1,24 @@
+{
+  "id": "conv-1784007012449-m34gdadjn",
+  "providerId": "claude",
+  "title": "Discuss paper questions",
+  "titleGenerationStatus": "success",
+  "createdAt": 1784007012450,
+  "updatedAt": 1784017235100,
+  "lastResponseAt": 1784017235100,
+  "sessionId": "e8a98300-0a25-43d6-a4ef-fb392dc2165d",
+  "providerState": {
+    "providerSessionId": "e8a98300-0a25-43d6-a4ef-fb392dc2165d"
+  },
+  "currentNote": "研究课题/07_待读队列/待读/Tensor_Transformer_for_hyperspectral_image_classification/Tensor_Transformer_for_hyperspectral_image_classification.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 1027,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 31232,
+    "contextWindow": 200000,
+    "contextTokens": 32259,
+    "percentage": 16,
+    "contextWindowIsAuthoritative": true
+  }
+}
